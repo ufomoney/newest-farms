@@ -1,4 +1,4 @@
-Thanks for contributing to the [BAO.finance](https://bao.finance) project!
+Thanks for contributing to the [PandaSwap Farming](https://farms.pandaswap.xyz) project!
 
 We're looking forward to all the issues and pull requests! The more the merrier! It's a sign of a healthy and active community. We're in this for the long run and the more people we can get involved the better.
 

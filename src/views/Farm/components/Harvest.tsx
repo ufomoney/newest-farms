@@ -21,7 +21,7 @@ import {
 import { BigNumber } from 'bignumber.js'
 import Spacer from '../../../components/Spacer'
 import useBao from '../../../hooks/useBao'
-import baoIcon from '../../../assets/img/bao.png'
+import baoIcon from '../../../assets/img/pnda.png'
 
 interface HarvestProps {
 	pid: number
@@ -45,7 +45,7 @@ const Harvest: React.FC<HarvestProps> = ({ pid }) => {
 							<img src={baoIcon} height={50} />
 						</CardIcon>
 						<Value value={getBalanceNumber(earnings)} />
-						<Label text="BAO Earned" />
+						<Label text="PNDA Earned" />
 					</StyledCardHeader>
 					<Spacer />
 					<StyledCardHeader>
@@ -59,7 +59,7 @@ const Harvest: React.FC<HarvestProps> = ({ pid }) => {
 					<StyledCardActions>
 						<Button
 							disabled={!earnings.toNumber() || pendingTx}
-							text={pendingTx ? 'Collecting BAO' : 'Harvest'}
+							text={pendingTx ? 'Collecting PNDA' : 'Harvest'}
 							onClick={async () => {
 								setPendingTx(true)
 								await onReward()

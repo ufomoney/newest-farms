@@ -75,7 +75,7 @@ export const getFarms = (bao) => {
 					tokenDecimals,
 					tokenSymbol,
 					tokenContract,
-					earnToken: 'BAO',
+					earnToken: 'PNDA',
 					earnTokenAddress: bao.contracts.bao.options.address,
 					icon,
 					refUrl,

@@ -302,7 +302,7 @@ export const supportedPools = [
 		name: 'BAO PARTY',
 		symbol: 'BAO-ETH UNIV2',
 		tokenSymbol: 'BAO',
-		icon: '/bao.png',
+		icon: '/pnda.png',
 		refUrl:
 			'https://1inch.exchange/#/r/0x3bC3c8aF8CFe3dFC9bA1A57c7C3b653e3f6d6951/ETH/BAO',
 	},
@@ -319,7 +319,7 @@ export const supportedPools = [
 		symbol: 'BAO-ETH SLP',
 		tokenSymbol: 'BAO',
 		poolType: 'sushi',
-		icon: '/bao.png',
+		icon: '/pnda.png',
 		refUrl:
 			'https://1inch.exchange/#/r/0x3bC3c8aF8CFe3dFC9bA1A57c7C3b653e3f6d6951/ETH/BAO',
 	},
@@ -336,7 +336,7 @@ export const supportedPools = [
 		symbol: 'BAO-USDC SLP',
 		tokenSymbol: 'BAO',
 		poolType: 'sushi',
-		icon: '/bao.png',
+		icon: '/pnda.png',
 		refUrl:
 			'https://1inch.exchange/#/r/0x3bC3c8aF8CFe3dFC9bA1A57c7C3b653e3f6d6951/ETH/BAO',
 	},
@@ -353,7 +353,7 @@ export const supportedPools = [
 		symbol: 'BAO-YFI SLP',
 		tokenSymbol: 'BAO',
 		poolType: 'sushi',
-		icon: '/bao.png',
+		icon: '/pnda.png',
 		refUrl:
 			'https://1inch.exchange/#/r/0x3bC3c8aF8CFe3dFC9bA1A57c7C3b653e3f6d6951/ETH/BAO',
 	},
@@ -370,7 +370,7 @@ export const supportedPools = [
 		symbol: 'BAO-SUSHI SLP',
 		tokenSymbol: 'BAO',
 		poolType: 'sushi',
-		icon: '/bao.png',
+		icon: '/pnda.png',
 		refUrl:
 			'https://1inch.exchange/#/r/0x3bC3c8aF8CFe3dFC9bA1A57c7C3b653e3f6d6951/ETH/BAO',
 	},
@@ -387,7 +387,7 @@ export const supportedPools = [
 		symbol: 'BAO-DAI SLP',
 		tokenSymbol: 'BAO',
 		poolType: 'sushi',
-		icon: '/bao.png',
+		icon: '/pnda.png',
 		refUrl:
 			'https://1inch.exchange/#/r/0x3bC3c8aF8CFe3dFC9bA1A57c7C3b653e3f6d6951/ETH/BAO',
 	},

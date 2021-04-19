@@ -1,5 +1,8 @@
 body {
-  background: #fff8ee;
+  background: linear-gradient(
+    to top, transparent, #fcfdf7), url(./assets/img/background-light.jpg) no-repeat;
+  background-position: top;
+  background-size: cover;
   margin: 0;
   font-family: 'Noto Sans', sans-serif;
   font-size: 16px;

@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import baoBanner from '../../assets/img/bao-banner.png'
+import baoBanner from '../../assets/img/pnda.png'
 import Button from '../../components/Button'
 import Container from '../../components/Container'
 import Page from '../../components/Page'
@@ -13,17 +13,13 @@ const Home: React.FC = () => {
 		<Page>
 			<PageHeader
 				icon={baoBanner}
-				title="BaoChef is Ready"
-				subtitle="Stake Sushiswap and Uniswap LP tokens to earn BAO!"
+				title="PandaChef is Ready"
+				subtitle="Stake PandaSwap LP tokens to earn PNDA!"
 			/>
 			<StyledInfo>
 				Be sure to read <a href="https://docs.bao.finance">docs.bao.finance</a>{' '}
 				before using the pools so you are familiar with protocol risks and
 				fees!
-			</StyledInfo>
-			<Spacer size="md" />
-			<StyledInfo>
-				Please note this is the mainnet version of Bao, for xDai visit: <a href="https://xdai.bao.finance">xdai.bao.finance</a>
 			</StyledInfo>
 			<Spacer size="md" />
 			<Container>
@@ -39,7 +35,7 @@ const Home: React.FC = () => {
 			</div>
 			<Spacer size="lg" />
 			<StyledInfo>
-				🏆<b>Pro Tip</b>: BAO-ETH UNIV2 has the biggest weight of all pools. Check
+				🏆<b>Pro Tip</b>: PNDA-wBNB has the biggest weight of all pools. Check
                 them <a href="https://docs.bao.finance/pool-weights">here</a>{'.'}
             </StyledInfo>
 			<Spacer size="md" />

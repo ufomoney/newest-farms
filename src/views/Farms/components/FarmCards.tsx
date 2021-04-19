@@ -35,7 +35,7 @@ const FarmCards: React.FC = () => {
 	const { account } = useWallet()
 	const stakedValue = useAllStakedValue()
 
-	const baoIndex = farms.findIndex(({ tokenSymbol }) => tokenSymbol === 'BAO')
+	const baoIndex = farms.findIndex(({ tokenSymbol }) => tokenSymbol === 'PNDA')
 
 	const baoPrice =
 		baoIndex >= 0 && stakedValue[baoIndex]
@@ -174,7 +174,7 @@ const FarmCard: React.FC<FarmCardProps> = ({ farm }) => {
 	const destination = farm.refUrl
 	return (
 		<StyledCardWrapper>
-			{farm.tokenSymbol === 'BAO' && <StyledCardAccent />}
+			{farm.tokenSymbol === 'PNDA' && <StyledCardAccent />}
 			<Card>
 				<CardContent>
 					<StyledContent>

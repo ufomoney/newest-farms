@@ -1,5 +1,5 @@
 import React from 'react'
-import baoBanner from '../../assets/img/bao-banner.png'
+import baoBanner from '../../assets/img/pnda.png'
 
 interface BaoIconProps {
 	size?: number

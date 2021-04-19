@@ -123,7 +123,7 @@ const Balances: React.FC = () => {
 								<BaoIcon />
 								<Spacer />
 								<div style={{ flex: 1 }}>
-									<Label text="Your BAO Balance" />
+									<Label text="Your PNDA Balance" />
 									<Value
 										value={account ? getBalanceNumber(baoBalance) : 'Locked'}
 									/>
@@ -134,7 +134,7 @@ const Balances: React.FC = () => {
 					<Footnote>
 						Pending harvest
 						<FootnoteValue>
-							<PendingRewards /> BAO
+							<PendingRewards /> PNDA
 						</FootnoteValue>
 					</Footnote>
 				</Card>
@@ -142,14 +142,14 @@ const Balances: React.FC = () => {
 
 				<Card>
 					<CardContent>
-						<Label text="Total BAO Supply" />
+						<Label text="Total PNDA Supply" />
 						<Value
 							value={totalSupply ? getBalanceNumber(totalSupply) : 'Locked'}
 						/>
 					</CardContent>
 					<Footnote>
 						New rewards per block
-						<FootnoteValue>250 BAO</FootnoteValue>
+						<FootnoteValue>250 PNDA</FootnoteValue>
 					</Footnote>
 				</Card>
 			</StyledWrapper>

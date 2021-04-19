@@ -14,7 +14,7 @@ const Nav: React.FC = () => {
 				target="_blank"
 				href="https://app.uniswap.org/#/swap?inputCurrency=0x374cb8c27130e2c9e04f44303f3c8351b9de61c1&outputCurrency=ETH"
 			>
-				Uniswap BAO-ETH
+				PandaSwap PNDA-wBNB
 			</StyledLink>
 			<StyledLink target="_blank" href="https://discord.gg/BW3P62vJXT">
 				Discord
