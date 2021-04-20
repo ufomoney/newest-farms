@@ -1,15 +1,15 @@
 .react-tabs__tab-list {
-    border-bottom-color: #e2d6cf;
+    border-bottom-color: #d1e2cf;
 }
 .react-tabs__tab {
-    color: #aa9585;
+    color: #86aa85;
     font-weight: 700;
 }
 .react-tabs__tab:hover {
-    color: #805e49;
+    color: #2f5b26;
 }
 .react-tabs__tab--selected, .react-tabs__tab--selected:hover {
-    color: #d16c00;
-    border-color: #e2d6cf; 
-    background: #fff8ee;
+    color: #1f4130;
+    border-color: #d1e2cf; 
+    background: #eaf0e7;
 }

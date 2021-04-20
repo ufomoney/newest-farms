@@ -73,47 +73,13 @@ const FarmCards: React.FC = () => {
 	return (
 		<Tabs>
 			<TabList>
-				<Tab>Uni Pools</Tab>
-				<Tab>Sushi Pools</Tab>
-				<Tab>Archived Pools</Tab>
+				<Tab>PandaSwap Pools</Tab>
 			</TabList>
 
 			<TabPanel>
 				<StyledCards>
 					{pools[PoolType.UNI].length ? (
 						pools[PoolType.UNI].map((farm, i) => (
-							<React.Fragment key={i}>
-								<FarmCard farm={farm} />
-								{((i + 1) % (cardsPerRow) !== 0) && <StyledSpacer />}
-							</React.Fragment>
-						))
-					) : (
-							<StyledLoadingWrapper>
-								<Loader text="Cooking the rice ..." />
-							</StyledLoadingWrapper>
-						)}
-				</StyledCards>
-			</TabPanel>
-			<TabPanel>
-				<StyledCards>
-					{pools[PoolType.SUSHI].length ? (
-						pools[PoolType.SUSHI].map((farm, i) => (
-							<React.Fragment key={i}>
-								<FarmCard farm={farm} />
-								{((i + 1) % (cardsPerRow) !== 0) && <StyledSpacer />}
-							</React.Fragment>
-						))
-					) : (
-							<StyledLoadingWrapper>
-								<Loader text="Cooking the rice ..." />
-							</StyledLoadingWrapper>
-						)}
-				</StyledCards>
-			</TabPanel>
-			<TabPanel>
-				<StyledCards>
-					{pools[PoolType.ARCHIVED].length ? (
-						pools[PoolType.ARCHIVED].map((farm, i) => (
 							<React.Fragment key={i}>
 								<FarmCard farm={farm} />
 								{((i + 1) % (cardsPerRow) !== 0) && <StyledSpacer />}

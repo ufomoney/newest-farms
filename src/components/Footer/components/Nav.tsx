@@ -8,7 +8,7 @@ const Nav: React.FC = () => {
 				target="_blank"
 				href="https://etherscan.io/address/0xBD530a1c060DC600b951f16dc656E4EA451d1A2D"
 			>
-				BaoChef Contract
+				PandaChef Contract
 			</StyledLink>
 			<StyledLink
 				target="_blank"
@@ -29,12 +29,13 @@ const Nav: React.FC = () => {
 const StyledNav = styled.nav`
 	align-items: center;
 	display: flex;
+	font-weight: 600;
 `
 
 const StyledLink = styled.a`
 	color: ${(props) => props.theme.color.grey[400]};
-	padding-left: ${(props) => props.theme.spacing[3]}px;
-	padding-right: ${(props) => props.theme.spacing[3]}px;
+	padding-left: ${(props) => props.theme.spacing[5]}px;
+	padding-right: ${(props) => props.theme.spacing[5]}px;
 	text-decoration: none;
 	&:hover {
 		color: ${(props) => props.theme.color.grey[500]};
