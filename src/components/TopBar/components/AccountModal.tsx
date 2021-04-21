@@ -2,8 +2,8 @@ import React, { useCallback } from 'react'
 import styled from 'styled-components'
 import { useWallet } from 'use-wallet'
 import useTokenBalance from '../../../hooks/useTokenBalance'
-import useBao from '../../../hooks/useBao'
-import { getBaoAddress } from '../../../bao/utils'
+import usePanda from '../../../hooks/usePanda'
+import { getPandaAddress } from '../../../panda/utils'
 import { getBalanceNumber } from '../../../utils/formatBalance'
 import Button from '../../Button'
 import CardIcon from '../../CardIcon'
@@ -23,8 +23,8 @@ const AccountModal: React.FC<ModalProps> = ({ onDismiss }) => {
 		reset()
 	}, [onDismiss, reset])
 
-	const bao = useBao()
-	const baoBalance = useTokenBalance(getBaoAddress(bao))
+	const pnda = usePanda()
+	const pndaBalance = useTokenBalance(getPandaAddress(pnda))
 
 	return (
 		<Modal>
@@ -38,7 +38,7 @@ const AccountModal: React.FC<ModalProps> = ({ onDismiss }) => {
 							<span>🥟</span>
 						</CardIcon>
 						<StyledBalance>
-							<Value value={getBalanceNumber(baoBalance)} />
+							<Value value={getBalanceNumber(pndaBalance)} />
 							<Label text="PNDA Balance" />
 						</StyledBalance>
 					</StyledBalanceWrapper>

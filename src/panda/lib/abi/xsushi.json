@@ -3,7 +3,7 @@
     "inputs": [
       {
         "internalType": "contract IERC20",
-        "name": "_bao",
+        "name": "_pnda",
         "type": "address"
       }
     ],
@@ -229,7 +229,7 @@
   },
   {
     "inputs": [],
-    "name": "bao",
+    "name": "pnda",
     "outputs": [
       {
         "internalType": "contract IERC20",

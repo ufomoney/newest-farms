@@ -1,20 +1,20 @@
 import { useCallback } from 'react'
 
-import useBao from './useBao'
+import usePanda from './usePanda'
 import { useWallet } from 'use-wallet'
 
-import { harvest, getMasterChefContract } from '../bao/utils'
+import { harvest, getMasterChefContract } from '../panda/utils'
 
 const useReward = (pid: number) => {
   const { account } = useWallet()
-  const bao = useBao()
-  const masterChefContract = getMasterChefContract(bao)
+  const pnda = usePanda()
+  const masterChefContract = getMasterChefContract(pnda)
 
   const handleReward = useCallback(async () => {
     const txHash = await harvest(masterChefContract, pid, account)
     console.log(txHash)
     return txHash
-  }, [account, pid, bao])
+  }, [account, pid, pnda])
 
   return { onReward: handleReward }
 }

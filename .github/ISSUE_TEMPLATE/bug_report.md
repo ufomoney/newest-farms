@@ -1,6 +1,6 @@
 ---
 name: Bug report
-about: Report a bug with the BAO UI.
+about: Report a bug with the PandaSwap Farms UI.
 title: ''
 labels: bug
 assignees: ''

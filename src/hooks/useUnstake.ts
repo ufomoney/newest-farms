@@ -1,14 +1,14 @@
 import { useCallback } from 'react'
 
-import useBao from './useBao'
+import usePanda from './usePanda'
 import { useWallet } from 'use-wallet'
 
-import { unstake, getMasterChefContract, getRefUrl } from '../bao/utils'
+import { unstake, getMasterChefContract, getRefUrl } from '../panda/utils'
 
 const useUnstake = (pid: number) => {
   const { account } = useWallet()
-  const bao = useBao()
-  const masterChefContract = getMasterChefContract(bao)
+  const pnda = usePanda()
+  const masterChefContract = getMasterChefContract(pnda)
 
   const handleUnstake = useCallback(
     async (amount: string) => {
@@ -22,7 +22,7 @@ const useUnstake = (pid: number) => {
       )
       console.log(txHash)
     },
-    [account, pid, bao],
+    [account, pid, pnda],
   )
 
   return { onUnstake: handleUnstake }

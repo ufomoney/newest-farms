@@ -13,15 +13,15 @@ import useValues from '../../../hooks/useValues'
 import useSubValues from '../../../hooks/useSubValues'
 import { getBalanceNumber } from '../../../utils/formatBalance'
 import {
-	getWethPrice,
-	getBaoPrice,
-	getWethPriceContract,
-	getBaoPriceContract,
-} from '../../../bao/utils'
+	getWbnbPrice,
+	getPandaPrice,
+	getWbnbPriceContract,
+	getPandaPriceContract,
+} from '../../../panda/utils'
 import { BigNumber } from 'bignumber.js'
 import Spacer from '../../../components/Spacer'
-import useBao from '../../../hooks/useBao'
-import baoIcon from '../../../assets/img/pnda.png'
+import usePanda from '../../../hooks/usePanda'
+import pandaIcon from '../../../assets/img/pnda.png'
 
 interface HarvestProps {
 	pid: number
@@ -32,7 +32,7 @@ const Harvest: React.FC<HarvestProps> = ({ pid }) => {
 	const locks = useLockedEarnings()
 	const [pendingTx, setPendingTx] = useState(false)
 	const { onReward } = useReward(pid)
-	const bao = useBao()
+	const pnda = usePanda()
 	const userInfo = useValues()
 	const userSubInfo = useSubValues()
 
@@ -42,7 +42,7 @@ const Harvest: React.FC<HarvestProps> = ({ pid }) => {
 				<StyledCardContentInner>
 					<StyledCardHeader>
 						<CardIcon>
-							<img src={baoIcon} height={50} />
+							<img src={pandaIcon} height={50} />
 						</CardIcon>
 						<Value value={getBalanceNumber(earnings)} />
 						<Label text="PNDA Earned" />
@@ -50,7 +50,7 @@ const Harvest: React.FC<HarvestProps> = ({ pid }) => {
 					<Spacer />
 					<StyledCardHeader>
 						<Value value={getBalanceNumber(locks)} />
-						<Label text="Locked Bao" />
+						<Label text="Locked PNDA" />
 						<Spacer />
 					</StyledCardHeader>
 					<Label text={userInfo} />

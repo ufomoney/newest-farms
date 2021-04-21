@@ -14,43 +14,43 @@ const GAS_LIMIT = {
 	},
 }
 
-export const getMasterChefAddress = (bao) => {
-	return bao && bao.masterChefAddress
+export const getMasterChefAddress = (pnda) => {
+	return pnda && pnda.masterChefAddress
 }
 
-export const getWethPriceAddress = (bao) => {
-	return bao && bao.wethPriceAddress
+export const getWbnbPriceAddress = (pnda) => {
+	return pnda && pnda.wbnbPriceAddress
 }
 
-export const getBaoPriceAddress = (bao) => {
-	return bao && bao.baoPriceAddress
+export const getPandaPriceAddress = (pnda) => {
+	return pnda && pnda.pndaPriceAddress
 }
 
-export const getBaoAddress = (bao) => {
-	return bao && bao.baoAddress
+export const getPandaAddress = (pnda) => {
+	return pnda && pnda.pndaAddress
 }
-export const getWethContract = (bao) => {
-	return bao && bao.contracts && bao.contracts.weth
-}
-
-export const getWethPriceContract = (bao) => {
-	return bao && bao.contracts && bao.contracts.wethPrice
+export const getWbnbContract = (pnda) => {
+	return pnda && pnda.contracts && pnda.contracts.wbnb
 }
 
-export const getBaoPriceContract = (bao) => {
-	return bao && bao.contracts && bao.contracts.baoPrice
+export const getWbnbPriceContract = (pnda) => {
+	return pnda && pnda.contracts && pnda.contracts.wbnbPrice
 }
 
-export const getMasterChefContract = (bao) => {
-	return bao && bao.contracts && bao.contracts.masterChef
-}
-export const getBaoContract = (bao) => {
-	return bao && bao.contracts && bao.contracts.bao
+export const getPandaPriceContract = (pnda) => {
+	return pnda && pnda.contracts && pnda.contracts.pndaPrice
 }
 
-export const getFarms = (bao) => {
-	return bao
-		? bao.contracts.pools.map(
+export const getMasterChefContract = (pnda) => {
+	return pnda && pnda.contracts && pnda.contracts.masterChef
+}
+export const getPandaContract = (pnda) => {
+	return pnda && pnda.contracts && pnda.contracts.pnda
+}
+
+export const getFarms = (pnda) => {
+	return pnda
+		? pnda.contracts.pools.map(
 				({
 					pid,
 					name,
@@ -76,7 +76,7 @@ export const getFarms = (bao) => {
 					tokenSymbol,
 					tokenContract,
 					earnToken: 'PNDA',
-					earnTokenAddress: bao.contracts.bao.options.address,
+					earnTokenAddress: pnda.contracts.pnda.options.address,
 					icon,
 					refUrl,
 					poolType,
@@ -98,13 +98,13 @@ export const getEarned = async (masterChefContract, pid, account) => {
 	return masterChefContract.methods.pendingReward(pid, account).call()
 }
 
-export const getLockedEarned = async (baoContract, account) => {
-	return baoContract.methods.lockOf(account).call()
+export const getLockedEarned = async (pndaContract, account) => {
+	return pndaContract.methods.lockOf(account).call()
 }
 
-export const getTotalLPWethValue = async (
+export const getTotalLPWbnbValue = async (
 	masterChefContract,
-	wethContract,
+	wbnbContract,
 	lpContract,
 	tokenContract,
 	tokenDecimals,
@@ -114,33 +114,33 @@ export const getTotalLPWethValue = async (
 		tokenAmountWholeLP,
 		balance,
 		totalSupply,
-		lpContractWeth,
+		lpContractWbnb,
 		poolWeight,
 	] = await Promise.all([
 		tokenContract.methods.balanceOf(lpContract.options.address).call(),
 		lpContract.methods.balanceOf(masterChefContract.options.address).call(),
 		lpContract.methods.totalSupply().call(),
-		wethContract.methods.balanceOf(lpContract.options.address).call(),
+		wbnbContract.methods.balanceOf(lpContract.options.address).call(),
 		getPoolWeight(masterChefContract, pid),
 	])
 
 	// Return p1 * w1 * 2
 	const portionLp = new BigNumber(balance).div(new BigNumber(totalSupply))
-	const lpWethWorth = new BigNumber(lpContractWeth)
-	const totalLpWethValue = portionLp.times(lpWethWorth).times(new BigNumber(2))
+	const lpWbnbWorth = new BigNumber(lpContractWbnb)
+	const totalLpWbnbValue = portionLp.times(lpWbnbWorth).times(new BigNumber(2))
 	// Calculate
 	const tokenAmount = new BigNumber(tokenAmountWholeLP)
 		.times(portionLp)
 		.div(new BigNumber(10).pow(tokenDecimals))
 
-	const wethAmount = new BigNumber(lpContractWeth)
+	const wbnbAmount = new BigNumber(lpContractWbnb)
 		.times(portionLp)
 		.div(new BigNumber(10).pow(18))
 	return {
 		tokenAmount,
-		wethAmount,
-		totalWethValue: totalLpWethValue.div(new BigNumber(10).pow(18)),
-		tokenPriceInWeth: wethAmount.div(tokenAmount),
+		wbnbAmount,
+		totalWbnbValue: totalLpWbnbValue.div(new BigNumber(10).pow(18)),
+		tokenPriceInWbnb: wbnbAmount.div(tokenAmount),
 		poolWeight: poolWeight,
 	}
 }
@@ -197,22 +197,22 @@ export const getStaked = async (masterChefContract, pid, account) => {
 	}
 }
 
-export const getWethPrice = async (bao) => {
-	console.log(bao)
-	const amount = await bao.contracts.wethPrice.methods.latestAnswer().call()
+export const getWbnbPrice = async (pnda) => {
+	console.log(pnda)
+	const amount = await pnda.contracts.wbnbPrice.methods.latestAnswer().call()
 	return new BigNumber(amount)
 }
 
-export const getBaoPrice = async (bao) => {
+export const getPandaPrice = async (pnda) => {
 	const addr = '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2'
-	const amount = await bao.contracts.baoPrice.methods
+	const amount = await pnda.contracts.pndaPrice.methods
 		.consult(addr.toString(), 1)
 		.call()
 	return new BigNumber(amount)
 }
 
-export const getBaoSupply = async (bao) => {
-	return new BigNumber(await bao.contracts.bao.methods.totalSupply().call())
+export const getPandaSupply = async (pnda) => {
+	return new BigNumber(await pnda.contracts.pnda.methods.totalSupply().call())
 }
 
 export const getReferrals = async (masterChefContract, account) => {

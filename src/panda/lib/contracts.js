@@ -8,10 +8,10 @@ import {
 } from './constants.js'
 
 import UNIV2PairAbi from './abi/uni_v2_lp.json'
-import BaoAbi from './abi/bao.json'
+import PandaAbi from './abi/panda.json'
 import MasterChefAbi from './abi/masterchef.json'
 import ERC20Abi from './abi/erc20.json'
-import WETHAbi from './abi/weth.json'
+import WBNBAbi from './abi/weth.json'
 import UniOracleABI from './abi/unioracle.json'
 import ChainOracle from './abi/chainoracle.json'
 
@@ -25,11 +25,11 @@ export class Contracts {
 		this.defaultGas = options.defaultGas
 		this.defaultGasPrice = options.defaultGasPrice
 
-		this.bao = new this.web3.eth.Contract(BaoAbi)
+		this.pnda = new this.web3.eth.Contract(PandaAbi)
 		this.masterChef = new this.web3.eth.Contract(MasterChefAbi)
-		this.weth = new this.web3.eth.Contract(WETHAbi)
-		this.wethPrice = new this.web3.eth.Contract(ChainOracle)
-		this.baoPrice = new this.web3.eth.Contract(UniOracleABI)
+		this.wbnb = new this.web3.eth.Contract(WBNBAbi)
+		this.wbnbPrice = new this.web3.eth.Contract(ChainOracle)
+		this.pndaPrice = new this.web3.eth.Contract(UniOracleABI)
 
 		this.pools = supportedPools.map((pool) =>
 			Object.assign(pool, {
@@ -51,11 +51,11 @@ export class Contracts {
 			else console.error('Contract address not found in network', networkId)
 		}
 
-		setProvider(this.bao, contractAddresses.bao[networkId])
+		setProvider(this.pnda, contractAddresses.pnda[networkId])
 		setProvider(this.masterChef, contractAddresses.masterChef[networkId])
-		setProvider(this.weth, contractAddresses.weth[networkId])
-		setProvider(this.wethPrice, contractAddresses.wethPrice[networkId])
-		setProvider(this.baoPrice, contractAddresses.baoPrice[networkId])
+		setProvider(this.wbnb, contractAddresses.wbnb[networkId])
+		setProvider(this.wbnbPrice, contractAddresses.wbnbPrice[networkId])
+		setProvider(this.pndaPrice, contractAddresses.pndaPrice[networkId])
 
 		this.pools.forEach(
 			({ lpContract, lpAddress, tokenContract, tokenAddress }) => {
@@ -66,10 +66,10 @@ export class Contracts {
 	}
 
 	setDefaultAccount(account) {
-		this.bao.options.from = account
+		this.pnda.options.from = account
 		this.masterChef.options.from = account
-		this.wethPrice.options.from = account
-		this.baoPrice.options.from = account
+		this.wbnbPrice.options.from = account
+		this.pndaPrice.options.from = account
 	}
 
 	async callContractFunction(method, options) {

@@ -7,8 +7,8 @@ import PageHeader from '../../components/PageHeader'
 import Spacer from '../../components/Spacer'
 import useFarm from '../../hooks/useFarm'
 import useRedeem from '../../hooks/useRedeem'
-import useBao from '../../hooks/useBao'
-import { getMasterChefContract } from '../../bao/utils'
+import usePanda from '../../hooks/usePanda'
+import { getMasterChefContract } from '../../panda/utils'
 import { getContract } from '../../utils/erc20'
 import Harvest from './components/Harvest'
 import {PoolType} from '../../contexts/Farms/types';
@@ -35,21 +35,21 @@ const Farm: React.FC = () => {
 		name: '',
 		icon: '',
 		refUrl: '',
-		poolType: PoolType.UNI,
+		poolType: PoolType.PNDA,
 	}
 
 	useEffect(() => {
 		window.scrollTo(0, 0)
 	}, [])
 
-	const bao = useBao()
+	const pnda = usePanda()
 	const { ethereum } = useWallet()
 
 	const lpContract = useMemo(() => {
 		return getContract(ethereum as provider, lpTokenAddress)
 	}, [ethereum, lpTokenAddress])
 
-	const { onRedeem } = useRedeem(getMasterChefContract(bao))
+	const { onRedeem } = useRedeem(getMasterChefContract(pnda))
 
 	const lpTokenName = useMemo(() => {
 		return lpToken.toUpperCase()

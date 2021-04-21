@@ -8,18 +8,18 @@ import CardContent from '../../../components/CardContent'
 import Label from '../../../components/Label'
 import Spacer from '../../../components/Spacer'
 import Value from '../../../components/Value'
-import BaoIcon from '../../../components/BaoIcon'
+import PandaIcon from '../../../components/PandaIcon'
 import useAllEarnings from '../../../hooks/useAllEarnings'
 import useAllStakedValue from '../../../hooks/useAllStakedValue'
 import useFarms from '../../../hooks/useFarms'
 import useTokenBalance from '../../../hooks/useTokenBalance'
-import useBao from '../../../hooks/useBao'
+import usePanda from '../../../hooks/usePanda'
 import {
-	getBaoAddress,
-	getBaoSupply,
+	getPandaAddress,
+	getPandaSupply,
 	getReferrals,
 	getMasterChefContract,
-} from '../../../bao/utils'
+} from '../../../panda/utils'
 import { getBalanceNumber } from '../../../utils/formatBalance'
 
 const PendingRewards: React.FC = () => {
@@ -39,8 +39,8 @@ const PendingRewards: React.FC = () => {
 	const allStakedValue = useAllStakedValue()
 
 	if (allStakedValue && allStakedValue.length) {
-		const sumWeth = farms.reduce(
-			(c, { id }, i) => c + (allStakedValue[i].totalWethValue.toNumber() || 0),
+		const sumWbnb = farms.reduce(
+			(c, { id }, i) => c + (allStakedValue[i].totalWbnbValue.toNumber() || 0),
 			0,
 		)
 	}
@@ -78,40 +78,40 @@ const Balances: React.FC = () => {
 	const [totalSupply, setTotalSupply] = useState<BigNumber>()
 	const [totalReferrals, setTotalReferrals] = useState<string>()
 	const [refLink, setRefLink] = useState<string>()
-	const bao = useBao()
-	const baoBalance = useTokenBalance(getBaoAddress(bao))
-	const masterChefContract = getMasterChefContract(bao)
+	const pnda = usePanda()
+	const pndaBalance = useTokenBalance(getPandaAddress(pnda))
+	const masterChefContract = getMasterChefContract(pnda)
 	const { account, ethereum }: { account: any; ethereum: any } = useWallet()
 
 	useEffect(() => {
 		async function fetchTotalSupply() {
-			const supply = await getBaoSupply(bao)
+			const supply = await getPandaSupply(pnda)
 			setTotalSupply(supply)
 		}
-		if (bao) {
+		if (pnda) {
 			fetchTotalSupply()
 		}
-	}, [bao, setTotalSupply])
+	}, [pnda, setTotalSupply])
 
 	useEffect(() => {
 		async function fetchTotalReferrals() {
 			const referrals = await getReferrals(masterChefContract, account)
 			setTotalReferrals(referrals)
 		}
-		if (bao) {
+		if (pnda) {
 			fetchTotalReferrals()
 		}
-	}, [bao, setTotalReferrals])
+	}, [pnda, setTotalReferrals])
 
 	useEffect(() => {
 		async function fetchRefLink() {
-			const usrReflink = 'www.bao.finance?ref=' + account
+			const usrReflink = 'www.pnda.finance?ref=' + account
 			setRefLink(usrReflink)
 		}
-		if (bao) {
+		if (pnda) {
 			fetchRefLink()
 		}
-	}, [bao, setRefLink])
+	}, [pnda, setRefLink])
 
 	return (
 		<Fragment>
@@ -120,12 +120,12 @@ const Balances: React.FC = () => {
 					<CardContent>
 						<StyledBalances>
 							<StyledBalance>
-								<BaoIcon />
+								<PandaIcon />
 								<Spacer />
 								<div style={{ flex: 1 }}>
 									<Label text="Your PNDA Balance" />
 									<Value
-										value={account ? getBalanceNumber(baoBalance) : 'Locked'}
+										value={account ? getBalanceNumber(pndaBalance) : 'Locked'}
 									/>
 								</div>
 							</StyledBalance>

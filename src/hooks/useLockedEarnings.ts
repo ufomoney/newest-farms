@@ -4,8 +4,8 @@ import { provider } from 'web3-core'
 import BigNumber from 'bignumber.js'
 import { useWallet } from 'use-wallet'
 
-import { getLockedEarned, getBaoContract } from '../bao/utils'
-import useBao from './useBao'
+import { getLockedEarned, getPandaContract } from '../panda/utils'
+import usePanda from './usePanda'
 import useBlock from './useBlock'
 
 const useLockedEarnings = () => {
@@ -14,20 +14,20 @@ const useLockedEarnings = () => {
     account,
     ethereum,
   }: { account: string; ethereum: provider } = useWallet()
-  const bao = useBao()
-  const baoContract = getBaoContract(bao)
+  const pnda = usePanda()
+  const pndaContract = getPandaContract(pnda)
   const block = useBlock()
 
   const fetchBalance = useCallback(async () => {
-    const balance = await getLockedEarned(baoContract, account)
+    const balance = await getLockedEarned(pndaContract, account)
     setBalance(new BigNumber(balance))
-  }, [account, baoContract, bao])
+  }, [account, pndaContract, pnda])
 
   useEffect(() => {
-    if (account && baoContract && bao) {
+    if (account && pndaContract && pnda) {
       fetchBalance()
     }
-  }, [account, block, baoContract, setBalance, bao])
+  }, [account, block, pndaContract, setBalance, pnda])
 
   return balance
 }

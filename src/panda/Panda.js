@@ -5,7 +5,7 @@ import { Account } from './lib/accounts.js'
 import { EVM } from './lib/evm.js'
 import { contractAddresses } from './lib/constants'
 
-export class Bao {
+export class Panda {
 	constructor(provider, networkId, testing, options) {
 		var realProvider
 
@@ -36,11 +36,11 @@ export class Bao {
 			this.web3.eth.defaultAccount = options.defaultAccount
 		}
 		this.contracts = new Contracts(realProvider, networkId, this.web3, options)
-		this.baoAddress = contractAddresses.bao[networkId]
+		this.pndaAddress = contractAddresses.pnda[networkId]
 		this.masterChefAddress = contractAddresses.masterChef[networkId]
-		this.wethAddress = contractAddresses.weth[networkId]
-		this.wethPriceAddress = contractAddresses.wethPrice[networkId]
-		this.baoPriceAddress = contractAddresses.baoPrice[networkId]
+		this.wbnbAddress = contractAddresses.wbnb[networkId]
+		this.wbnbPriceAddress = contractAddresses.wbnbPrice[networkId]
+		this.pndaPriceAddress = contractAddresses.pndaPrice[networkId]
 		console.log(`network Id: ${networkId}`, contractAddresses)
 	}
 

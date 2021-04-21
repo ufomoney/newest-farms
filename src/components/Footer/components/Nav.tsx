@@ -12,9 +12,9 @@ const Nav: React.FC = () => {
 			</StyledLink>
 			<StyledLink
 				target="_blank"
-				href="https://app.uniswap.org/#/swap?inputCurrency=0x374cb8c27130e2c9e04f44303f3c8351b9de61c1&outputCurrency=ETH"
+				href="https://pandaswap.xyz/#/swap?outputCurrency=0x47DcC83a14aD53Ed1f13d3CaE8AA4115f07557C0"
 			>
-				PandaSwap PNDA-wBNB
+				PandaSwap PNDA-BNB
 			</StyledLink>
 			<StyledLink target="_blank" href="https://discord.gg/BW3P62vJXT">
 				Discord

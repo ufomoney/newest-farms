@@ -7,28 +7,28 @@ import { Contract } from 'web3-eth-contract'
 
 import {
   getMasterChefContract,
-  getWethContract,
+  getWbnbContract,
   getFarms,
-  getTotalLPWethValue,
-} from '../bao/utils'
-import useBao from './useBao'
+  getTotalLPWbnbValue,
+} from '../panda/utils'
+import usePanda from './usePanda'
 import useBlock from './useBlock'
 
 export interface StakedValue {
   tokenAmount: BigNumber
-  wethAmount: BigNumber
-  totalWethValue: BigNumber
-  tokenPriceInWeth: BigNumber
+  wbnbAmount: BigNumber
+  totalWbnbValue: BigNumber
+  tokenPriceInWbnb: BigNumber
   poolWeight: BigNumber
 }
 
 const useAllStakedValue = () => {
   const [balances, setBalance] = useState([] as Array<StakedValue>)
   const { account }: { account: string; ethereum: provider } = useWallet()
-  const bao = useBao()
-  const farms = getFarms(bao)
-  const masterChefContract = getMasterChefContract(bao)
-  const wethContract = getWethContract(bao)
+  const pnda = usePanda()
+  const farms = getFarms(pnda)
+  const masterChefContract = getMasterChefContract(pnda)
+  const wbnbContract = getWbnbContract(pnda)
   const block = useBlock()
 
   const fetchAllStakedValue = useCallback(async () => {
@@ -45,9 +45,9 @@ const useAllStakedValue = () => {
           tokenContract: Contract
           tokenDecimals: number
         }) =>
-          getTotalLPWethValue(
+          getTotalLPWbnbValue(
             masterChefContract,
-            wethContract,
+            wbnbContract,
             lpContract,
             tokenContract,
             tokenDecimals,
@@ -57,13 +57,13 @@ const useAllStakedValue = () => {
     )
 
     setBalance(balances)
-  }, [account, masterChefContract, bao])
+  }, [account, masterChefContract, pnda])
 
   useEffect(() => {
-    if (account && masterChefContract && bao) {
+    if (account && masterChefContract && pnda) {
       fetchAllStakedValue()
     }
-  }, [account, block, masterChefContract, setBalance, bao])
+  }, [account, block, masterChefContract, setBalance, pnda])
 
   return balances
 }

@@ -37,7 +37,7 @@ module.exports = {
   },
   globals: {
     'importScripts': 'readonly',
-    'window.bao': 'writable',
+    'window.panda': 'writable',
     'process': 'readonly'
   },
   rules: {

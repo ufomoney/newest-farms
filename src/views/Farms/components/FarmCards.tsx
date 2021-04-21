@@ -15,8 +15,8 @@ import useAllStakedValue, {
 	StakedValue,
 } from '../../../hooks/useAllStakedValue'
 import useFarms from '../../../hooks/useFarms'
-import useBao from '../../../hooks/useBao'
-import { getEarned, getMasterChefContract } from '../../../bao/utils'
+import usePanda from '../../../hooks/usePanda'
+import { getEarned, getMasterChefContract } from '../../../panda/utils'
 import { bnToDec } from '../../../utils'
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
@@ -35,19 +35,19 @@ const FarmCards: React.FC = () => {
 	const { account } = useWallet()
 	const stakedValue = useAllStakedValue()
 
-	const baoIndex = farms.findIndex(({ tokenSymbol }) => tokenSymbol === 'PNDA')
+	const pndaIndex = farms.findIndex(({ tokenSymbol }) => tokenSymbol === 'PNDA')
 
-	const baoPrice =
-		baoIndex >= 0 && stakedValue[baoIndex]
-			? stakedValue[baoIndex].tokenPriceInWeth
+	const pndaPrice =
+		pndaIndex >= 0 && stakedValue[pndaIndex]
+			? stakedValue[pndaIndex].tokenPriceInWbnb
 			: new BigNumber(0)
 
 	const BLOCKS_PER_YEAR = new BigNumber(2336000)
-	const BAO_BER_BLOCK = new BigNumber(256000)
+	const PNDA_BER_BLOCK = new BigNumber(256000)
 
 	const pools: {[key: string]: FarmWithStakedValue[]} = {
-		[PoolType.UNI]: [],
-		[PoolType.SUSHI]: [],
+		[PoolType.PNDA]: [],
+		[PoolType.CAKE]: [],
 		[PoolType.ARCHIVED]: []
 	};
 
@@ -56,13 +56,13 @@ const FarmCards: React.FC = () => {
 			const farmWithStakedValue = {
 				...farm,
 				...stakedValue[i],
-				poolType: farm.poolType || PoolType.UNI,
+				poolType: farm.poolType || PoolType.PNDA,
 				apy: stakedValue[i]
-					? baoPrice
-							.times(BAO_BER_BLOCK)
+					? pndaPrice
+							.times(PNDA_BER_BLOCK)
 							.times(BLOCKS_PER_YEAR)
 							.times(stakedValue[i].poolWeight)
-							.div(stakedValue[i].totalWethValue)
+							.div(stakedValue[i].totalWbnbValue)
 					: null,
 			};
 
@@ -73,13 +73,47 @@ const FarmCards: React.FC = () => {
 	return (
 		<Tabs>
 			<TabList>
-				<Tab>PandaSwap Pools</Tab>
+				<Tab>PandaSwap Farms</Tab>
+				<Tab>PancakeSwap Farms</Tab>
+				<Tab>Archived Farms</Tab>
 			</TabList>
 
 			<TabPanel>
 				<StyledCards>
-					{pools[PoolType.UNI].length ? (
-						pools[PoolType.UNI].map((farm, i) => (
+					{pools[PoolType.PNDA].length ? (
+						pools[PoolType.PNDA].map((farm, i) => (
+							<React.Fragment key={i}>
+								<FarmCard farm={farm} />
+								{((i + 1) % (cardsPerRow) !== 0) && <StyledSpacer />}
+							</React.Fragment>
+						))
+					) : (
+							<StyledLoadingWrapper>
+								<Loader text="Cooking the rice ..." />
+							</StyledLoadingWrapper>
+						)}
+				</StyledCards>
+			</TabPanel>
+			<TabPanel>
+				<StyledCards>
+					{pools[PoolType.CAKE].length ? (
+						pools[PoolType.CAKE].map((farm, i) => (
+							<React.Fragment key={i}>
+								<FarmCard farm={farm} />
+								{((i + 1) % (cardsPerRow) !== 0) && <StyledSpacer />}
+							</React.Fragment>
+						))
+					) : (
+							<StyledLoadingWrapper>
+								<Loader text="Cooking the rice ..." />
+							</StyledLoadingWrapper>
+						)}
+				</StyledCards>
+			</TabPanel>
+			<TabPanel>
+				<StyledCards>
+					{pools[PoolType.ARCHIVED].length ? (
+						pools[PoolType.ARCHIVED].map((farm, i) => (
 							<React.Fragment key={i}>
 								<FarmCard farm={farm} />
 								{((i + 1) % (cardsPerRow) !== 0) && <StyledSpacer />}
@@ -106,7 +140,7 @@ const FarmCard: React.FC<FarmCardProps> = ({ farm }) => {
 
 	const { account } = useWallet()
 	const { lpTokenAddress } = farm
-	const bao = useBao()
+	const pnda = usePanda()
 
 	const renderer = (countdownProps: CountdownRenderProps) => {
 		const { hours, minutes, seconds } = countdownProps
@@ -122,18 +156,18 @@ const FarmCard: React.FC<FarmCardProps> = ({ farm }) => {
 
 	useEffect(() => {
 		async function fetchEarned() {
-			if (bao) return
+			if (pnda) return
 			const earned = await getEarned(
-				getMasterChefContract(bao),
+				getMasterChefContract(pnda),
 				lpTokenAddress,
 				account,
 			)
 			setHarvestable(bnToDec(earned))
 		}
-		if (bao && account) {
+		if (pnda && account) {
 			fetchEarned()
 		}
-	}, [bao, lpTokenAddress, account, setHarvestable])
+	}, [pnda, lpTokenAddress, account, setHarvestable])
 
 	const poolActive = true // startTime * 1000 - Date.now() <= 0
 	const tokenBuy = 'Buy ' + farm.tokenSymbol
@@ -185,8 +219,8 @@ const FarmCard: React.FC<FarmCardProps> = ({ farm }) => {
                 {farm.tokenSymbol}
               </span>
               <span>
-                {farm.wethAmount
-                  ? (farm.wethAmount.toNumber() || 0).toLocaleString('en-US')
+                {farm.wbnbAmount
+                  ? (farm.wbnbAmount.toNumber() || 0).toLocaleString('en-US')
                   : '-'}{' '}
                 ETH
               </span> */}

@@ -2,34 +2,34 @@ import React, { createContext, useEffect, useState } from 'react'
 
 import { useWallet } from 'use-wallet'
 
-import { Bao } from '../../bao'
+import { Panda } from '../../panda'
 
-export interface BaoContext {
-	bao?: typeof Bao
+export interface PandaContext {
+	pnda?: typeof Panda
 }
 
-export const Context = createContext<BaoContext>({
-	bao: undefined,
+export const Context = createContext<PandaContext>({
+	pnda: undefined,
 })
 
 declare global {
 	interface Window {
-		baosauce: any
-		bao: any
+		pndasauce: any
+		pnda: any
 	}
 }
 
-const BaoProvider: React.FC = ({ children }) => {
+const PandaProvider: React.FC = ({ children }) => {
 	const { ethereum }: { ethereum: any } = useWallet()
-	const [bao, setBao] = useState<any>()
+	const [pnda, setPanda] = useState<any>()
 
-	window.bao = bao
+	window.pnda = pnda
 
 	useEffect(() => {
 		if (ethereum) {
 			const chainId = Number(ethereum.chainId)
 			console.log(chainId)
-			const baoLib = new Bao(ethereum, chainId, false, {
+			const pndaLib = new Panda(ethereum, chainId, false, {
 				defaultAccount: ethereum.selectedAddress,
 				defaultConfirmations: 1,
 				autoGasMultiplier: 1.05,
@@ -39,13 +39,13 @@ const BaoProvider: React.FC = ({ children }) => {
 				accounts: [],
 				ethereumNodeTimeout: 10000,
 			})
-			console.log(baoLib)
-			setBao(baoLib)
-			window.baosauce = baoLib
+			console.log(pndaLib)
+			setPanda(pndaLib)
+			window.pndasauce = pndaLib
 		}
 	}, [ethereum])
 
-	return <Context.Provider value={{ bao }}>{children}</Context.Provider>
+	return <Context.Provider value={{ pnda }}>{children}</Context.Provider>
 }
 
-export default BaoProvider
+export default PandaProvider

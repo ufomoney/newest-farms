@@ -1,15 +1,15 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
-import baoLogo from '../../assets/img/pnda-logo.png'
+import pandaLogo from '../../assets/img/pnda-logo.png'
 
 const Logo: React.FC = () => {
 	return (
 		<StyledLogo to="/">
-			<img src={baoLogo} height="32" style={{ marginTop: -4 }} />
+			<img src={pandaLogo} height="32" style={{ marginTop: -4 }} />
 			<StyledText>
             <TitleText>
-              PandaSwap
+              PandaChef
             <TitleSubText>
               by Bao.Finance
             </TitleSubText>
