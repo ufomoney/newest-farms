@@ -3,7 +3,7 @@ import { Contract } from 'web3-eth-contract'
 export enum PoolType {
   PNDA = 'panda',
   CAKE = 'pancake',
-  ARCHIVED = 'archived'
+  ARCHIVED = 'archived',
 }
 
 export interface Farm {
