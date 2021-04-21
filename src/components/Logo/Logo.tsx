@@ -8,37 +8,35 @@ const Logo: React.FC = () => {
 		<StyledLogo to="/">
 			<img src={pandaLogo} height="32" style={{ marginTop: -4 }} />
 			<StyledText>
-            <TitleText>
-              PandaChef
-            <TitleSubText>
-              by Bao.Finance
-            </TitleSubText>
-            </TitleText>
+				<TitleText>
+					PandaChef
+					<TitleSubText>by Bao.Finance</TitleSubText>
+				</TitleText>
 			</StyledText>
 		</StyledLogo>
 	)
 }
 
 const TitleText = styled.div`
-  width: fit-content;
-  white-space: nowrap;
-  color: ${(props) => props.theme.color.grey[600]};
-  font-family: "Kaushan Script", sans-serif;
-  font-weight: 600;
-  font-size: 24px;
-  letter-spacing: 0.03rem;
-  margin-top: -1rem;
-  margin-left: ${(props) => props.theme.spacing[2]}px;
-  `
+	width: fit-content;
+	white-space: nowrap;
+	color: ${(props) => props.theme.color.grey[600]};
+	font-family: 'Kaushan Script', sans-serif;
+	font-weight: 600;
+	font-size: 24px;
+	letter-spacing: 0.03rem;
+	margin-top: -1rem;
+	margin-left: ${(props) => props.theme.spacing[2]}px;
+`
 const TitleSubText = styled.div`
-  width: fit-content;
-  white-space: nowrap;
-  color: ${(props) => props.theme.color.grey[600]};
-  font-family: "Reem Kufi", sans-serif;
-  font-weight: 600;
-  font-size: 12px;
-  line-height: .5rem;
-  letter-spacing: 0.03rem;
+	width: fit-content;
+	white-space: nowrap;
+	color: ${(props) => props.theme.color.grey[600]};
+	font-family: 'Reem Kufi', sans-serif;
+	font-weight: 600;
+	font-size: 12px;
+	line-height: 0.5rem;
+	letter-spacing: 0.03rem;
 `
 
 const StyledLogo = styled(Link)`
