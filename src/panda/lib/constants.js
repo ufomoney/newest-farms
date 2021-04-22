@@ -146,14 +146,14 @@ export const supportedPools = [
 			1: '0x97f6665ac6b2d7C3d5a2aD11d7a779787F617ce0',
 		},
 		tokenAddresses: {
-			1: '0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c',
+			1: '0x47DcC83a14aD53Ed1f13d3CaE8AA4115f07557C0',
 		},
 		tokenDecimals: 18,
 		name: 'Panda Party',
 		symbol: 'PNDA-BNB',
 		tokenSymbol: 'PNDA',
 		icon: '/pnda.png',
-		refUrl: '#',
+		refUrl: 'https://pandaswap.xyz/#/swap?outputCurrency=0x47DcC83a14aD53Ed1f13d3CaE8AA4115f07557C0',
 	},
 	{
 		pid: 0,
@@ -168,7 +168,7 @@ export const supportedPools = [
 		symbol: 'PNDA-ETH',
 		tokenSymbol: 'PNDA',
 		icon: '/pnda.png',
-		refUrl: '#',
+		refUrl: 'https://pandaswap.xyz/#/swap?outputCurrency=0x47DcC83a14aD53Ed1f13d3CaE8AA4115f07557C0',
 	},
 	{
 		pid: 1,
@@ -183,7 +183,7 @@ export const supportedPools = [
 		symbol: 'PNDA-USDC',
 		tokenSymbol: 'USDC',
 		icon: '/pnda.png',
-		refUrl: '#',
+		refUrl: 'https://pandaswap.xyz/#/swap?outputCurrency=0x47DcC83a14aD53Ed1f13d3CaE8AA4115f07557C0',
 	},
 	{
 		pid: 2,
@@ -198,7 +198,7 @@ export const supportedPools = [
 		symbol: 'PNDA-BUSD',
 		tokenSymbol: 'BUSD',
 		icon: '/pnda.png',
-		refUrl: '#',
+		refUrl: 'https://pandaswap.xyz/#/swap?outputCurrency=0x47DcC83a14aD53Ed1f13d3CaE8AA4115f07557C0',
 	},
 	{
 		pid: 4,
@@ -213,7 +213,7 @@ export const supportedPools = [
 		symbol: 'PNDA-DAI',
 		tokenSymbol: 'DAI',
 		icon: '/pnda.png',
-		refUrl: '#',
+		refUrl: 'https://pandaswap.xyz/#/swap?outputCurrency=0x47DcC83a14aD53Ed1f13d3CaE8AA4115f07557C0',
 	},
 	{
 		pid: 5,
@@ -228,7 +228,7 @@ export const supportedPools = [
 		symbol: 'BNB',
 		tokenSymbol: 'BNB',
 		icon: '/wrap.png',
-		refUrl: '#',
+		refUrl: 'https://pandaswap.xyz/#/swap',
 	},
 	{
 		pid: 6,
@@ -243,7 +243,7 @@ export const supportedPools = [
 		symbol: 'CAKE',
 		tokenSymbol: 'CAKE',
 		icon: '/cakey.png',
-		refUrl: '#',
+		refUrl: 'https://pandaswap.xyz/#/swap?outputCurrency=0x0e09fabb73bd3ade0a17ecc321fd13a19e81ce82',
 	},
 	{
 		pid: 7,
@@ -258,7 +258,7 @@ export const supportedPools = [
 		symbol: 'ETH-BNB',
 		tokenSymbol: 'ETH',
 		icon: '/eth.png',
-		refUrl: '#',
+		refUrl: 'https://pandaswap.xyz/#/swap?outputCurrency=0x2170ed0880ac9a755fd29b2688956bd959f933f8',
 	},
 	{
 		pid: 8,
@@ -273,7 +273,7 @@ export const supportedPools = [
 		symbol: 'ADA-BNB',
 		tokenSymbol: 'ADA',
 		icon: '/caviar.png',
-		refUrl: '#',
+		refUrl: 'https://pandaswap.xyz/#/swap?outputCurrency=0x3ee2200efb3400fabb9aacf31297cbdd1d435d47',
 	},
 	{
 		pid: 9,
@@ -288,7 +288,7 @@ export const supportedPools = [
 		symbol: 'DOT-BNB',
 		tokenSymbol: 'DOT',
 		icon: '/poke.png',
-		refUrl: '',
+		refUrl: 'https://pandaswap.xyz/#/swap?outputCurrency=0x7083609fce4d1d8dc0c979aab8c869ea2c873402',
 	},
 	{
 		pid: 10,
@@ -303,7 +303,7 @@ export const supportedPools = [
 		symbol: 'XRP-BNB',
 		tokenSymbol: 'XRP',
 		icon: '/rice-bowl.png',
-		refUrl: '#',
+		refUrl: 'https://pandaswap.xyz/#/swap?outputCurrency=0x1d2f0da169ceb9fc7b3144628db156f3f6c60dbe',
 	},
 	{
 		pid: 11,
@@ -318,7 +318,7 @@ export const supportedPools = [
 		symbol: 'LTC-BNB',
 		tokenSymbol: 'LTC',
 		icon: '/snackers.png',
-		refUrl: '#',
+		refUrl: 'https://pandaswap.xyz/#/swap?outputCurrency=0x4338665cbb7b2485a8855a139b75d5e34ab0db94',
 	},
 	{
 		pid: 12,
@@ -333,7 +333,7 @@ export const supportedPools = [
 		symbol: 'LINK-BNB',
 		tokenSymbol: 'LINK',
 		icon: '/sandwich.png',
-		refUrl: '#',
+		refUrl: 'https://pandaswap.xyz/#/swap?outputCurrency=0xf8a0bf9cf54bb92f17374d9e9a321e6a111a51bd',
 	},
 	{
 		pid: 13,
@@ -348,7 +348,7 @@ export const supportedPools = [
 		symbol: 'BUSD-BNB',
 		tokenSymbol: 'BUSD',
 		icon: '/blt.png',
-		refUrl: '#',
+		refUrl: 'https://pandaswap.xyz/#/swap?outputCurrency=0xe9e7cea3dedca5984780bafc599bd69add087d56',
 	},
 	{
 		pid: 14,
@@ -363,7 +363,7 @@ export const supportedPools = [
 		symbol: 'DOGE-BNB',
 		tokenSymbol: 'DOGE',
 		icon: '/donut.png',
-		refUrl: '#',
+		refUrl: 'https://pandaswap.xyz/#/swap?outputCurrency=0xba2ae424d960c26247dd6c32edc70b295c744c43',
 	},
 	{
 		pid: 15,
@@ -378,7 +378,7 @@ export const supportedPools = [
 		symbol: 'UNI-BNB',
 		tokenSymbol: 'UNI',
 		icon: '/unagi.png',
-		refUrl: '#',
+		refUrl: 'https://pandaswap.xyz/#/swap?outputCurrency=0xbf5140a22578168fd562dccf235e5d43a02ce9b1',
 	},
 	{
 		pid: 16,
@@ -393,7 +393,7 @@ export const supportedPools = [
 		symbol: 'EOS-BNB',
 		tokenSymbol: 'EOS',
 		icon: '/egg-rolls.png',
-		refUrl: '#',
+		refUrl: 'https://pandaswap.xyz/#/swap?outputCurrency=0x56b6fb708fc5732dec1afc8d8556423a2edccbd6',
 	},
 	{
 		pid: 17,
@@ -408,7 +408,7 @@ export const supportedPools = [
 		symbol: 'ATOM-BNB',
 		tokenSymbol: 'ATOM',
 		icon: '/custard.png',
-		refUrl: '#',
+		refUrl: 'https://pandaswap.xyz/#/swap?outputCurrency=0x0eb3a705fc54725037cc9e008bdede697f62f335',
 	},
 	{
 		pid: 18,
@@ -423,7 +423,7 @@ export const supportedPools = [
 		symbol: 'XTZ-BNB',
 		tokenSymbol: 'XTZ',
 		icon: '/tempura.png',
-		refUrl: '#',
+		refUrl: 'https://pandaswap.xyz/#/swap?outputCurrency=0x16939ef78684453bfdfb47825f8a5f714f12623a',
 	},
 	{
 		pid: 19,
@@ -438,7 +438,7 @@ export const supportedPools = [
 		symbol: 'SNX-BNB',
 		tokenSymbol: 'SNX',
 		icon: '/snack.png',
-		refUrl: '#',
+		refUrl: 'https://pandaswap.xyz/#/swap?outputCurrency=0x9ac983826058b8a9c7aa1c9171441191232e8404',
 	},
 	{
 		pid: 20,
@@ -453,7 +453,7 @@ export const supportedPools = [
 		symbol: 'MKR-BNB',
 		tokenSymbol: 'MKR',
 		icon: '/moon-cake.png',
-		refUrl: '#',
+		refUrl: 'https://pandaswap.xyz/#/swap?outputCurrency=0x5f0da599bb2cccfcf6fdfd7d81743b6020864350',
 	},
 	{
 		pid: 21,
@@ -468,7 +468,7 @@ export const supportedPools = [
 		symbol: 'COMP-BNB',
 		tokenSymbol: 'COMP',
 		icon: '/congee.png',
-		refUrl: '#',
+		refUrl: 'https://pandaswap.xyz/#/swap?outputCurrency=0x52ce071bd9b1c4b00a0b92d298c512478cad67e8',
 	},
 	{
 		pid: 22,
@@ -483,7 +483,7 @@ export const supportedPools = [
 		symbol: 'DAI-BNB',
 		tokenSymbol: 'DAI',
 		icon: '/egg-tart.png',
-		refUrl: '#',
+		refUrl: 'https://pandaswap.xyz/#/swap?outputCurrency=0x1af3f329e8be154074d8769d1ffa4ee058b1dbc3',
 	},
 	{
 		pid: 23,
@@ -498,7 +498,7 @@ export const supportedPools = [
 		symbol: 'YFI-BNB',
 		tokenSymbol: 'YFI',
 		icon: '/churros.png',
-		urlRef: '#',
+		refUrl: 'https://pandaswap.xyz/#/swap?outputCurrency=',
 	},
 	{
 		pid: 24,
@@ -513,7 +513,7 @@ export const supportedPools = [
 		symbol: 'CAKE-BNB',
 		tokenSymbol: 'CAKE',
 		icon: '/maple-syrup.png',
-		urlRef: '#',
+		refUrl: 'https://pandaswap.xyz/#/swap?outputCurrency=',
 	},
 	{
 		pid: 25,
@@ -528,7 +528,7 @@ export const supportedPools = [
 		symbol: 'NEAR-BNB',
 		tokenSymbol: 'NEAR',
 		icon: '/nuggets.png',
-		urlRef: '#',
+		refUrl: 'https://pandaswap.xyz/#/swap?outputCurrency=',
 	},
 	{
 		pid: 26,
@@ -543,7 +543,7 @@ export const supportedPools = [
 		symbol: 'ONT-BNB',
 		tokenSymbol: 'ONT',
 		icon: '/orange-chicken.png',
-		urlRef: '#',
+		refUrl: 'https://pandaswap.xyz/#/swap?outputCurrency=',
 	},
 	{
 		pid: 27,
@@ -558,7 +558,7 @@ export const supportedPools = [
 		symbol: 'BAT-BNB',
 		tokenSymbol: 'BAT',
 		icon: '/beef.png',
-		refUrl: '#',
+		refUrl: 'https://pandaswap.xyz/#/swap?outputCurrency=',
 	},
 	{
 		pid: 28,
@@ -573,7 +573,7 @@ export const supportedPools = [
 		symbol: 'VAI-BNB',
 		tokenSymbol: 'VAI',
 		icon: '/pie.png',
-		refUrl: '#',
+		refUrl: 'https://pandaswap.xyz/#/swap?outputCurrency=',
 	},
 	{
 		pid: 29,
@@ -588,7 +588,7 @@ export const supportedPools = [
 		symbol: 'PAX-BNB',
 		tokenSymbol: 'PAX',
 		icon: '/pad-thai.png',
-		refUrl: '#',
+		refUrl: 'https://pandaswap.xyz/#/swap?outputCurrency=',
 	},
 	{
 		pid: 30,
@@ -603,7 +603,7 @@ export const supportedPools = [
 		symbol: 'XVS-BNB',
 		tokenSymbol: 'XVS',
 		icon: '/ham.png',
-		refUrl: '#',
+		refUrl: 'https://pandaswap.xyz/#/swap?outputCurrency=',
 	},
 	{
 		pid: 31,
@@ -618,7 +618,7 @@ export const supportedPools = [
 		symbol: 'BTCB-BNB',
 		tokenSymbol: 'BTCB',
 		icon: '/bubble-tea.png',
-		refUrl: '#',
+		refUrl: 'https://pandaswap.xyz/#/swap?outputCurrency=',
 	},
 	{
 		pid: 32,
@@ -633,7 +633,7 @@ export const supportedPools = [
 		symbol: 'UST-BUSD',
 		tokenSymbol: 'UST',
 		icon: '/pnda.png',
-		refUrl: '#',
+		refUrl: 'https://pandaswap.xyz/#/swap?outputCurrency=',
 	},
 	{
 		pid: 33,
@@ -648,7 +648,7 @@ export const supportedPools = [
 		symbol: 'UST-BNB',
 		tokenSymbol: 'UST',
 		icon: '/pnda.png',
-		refUrl: '#',
+		refUrl: 'https://pandaswap.xyz/#/swap?outputCurrency=',
 	},
 	{
 		pid: 34,
@@ -663,7 +663,7 @@ export const supportedPools = [
 		symbol: 'BAND-BNB',
 		tokenSymbol: 'BAND',
 		icon: '/bird-nest.png',
-		refUrl: '#',
+		refUrl: 'https://pandaswap.xyz/#/swap?outputCurrency=',
 	},
 	{
 		pid: 35,
@@ -678,7 +678,7 @@ export const supportedPools = [
 		symbol: 'SFP-BNB',
 		tokenSymbol: 'SFP',
 		icon: '/stew.png',
-		refUrl: '#',
+		refUrl: 'https://pandaswap.xyz/#/swap?outputCurrency=',
 	},
 	{
 		pid: 36,
@@ -693,7 +693,7 @@ export const supportedPools = [
 		symbol: 'ALPHA-BNB',
 		tokenSymbol: 'ALPHA',
 		icon: '/pie.png',
-		refUrl: '#',
+		refUrl: 'https://pandaswap.xyz/#/swap?outputCurrency=',
 	},
 	{
 		pid: 37,
@@ -708,7 +708,7 @@ export const supportedPools = [
 		symbol: 'SXP-BNB',
 		tokenSymbol: 'SXP',
 		icon: '/hotsour.png',
-		refUrl: '#',
+		refUrl: 'https://pandaswap.xyz/#/swap?outputCurrency=',
 	},
 	{
 		pid: 38,
@@ -723,7 +723,7 @@ export const supportedPools = [
 		symbol: 'vBTC-BNB',
 		tokenSymbol: 'vBTC',
 		icon: '/tea.png',
-		refUrl: '#',
+		refUrl: 'https://pandaswap.xyz/#/swap?outputCurrency=',
 	},
 	{
 		pid: 39,
@@ -738,7 +738,7 @@ export const supportedPools = [
 		symbol: 'ANKR-BNB',
 		tokenSymbol: 'ANKR',
 		icon: '/fried-chicken.png',
-		refUrl: '#',
+		refUrl: 'https://pandaswap.xyz/#/swap?outputCurrency=',
 	},
 	{
 		pid: 40,
@@ -753,7 +753,7 @@ export const supportedPools = [
 		symbol: 'TWT-BNB',
 		tokenSymbol: 'TWT',
 		icon: '/turtle.png',
-		refUrl: '#',
+		refUrl: 'https://pandaswap.xyz/#/swap?outputCurrency=',
 	},
 	{
 		pid: 41,
@@ -768,7 +768,7 @@ export const supportedPools = [
 		symbol: 'LINA-BNB',
 		tokenSymbol: 'LINA',
 		icon: '/lime.png',
-		refUrl: '#',
+		refUrl: 'https://pandaswap.xyz/#/swap?outputCurrency=',
 	},
 	{
 		pid: 42,
@@ -783,7 +783,7 @@ export const supportedPools = [
 		symbol: 'PROM-BNB',
 		tokenSymbol: 'PROM',
 		icon: '/pineapple.png',
-		refUrl: '#',
+		refUrl: 'https://pandaswap.xyz/#/swap?outputCurrency=',
 	},
 	{
 		pid: 43,
@@ -798,7 +798,7 @@ export const supportedPools = [
 		symbol: 'ELF-BNB',
 		tokenSymbol: 'ELF',
 		icon: '/eggplant.png',
-		refUrl: '#',
+		refUrl: 'https://pandaswap.xyz/#/swap?outputCurrency=',
 	},
 	{
 		pid: 44,
@@ -813,7 +813,7 @@ export const supportedPools = [
 		symbol: 'MATH-BNB',
 		tokenSymbol: 'MATH',
 		icon: '/mapo-tofu.png',
-		refUrl: '#',
+		refUrl: 'https://pandaswap.xyz/#/swap?outputCurrency=',
 	},
 	{
 		pid: 45,
@@ -828,7 +828,7 @@ export const supportedPools = [
 		symbol: 'AUTO-BNB',
 		tokenSymbol: 'AUTO',
 		icon: '/avocado.png',
-		refUrl: '#',
+		refUrl: 'https://pandaswap.xyz/#/swap?outputCurrency=',
 	},
 	{
 		pid: 46,
@@ -843,7 +843,7 @@ export const supportedPools = [
 		symbol: 'REEF-BNB',
 		tokenSymbol: 'REEF',
 		icon: '/roastchicken.png',
-		refUrl: '#',
+		refUrl: 'https://pandaswap.xyz/#/swap?outputCurrency=',
 	},
 	{
 		pid: 47,
@@ -858,7 +858,7 @@ export const supportedPools = [
 		symbol: 'CREAM-BNB',
 		tokenSymbol: 'CREAM',
 		icon: '/cupcake.png',
-		refUrl: '#',
+		refUrl: 'https://pandaswap.xyz/#/swap?outputCurrency=',
 	},
 	{
 		pid: 48,
@@ -873,7 +873,7 @@ export const supportedPools = [
 		symbol: 'vUSDC-BNB',
 		tokenSymbol: 'vUSDC',
 		icon: '/crab.png',
-		refUrl: '#',
+		refUrl: 'https://pandaswap.xyz/#/swap?outputCurrency=',
 	},
 	{
 		pid: 49,
@@ -888,7 +888,7 @@ export const supportedPools = [
 		symbol: 'SPARTA-BNB',
 		tokenSymbol: 'SPARTA',
 		icon: '/sausage.png',
-		refUrl: '#',
+		refUrl: 'https://pandaswap.xyz/#/swap?outputCurrency=',
 	},
 	{
 		pid: 50,
@@ -903,7 +903,7 @@ export const supportedPools = [
 		symbol: 'CTK-BNB',
 		tokenSymbol: 'CTK',
 		icon: '/cocktail.png',
-		refUrl: '#',
+		refUrl: 'https://pandaswap.xyz/#/swap?outputCurrency=',
 	},
 	{
 		pid: 51,
@@ -918,7 +918,7 @@ export const supportedPools = [
 		symbol: 'BURGER-BNB',
 		tokenSymbol: 'BURGER',
 		icon: '/fried-potatoes.png',
-		refUrl: '#',
+		refUrl: 'https://pandaswap.xyz/#/swap?outputCurrency=',
 	},
 	{
 		pid: 52,
@@ -933,7 +933,7 @@ export const supportedPools = [
 		symbol: 'vBUSD-BNB',
 		tokenSymbol: 'vBUSD',
 		icon: '/instant-noodles.png',
-		refUrl: '#',
+		refUrl: 'https://pandaswap.xyz/#/swap?outputCurrency=',
 	},
 	{
 		pid: 53,
@@ -948,7 +948,7 @@ export const supportedPools = [
 		symbol: 'BRY-BNB',
 		tokenSymbol: 'BRY',
 		icon: '/fondue.png',
-		refUrl: '#',
+		refUrl: 'https://pandaswap.xyz/#/swap?outputCurrency=',
 	},
 	{
 		pid: 54,
@@ -963,7 +963,7 @@ export const supportedPools = [
 		symbol: 'STAX-BNB',
 		tokenSymbol: 'STAX',
 		icon: '/salad-rolls.png',
-		refUrl: '#',
+		refUrl: 'https://pandaswap.xyz/#/swap?outputCurrency=',
 	},
 	{
 		pid: 55,
@@ -978,7 +978,7 @@ export const supportedPools = [
 		symbol: 'vUSDT-BNB',
 		tokenSymbol: 'vUSDT',
 		icon: '/chili.png',
-		refUrl: '#',
+		refUrl: 'https://pandaswap.xyz/#/swap?outputCurrency=',
 	},
 	{
 		pid: 56,
@@ -993,7 +993,7 @@ export const supportedPools = [
 		symbol: 'JulD-BNB',
 		tokenSymbol: 'JulD',
 		icon: '/jifan.png',
-		refUrl: '#',
+		refUrl: 'https://pandaswap.xyz/#/swap?outputCurrency=',
 	},
 	{
 		pid: 57,
@@ -1008,7 +1008,7 @@ export const supportedPools = [
 		symbol: 'FOR-BNB',
 		tokenSymbol: 'FOR',
 		icon: '/fortune-cookie.png',
-		refUrl: '#',
+		refUrl: 'https://pandaswap.xyz/#/swap?outputCurrency=',
 	},
 	{
 		pid: 58,
@@ -1023,7 +1023,7 @@ export const supportedPools = [
 		symbol: 'ANY-BNB',
 		tokenSymbol: 'ANY',
 		icon: '/anchovy.png',
-		refUrl: '#',
+		refUrl: 'https://pandaswap.xyz/#/swap?outputCurrency=',
 	},
 	{
 		pid: 59,
@@ -1038,7 +1038,7 @@ export const supportedPools = [
 		symbol: 'HELMET-BNB',
 		tokenSymbol: 'HELMET',
 		icon: '/hot.png',
-		refUrl: '#',
+		refUrl: 'https://pandaswap.xyz/#/swap?outputCurrency=',
 	},
 	{
 		pid: 60,
@@ -1053,7 +1053,7 @@ export const supportedPools = [
 		symbol: 'BIFI-BNB',
 		tokenSymbol: 'BIFI',
 		icon: '/beef-chow-fun.png',
-		refUrl: '#',
+		refUrl: 'https://pandaswap.xyz/#/swap?outputCurrency=',
 	},
 	{
 		pid: 61,
@@ -1068,7 +1068,7 @@ export const supportedPools = [
 		symbol: 'BTCST-BNB',
 		tokenSymbol: 'BTCST',
 		icon: '/bacon.png',
-		refUrl: '#',
+		refUrl: 'https://pandaswap.xyz/#/swap?outputCurrency=',
 	},
 	{
 		pid: 62,
@@ -1083,7 +1083,7 @@ export const supportedPools = [
 		symbol: 'BSCX-BNB',
 		tokenSymbol: 'BSCX',
 		icon: '/black-sesame-soup.png',
-		refUrl: '#',
+		refUrl: 'https://pandaswap.xyz/#/swap?outputCurrency=',
 	},
 	{
 		pid: 63,
@@ -1098,7 +1098,7 @@ export const supportedPools = [
 		symbol: 'UNFI-BNB',
 		tokenSymbol: 'UNFI',
 		icon: '/fried-chicken.png',
-		refUrl: '#',
+		refUrl: 'https://pandaswap.xyz/#/swap?outputCurrency=',
 	},
 	{
 		pid: 64,
@@ -1113,7 +1113,7 @@ export const supportedPools = [
 		symbol: 'BUX-BNB',
 		tokenSymbol: 'BUX',
 		icon: '/brochette.png',
-		refUrl: '#',
+		refUrl: 'https://pandaswap.xyz/#/swap?outputCurrency=',
 	},
 	{
 		pid: 65,
@@ -1128,7 +1128,7 @@ export const supportedPools = [
 		symbol: 'MDS-BNB',
 		tokenSymbol: 'MDS',
 		icon: '/matcha-tea.png',
-		refUrl: '#',
+		refUrl: 'https://pandaswap.xyz/#/swap?outputCurrency=',
 	},
 	{
 		pid: 66,
@@ -1143,7 +1143,7 @@ export const supportedPools = [
 		symbol: 'HGET-BNB',
 		tokenSymbol: 'HGET',
 		icon: '/herbal-tea.png',
-		refUrl: '#',
+		refUrl: 'https://pandaswap.xyz/#/swap?outputCurrency=',
 	},
 	{
 		pid: 67,
@@ -1158,7 +1158,7 @@ export const supportedPools = [
 		symbol: 'BAO-BNB',
 		tokenSymbol: 'BAO',
 		icon: '/bao.png',
-		refUrl: '#',
+		refUrl: 'https://pandaswap.xyz/#/swap?outputCurrency=',
 	},
 	{
 		pid: 68,
@@ -1173,7 +1173,7 @@ export const supportedPools = [
 		symbol: 'FRONT-BNB',
 		tokenSymbol: 'FRONT',
 		icon: '/frog-prince.png',
-		refUrl: '#',
+		refUrl: 'https://pandaswap.xyz/#/swap?outputCurrency=',
 	},
 	{
 		pid: 69,
@@ -1188,7 +1188,7 @@ export const supportedPools = [
 		symbol: 'MIR-BNB',
 		tokenSymbol: 'MIR',
 		icon: '/miantiao.png',
-		refUrl: '#',
+		refUrl: 'https://pandaswap.xyz/#/swap?outputCurrency=',
 	},
 	{
 		pid: 70,
@@ -1203,7 +1203,7 @@ export const supportedPools = [
 		symbol: 'ZEE-BNB',
 		tokenSymbol: 'ZEE',
 		icon: '/zucchini.png',
-		refUrl: '#',
+		refUrl: 'https://pandaswap.xyz/#/swap?outputCurrency=',
 	},
 	{
 		pid: 71,
@@ -1218,7 +1218,7 @@ export const supportedPools = [
 		symbol: 'MATTER-BNB',
 		tokenSymbol: 'MATTER',
 		icon: '/mysterystew.png',
-		refUrl: '#',
+		refUrl: 'https://pandaswap.xyz/#/swap?outputCurrency=',
 	},
 	{
 		pid: 72,
@@ -1233,7 +1233,7 @@ export const supportedPools = [
 		symbol: 'BLINK-BNB',
 		tokenSymbol: 'BLINK',
 		icon: '/brownie.png',
-		refUrl: '#',
+		refUrl: 'https://pandaswap.xyz/#/swap?outputCurrency=',
 	},
 	{
 		pid: 73,
@@ -1248,7 +1248,7 @@ export const supportedPools = [
 		symbol: 'POLS-BNB',
 		tokenSymbol: 'POLS',
 		icon: '/potstickers.png',
-		refUrl: '#',
+		refUrl: 'https://pandaswap.xyz/#/swap?outputCurrency=',
 	},
 	{
 		pid: 74,
@@ -1263,7 +1263,7 @@ export const supportedPools = [
 		symbol: 'TLM-BNB',
 		tokenSymbol: 'TLM',
 		icon: '/octopus.png',
-		refUrl: '#',
+		refUrl: 'https://pandaswap.xyz/#/swap?outputCurrency=',
 	},
 	{
 		pid: 75,
@@ -1278,7 +1278,7 @@ export const supportedPools = [
 		symbol: 'UBXT-BNB',
 		tokenSymbol: 'UBXT',
 		icon: '/bento.png',
-		refUrl: '#',
+		refUrl: 'https://pandaswap.xyz/#/swap?outputCurrency=',
 	},
 	{
 		pid: 76,
@@ -1294,7 +1294,7 @@ export const supportedPools = [
 		tokenSymbol: 'CAKE',
 		poolType: 'pancake',
 		icon: '/maple-syrup.png',
-		refUrl: '#',
+		refUrl: 'https://pandaswap.xyz/#/swap?outputCurrency=',
 	},
 	{
 		pid: 77,
@@ -1310,7 +1310,7 @@ export const supportedPools = [
 		tokenSymbol: 'BUSD',
 		poolType: 'pancake',
 		icon: '/blt.png',
-		refUrl: '#',
+		refUrl: 'https://pandaswap.xyz/#/swap?outputCurrency=',
 	},
 	{
 		pid: 78,
@@ -1326,7 +1326,7 @@ export const supportedPools = [
 		tokenSymbol: 'ETH',
 		poolType: 'pancake',
 		icon: '/eth.png',
-		refUrl: '#',
+		refUrl: 'https://pandaswap.xyz/#/swap?outputCurrency=',
 	},
 	{
 		pid: 79,
@@ -1342,7 +1342,7 @@ export const supportedPools = [
 		tokenSymbol: 'BTCB',
 		poolType: 'pancake',
 		icon: '/bubble-tea.png',
-		refUrl: '#',
+		refUrl: 'https://pandaswap.xyz/#/swap?outputCurrency=',
 	},
 	{
 		pid: 80,
@@ -1358,7 +1358,7 @@ export const supportedPools = [
 		tokenSymbol: 'USDT',
 		poolType: 'pancake',
 		icon: '/binance.png',
-		refUrl: '#',
+		refUrl: 'https://pandaswap.xyz/#/swap?outputCurrency=',
 	},
 	{
 		pid: 81,
@@ -1374,7 +1374,7 @@ export const supportedPools = [
 		tokenSymbol: 'USDT',
 		poolType: 'pancake',
 		icon: '/tofu.png',
-		refUrl: '#',
+		refUrl: 'https://pandaswap.xyz/#/swap?outputCurrency=',
 	},
 	{
 		pid: 82,
@@ -1390,7 +1390,7 @@ export const supportedPools = [
 		tokenSymbol: 'BUNNY',
 		poolType: 'pancake',
 		icon: '/bacon.png',
-		refUrl: '#',
+		refUrl: 'https://pandaswap.xyz/#/swap?outputCurrency=',
 	},
 	{
 		pid: 83,
@@ -1406,7 +1406,7 @@ export const supportedPools = [
 		tokenSymbol: 'DOT',
 		poolType: 'pancake',
 		icon: '/poke.png',
-		refUrl: '#',
+		refUrl: 'https://pandaswap.xyz/#/swap?outputCurrency=',
 	},
 	{
 		pid: 84,
@@ -1422,7 +1422,7 @@ export const supportedPools = [
 		tokenSymbol: 'USDC',
 		poolType: 'pancake',
 		icon: '/cereals.png',
-		refUrl: '#',
+		refUrl: 'https://pandaswap.xyz/#/swap?outputCurrency=',
 	},
 	{
 		pid: 85,
@@ -1438,7 +1438,7 @@ export const supportedPools = [
 		tokenSymbol: 'VAI',
 		poolType: 'pancake',
 		icon: '/pie.png',
-		refUrl: '#',
+		refUrl: 'https://pandaswap.xyz/#/swap?outputCurrency=',
 	},
 	{
 		pid: 86,
@@ -1454,7 +1454,7 @@ export const supportedPools = [
 		tokenSymbol: 'LINK',
 		poolType: 'pancake',
 		icon: '/sandwich.png',
-		refUrl: '#',
+		refUrl: 'https://pandaswap.xyz/#/swap?outputCurrency=',
 	},
 	{
 		pid: 87,
@@ -1470,7 +1470,7 @@ export const supportedPools = [
 		tokenSymbol: 'DAI',
 		poolType: 'pancake',
 		icon: '/pizza.png',
-		refUrl: '#',
+		refUrl: 'https://pandaswap.xyz/#/swap?outputCurrency=',
 	},
 	{
 		pid: 88,
@@ -1486,7 +1486,7 @@ export const supportedPools = [
 		tokenSymbol: 'XRP',
 		poolType: 'pancake',
 		icon: '/rice-bowl.png',
-		refUrl: '#',
+		refUrl: 'https://pandaswap.xyz/#/swap?outputCurrency=',
 	},
 	{
 		pid: 89,
@@ -1502,7 +1502,7 @@ export const supportedPools = [
 		tokenSymbol: 'ADA',
 		poolType: 'pancake',
 		icon: '/caviar.png',
-		refUrl: '#',
+		refUrl: 'https://pandaswap.xyz/#/swap?outputCurrency=',
 	},
 	{
 		pid: 90,
@@ -1518,6 +1518,6 @@ export const supportedPools = [
 		tokenSymbol: 'UNI',
 		poolType: 'pancake',
 		icon: '/unagi.png',
-		refUrl: '#',
+		refUrl: 'https://pandaswap.xyz/#/swap?outputCurrency=',
 	},
 ]

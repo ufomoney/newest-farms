@@ -84,7 +84,7 @@ const Farm: React.FC = () => {
 				<Spacer size="lg" />
 				<StyledInfo>
 					⭐️ Every time you stake and unstake LP tokens, the contract will
-					automagically harvest PNDA rewards for you!
+					automagically claim PNDA rewards for you!
 				</StyledInfo>
 				<Spacer size="lg" />
 			</StyledFarm>

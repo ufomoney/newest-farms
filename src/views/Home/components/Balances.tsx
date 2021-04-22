@@ -132,7 +132,7 @@ const Balances: React.FC = () => {
 						</StyledBalances>
 					</CardContent>
 					<Footnote>
-						Pending harvest
+						Pending Rewards
 						<FootnoteValue>
 							<PendingRewards /> PNDA
 						</FootnoteValue>
