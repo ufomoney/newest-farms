@@ -87,7 +87,9 @@ const Stake: React.FC<StakeProps> = ({
 					<StyledCardActions>
 						{!allowance.toNumber() ? (
 							<Button
-								disabled={requestedApproval}
+								disabled={
+									tokenBalance.isLessThanOrEqualTo(0) || requestedApproval
+								}
 								onClick={handleApprove}
 								text={`Approve ${tokenName}`}
 							/>
