@@ -20,16 +20,16 @@ interface HarvestProps {
 
 const UnstakeBamboo: React.FC<HarvestProps> = ({lpContract}) => {
 
-  const xSushiBalance = useTokenBalance(lpContract.options.address)
+  const BambooBalance = useTokenBalance(lpContract.options.address)
   const [pendingTx, setPendingTx] = useState(false)
 
   const {onLeave} = useLeave()
 
-  const tokenName = "xSUSHI"
+  const tokenName = "BAMBOO"
 
   const [onPresentLeave] = useModal(
     <WithdrawModal
-      max={xSushiBalance}
+      max={BambooBalance}
       onConfirm={onLeave}
       tokenName={tokenName}
     />,
@@ -41,13 +41,13 @@ const UnstakeBamboo: React.FC<HarvestProps> = ({lpContract}) => {
         <StyledCardContentInner>
           <StyledCardHeader>
             <CardIcon>🍣</CardIcon>
-            <Value value={getBalanceNumber(xSushiBalance)}/>
-            <Label text="xSUSHI (SushiBar) Available"/>
+            <Value value={getBalanceNumber(BambooBalance)}/>
+            <Label text="Bamboo (BambooBar) Available"/>
           </StyledCardHeader>
           <StyledCardActions>
             <Button
-              disabled={!xSushiBalance.toNumber() || pendingTx}
-              text={pendingTx ? 'Converting to SUSHI' : 'Convert to SUSHI'}
+              disabled={!BambooBalance.toNumber() || pendingTx}
+              text={pendingTx ? 'Converting to PNDA' : 'Convert to PNDA'}
               onClick={async () => {
                 setPendingTx(true)
                 await onPresentLeave()
