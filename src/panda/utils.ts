@@ -237,11 +237,13 @@ export const getWbnbPrice = async (pnda: Panda): Promise<BigNumber> => {
 }
 
 export const getPandaPrice = async (pnda: Panda): Promise<BigNumber> => {
-  const addr = '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2'
-  const amount = await pnda.contracts.pndaPrice.methods
-    .consult(addr.toString(), 1)
-    .call()
-  return new BigNumber(amount)
+  // FIXME: re-assess once price oracle is deployed, or use pandaswap rates
+  return new BigNumber(0)
+  // const addr = '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2'
+  // const amount = await pnda.contracts.pndaPrice.methods
+  //   .consult(addr.toString(), 1)
+  //   .call()
+  // return new BigNumber(amount)
 }
 
 export const getPandaSupply = async (pnda: Panda): Promise<BigNumber>  => {
