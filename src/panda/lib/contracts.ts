@@ -19,20 +19,28 @@ import { PandaOptions } from '../Panda'
 import { provider } from 'web3-core/types'
 import { Contract } from 'web3-eth-contract'
 import { AbiItem } from 'web3-utils'
+import { getContract } from '../../utils/erc20'
+
+export interface FarmableSupportedPool extends SupportedPool {
+  lpAddress: string
+  tokenAddress: string
+  lpContract: Contract
+  tokenContract: Contract
+}
 
 export class Contracts {
   panda: Contract
   web3: Web3
   defaultConfirmations: number
   autoGasMultiplier: number
-  confirmationType: any
+  confirmationType: number
   defaultGas: string
   defaultGasPrice: string
   masterChef: Contract
   wbnb: Contract
   wbnbPrice: Contract
   pndaPrice: Contract
-  pools: SupportedPool[]
+  pools: FarmableSupportedPool[]
   blockGasLimit: any
   notifier: any
 
@@ -74,7 +82,8 @@ export class Contracts {
 
   setProvider(provider: provider, networkId: number): void {
     const setProvider = (contract: Contract, address: string) => {
-      contract.setProvider(provider)
+      // FIXME: how was this ever working before on mainnet?
+      // contract.setProvider(provider)
       if (address) contract.options.address = address
       else console.error('Contract address not found in network', networkId)
     }
@@ -87,16 +96,15 @@ export class Contracts {
       setProvider(this.pndaPrice, contractAddresses.pndaPrice[networkId])
     }
     if (this.pools) {
-      this.pools.forEach(
-        ({ lpContract, lpAddress, tokenContract, tokenAddress }) => {
-          setProvider(lpContract, lpAddress)
-          setProvider(tokenContract, tokenAddress)
-        },
-      )
+      this.pools.forEach(({ lpContract, lpAddress, tokenAddress }) => {
+        const tokenContract = getContract(provider, tokenAddress)
+        setProvider(lpContract, lpAddress)
+        setProvider(tokenContract, tokenAddress)
+      })
     }
   }
 
-  setDefaultAccount(account) {
+  setDefaultAccount(account: string): void {
     this.panda.options.from = account
     this.masterChef.options.from = account
     this.wbnbPrice.options.from = account
