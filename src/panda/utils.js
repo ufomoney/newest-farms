@@ -1,6 +1,7 @@
 import BigNumber from 'bignumber.js'
 import { ethers } from 'ethers'
 import { supportedPools } from './lib/constants'
+import usePanda from '../hooks/usePanda'
 
 BigNumber.config({
 	EXPONENTIAL_AT: 1000,
@@ -13,6 +14,8 @@ const GAS_LIMIT = {
 		SNX: 850000,
 	},
 }
+
+const pnda = usePanda()
 
 export const getMasterChefAddress = (pnda) => {
 	return pnda && pnda.masterChefAddress
@@ -47,6 +50,10 @@ export const getMasterChefContract = (pnda) => {
 export const getPandaContract = (pnda) => {
 	return pnda && pnda.contracts && pnda.contracts.pnda
 }
+
+export const getBambooStakingContract = (pnda) => {
+	return pnda && pnda.contracts && pnda.contracts.bambooStaking
+}  
 
 export const getFarms = (pnda) => {
 	return pnda
@@ -151,6 +158,10 @@ export const approve = async (lpContract, masterChefContract, account) => {
 		.send({ from: account })
 }
 
+export const getBambooSupply = async () => {
+	return new BigNumber(await pnda.contracts.BambooStaking.methods.totalSupply().call())
+}    
+
 export const stake = async (masterChefContract, pid, amount, account, ref) => {
 	return masterChefContract.methods
 		.deposit(pid, ethers.utils.parseUnits(amount, 18), ref)
@@ -244,3 +255,29 @@ export const redeem = async (masterChefContract, account) => {
 		alert('pool not active')
 	}
 }
+
+export const enter = async (contract, amount, account) => {
+	debugger
+	return contract.methods
+		.enter(
+			new BigNumber(amount).times(new BigNumber(10).pow(18)).toString(),
+		)
+		.send({ from: account })
+		.on('transactionHash', (tx) => {
+		  console.log(tx)
+		  return tx.transactionHash
+		})
+  }  
+
+export const leave = async (contract, amount, account) => {
+	return contract.methods
+		.leave(
+			new BigNumber(amount).times(new BigNumber(10).pow(18)).toString(),
+		)
+		.send({ from: account })
+		.on('transactionHash', (tx) => {
+		  console.log(tx)
+		  return tx.transactionHash
+		})
+  }
+  

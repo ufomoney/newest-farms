@@ -104,9 +104,11 @@ export const contractAddresses = {
 	pnda: {
 		56: '0x47DcC83a14aD53Ed1f13d3CaE8AA4115f07557C0',
 	},
+	bamboo: {
+		56: '0x45de240fbe2077dd3e711299538a09854fae9c9b',
+	},
 	masterChef: {
-		1: '0xBD530a1c060DC600b951f16dc656E4EA451d1A2D',
-		4: '0xdA6CFdB12112309E4587D4a747a55E2970Eda4f3',
+		56: '0x9942cb4c6180820E6211183ab29831641F58577A',
 	},
 	wbnb: {
 		56: '0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c',
