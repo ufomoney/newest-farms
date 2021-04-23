@@ -17,11 +17,15 @@ const useAllowanceStaking = () => {
   const [allowance, setAllowance] = useState(new BigNumber(0))
   const { account }: { account: string; ethereum: provider } = useWallet()
   const panda = usePanda()
-  const lpContract = getPandaContract()
-  const stakingContract = getBambooStakingContract()
+  const lpContract = getPandaContract(panda)
+  const stakingContract = getBambooStakingContract(panda)
 
   const fetchAllowance = useCallback(async () => {
-    const allowance = await getAllowance(lpContract, account, stakingContract)
+    const allowance = await getAllowance(
+      lpContract,
+      account,
+      stakingContract.options.address,
+    )
     setAllowance(new BigNumber(allowance))
   }, [account, stakingContract, lpContract])
 

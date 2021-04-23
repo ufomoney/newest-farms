@@ -2,10 +2,11 @@ import React, { createContext, useEffect, useState } from 'react'
 
 import { useWallet } from '@binance-chain/bsc-use-wallet'
 
-import { Panda } from '../../panda'
+import { Panda } from '../../panda/index'
+import { provider } from 'web3-core/types'
 
 export interface PandaContext {
-	panda?: typeof Panda
+	panda?: Panda
 }
 
 export const Context = createContext<PandaContext>({
@@ -14,23 +15,21 @@ export const Context = createContext<PandaContext>({
 
 declare global {
 	interface Window {
-		pndasauce: any
-		panda: any
+		panda: Panda
 	}
 }
 
 const PandaProvider: React.FC = ({ children }) => {
-	const { ethereum }: { ethereum: any } = useWallet()
-	const [panda, setPanda] = useState<any>()
+	const { ethereum, chainId, account } = useWallet<provider>()
+	const [panda, setPanda] = useState<Panda>()
 
 	window.panda = panda
 
 	useEffect(() => {
 		if (ethereum) {
-			const chainId = Number(ethereum.chainId)
 			console.log(chainId)
 			const pndaLib = new Panda(ethereum, chainId, false, {
-				defaultAccount: ethereum.selectedAddress,
+				defaultAccount: account,
 				defaultConfirmations: 1,
 				autoGasMultiplier: 1.05,
 				testing: false,
@@ -41,11 +40,11 @@ const PandaProvider: React.FC = ({ children }) => {
 			})
 			console.log(pndaLib)
 			setPanda(pndaLib)
-			window.pndasauce = pndaLib
 		}
-	}, [ethereum])
+	}, [ethereum, chainId, account])
 
-	return <Context.Provider value={{ panda }}>{children}</Context.Provider>
+	const pandaContext: { panda: Panda } = { panda }
+	return <Context.Provider value={pandaContext}>{children}</Context.Provider>
 }
 
 export default PandaProvider

@@ -1,11 +1,13 @@
 import Web3 from 'web3'
-import { Contracts } from './lib/contracts.js'
+import { Contracts } from './lib/contracts'
 import { Account } from './lib/accounts.js'
 import { EVM } from './lib/evm.js'
 import { contractAddresses } from './lib/constants'
 import { provider, AddAccount } from 'web3-core/types'
+import ConfirmationType from './lib/types'
 
 export interface PandaOptions {
+  confirmationType?: ConfirmationType
   defaultAccount: string
   defaultConfirmations: number
   autoGasMultiplier: number

@@ -12,8 +12,8 @@ import {
 const useApproveStaking = () => {
   const { account }: { account: string; ethereum: provider } = useWallet()
   const panda = usePanda()
-  const lpContract = getPandaContract()
-  const contract = getBambooStakingContract()
+  const lpContract = getPandaContract(panda)
+  const contract = getBambooStakingContract(panda)
 
   const handleApprove = useCallback(async () => {
     try {

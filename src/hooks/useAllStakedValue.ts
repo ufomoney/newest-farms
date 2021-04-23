@@ -3,7 +3,6 @@ import { provider } from 'web3-core'
 
 import BigNumber from 'bignumber.js'
 import { useWallet } from '@binance-chain/bsc-use-wallet'
-import { Contract } from 'web3-eth-contract'
 
 import {
   getMasterChefContract,
@@ -13,6 +12,7 @@ import {
 } from '../panda/utils'
 import usePanda from './usePanda'
 import useBlock from './useBlock'
+import { getContract } from '../utils/erc20'
 
 export interface StakedValue {
   tokenAmount: BigNumber
@@ -22,9 +22,9 @@ export interface StakedValue {
   poolWeight: BigNumber
 }
 
-const useAllStakedValue = () => {
+const useAllStakedValue = (): StakedValue[] => {
   const [balances, setBalance] = useState([] as Array<StakedValue>)
-  const { account }: { account: string; ethereum: provider } = useWallet()
+  const { account, ethereum } = useWallet<provider>()
   const panda = usePanda()
   const farms = getFarms(panda)
   const masterChefContract = getMasterChefContract(panda)
@@ -33,26 +33,15 @@ const useAllStakedValue = () => {
 
   const fetchAllStakedValue = useCallback(async () => {
     const balances: Array<StakedValue> = await Promise.all(
-      farms.map(
-        ({
-          pid,
+      farms.map(({ pid, lpContract, tokenAddress, tokenDecimals }) =>
+        getTotalLPWbnbValue(
+          masterChefContract,
+          wbnbContract,
           lpContract,
-          tokenContract,
+          getContract(ethereum, tokenAddress),
           tokenDecimals,
-        }: {
-          pid: number
-          lpContract: Contract
-          tokenContract: Contract
-          tokenDecimals: number
-        }) =>
-          getTotalLPWbnbValue(
-            masterChefContract,
-            wbnbContract,
-            lpContract,
-            tokenContract,
-            tokenDecimals,
-            pid,
-          ),
+          pid,
+        ),
       ),
     )
 
