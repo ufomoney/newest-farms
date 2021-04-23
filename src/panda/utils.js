@@ -202,8 +202,8 @@ export const getStaked = async (masterChefContract, pid, account) => {
 }
 
 export const getWbnbPrice = async (pnda) => {
-	console.log(pnda)
-	const amount = await pnda.contracts.WbnbPrice.methods.latestAnswer().call()
+	const wbnbPriceContract = getWbnbPriceContract(pnda)
+	const amount = await wbnbPriceContract.methods.latestAnswer().call()
 	return new BigNumber(amount)
 }
 
@@ -220,9 +220,8 @@ export const getPandaSupply = async (pnda) => {
 }
 
 export const getBambooSupply = async (pnda) => {
-	return new BigNumber(
-		await pnda.contracts.BambooStaking.methods.totalSupply().call(),
-	)
+	const bambooStakingContract = getBambooStakingContract(pnda)
+	return new BigNumber(await bambooStakingContract.methods.totalSupply().call())
 }
 
 export const getReferrals = async (masterChefContract, account) => {

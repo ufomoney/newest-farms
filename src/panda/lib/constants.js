@@ -114,7 +114,7 @@ export const contractAddresses = {
 		56: '0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c',
 	},
 	wbnbPrice: {
-		56: '',
+		56: '0x0567F2323251f0Aab15c8dFb1967E4e8A7D42aeE',
 	},
 	pndaPrice: {
 		56: '',
