@@ -1,27 +1,27 @@
-import {useCallback, useEffect, useState} from 'react'
+import { useCallback, useEffect, useState } from 'react'
 
 import BigNumber from 'bignumber.js'
 import usePanda from './usePanda'
 import { useWallet } from '@binance-chain/bsc-use-wallet'
-import {provider} from 'web3-core'
-import {Contract} from 'web3-eth-contract'
+import { provider } from 'web3-core'
+import { Contract } from 'web3-eth-contract'
 
-import {getAllowance} from '../utils/erc20'
-import {getMasterChefContract, getPandaContract, getBambooStakingContract} from '../panda/utils'
+import { getAllowance } from '../utils/erc20'
+import {
+  getMasterChefContract,
+  getPandaContract,
+  getBambooStakingContract,
+} from '../panda/utils'
 
 const useAllowanceStaking = () => {
   const [allowance, setAllowance] = useState(new BigNumber(0))
-  const {account}: { account: string; ethereum: provider } = useWallet()
+  const { account }: { account: string; ethereum: provider } = useWallet()
   const panda = usePanda()
   const lpContract = getPandaContract()
   const stakingContract = getBambooStakingContract()
 
   const fetchAllowance = useCallback(async () => {
-    const allowance = await getAllowance(
-      lpContract,
-      account,
-      stakingContract,
-    )
+    const allowance = await getAllowance(lpContract, account, stakingContract)
     setAllowance(new BigNumber(allowance))
   }, [account, stakingContract, lpContract])
 
@@ -29,7 +29,7 @@ const useAllowanceStaking = () => {
     if (account && stakingContract && lpContract) {
       fetchAllowance()
     }
-    let refreshInterval = setInterval(fetchAllowance, 10000)
+    const refreshInterval = setInterval(fetchAllowance, 10000)
     return () => clearInterval(refreshInterval)
   }, [account, stakingContract, lpContract])
 

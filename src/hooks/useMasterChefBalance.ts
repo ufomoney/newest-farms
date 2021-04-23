@@ -18,7 +18,11 @@ const useMasterChefBalance = (tokenAddress: string) => {
   const block = useBlock()
 
   const fetchBalance = useCallback(async () => {
-    const balance = await getBalance(ethereum, tokenAddress, contractAddresses.masterChef[56])
+    const balance = await getBalance(
+      ethereum,
+      tokenAddress,
+      contractAddresses.masterChef[56],
+    )
     setBalance(new BigNumber(balance))
   }, [account, ethereum, tokenAddress])
 

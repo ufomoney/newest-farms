@@ -1,16 +1,16 @@
-import {useCallback} from 'react'
+import { useCallback } from 'react'
 
 import usePanda from './usePanda'
 import { useWallet } from '@binance-chain/bsc-use-wallet'
-import {provider} from 'web3-core'
+import { provider } from 'web3-core'
 import {
   approve,
   getPandaContract,
-  getBambooStakingContract
+  getBambooStakingContract,
 } from '../panda/utils'
 
 const useApproveStaking = () => {
-  const {account}: { account: string; ethereum: provider } = useWallet()
+  const { account }: { account: string; ethereum: provider } = useWallet()
   const panda = usePanda()
   const lpContract = getPandaContract()
   const contract = getBambooStakingContract()
@@ -24,7 +24,7 @@ const useApproveStaking = () => {
     }
   }, [account, lpContract, contract])
 
-  return {onApprove: handleApprove}
+  return { onApprove: handleApprove }
 }
 
 export default useApproveStaking

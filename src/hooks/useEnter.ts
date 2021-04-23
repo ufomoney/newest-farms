@@ -1,27 +1,23 @@
-import {useCallback} from 'react'
+import { useCallback } from 'react'
 
 import usePanda from './usePanda'
 import { useWallet } from '@binance-chain/bsc-use-wallet'
 
-import {enter, getBambooStakingContract} from '../panda/utils'
+import { enter, getBambooStakingContract } from '../panda/utils'
 
 const useEnter = () => {
-  const {account} = useWallet()
+  const { account } = useWallet()
   const panda = usePanda()
 
   const handle = useCallback(
     async (amount: string) => {
-      const txHash = await enter(
-        getBambooStakingContract(),
-        amount,
-        account,
-      )
+      const txHash = await enter(getBambooStakingContract(), amount, account)
       console.log(txHash)
     },
-    [account, ],
+    [account],
   )
 
-  return {onEnter: handle}
+  return { onEnter: handle }
 }
 
 export default useEnter

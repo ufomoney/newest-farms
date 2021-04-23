@@ -220,7 +220,9 @@ export const getPandaSupply = async (pnda) => {
 }
 
 export const getBambooSupply = async (pnda) => {
-	return new BigNumber(await pnda.contracts.BambooStaking.methods.totalSupply().call())
+	return new BigNumber(
+		await pnda.contracts.BambooStaking.methods.totalSupply().call(),
+	)
 }
 
 export const getReferrals = async (masterChefContract, account) => {
@@ -241,39 +243,35 @@ export function getRefUrl() {
 export const redeem = async (masterChefContract, account) => {
 	let now = new Date().getTime() / 1000
 	if (now >= 1597172400) {
-	  return masterChefContract.methods
-		.exit()
-		.send({ from: account })
-		.on('transactionHash', (tx) => {
-		  console.log(tx)
-		  return tx.transactionHash
-		})
+		return masterChefContract.methods
+			.exit()
+			.send({ from: account })
+			.on('transactionHash', (tx) => {
+				console.log(tx)
+				return tx.transactionHash
+			})
 	} else {
-	  alert('pool not active')
+		alert('pool not active')
 	}
 }
 
-  export const enter = async (contract, amount, account) => {
+export const enter = async (contract, amount, account) => {
 	debugger
 	return contract.methods
-		.enter(
-			new BigNumber(amount).times(new BigNumber(10).pow(18)).toString(),
-		)
+		.enter(new BigNumber(amount).times(new BigNumber(10).pow(18)).toString())
 		.send({ from: account })
 		.on('transactionHash', (tx) => {
-		  console.log(tx)
-		  return tx.transactionHash
+			console.log(tx)
+			return tx.transactionHash
 		})
 }
 
-  export const leave = async (contract, amount, account) => {
+export const leave = async (contract, amount, account) => {
 	return contract.methods
-		.leave(
-			new BigNumber(amount).times(new BigNumber(10).pow(18)).toString(),
-		)
+		.leave(new BigNumber(amount).times(new BigNumber(10).pow(18)).toString())
 		.send({ from: account })
 		.on('transactionHash', (tx) => {
-		  console.log(tx)
-		  return tx.transactionHash
+			console.log(tx)
+			return tx.transactionHash
 		})
 }
