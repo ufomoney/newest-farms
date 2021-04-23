@@ -256,7 +256,7 @@ export const redeem = async (masterChefContract, account) => {
 }
 
 export const enter = async (contract, amount, account) => {
-	debugger
+	
 	return contract.methods
 		.enter(new BigNumber(amount).times(new BigNumber(10).pow(18)).toString())
 		.send({ from: account })
