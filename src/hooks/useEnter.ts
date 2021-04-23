@@ -7,7 +7,7 @@ import {enter, getBambooStakingContract} from '../panda/utils'
 
 const useEnter = () => {
   const {account} = useWallet()
-  const pnda = usePanda()
+  const panda = usePanda()
 
   const handle = useCallback(
     async (amount: string) => {

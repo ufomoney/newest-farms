@@ -16,21 +16,21 @@ import useBlock from './useBlock'
 
 const useValues = () => {
   const { account }: { account: string } = useWallet()
-  const pnda = usePanda()
+  const panda = usePanda()
   const locks = useLockedEarnings()
-  //const wbnbPriceContract = getWbnbPriceContract(pnda)
-  //const pndaPriceContract = getPandaPriceContract(pnda)
+  //const wbnbPriceContract = getWbnbPriceContract(panda)
+  //const pndaPriceContract = getPandaPriceContract(panda)
   const [usrText, setUsrText] = useState(new String())
   const [pndaPrices, setPandaPrices] = useState(new BigNumber(0))
   const [wbnbPrices, setWbnbPrices] = useState(new BigNumber(0))
 
   const getInfo = useCallback(async () => {
-    console.log(pnda)
-    if (pnda) {
-      const wbnbPriceFun = getWbnbPrice(pnda).then((response) => {
+    console.log(panda)
+    if (panda) {
+      const wbnbPriceFun = getWbnbPrice(panda).then((response) => {
         setWbnbPrices(response)
 
-        const pndaPriceFun = getPandaPrice(pnda).then((response) => {
+        const pndaPriceFun = getPandaPrice(panda).then((response) => {
           setPandaPrices(response)
           console.log('pndavalues')
           console.log(response)
@@ -56,10 +56,10 @@ const useValues = () => {
   }, [locks, usrText])
 
   useEffect(() => {
-    if (account && pnda) {
+    if (account && panda) {
       getInfo()
     }
-  }, [account, pnda, locks, usrText])
+  }, [account, panda, locks, usrText])
 
   return usrText.toString()
 }

@@ -13,10 +13,10 @@ import { Farm } from './types'
 const Farms: React.FC = ({ children }) => {
 	const [unharvested, setUnharvested] = useState(0)
 
-	const pnda = usePanda()
+	const panda = usePanda()
 	const { account } = useWallet()
 
-	const farms = getFarms(pnda)
+	const farms = getFarms(panda)
 
 	return (
 		<Context.Provider

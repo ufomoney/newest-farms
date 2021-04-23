@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import pndaBanner from '../../assets/img/pnda.png'
+import pnda from '../../assets/img/pnda.png'
 import Button from '../../components/Button'
 import Container from '../../components/Container'
 import Page from '../../components/Page'
@@ -12,7 +12,7 @@ const Home: React.FC = () => {
 	return (
 		<Page>
 			<PageHeader
-				icon={pndaBanner}
+				icon={pnda}
 				title="PandaChef is Ready"
 				subtitle="Stake PandaSwap LP tokens to earn PNDA!"
 			/>

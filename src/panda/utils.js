@@ -15,49 +15,49 @@ const GAS_LIMIT = {
 	},
 }
 
-const pnda = usePanda()
+const panda = usePanda()
 
-export const getMasterChefAddress = (pnda) => {
-	return pnda && pnda.masterChefAddress
-}
-
-export const getWbnbPriceAddress = (pnda) => {
-	return pnda && pnda.wbnbPriceAddress
+export const getMasterChefAddress = (panda) => {
+	return panda && panda.masterChefAddress
 }
 
-export const getPandaPriceAddress = (pnda) => {
-	return pnda && pnda.pndaPriceAddress
+export const getWbnbPriceAddress = (panda) => {
+	return panda && panda.wbnbPriceAddress
 }
 
-export const getPandaAddress = (pnda) => {
-	return pnda && pnda.pndaAddress
-}
-export const getWbnbContract = (pnda) => {
-	return pnda && pnda.contracts && pnda.contracts.wbnb
+export const getPandaPriceAddress = (panda) => {
+	return panda && panda.pndaPriceAddress
 }
 
-export const getWbnbPriceContract = (pnda) => {
-	return pnda && pnda.contracts && pnda.contracts.wbnbPrice
+export const getPandaAddress = (panda) => {
+	return panda && panda.pndaAddress
+}
+export const getWbnbContract = (panda) => {
+	return panda && panda.contracts && panda.contracts.wbnb
 }
 
-export const getPandaPriceContract = (pnda) => {
-	return pnda && pnda.contracts && pnda.contracts.pndaPrice
+export const getWbnbPriceContract = (panda) => {
+	return panda && panda.contracts && panda.contracts.wbnbPrice
 }
 
-export const getMasterChefContract = (pnda) => {
-	return pnda && pnda.contracts && pnda.contracts.masterChef
-}
-export const getPandaContract = (pnda) => {
-	return pnda && pnda.contracts && pnda.contracts.pnda
+export const getPandaPriceContract = (panda) => {
+	return panda && panda.contracts && panda.contracts.pndaPrice
 }
 
-export const getBambooStakingContract = (pnda) => {
-	return pnda && pnda.contracts && pnda.contracts.bambooStaking
+export const getMasterChefContract = (panda) => {
+	return panda && panda.contracts && panda.contracts.masterChef
+}
+export const getPandaContract = (panda) => {
+	return panda && panda.contracts && panda.contracts.panda
+}
+
+export const getBambooStakingContract = (panda) => {
+	return panda && panda.contracts && panda.contracts.bambooStaking
 }  
 
-export const getFarms = (pnda) => {
-	return pnda
-		? pnda.contracts.pools.map(
+export const getFarms = (panda) => {
+	return panda
+		? panda.contracts.pools.map(
 				({
 					pid,
 					name,
@@ -83,7 +83,7 @@ export const getFarms = (pnda) => {
 					tokenSymbol,
 					tokenContract,
 					earnToken: 'PNDA',
-					earnTokenAddress: pnda.contracts.pnda.options.address,
+					earnTokenAddress: panda.contracts.panda.options.address,
 					icon,
 					refUrl,
 					poolType,
@@ -159,7 +159,7 @@ export const approve = async (lpContract, masterChefContract, account) => {
 }
 
 export const getBambooSupply = async () => {
-	return new BigNumber(await pnda.contracts.BambooStaking.methods.totalSupply().call())
+	return new BigNumber(await panda.contracts.BambooStaking.methods.totalSupply().call())
 }    
 
 export const stake = async (masterChefContract, pid, amount, account, ref) => {
@@ -208,22 +208,22 @@ export const getStaked = async (masterChefContract, pid, account) => {
 	}
 }
 
-export const getWbnbPrice = async (pnda) => {
-	console.log(pnda)
-	const amount = await pnda.contracts.wbnbPrice.methods.latestAnswer().call()
+export const getWbnbPrice = async (panda) => {
+	console.log(panda)
+	const amount = await panda.contracts.wbnbPrice.methods.latestAnswer().call()
 	return new BigNumber(amount)
 }
 
-export const getPandaPrice = async (pnda) => {
+export const getPandaPrice = async (panda) => {
 	const addr = '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2'
-	const amount = await pnda.contracts.pndaPrice.methods
+	const amount = await panda.contracts.pndaPrice.methods
 		.consult(addr.toString(), 1)
 		.call()
 	return new BigNumber(amount)
 }
 
-export const getPandaSupply = async (pnda) => {
-	return new BigNumber(await pnda.contracts.pnda.methods.totalSupply().call())
+export const getPandaSupply = async (panda) => {
+	return new BigNumber(await panda.contracts.panda.methods.totalSupply().call())
 }
 
 export const getReferrals = async (masterChefContract, account) => {

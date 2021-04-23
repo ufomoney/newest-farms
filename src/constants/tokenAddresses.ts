@@ -1,4 +1,4 @@
-export const pnda = '0x47DcC83a14aD53Ed1f13d3CaE8AA4115f07557C0'
+export const panda = '0x47DcC83a14aD53Ed1f13d3CaE8AA4115f07557C0'
 export const pndav2 = '0x47DcC83a14aD53Ed1f13d3CaE8AA4115f07557C0'
 export const pndaAddress = '0x47DcC83a14aD53Ed1f13d3CaE8AA4115f07557C0'
 export const masterChefAddress = '0x02444a8fEeaD1a2E78da0e2a157f4C7B848aB021'

@@ -14,20 +14,20 @@ const useLockedEarnings = () => {
     account,
     ethereum,
   }: { account: string; ethereum: provider } = useWallet()
-  const pnda = usePanda()
-  const pndaContract = getPandaContract(pnda)
+  const panda = usePanda()
+  const pndaContract = getPandaContract(panda)
   const block = useBlock()
 
   const fetchBalance = useCallback(async () => {
     const balance = await getLockedEarned(pndaContract, account)
     setBalance(new BigNumber(balance))
-  }, [account, pndaContract, pnda])
+  }, [account, pndaContract, panda])
 
   useEffect(() => {
-    if (account && pndaContract && pnda) {
+    if (account && pndaContract && panda) {
       fetchBalance()
     }
-  }, [account, block, pndaContract, setBalance, pnda])
+  }, [account, block, pndaContract, setBalance, panda])
 
   return balance
 }

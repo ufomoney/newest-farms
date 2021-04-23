@@ -25,7 +25,7 @@ export class Contracts {
 		this.defaultGas = options.defaultGas
 		this.defaultGasPrice = options.defaultGasPrice
 
-		this.pnda = new this.web3.eth.Contract(PandaAbi)
+		this.panda = new this.web3.eth.Contract(PandaAbi)
 		this.masterChef = new this.web3.eth.Contract(MasterChefAbi)
 		this.wbnb = new this.web3.eth.Contract(WBNBAbi)
 		this.wbnbPrice = new this.web3.eth.Contract(ChainOracle)
@@ -51,7 +51,7 @@ export class Contracts {
 			else console.error('Contract address not found in network', networkId)
 		}
 
-		setProvider(this.pnda, contractAddresses.pnda[networkId])
+		setProvider(this.panda, contractAddresses.panda[networkId])
 		setProvider(this.masterChef, contractAddresses.masterChef[networkId])
 		setProvider(this.wbnb, contractAddresses.wbnb[networkId])
 		setProvider(this.wbnbPrice, contractAddresses.wbnbPrice[networkId])
@@ -66,7 +66,7 @@ export class Contracts {
 	}
 
 	setDefaultAccount(account) {
-		this.pnda.options.from = account
+		this.panda.options.from = account
 		this.masterChef.options.from = account
 		this.wbnbPrice.options.from = account
 		this.pndaPrice.options.from = account

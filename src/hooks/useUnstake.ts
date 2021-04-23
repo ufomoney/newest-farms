@@ -7,8 +7,8 @@ import { unstake, getMasterChefContract, getRefUrl } from '../panda/utils'
 
 const useUnstake = (pid: number) => {
   const { account } = useWallet()
-  const pnda = usePanda()
-  const masterChefContract = getMasterChefContract(pnda)
+  const panda = usePanda()
+  const masterChefContract = getMasterChefContract(panda)
 
   const handleUnstake = useCallback(
     async (amount: string) => {
@@ -22,7 +22,7 @@ const useUnstake = (pid: number) => {
       )
       console.log(txHash)
     },
-    [account, pid, pnda],
+    [account, pid, panda],
   )
 
   return { onUnstake: handleUnstake }

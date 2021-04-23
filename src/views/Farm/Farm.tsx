@@ -42,14 +42,14 @@ const Farm: React.FC = () => {
 		window.scrollTo(0, 0)
 	}, [])
 
-	const pnda = usePanda()
+	const panda = usePanda()
 	const { ethereum } = useWallet()
 
 	const lpContract = useMemo(() => {
 		return getContract(ethereum as provider, lpTokenAddress)
 	}, [ethereum, lpTokenAddress])
 
-	const { onRedeem } = useRedeem(getMasterChefContract(pnda))
+	const { onRedeem } = useRedeem(getMasterChefContract(panda))
 
 	const lpTokenName = useMemo(() => {
 		return lpToken.toUpperCase()

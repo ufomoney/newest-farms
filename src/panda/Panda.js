@@ -36,7 +36,7 @@ export class Panda {
 			this.web3.eth.defaultAccount = options.defaultAccount
 		}
 		this.contracts = new Contracts(realProvider, networkId, this.web3, options)
-		this.pndaAddress = contractAddresses.pnda[networkId]
+		this.pndaAddress = contractAddresses.panda[networkId]
 		this.masterChefAddress = contractAddresses.masterChef[networkId]
 		this.wbnbAddress = contractAddresses.wbnb[networkId]
 		this.wbnbPriceAddress = contractAddresses.wbnbPrice[networkId]

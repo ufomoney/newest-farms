@@ -32,7 +32,7 @@ const Harvest: React.FC<HarvestProps> = ({ pid }) => {
 	const locks = useLockedEarnings()
 	const [pendingTx, setPendingTx] = useState(false)
 	const { onReward } = useReward(pid)
-	const pnda = usePanda()
+	const panda = usePanda()
 	const userInfo = useValues()
 	const userSubInfo = useSubValues()
 

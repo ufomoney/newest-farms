@@ -11,9 +11,9 @@ import useBlock from './useBlock'
 const useAllEarnings = () => {
   const [balances, setBalance] = useState([] as Array<BigNumber>)
   const { account }: { account: string; ethereum: provider } = useWallet()
-  const pnda = usePanda()
-  const farms = getFarms(pnda)
-  const masterChefContract = getMasterChefContract(pnda)
+  const panda = usePanda()
+  const farms = getFarms(panda)
+  const masterChefContract = getMasterChefContract(panda)
   const block = useBlock()
 
   const fetchAllBalances = useCallback(async () => {
@@ -23,13 +23,13 @@ const useAllEarnings = () => {
       ),
     )
     setBalance(balances)
-  }, [account, masterChefContract, pnda])
+  }, [account, masterChefContract, panda])
 
   useEffect(() => {
-    if (account && masterChefContract && pnda) {
+    if (account && masterChefContract && panda) {
       fetchAllBalances()
     }
-  }, [account, block, masterChefContract, setBalance, pnda])
+  }, [account, block, masterChefContract, setBalance, panda])
 
   return balances
 }

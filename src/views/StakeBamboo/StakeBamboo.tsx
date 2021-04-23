@@ -1,10 +1,10 @@
 import React, {useEffect, useMemo, useState} from 'react'
 import styled from 'styled-components'
 import { useWallet } from '@binance-chain/bsc-use-wallet'
-import {provider} from 'web3-core'
+import { provider } from 'web3-core'
 import Spacer from '../../components/Spacer'
 import usePanda from '../../hooks/usePanda'
-import {getContract} from '../../utils/erc20'
+import { getContract } from '../../utils/erc20'
 import UnstakeBamboo from './components/UnstakeBamboo'
 import StakeSushi from "./components/StakePanda";
 
@@ -22,7 +22,7 @@ const StakeBamboo: React.FC = () => {
 
   const [totalSupply, setTotalSupply] = useState<BigNumber>()
 
-  const pnda = usePanda()
+  const panda = usePanda()
   const {ethereum} = useWallet()
 
   useEffect(() => {
@@ -34,7 +34,7 @@ const StakeBamboo: React.FC = () => {
       const supply = await getBambooSupply()
       setTotalSupply(supply)
     }
-    if (pnda) {
+    if (panda) {
       fetchTotalSupply()
     }
   }, [, setTotalSupply])
@@ -66,9 +66,9 @@ const StakeBamboo: React.FC = () => {
           <StyledCardWrapper>
             <StyledInfo>
               ℹ️️ You will earn a portion of the swaps fees based on the amount
-              of xSushi held relative the weight of the staking. xSushi can be minted
-              by staking Sushi. To redeem Sushi staked plus swap fees convert xSushi
-              back to Sushi. {totalSupply ? `There are currently ${getBalanceNumber(totalSupply)} xSUSHI in existence.` : '' }
+              of Bamboo held relative the weight of the staking. Bamboo can be minted
+              by staking Panda. To redeem Panda staked plus swap fees convert Bamboo
+              back to Panda. {totalSupply ? `There are currently ${getBalanceNumber(totalSupply)} Bamboo in existence.` : '' }
             </StyledInfo>
           </StyledCardWrapper>
         </StyledCardsWrapper>

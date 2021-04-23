@@ -229,7 +229,7 @@
   },
   {
     "inputs": [],
-    "name": "pnda",
+    "name": "panda",
     "outputs": [
       {
         "internalType": "contract IERC20",

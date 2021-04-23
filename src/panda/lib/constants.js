@@ -101,7 +101,7 @@ export const addressMap = {
 }
 
 export const contractAddresses = {
-	pnda: {
+	panda: {
 		56: '0x47DcC83a14aD53Ed1f13d3CaE8AA4115f07557C0',
 	},
 	bamboo: {

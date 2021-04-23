@@ -14,20 +14,20 @@ const useEarnings = (pid: number) => {
     account,
     ethereum,
   }: { account: string; ethereum: provider } = useWallet()
-  const pnda = usePanda()
-  const masterChefContract = getMasterChefContract(pnda)
+  const panda = usePanda()
+  const masterChefContract = getMasterChefContract(panda)
   const block = useBlock()
 
   const fetchBalance = useCallback(async () => {
     const balance = await getEarned(masterChefContract, pid, account)
     setBalance(new BigNumber(balance))
-  }, [account, masterChefContract, pnda])
+  }, [account, masterChefContract, panda])
 
   useEffect(() => {
-    if (account && masterChefContract && pnda) {
+    if (account && masterChefContract && panda) {
       fetchBalance()
     }
-  }, [account, block, masterChefContract, setBalance, pnda])
+  }, [account, block, masterChefContract, setBalance, panda])
 
   return balance
 }

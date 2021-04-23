@@ -5,25 +5,25 @@ import { useWallet } from '@binance-chain/bsc-use-wallet'
 import { Panda } from '../../panda'
 
 export interface PandaContext {
-	pnda?: typeof Panda
+	panda?: typeof Panda
 }
 
 export const Context = createContext<PandaContext>({
-	pnda: undefined,
+	panda: undefined,
 })
 
 declare global {
 	interface Window {
 		pndasauce: any
-		pnda: any
+		panda: any
 	}
 }
 
 const PandaProvider: React.FC = ({ children }) => {
 	const { ethereum }: { ethereum: any } = useWallet()
-	const [pnda, setPanda] = useState<any>()
+	const [panda, setPanda] = useState<any>()
 
-	window.pnda = pnda
+	window.panda = panda
 
 	useEffect(() => {
 		if (ethereum) {
@@ -45,7 +45,7 @@ const PandaProvider: React.FC = ({ children }) => {
 		}
 	}, [ethereum])
 
-	return <Context.Provider value={{ pnda }}>{children}</Context.Provider>
+	return <Context.Provider value={{ panda }}>{children}</Context.Provider>
 }
 
 export default PandaProvider

@@ -11,7 +11,7 @@ import {
 
 const useApproveStaking = () => {
   const {account}: { account: string; ethereum: provider } = useWallet()
-  const pnda = usePanda()
+  const panda = usePanda()
   const lpContract = getPandaContract()
   const contract = getBambooStakingContract()
 

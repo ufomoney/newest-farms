@@ -7,7 +7,7 @@ import {leave, getBambooStakingContract} from '../panda/utils'
 
 const useLeave = () => {
   const {account} = useWallet()
-  const pnda = usePanda()
+  const panda = usePanda()
 
   const handle = useCallback(
     async (amount: string) => {

@@ -7,14 +7,14 @@ import { harvest, getMasterChefContract } from '../panda/utils'
 
 const useReward = (pid: number) => {
   const { account } = useWallet()
-  const pnda = usePanda()
-  const masterChefContract = getMasterChefContract(pnda)
+  const panda = usePanda()
+  const masterChefContract = getMasterChefContract(panda)
 
   const handleReward = useCallback(async () => {
     const txHash = await harvest(masterChefContract, pid, account)
     console.log(txHash)
     return txHash
-  }, [account, pid, pnda])
+  }, [account, pid, panda])
 
   return { onReward: handleReward }
 }

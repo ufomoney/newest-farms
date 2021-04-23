@@ -9,8 +9,8 @@ import { approve, getMasterChefContract } from '../panda/utils'
 
 const useApprove = (lpContract: Contract) => {
   const { account }: { account: string; ethereum: provider } = useWallet()
-  const pnda = usePanda()
-  const masterChefContract = getMasterChefContract(pnda)
+  const panda = usePanda()
+  const masterChefContract = getMasterChefContract(panda)
 
   const handleApprove = useCallback(async () => {
     try {

@@ -23,8 +23,8 @@ const AccountModal: React.FC<ModalProps> = ({ onDismiss }) => {
 		reset()
 	}, [onDismiss, reset])
 
-	const pnda = usePanda()
-	const pndaBalance = useTokenBalance(getPandaAddress(pnda))
+	const panda = usePanda()
+	const pndaBalance = useTokenBalance(getPandaAddress(panda))
 
 	return (
 		<Modal>

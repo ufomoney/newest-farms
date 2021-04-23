@@ -12,7 +12,7 @@ import {getMasterChefContract, getPandaContract, getBambooStakingContract} from 
 const useAllowanceStaking = () => {
   const [allowance, setAllowance] = useState(new BigNumber(0))
   const {account}: { account: string; ethereum: provider } = useWallet()
-  const pnda = usePanda()
+  const panda = usePanda()
   const lpContract = getPandaContract()
   const stakingContract = getBambooStakingContract()
 
