@@ -136,7 +136,7 @@ const FarmCard: React.FC<FarmCardProps> = ({ farm }) => {
 	const [harvestable, setHarvestable] = useState(0)
 
 	const { account } = useWallet()
-	const { lpTokenAddress } = farm
+	const { pid } = farm
 	const panda = usePanda()
 
 	const renderer = (countdownProps: CountdownRenderProps) => {
@@ -154,17 +154,13 @@ const FarmCard: React.FC<FarmCardProps> = ({ farm }) => {
 	useEffect(() => {
 		async function fetchEarned() {
 			if (panda) return
-			const earned = await getEarned(
-				getMasterChefContract(panda),
-				lpTokenAddress,
-				account,
-			)
+			const earned = await getEarned(getMasterChefContract(panda), pid, account)
 			setHarvestable(bnToDec(earned))
 		}
 		if (panda && account) {
 			fetchEarned()
 		}
-	}, [panda, lpTokenAddress, account, setHarvestable])
+	}, [panda, pid, account, setHarvestable])
 
 	const poolActive = true // startTime * 1000 - Date.now() <= 0
 	const tokenBuy = 'Buy ' + farm.tokenSymbol

@@ -29,13 +29,13 @@ const StakeBamboo: React.FC = () => {
 
 	useEffect(() => {
 		async function fetchTotalSupply() {
-			const supply = await getBambooSupply()
+			const supply = await getBambooSupply(panda)
 			setTotalSupply(supply)
 		}
 		if (panda) {
 			fetchTotalSupply()
 		}
-	}, [, setTotalSupply])
+	}, [panda, setTotalSupply])
 
 	const lpContract = useMemo(() => {
 		debugger

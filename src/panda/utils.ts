@@ -44,7 +44,7 @@ export const getPandaContract = (pnda: Panda): Contract => {
 }
 
 export const getBambooStakingContract = (pnda: Panda): Contract => {
-  return pnda && pnda.contracts && pnda.contracts.BambooStaking
+  return pnda && pnda.contracts && pnda.contracts.bambooStaking
 }
 
 export const getFarms = (pnda: Panda): Farm[] => {
@@ -84,7 +84,10 @@ export const getFarms = (pnda: Panda): Farm[] => {
     : []
 }
 
-export const getPoolWeight = async (masterChefContract, pid) => {
+export const getPoolWeight = async (
+  masterChefContract: Contract,
+  pid: number,
+): Promise<BigNumber> => {
   const [{ allocPoint }, totalAllocPoint] = await Promise.all([
     masterChefContract.methods.poolInfo(pid).call(),
     masterChefContract.methods.totalAllocPoint().call(),
@@ -93,22 +96,35 @@ export const getPoolWeight = async (masterChefContract, pid) => {
   return new BigNumber(allocPoint).div(new BigNumber(totalAllocPoint))
 }
 
-export const getEarned = async (masterChefContract, pid, account) => {
+export const getEarned = async (
+  masterChefContract: Contract,
+  pid: number,
+  account: string,
+): Promise<BigNumber> => {
   return masterChefContract.methods.pendingReward(pid, account).call()
 }
 
-export const getLockedEarned = async (pndaContract, account) => {
+export const getLockedEarned = async (
+  pndaContract: Contract,
+  account: string,
+): Promise<BigNumber> => {
   return pndaContract.methods.lockOf(account).call()
 }
 
 export const getTotalLPWbnbValue = async (
-  masterChefContract,
-  wbnbContract,
-  lpContract,
-  tokenContract,
-  tokenDecimals,
-  pid,
-) => {
+  masterChefContract: Contract,
+  wbnbContract: Contract,
+  lpContract: Contract,
+  tokenContract: Contract,
+  tokenDecimals: number,
+  pid: number,
+): Promise<{
+  tokenAmount: BigNumber
+  wbnbAmount: BigNumber
+  totalWbnbValue: BigNumber
+  tokenPriceInWbnb: BigNumber
+  poolWeight: BigNumber
+}> => {
   const [
     tokenAmountWholeLP,
     balance,
@@ -144,48 +160,66 @@ export const getTotalLPWbnbValue = async (
   }
 }
 
-export const approve = async (lpContract, masterChefContract, account) => {
+export const approve = async (
+  lpContract: Contract,
+  masterChefContract: Contract,
+  account: string,
+): Promise<string> => {
   return lpContract.methods
     .approve(masterChefContract.options.address, ethers.constants.MaxUint256)
     .send({ from: account })
 }
 
-export const stake = async (masterChefContract, pid, amount, account, ref) => {
+export const stake = async (
+  masterChefContract: Contract,
+  pid: number,
+  amount: string,
+  account: string,
+  ref: string,
+): Promise<string> => {
   return masterChefContract.methods
     .deposit(pid, ethers.utils.parseUnits(amount, 18), ref)
     .send({ from: account })
-    .on('transactionHash', (tx) => {
+    .on('transactionHash', (tx: { transactionHash: string }) => {
       console.log(tx)
       return tx.transactionHash
     })
 }
 
 export const unstake = async (
-  masterChefContract,
-  pid,
-  amount,
-  account,
-  ref,
-) => {
+  masterChefContract: Contract,
+  pid: number,
+  amount: string,
+  account: string,
+  ref: string,
+): Promise<string> => {
   return masterChefContract.methods
     .withdraw(pid, ethers.utils.parseUnits(amount, 18), ref)
     .send({ from: account })
-    .on('transactionHash', (tx) => {
+    .on('transactionHash', (tx: { transactionHash: string }) => {
       console.log(tx)
       return tx.transactionHash
     })
 }
-export const harvest = async (masterChefContract, pid, account) => {
+export const harvest = async (
+  masterChefContract: Contract,
+  pid: number,
+  account: string,
+): Promise<string> => {
   return masterChefContract.methods
     .claimReward(pid)
     .send({ from: account })
-    .on('transactionHash', (tx) => {
+    .on('transactionHash', (tx: { transactionHash: string }) => {
       console.log(tx)
       return tx.transactionHash
     })
 }
 
-export const getStaked = async (masterChefContract, pid, account) => {
+export const getStaked = async (
+  masterChefContract: Contract,
+  pid: number,
+  account: string,
+): Promise<BigNumber> => {
   try {
     const { amount } = await masterChefContract.methods
       .userInfo(pid, account)
@@ -196,13 +230,13 @@ export const getStaked = async (masterChefContract, pid, account) => {
   }
 }
 
-export const getWbnbPrice = async (pnda) => {
+export const getWbnbPrice = async (pnda: Panda): Promise<BigNumber> => {
   const wbnbPriceContract = getWbnbPriceContract(pnda)
   const amount = await wbnbPriceContract.methods.latestAnswer().call()
   return new BigNumber(amount)
 }
 
-export const getPandaPrice = async (pnda) => {
+export const getPandaPrice = async (pnda: Panda): Promise<BigNumber> => {
   const addr = '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2'
   const amount = await pnda.contracts.pndaPrice.methods
     .consult(addr.toString(), 1)
@@ -210,21 +244,24 @@ export const getPandaPrice = async (pnda) => {
   return new BigNumber(amount)
 }
 
-export const getPandaSupply = async (pnda) => {
+export const getPandaSupply = async (pnda: Panda): Promise<BigNumber>  => {
   return new BigNumber(await pnda.contracts.panda.methods.totalSupply().call())
 }
 
-export const getBambooSupply = async (pnda) => {
+export const getBambooSupply = async (pnda: Panda): Promise<BigNumber> => {
   const bambooStakingContract = getBambooStakingContract(pnda)
   return new BigNumber(await bambooStakingContract.methods.totalSupply().call())
 }
 
-export const getReferrals = async (masterChefContract, account) => {
+export const getReferrals = async (
+  masterChefContract: Contract,
+  account: string,
+): Promise<string> => {
   return await masterChefContract.methods.getGlobalRefAmount(account).call()
 }
 
-export function getRefUrl() {
-  var refer = '0x0000000000000000000000000000000000000000'
+export function getRefUrl(): string {
+  let refer = '0x0000000000000000000000000000000000000000'
   const urlParams = new URLSearchParams(window.location.search)
   if (urlParams.has('ref')) {
     refer = urlParams.get('ref')
@@ -234,13 +271,16 @@ export function getRefUrl() {
   return refer
 }
 
-export const redeem = async (masterChefContract, account) => {
-  let now = new Date().getTime() / 1000
+export const redeem = async (
+  masterChefContract: Contract,
+  account: string,
+): Promise<string> => {
+  const now = new Date().getTime() / 1000
   if (now >= 1597172400) {
     return masterChefContract.methods
       .exit()
       .send({ from: account })
-      .on('transactionHash', (tx) => {
+      .on('transactionHash', (tx: { transactionHash: string }) => {
         console.log(tx)
         return tx.transactionHash
       })
@@ -249,21 +289,29 @@ export const redeem = async (masterChefContract, account) => {
   }
 }
 
-export const enter = async (contract, amount, account) => {
+export const enter = async (
+  contract: Contract,
+  amount: string,
+  account: string,
+): Promise<string> => {
   return contract.methods
     .enter(new BigNumber(amount).times(new BigNumber(10).pow(18)).toString())
     .send({ from: account })
-    .on('transactionHash', (tx) => {
+    .on('transactionHash', (tx: { transactionHash: string }) => {
       console.log(tx)
       return tx.transactionHash
     })
 }
 
-export const leave = async (contract, amount, account) => {
+export const leave = async (
+  contract: Contract,
+  amount: string,
+  account: string,
+): Promise<string> => {
   return contract.methods
     .leave(new BigNumber(amount).times(new BigNumber(10).pow(18)).toString())
     .send({ from: account })
-    .on('transactionHash', (tx) => {
+    .on('transactionHash', (tx: { transactionHash: string }) => {
       console.log(tx)
       return tx.transactionHash
     })
