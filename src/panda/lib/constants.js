@@ -1,5 +1,4 @@
 import BigNumber from 'bignumber.js/bignumber'
-import { addTrackers } from 'react-ga'
 
 export const SUBTRACT_GAS_LIMIT = 100000
 
