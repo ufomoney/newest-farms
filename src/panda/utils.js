@@ -50,8 +50,8 @@ export const getPandaContract = (pnda) => {
 
 export const getBambooStakingContract = (pnda) => {
 	return pnda && pnda.contracts && pnda.contracts.BambooStaking
-  }
-  
+}
+
 export const getFarms = (pnda) => {
 	return pnda
 		? pnda.contracts.pools.map(
@@ -221,8 +221,8 @@ export const getPandaSupply = async (pnda) => {
 
 export const getBambooSupply = async (pnda) => {
 	return new BigNumber(await pnda.contracts.BambooStaking.methods.totalSupply().call())
-  }
-  
+}
+
 export const getReferrals = async (masterChefContract, account) => {
 	return await masterChefContract.methods.getGlobalRefAmount(account).call()
 }
@@ -251,8 +251,8 @@ export const redeem = async (masterChefContract, account) => {
 	} else {
 	  alert('pool not active')
 	}
-  }
-  
+}
+
   export const enter = async (contract, amount, account) => {
 	debugger
 	return contract.methods
@@ -264,8 +264,8 @@ export const redeem = async (masterChefContract, account) => {
 		  console.log(tx)
 		  return tx.transactionHash
 		})
-  }
-  
+}
+
   export const leave = async (contract, amount, account) => {
 	return contract.methods
 		.leave(
@@ -276,5 +276,4 @@ export const redeem = async (masterChefContract, account) => {
 		  console.log(tx)
 		  return tx.transactionHash
 		})
-  }
-  
+}
