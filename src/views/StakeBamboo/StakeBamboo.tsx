@@ -6,7 +6,7 @@ import Spacer from '../../components/Spacer'
 import usePanda from '../../hooks/usePanda'
 import { getContract } from '../../utils/erc20'
 import UnstakeBamboo from './components/UnstakeBamboo'
-import StakeSushi from './components/StakePanda'
+import StakePanda from './components/StakePanda'
 
 import { contractAddresses } from '../../panda/lib/constants'
 import { getBambooSupply } from '../../panda/utils'
@@ -51,7 +51,7 @@ const StakeBamboo: React.FC = () => {
 					</StyledCardWrapper>
 					<Spacer />
 					<StyledCardWrapper>
-						<StakeSushi />
+						<StakePanda />
 					</StyledCardWrapper>
 				</StyledCardsWrapper>
 				<Spacer size="lg" />

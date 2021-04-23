@@ -20,8 +20,8 @@ import pnda from '../../../assets/img/pnda.png'
 
 interface StakeProps {}
 
-const StakeSushi: React.FC<StakeProps> = ({}) => {
-	const tokenName = ''
+const StakePanda: React.FC<StakeProps> = ({}) => {
+	const tokenName = 'PNDA'
 	const [requestedApproval, setRequestedApproval] = useState(false)
 
 	const allowance = useAllowanceStaking()
@@ -113,4 +113,4 @@ const StyledCardContentInner = styled.div`
 	justify-content: space-between;
 `
 
-export default StakeSushi
+export default StakePanda

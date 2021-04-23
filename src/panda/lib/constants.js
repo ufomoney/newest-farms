@@ -114,12 +114,10 @@ export const contractAddresses = {
 		56: '0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c',
 	},
 	wbnbPrice: {
-		1: '0x5f4eC3Df9cbd43714FE2740f5E3616155c5b8419',
-		4: '0x8A753747A1Fa494EC906cE90E9f37563A8AF630e',
+		56: '',
 	},
 	pndaPrice: {
-		1: '0xb2AaEDe065D3ede8Db0C7C25DD69B2A0d0ee4Da3',
-		4: '0x649AfCf002742cf93CbE1F8C3832FD05ACA2D8ea',
+		56: '',
 	},
 }
 //
@@ -209,7 +207,7 @@ export const supportedPools = [
 	{
 		pid: 4,
 		lpAddresses: {
-			56: '',
+			56: '0x7c8ba77476a3e713b27e7c1450227a0ff3411616',
 		},
 		tokenAddresses: {
 			56: '0x1af3f329e8be154074d8769d1ffa4ee058b1dbc3',
@@ -544,7 +542,7 @@ export const supportedPools = [
 	{
 		pid: 25,
 		lpAddresses: {
-			56: '',
+			56: '0x83a1Bd9c6Ac29C7CE15331Ca6D7A38b0410Ab549',
 		},
 		tokenAddresses: {
 			56: '0x1fa4a73a3f0133f0025378af00236f3abdee5d63',
@@ -608,7 +606,7 @@ export const supportedPools = [
 	{
 		pid: 29,
 		lpAddresses: {
-			56: '',
+			56: '0x60816ccec71161d69ee883f2be4522622d4a1cc9',
 		},
 		tokenAddresses: {
 			56: '0xb7f8cd00c5a06c0537e2abff0b58033d02e5e094',

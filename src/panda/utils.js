@@ -203,7 +203,7 @@ export const getStaked = async (masterChefContract, pid, account) => {
 
 export const getWbnbPrice = async (pnda) => {
 	console.log(pnda)
-	const amount = await pnda.contracts.wbnbPrice.methods.latestAnswer().call()
+	const amount = await pnda.contracts.WbnbPrice.methods.latestAnswer().call()
 	return new BigNumber(amount)
 }
 
