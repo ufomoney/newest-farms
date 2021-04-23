@@ -32,7 +32,7 @@ const Harvest: React.FC<HarvestProps> = ({ pid }) => {
 	const locks = useLockedEarnings()
 	const [pendingTx, setPendingTx] = useState(false)
 	const { onReward } = useReward(pid)
-	const panda = usePanda()
+	const pnda = usePanda()
 	const userInfo = useValues()
 	const userSubInfo = useSubValues()
 
@@ -59,7 +59,7 @@ const Harvest: React.FC<HarvestProps> = ({ pid }) => {
 					<StyledCardActions>
 						<Button
 							disabled={!earnings.toNumber() || pendingTx}
-							text={pendingTx ? 'Collecting PNDA' : 'Claim'}
+							text={pendingTx ? 'Collecting PNDA' : 'Harvest'}
 							onClick={async () => {
 								setPendingTx(true)
 								await onReward()

@@ -13,6 +13,7 @@ import {Contract} from "web3-eth-contract";
 import useModal from "../../../hooks/useModal";
 import WithdrawModal from "./WithdrawModal";
 import useLeave from "../../../hooks/useLeave";
+import bmboo from '../../../assets/img/bamboo.png'
 
 interface HarvestProps {
   lpContract: Contract
@@ -40,7 +41,7 @@ const UnstakeBamboo: React.FC<HarvestProps> = ({lpContract}) => {
       <CardContent>
         <StyledCardContentInner>
           <StyledCardHeader>
-            <CardIcon>🍣</CardIcon>
+          <CardIcon><img src={bmboo} alt="" height="50" /></CardIcon>
             <Value value={getBalanceNumber(BambooBalance)}/>
             <Label text="Bamboo (BambooBar) Available"/>
           </StyledCardHeader>

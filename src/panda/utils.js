@@ -1,7 +1,6 @@
 import BigNumber from 'bignumber.js'
 import { ethers } from 'ethers'
 import { supportedPools } from './lib/constants'
-import usePanda from '../hooks/usePanda'
 
 BigNumber.config({
 	EXPONENTIAL_AT: 1000,
@@ -15,49 +14,47 @@ const GAS_LIMIT = {
 	},
 }
 
-const panda = usePanda()
-
-export const getMasterChefAddress = (panda) => {
-	return panda && panda.masterChefAddress
+export const getMasterChefAddress = (pnda) => {
+	return pnda && pnda.masterChefAddress
 }
 
-export const getWbnbPriceAddress = (panda) => {
-	return panda && panda.wbnbPriceAddress
+export const getWbnbPriceAddress = (pnda) => {
+	return pnda && pnda.wbnbPriceAddress
 }
 
-export const getPandaPriceAddress = (panda) => {
-	return panda && panda.pndaPriceAddress
+export const getPandaPriceAddress = (pnda) => {
+	return pnda && pnda.pndaPriceAddress
 }
 
-export const getPandaAddress = (panda) => {
-	return panda && panda.pndaAddress
+export const getPandaAddress = (pnda) => {
+	return pnda && pnda.pndaAddress
 }
-export const getWbnbContract = (panda) => {
-	return panda && panda.contracts && panda.contracts.wbnb
-}
-
-export const getWbnbPriceContract = (panda) => {
-	return panda && panda.contracts && panda.contracts.wbnbPrice
+export const getWbnbContract = (pnda) => {
+	return pnda && pnda.contracts && pnda.contracts.wbnb
 }
 
-export const getPandaPriceContract = (panda) => {
-	return panda && panda.contracts && panda.contracts.pndaPrice
+export const getWbnbPriceContract = (pnda) => {
+	return pnda && pnda.contracts && pnda.contracts.wbnbPrice
 }
 
-export const getMasterChefContract = (panda) => {
-	return panda && panda.contracts && panda.contracts.masterChef
-}
-export const getPandaContract = (panda) => {
-	return panda && panda.contracts && panda.contracts.panda
+export const getPandaPriceContract = (pnda) => {
+	return pnda && pnda.contracts && pnda.contracts.pndaPrice
 }
 
-export const getBambooStakingContract = (panda) => {
-	return panda && panda.contracts && panda.contracts.bambooStaking
-}  
+export const getMasterChefContract = (pnda) => {
+	return pnda && pnda.contracts && pnda.contracts.masterChef
+}
+export const getPandaContract = (pnda) => {
+	return pnda && pnda.contracts && pnda.contracts.panda
+}
 
-export const getFarms = (panda) => {
-	return panda
-		? panda.contracts.pools.map(
+export const getBambooStakingContract = (pnda) => {
+	return pnda && pnda.contracts && pnda.contracts.BambooStaking
+  }
+  
+export const getFarms = (pnda) => {
+	return pnda
+		? pnda.contracts.pools.map(
 				({
 					pid,
 					name,
@@ -82,8 +79,8 @@ export const getFarms = (panda) => {
 					tokenDecimals,
 					tokenSymbol,
 					tokenContract,
-					earnToken: 'PNDA',
-					earnTokenAddress: panda.contracts.panda.options.address,
+					earnToken: 'pnda',
+					earnTokenAddress: pnda.contracts.panda.options.address,
 					icon,
 					refUrl,
 					poolType,
@@ -158,10 +155,6 @@ export const approve = async (lpContract, masterChefContract, account) => {
 		.send({ from: account })
 }
 
-export const getBambooSupply = async () => {
-	return new BigNumber(await panda.contracts.BambooStaking.methods.totalSupply().call())
-}    
-
 export const stake = async (masterChefContract, pid, amount, account, ref) => {
 	return masterChefContract.methods
 		.deposit(pid, ethers.utils.parseUnits(amount, 18), ref)
@@ -208,24 +201,28 @@ export const getStaked = async (masterChefContract, pid, account) => {
 	}
 }
 
-export const getWbnbPrice = async (panda) => {
-	console.log(panda)
-	const amount = await panda.contracts.wbnbPrice.methods.latestAnswer().call()
+export const getWbnbPrice = async (pnda) => {
+	console.log(pnda)
+	const amount = await pnda.contracts.wbnbPrice.methods.latestAnswer().call()
 	return new BigNumber(amount)
 }
 
-export const getPandaPrice = async (panda) => {
+export const getPandaPrice = async (pnda) => {
 	const addr = '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2'
-	const amount = await panda.contracts.pndaPrice.methods
+	const amount = await pnda.contracts.pndaPrice.methods
 		.consult(addr.toString(), 1)
 		.call()
 	return new BigNumber(amount)
 }
 
-export const getPandaSupply = async (panda) => {
-	return new BigNumber(await panda.contracts.panda.methods.totalSupply().call())
+export const getPandaSupply = async (pnda) => {
+	return new BigNumber(await pnda.contracts.panda.methods.totalSupply().call())
 }
 
+export const getBambooSupply = async (pnda) => {
+	return new BigNumber(await pnda.contracts.BambooStaking.methods.totalSupply().call())
+  }
+  
 export const getReferrals = async (masterChefContract, account) => {
 	return await masterChefContract.methods.getGlobalRefAmount(account).call()
 }
@@ -244,19 +241,19 @@ export function getRefUrl() {
 export const redeem = async (masterChefContract, account) => {
 	let now = new Date().getTime() / 1000
 	if (now >= 1597172400) {
-		return masterChefContract.methods
-			.exit()
-			.send({ from: account })
-			.on('transactionHash', (tx) => {
-				console.log(tx)
-				return tx.transactionHash
-			})
+	  return masterChefContract.methods
+		.exit()
+		.send({ from: account })
+		.on('transactionHash', (tx) => {
+		  console.log(tx)
+		  return tx.transactionHash
+		})
 	} else {
-		alert('pool not active')
+	  alert('pool not active')
 	}
-}
-
-export const enter = async (contract, amount, account) => {
+  }
+  
+  export const enter = async (contract, amount, account) => {
 	debugger
 	return contract.methods
 		.enter(
@@ -267,9 +264,9 @@ export const enter = async (contract, amount, account) => {
 		  console.log(tx)
 		  return tx.transactionHash
 		})
-  }  
-
-export const leave = async (contract, amount, account) => {
+  }
+  
+  export const leave = async (contract, amount, account) => {
 	return contract.methods
 		.leave(
 			new BigNumber(amount).times(new BigNumber(10).pow(18)).toString(),

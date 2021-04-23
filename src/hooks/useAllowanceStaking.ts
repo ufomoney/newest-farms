@@ -20,7 +20,7 @@ const useAllowanceStaking = () => {
     const allowance = await getAllowance(
       lpContract,
       account,
-      stakingContract.options.address,
+      stakingContract,
     )
     setAllowance(new BigNumber(allowance))
   }, [account, stakingContract, lpContract])

@@ -2,7 +2,7 @@ import React from 'react'
 import {Route, Switch, useRouteMatch} from 'react-router-dom'
 import { useWallet } from '@binance-chain/bsc-use-wallet'
 
-import chef from '../../assets/img/chef.png'
+import pnda from '../../assets/img/pnda.png'
 
 import Button from '../../components/Button'
 import Page from '../../components/Page'
@@ -22,11 +22,11 @@ const Staking: React.FC = () => {
         {!!account ? (
           <>
             <Route exact path={path}>
-              <PageHeader
-                icon={<img src={chef} height="120"/>}
-                subtitle="Welcome to the Sushi Bar, stake Sushi to earn Sushi."
-                title="Irasshaimase!"
-              />
+            <PageHeader
+				icon={pnda}
+				title="Welcome to the Bamboo Bar"
+				subtitle="Stake PNDA and earn BAMBOO!!"
+			/>
             </Route>
             <StakeBamboo/>
           </>
