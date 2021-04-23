@@ -50,11 +50,11 @@ export class Contracts {
     this.defaultGas = options.defaultGas
     this.defaultGasPrice = options.defaultGasPrice
 
-    this.panda = new this.web3.eth.Contract(PandaAbi as AbiItem)
-    this.masterChef = new this.web3.eth.Contract(MasterChefAbi)
-    this.wbnb = new this.web3.eth.Contract(WBNBAbi)
-    this.wbnbPrice = new this.web3.eth.Contract(ChainOracle)
-    this.pndaPrice = new this.web3.eth.Contract(UniOracleABI)
+    this.panda = new this.web3.eth.Contract(PandaAbi as AbiItem[])
+    this.masterChef = new this.web3.eth.Contract(MasterChefAbi as AbiItem[])
+    this.wbnb = new this.web3.eth.Contract(WBNBAbi as AbiItem[])
+    this.wbnbPrice = new this.web3.eth.Contract(ChainOracle as AbiItem[])
+    this.pndaPrice = new this.web3.eth.Contract(UniOracleABI as AbiItem[])
 
     this.pools =
       networkId == 56
@@ -62,8 +62,8 @@ export class Contracts {
             Object.assign(pool, {
               lpAddress: pool.lpAddresses[networkId],
               tokenAddress: pool.tokenAddresses[networkId],
-              lpContract: new this.web3.eth.Contract(UNIV2PairAbi),
-              tokenContract: new this.web3.eth.Contract(ERC20Abi),
+              lpContract: new this.web3.eth.Contract(UNIV2PairAbi as AbiItem[]),
+              tokenContract: new this.web3.eth.Contract(ERC20Abi as AbiItem[]),
             }),
           )
         : undefined
