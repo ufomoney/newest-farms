@@ -38,7 +38,6 @@ const StakeBamboo: React.FC = () => {
 	}, [panda, setTotalSupply])
 
 	const lpContract = useMemo(() => {
-		debugger
 		return getContract(ethereum as provider, tokenAddress)
 	}, [ethereum, tokenAddress])
 
