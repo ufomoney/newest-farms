@@ -12,7 +12,6 @@ import UNIV2PairAbi from './abi/uni_v2_lp.json'
 import PandaAbi from './abi/panda.json'
 import BambooAbi from './abi/bamboo.json'
 import MasterChefAbi from './abi/masterchef.json'
-import XSushiAbi from './abi/xsushi.json'
 import ERC20Abi from './abi/erc20.json'
 import WBNBAbi from './abi/weth.json'
 import UniOracleABI from './abi/unioracle.json'
@@ -43,7 +42,6 @@ export class Contracts {
   wbnb: Contract
   wbnbPrice: Contract
   pndaPrice: Contract
-  bambooStaking: Contract
   pools: FarmableSupportedPool[]
   blockGasLimit: any
   notifier: any
@@ -64,11 +62,10 @@ export class Contracts {
 
     this.panda = new this.web3.eth.Contract(PandaAbi as AbiItem[])
     this.masterChef = new this.web3.eth.Contract(MasterChefAbi as AbiItem[])
-    this.bambooStaking = new this.web3.eth.Contract(BambooAbi)
+    this.bambooStaking = new this.web3.eth.Contract(BambooAbi as AbiItem[])
     this.wbnb = new this.web3.eth.Contract(WBNBAbi as AbiItem[])
     this.wbnbPrice = new this.web3.eth.Contract(ChainOracle as AbiItem[])
     this.pndaPrice = new this.web3.eth.Contract(UniOracleABI as AbiItem[])
-    this.bambooStaking = new this.web3.eth.Contract(XSushiAbi as AbiItem[])
 
     this.pools =
       networkId == 56
