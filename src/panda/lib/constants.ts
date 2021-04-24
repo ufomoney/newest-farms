@@ -1317,9 +1317,9 @@ export const supportedPools: SupportedPool[] = [
       56: '0x63870a18b6e42b01ef1ad8a2302ef50b7132054f',
     },
     tokenDecimals: 6,
-    name: 'Blink Brownie',
-    symbol: 'BLINK-BNB',
-    tokenSymbol: 'BLINK',
+    name: 'BLink Brownie',
+    symbol: 'BLK-BNB',
+    tokenSymbol: 'BLK',
     icon: '/brownie.png',
     refUrl:
       'https://pandaswap.xyz/#/swap?outputCurrency=0x63870a18b6e42b01ef1ad8a2302ef50b7132054f',
