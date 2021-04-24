@@ -200,7 +200,7 @@ export const supportedPools: SupportedPool[] = [
     tokenDecimals: 18,
     name: 'PNDA-USDC',
     symbol: 'PNDA-USDC',
-    tokenSymbol: 'USDC',
+    tokenSymbol: 'PNDA',
     icon: '/pnda.png',
     refUrl:
       'https://pandaswap.xyz/#/swap?outputCurrency=0x47DcC83a14aD53Ed1f13d3CaE8AA4115f07557C0',
@@ -216,7 +216,7 @@ export const supportedPools: SupportedPool[] = [
     tokenDecimals: 18,
     name: 'PNDA-BUSD',
     symbol: 'PNDA-BUSD',
-    tokenSymbol: 'BUSD',
+    tokenSymbol: 'PNDA',
     icon: '/pnda.png',
     refUrl:
       'https://pandaswap.xyz/#/swap?outputCurrency=0x47DcC83a14aD53Ed1f13d3CaE8AA4115f07557C0',
@@ -232,7 +232,7 @@ export const supportedPools: SupportedPool[] = [
     tokenDecimals: 18,
     name: 'PNDA-DAI',
     symbol: 'PNDA-DAI',
-    tokenSymbol: 'DAI',
+    tokenSymbol: 'PNDA',
     icon: '/pnda.png',
     refUrl:
       'https://pandaswap.xyz/#/swap?outputCurrency=0x47DcC83a14aD53Ed1f13d3CaE8AA4115f07557C0',
