@@ -4,7 +4,7 @@ import Spacer from '../../components/Spacer'
 import usePanda from '../../hooks/usePanda'
 import { getRhinoContract, getRhinoSupply } from '../../panda/utils'
 import BigNumber from 'bignumber.js'
-import Farm from '../Farm'
+import RhinoFarm from './components/RhinoFarm'
 import SwapRhino from './components/SwapRhino'
 import SwapPanda from './components/SwapPanda'
 import { useRhinoSwapWithdrawableBalances } from '../../hooks/useRhinoSwap'
@@ -43,16 +43,17 @@ const StakeRhino: React.FC = () => {
 					</StyledCardWrapper>
 					<Spacer />
 					<StyledCardWrapper>
-						<SwapPanda pndaBalance={pnda} />
+						<SwapPanda 
+						pndaBalance={pnda} 
+						/>
 					</StyledCardWrapper>
 				</StyledCardsWrapper>
 				<Spacer size="lg" />
-
-				<StyledCardsWrapper>
+			{/*	<StyledCardsWrapper>
 					<StyledCardWrapper>
-						<Farm />
+						<RhinoFarm />
 					</StyledCardWrapper>
-				</StyledCardsWrapper>
+			</StyledCardsWrapper> */}
 				<StyledInfo>
 					<p>
 						ℹ️️ This Panda:Rhino 1:1 swap contract has a 2% fee in both

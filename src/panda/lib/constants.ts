@@ -256,7 +256,7 @@ export const supportedPools: SupportedPool[] = [
     tokenAddresses: {
       56: '0xd2eca3cff5f09cfc9c425167d12f0a005fc97c8c',
     },
-    tokenDecimals: 18,
+    tokenDecimals: 9,
     name: 'RHINO-BNB',
     symbol: 'RHINO-BNB',
     tokenSymbol: 'RHINO',

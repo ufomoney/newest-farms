@@ -14,10 +14,10 @@ interface WithdrawModalProps extends ModalProps {
 }
 
 const WithdrawModal: React.FC<WithdrawModalProps> = ({
-	max,
 	onConfirm,
 	onDismiss,
-	tokenName = '',
+	max,
+	tokenName = 'RHINO',
 }) => {
 	const [val, setVal] = useState('')
 	const [pendingTx, setPendingTx] = useState(false)
@@ -39,11 +39,11 @@ const WithdrawModal: React.FC<WithdrawModalProps> = ({
 
 	return (
 		<Modal>
-			<ModalTitle text={`Withdraw ${tokenName} Tokens`} />
+			<ModalTitle text={`Withdraw ${tokenName}`} />
 			<TokenInput
-				value={val}
 				onSelectMax={handleSelectMax}
 				onChange={handleChange}
+				value={val}
 				max={fullBalance}
 				symbol={tokenName}
 			/>

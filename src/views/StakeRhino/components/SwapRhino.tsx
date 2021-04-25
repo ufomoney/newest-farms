@@ -11,6 +11,7 @@ import useTokenBalance from '../../../hooks/useTokenBalance'
 import { Contract } from 'web3-eth-contract'
 import useModal from '../../../hooks/useModal'
 import WithdrawModal from './WithdrawModal'
+import RhinoWithdrawModal from './RhinoWithdrawModal'
 import useWithdrawRhino from '../../../hooks/useWithdrawRhino'
 import BigNumber from 'bignumber.js'
 import { contractAddresses } from '../../../panda/lib/constants'
@@ -18,6 +19,7 @@ import { getRhinoContract } from '../../../panda/utils'
 import useDeposit from '../../../hooks/useDepositRhino'
 import usePanda from '../../../hooks/usePanda'
 import DepositModal from './DepositModal'
+import rhino from '../../../assets/img/rhino-a.png'
 
 interface SwapRhinoProps {
 	rhinoStaking: Contract
@@ -39,7 +41,7 @@ const SwapRhino: React.FC<SwapRhinoProps> = ({ rhinoBalance }) => {
 	const tokenName = 'RHINO'
 
 	const [onPresentWithdraw] = useModal(
-		<WithdrawModal
+		<RhinoWithdrawModal
 			max={rhinoBalance}
 			onConfirm={onWithdraw}
 			tokenName={tokenName}
@@ -60,7 +62,7 @@ const SwapRhino: React.FC<SwapRhinoProps> = ({ rhinoBalance }) => {
 				<StyledCardContentInner>
 					<StyledCardHeader>
 						<CardIcon>
-							<span role="img">🦏</span>
+							<img src={rhino} alt="" height="50" />
 						</CardIcon>
 						<Value value={getBalanceNumber(walletBalance, 9)} />
 						<Label text={`${tokenName} Tokens Depositable`} />
@@ -77,16 +79,9 @@ const SwapRhino: React.FC<SwapRhinoProps> = ({ rhinoBalance }) => {
 							<Button
 								disabled={rhinoBalance.eq(new BigNumber(0))}
 								text="Withdraw RHINO"
-								onClick={onPresentDeposit}
+								onClick={onPresentWithdraw}
 							/>
-							<StyledActionSpacer />
 					</StyledCardActions>
-					<StyledActionSpacer />
-					<Button
-						disabled={rhinoBalance.eq(new BigNumber(0))}
-						text="Convert to PNDA"
-						onClick={onPresentDeposit}
-					/>
 				</StyledCardContentInner>
 			</CardContent>
 		</Card>

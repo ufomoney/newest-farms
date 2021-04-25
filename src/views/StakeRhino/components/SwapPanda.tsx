@@ -11,9 +11,9 @@ import useModal from '../../../hooks/useModal'
 import useTokenBalance from '../../../hooks/useTokenBalance'
 import { getBalanceNumber } from '../../../utils/formatBalance'
 import DepositModal from './DepositModal'
+import WithdrawModal from './WithdrawModal'
 import { contractAddresses } from '../../../panda/lib/constants'
-import useDepositRhino from '../../../hooks/useDepositRhino'
-import useWithdrawRhino from '../../../hooks/useWithdrawRhino'
+import useWithdraw from '../../../hooks/useWithdrawRhino'
 import useAllowanceRhino from '../../../hooks/useAllowanceRhino'
 import useApproveRhino from '../../../hooks/useApproveRhino'
 import pnda from '../../../assets/img/pnda.png'
@@ -37,12 +37,20 @@ const SwapPanda: React.FC<SwapPandaProps> = ({ pndaBalance }) => {
 	const { onApprove } = useApproveRhino()
 
 	const { onDeposit } = useDeposit(address)
-	const { onWithdraw } = useWithdrawRhino()
+	const { onWithdraw } = useWithdraw()
 
 	const [onPresentDeposit] = useModal(
 		<DepositModal
 			max={walletBalance}
 			onConfirm={onDeposit}
+			tokenName={tokenName}
+		/>,
+	)
+
+	const [onPresentWithdraw] = useModal(
+		<WithdrawModal
+			max={walletBalance}
+			onConfirm={onWithdraw}
 			tokenName={tokenName}
 		/>,
 	)
@@ -91,17 +99,11 @@ const SwapPanda: React.FC<SwapPandaProps> = ({ pndaBalance }) => {
 								<Button
 									disabled={pndaBalance.eq(new BigNumber(0))}
 									text="Withdraw PNDA"
-									onClick={onPresentDeposit}
+									onClick={onPresentWithdraw}
 								/>
 							</>
 						)}
 					</StyledCardActions>
-				<StyledActionSpacer />
-				<Button
-					disabled={pndaBalance.eq(new BigNumber(0))}
-					text="Convert to RHINO"
-					onClick={onPresentDeposit}
-				/>
 				</StyledCardContentInner>
 			</CardContent>
 		</Card>

@@ -1,19 +1,21 @@
 import BigNumber from 'bignumber.js'
 import React, { useCallback, useMemo, useState } from 'react'
-import Button from '../../../components/Button'
-import Modal, { ModalProps } from '../../../components/Modal'
-import ModalActions from '../../../components/ModalActions'
-import ModalTitle from '../../../components/ModalTitle'
-import TokenInput from '../../../components/TokenInput'
-import { getFullDisplayBalance } from '../../../utils/formatBalance'
+import Button from '../../../../../components/Button'
+import Modal, { ModalProps } from '../../../../../components/Modal'
+import ModalActions from '../../../../../components/ModalActions'
+import ModalTitle from '../../../../../components/ModalTitle'
+import ModalContent from '../../../../../components/ModalContent'
+import TokenInput from '../../../../../components/TokenInput'
+import { getFullDisplayBalance } from '../../../../../utils/formatBalance'
+import styled from 'styled-components'
 
-interface WithdrawModalProps extends ModalProps {
+interface DepositModalProps extends ModalProps {
 	max: BigNumber
 	onConfirm: (amount: string) => void
 	tokenName?: string
 }
 
-const WithdrawModal: React.FC<WithdrawModalProps> = ({
+const DepositModal: React.FC<DepositModalProps> = ({
 	max,
 	onConfirm,
 	onDismiss,
@@ -39,7 +41,7 @@ const WithdrawModal: React.FC<WithdrawModalProps> = ({
 
 	return (
 		<Modal>
-			<ModalTitle text={`Withdraw ${tokenName} Tokens`} />
+			<ModalTitle text={`Deposit ${tokenName} Tokens`} />
 			<TokenInput
 				value={val}
 				onSelectMax={handleSelectMax}
@@ -60,8 +62,13 @@ const WithdrawModal: React.FC<WithdrawModalProps> = ({
 					}}
 				/>
 			</ModalActions>
+			<ModalContent>
+				{
+					"Remember a 0.75% fee will be added to the treasury when depositing but you'll earn the APY to offset it."
+				}
+			</ModalContent>
 		</Modal>
 	)
 }
 
-export default WithdrawModal
+export default DepositModal

@@ -1,11 +1,12 @@
 import BigNumber from 'bignumber.js'
 import React, { useCallback, useMemo, useState } from 'react'
-import Button from '../../../components/Button'
-import Modal, { ModalProps } from '../../../components/Modal'
-import ModalActions from '../../../components/ModalActions'
-import ModalTitle from '../../../components/ModalTitle'
-import TokenInput from '../../../components/TokenInput'
-import { getFullDisplayBalance } from '../../../utils/formatBalance'
+import Button from '../../../../../components/Button'
+import Modal, { ModalProps } from '../../../../../components/Modal'
+import ModalActions from '../../../../../components/ModalActions'
+import ModalTitle from '../../../../../components/ModalTitle'
+import ModalContent from '../../../../../components/ModalContent'
+import TokenInput from '../../../../../components/TokenInput'
+import { getFullDisplayBalance } from '../../../../../utils/formatBalance'
 
 interface WithdrawModalProps extends ModalProps {
 	max: BigNumber
@@ -14,9 +15,9 @@ interface WithdrawModalProps extends ModalProps {
 }
 
 const WithdrawModal: React.FC<WithdrawModalProps> = ({
-	max,
 	onConfirm,
 	onDismiss,
+	max,
 	tokenName = '',
 }) => {
 	const [val, setVal] = useState('')
@@ -39,11 +40,11 @@ const WithdrawModal: React.FC<WithdrawModalProps> = ({
 
 	return (
 		<Modal>
-			<ModalTitle text={`Withdraw ${tokenName} Tokens`} />
+			<ModalTitle text={`Withdraw ${tokenName}`} />
 			<TokenInput
-				value={val}
 				onSelectMax={handleSelectMax}
 				onChange={handleChange}
+				value={val}
 				max={fullBalance}
 				symbol={tokenName}
 			/>
@@ -60,6 +61,11 @@ const WithdrawModal: React.FC<WithdrawModalProps> = ({
 					}}
 				/>
 			</ModalActions>
+			<ModalContent>
+				{
+					'Remember the longer you stay in a pool the lower your fee. Read the docs for details, but most users will want to stay in a pool 5 days or longer.'
+				}
+			</ModalContent>
 		</Modal>
 	)
 }
