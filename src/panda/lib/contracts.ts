@@ -11,6 +11,7 @@ import {
 import UNIV2PairAbi from './abi/uni_v2_lp.json'
 import PandaAbi from './abi/panda.json'
 import BambooAbi from './abi/bamboo.json'
+import RhinoAbi from './abi/rhino.json'
 import MasterChefAbi from './abi/masterchef.json'
 import ERC20Abi from './abi/erc20.json'
 import WBNBAbi from './abi/weth.json'
@@ -39,6 +40,8 @@ export class Contracts {
   defaultGasPrice: string
   masterChef: Contract
   bambooStaking: Contract
+  rhinoStaking: Contract
+  rhino: Contract
   wbnb: Contract
   wbnbPrice: Contract
   pndaPrice: Contract
@@ -63,6 +66,7 @@ export class Contracts {
     this.panda = new this.web3.eth.Contract(PandaAbi as AbiItem[])
     this.masterChef = new this.web3.eth.Contract(MasterChefAbi as AbiItem[])
     this.bambooStaking = new this.web3.eth.Contract(BambooAbi as AbiItem[])
+    this.rhinoStaking = new this.web3.eth.Contract(RhinoAbi as AbiItem[])
     this.wbnb = new this.web3.eth.Contract(WBNBAbi as AbiItem[])
     this.wbnbPrice = new this.web3.eth.Contract(ChainOracle as AbiItem[])
     this.pndaPrice = new this.web3.eth.Contract(UniOracleABI as AbiItem[])
@@ -98,6 +102,9 @@ export class Contracts {
       setProvider(this.wbnbPrice, contractAddresses.wbnbPrice[networkId])
       setProvider(this.pndaPrice, contractAddresses.pndaPrice[networkId])
       setProvider(this.bambooStaking, contractAddresses.bamboo[networkId])
+      setProvider(this.rhinoStaking, contractAddresses.rhinoStaking[networkId])
+      setProvider(this.rhino, contractAddresses.rhino[networkId])
+
     }
     if (this.pools) {
       this.pools.forEach(({ lpContract, lpAddress, tokenAddress }) => {

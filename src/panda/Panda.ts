@@ -28,6 +28,7 @@ export class Panda {
   public readonly testing: EVM | null | undefined
   public readonly snapshot: Promise<string> | null | undefined
   public readonly pndaAddress: string
+  public readonly rhinoAddress: string
   public readonly masterChefAddress: string
   public readonly wbnbAddress: string
   public readonly wbnbPriceAddress: string
@@ -72,6 +73,7 @@ export class Panda {
     this.contracts = new Contracts(realProvider, networkId, this.web3, options)
     if (networkId == 56) {
       this.pndaAddress = contractAddresses.panda[networkId]
+      this.rhinoAddress = contractAddresses.rhino[networkId]
       this.masterChefAddress = contractAddresses.masterChef[networkId]
       this.wbnbAddress = contractAddresses.wbnb[networkId]
       this.wbnbPriceAddress = contractAddresses.wbnbPrice[networkId]

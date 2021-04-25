@@ -109,6 +109,9 @@ export const contractAddresses = {
   bamboo: {
     56: '0xEF88e0d265dDC8f5E725a4fDa1871F9FE21B11E2',
   },
+  rhinoStaking: {
+    56: '0x745c8E1c0315162C33408454b48E53C9F178eB68',
+  },
   rhino: {
     56: '0xD2ECa3cff5F09Cfc9C425167d12F0a005Fc97c8c',
   },
@@ -244,6 +247,38 @@ export const supportedPools: SupportedPool[] = [
     icon: '/pnda.png',
     refUrl:
       'https://pandaswap.xyz/#/swap?outputCurrency=0x47DcC83a14aD53Ed1f13d3CaE8AA4115f07557C0',
+  },
+  {
+    pid: 77,
+    lpAddresses: {
+      56: '0x999fd87aA406adB81809bab15681f655d8a049FF',
+    },
+    tokenAddresses: {
+      56: '0xd2eca3cff5f09cfc9c425167d12f0a005fc97c8c',
+    },
+    tokenDecimals: 18,
+    name: 'RHINO-BNB',
+    symbol: 'RHINO-BNB',
+    tokenSymbol: 'RHINO',
+    icon: '/pnda.png',
+    refUrl:
+      'https://pandaswap.xyz/#/swap?outputCurrency=0xd2eca3cff5f09cfc9c425167d12f0a005fc97c8c',
+  },
+  {
+    pid: 76,
+    lpAddresses: {
+      56: '0xa300526D664a0227c2fdFC0b423750E371Ab2ebD',
+    },
+    tokenAddresses: {
+      56: '0xef88e0d265ddc8f5e725a4fda1871f9fe21b11e2',
+    },
+    tokenDecimals: 18,
+    name: 'BAMBOO-BNB',
+    symbol: 'BAMBOO-BNB',
+    tokenSymbol: 'BAMBOO',
+    icon: '/pnda.png',
+    refUrl:
+      'https://pandaswap.xyz/#/swap?outputCurrency=0xef88e0d265ddc8f5e725a4fda1871f9fe21b11e2',
   },
   {
     pid: 5,

@@ -24,6 +24,7 @@ export const getPandaPriceAddress = (pnda: Panda): string => {
 export const getPandaAddress = (pnda: Panda): string => {
   return pnda && pnda.pndaAddress
 }
+
 export const getWbnbContract = (pnda: Panda): Contract => {
   return pnda && pnda.contracts && pnda.contracts.wbnb
 }
@@ -45,6 +46,14 @@ export const getPandaContract = (pnda: Panda): Contract => {
 
 export const getBambooStakingContract = (pnda: Panda): Contract => {
   return pnda && pnda.contracts && pnda.contracts.bambooStaking
+}
+
+export const getRhinoStakingContract = (pnda: Panda): Contract => {
+  return pnda && pnda.contracts && pnda.contracts.rhinoStaking
+}
+
+export const getRhino = (pnda: Panda): Contract => {
+  return pnda && pnda.contracts && pnda.contracts.rhino
 }
 
 export const getFarms = (pnda: Panda): Farm[] => {
@@ -253,6 +262,11 @@ export const getPandaSupply = async (pnda: Panda): Promise<BigNumber>  => {
 export const getBambooSupply = async (pnda: Panda): Promise<BigNumber> => {
   const bambooStakingContract = getBambooStakingContract(pnda)
   return new BigNumber(await bambooStakingContract.methods.totalSupply().call())
+}
+
+export const getRhinoSupply = async (pnda: Panda): Promise<BigNumber> => {
+  const rhinoContract = getRhino(pnda)
+  return new BigNumber(await rhinoContract.methods.totalSupply().call())
 }
 
 export const getReferrals = async (
