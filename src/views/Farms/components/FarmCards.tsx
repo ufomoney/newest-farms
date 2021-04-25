@@ -1,5 +1,5 @@
 import BigNumber from 'bignumber.js'
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useMemo, useState } from 'react'
 import Countdown from 'react-countdown'
 import type { CountdownRenderProps } from 'react-countdown'
 import styled, { keyframes } from 'styled-components'
@@ -31,10 +31,12 @@ const cardsPerRow = 3
 
 const FarmCards: React.FC = () => {
 	const [farms] = useFarms()
-	const { account } = useWallet()
 	const stakedValue = useAllStakedValue()
 
-	const pndaIndex = farms.findIndex(({ tokenSymbol }) => tokenSymbol === 'PNDA')
+	const pndaIndex = useMemo(
+		() => farms.findIndex(({ tokenSymbol }) => tokenSymbol === 'PNDA'),
+		[farms],
+	)
 
 	const pndaPrice =
 		pndaIndex >= 0 && stakedValue[pndaIndex]
@@ -131,7 +133,7 @@ interface FarmCardProps {
 	farm: FarmWithStakedValue
 }
 
-const FarmCard: React.FC<FarmCardProps> = ({ farm }) => {
+export const FarmCard: React.FC<FarmCardProps> = ({ farm }) => {
 	const [startTime, setStartTime] = useState(0)
 	const [harvestable, setHarvestable] = useState(0)
 

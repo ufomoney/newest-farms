@@ -17,24 +17,31 @@ import useWithdrawRhino from '../../../hooks/useWithdrawRhino'
 import useAllowanceRhino from '../../../hooks/useAllowanceRhino'
 import useApproveRhino from '../../../hooks/useApproveRhino'
 import pnda from '../../../assets/img/pnda.png'
+import useDeposit from '../../../hooks/useDepositRhino'
+import { getPandaAddress } from '../../../panda/utils'
+import usePanda from '../../../hooks/usePanda'
 
-interface StakeProps {}
+interface SwapPandaProps {
+	pndaBalance: BigNumber
+}
 
-const StakePanda: React.FC<StakeProps> = ({}) => {
+const SwapPanda: React.FC<SwapPandaProps> = ({ pndaBalance }) => {
+	const panda = usePanda()
 	const tokenName = 'PNDA'
+	const address = getPandaAddress(panda)
+	const walletBalance = useTokenBalance(address)
+
 	const [requestedApproval, setRequestedApproval] = useState(false)
 
 	const allowance = useAllowanceRhino()
 	const { onApprove } = useApproveRhino()
 
-	const tokenBalance = useTokenBalance(contractAddresses.panda[56])
-
-	const { onDeposit } = useDepositRhino()
+	const { onDeposit } = useDeposit(address)
 	const { onWithdraw } = useWithdrawRhino()
 
 	const [onPresentDeposit] = useModal(
 		<DepositModal
-			max={tokenBalance}
+			max={walletBalance}
 			onConfirm={onDeposit}
 			tokenName={tokenName}
 		/>,
@@ -61,8 +68,10 @@ const StakePanda: React.FC<StakeProps> = ({}) => {
 						<CardIcon>
 							<img src={pnda} alt="" height="50" />
 						</CardIcon>
-						<Value value={getBalanceNumber(tokenBalance)} />
-						<Label text={`PNDA Tokens Available`} />
+						<Value value={getBalanceNumber(walletBalance)} />
+						<Label text={`${tokenName} Tokens Depositable`} />
+						<Value value={getBalanceNumber(pndaBalance)} />
+						<Label text={`${tokenName} Tokens Deposited`} />
 					</StyledCardHeader>
 					<StyledCardActions>
 						{!allowance.toNumber() ? (
@@ -74,14 +83,25 @@ const StakePanda: React.FC<StakeProps> = ({}) => {
 						) : (
 							<>
 								<Button
-									disabled={tokenBalance.eq(new BigNumber(0))}
-									text="Convert to RHINO"
+									disabled={walletBalance.eq(new BigNumber(0))}
+									text="Deposit PNDA"
 									onClick={onPresentDeposit}
 								/>
 								<StyledActionSpacer />
+								<Button
+									disabled={pndaBalance.eq(new BigNumber(0))}
+									text="Withdraw PNDA"
+									onClick={onPresentDeposit}
+								/>
 							</>
 						)}
 					</StyledCardActions>
+				<StyledActionSpacer />
+				<Button
+					disabled={pndaBalance.eq(new BigNumber(0))}
+					text="Convert to RHINO"
+					onClick={onPresentDeposit}
+				/>
 				</StyledCardContentInner>
 			</CardContent>
 		</Card>
@@ -113,4 +133,4 @@ const StyledCardContentInner = styled.div`
 	justify-content: space-between;
 `
 
-export default StakePanda
+export default SwapPanda

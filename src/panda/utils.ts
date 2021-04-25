@@ -48,14 +48,12 @@ export const getBambooStakingContract = (pnda: Panda): Contract => {
   return pnda && pnda.contracts && pnda.contracts.bambooStaking
 }
 
-export const getRhinoContract = (pnda: Panda): Contract | undefined => {
-  console.log(pnda && pnda.contracts && pnda.contracts.rhino, 'rhino')
-  return pnda && pnda.contracts && pnda.contracts.rhino
+export const getRhinoContract = (pnda: Panda | undefined): Contract | undefined => {
+  return pnda?.contracts.rhino
 }
 
-export const getRhinoStakingContract = (pnda: Panda): Contract | undefined => {
-  console.log(pnda && pnda.contracts && pnda.contracts.rhinoStaking, 'rhinoStaking')
-  return pnda && pnda.contracts && pnda.contracts.rhinoStaking
+export const getRhinoStakingContract = (pnda: Panda | null | undefined): Contract | undefined => {
+  return pnda?.contracts.rhinoStaking
 }
 
 export const getFarms = (pnda: Panda): Farm[] => {
@@ -369,4 +367,36 @@ export const withdraw = async (
       console.log(tx)
       return tx.transactionHash
     })
+}
+
+export const getWithdrawableBalance = async (
+  rhinoStakingContract: Contract,
+  account: string,
+  tokenAddress: string,
+): Promise<BigNumber> => {
+  try {
+    const amount = await rhinoStakingContract.methods
+      .withdrawableBalance(account, tokenAddress)
+      .call()
+      console.log('withdrawableBalance', amount)
+    return new BigNumber(amount)
+  } catch {
+    return new BigNumber(0)
+  }
+}
+
+export const swapWithFee = async (
+  rhinoStakingContract: Contract,
+  fromTokenAddress: string,
+  toTokenAddress: string,
+): Promise<BigNumber> => {
+  try {
+    const amount = await rhinoStakingContract.methods
+      .swapWithFee(fromTokenAddress, toTokenAddress)
+      .call()
+      console.log('withdrawableBalance', amount)
+    return new BigNumber(amount)
+  } catch {
+    return new BigNumber(0)
+  }
 }

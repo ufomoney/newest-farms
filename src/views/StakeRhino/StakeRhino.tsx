@@ -2,16 +2,17 @@ import React, { useEffect, useMemo, useState } from 'react'
 import styled from 'styled-components'
 import Spacer from '../../components/Spacer'
 import usePanda from '../../hooks/usePanda'
-import UnstakeRhino from './components/UnstakeRhino'
-import StakePanda from './components/StakePanda'
-
 import { getRhinoContract, getRhinoSupply } from '../../panda/utils'
 import BigNumber from 'bignumber.js'
+import Farm from '../Farm'
+import SwapRhino from './components/SwapRhino'
+import SwapPanda from './components/SwapPanda'
+import { useRhinoSwapWithdrawableBalances } from '../../hooks/useRhinoSwap'
 
 const StakeRhino: React.FC = () => {
-	const [totalSupply, setTotalSupply] = useState<BigNumber>()
-
 	const panda = usePanda()
+	const [totalSupply, setTotalSupply] = useState<BigNumber>()
+	const { rhino, pnda } = useRhinoSwapWithdrawableBalances(panda)
 
 	useEffect(() => {
 		window.scrollTo(0, 0)
@@ -27,21 +28,31 @@ const StakeRhino: React.FC = () => {
 		}
 	}, [panda, setTotalSupply])
 
-	const lpContract = useMemo(() => getRhinoContract(panda), [panda])
+	const rhinoContract = useMemo(() => getRhinoContract(panda), [panda])
 
 	return (
 		<>
 			<StyledFarm>
 				<StyledCardsWrapper>
 					<StyledCardWrapper>
-						<UnstakeRhino lpContract={lpContract} />
+						<SwapRhino
+							rhinoStaking={rhinoContract}
+							rhinoBalance={rhino}
+							totalSupply={totalSupply}
+						/>
 					</StyledCardWrapper>
 					<Spacer />
 					<StyledCardWrapper>
-						<StakePanda />
+						<SwapPanda pndaBalance={pnda} />
 					</StyledCardWrapper>
 				</StyledCardsWrapper>
 				<Spacer size="lg" />
+
+				<StyledCardsWrapper>
+					<StyledCardWrapper>
+						<Farm />
+					</StyledCardWrapper>
+				</StyledCardsWrapper>
 				<StyledInfo>
 					<p>
 						ℹ️️ This Panda:Rhino 1:1 swap contract has a 2% fee in both
