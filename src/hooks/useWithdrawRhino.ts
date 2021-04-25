@@ -3,7 +3,11 @@ import { useCallback } from 'react'
 import usePanda from './usePanda'
 import { useWallet } from '@binance-chain/bsc-use-wallet'
 
-import { leave, getRhinoStakingContract } from '../panda/utils'
+import {
+  getRhinoStakingContract,
+  withdraw,
+  getRhinoContract,
+} from '../panda/utils'
 
 const useWithdraw = () => {
   const { account } = useWallet()
@@ -11,8 +15,9 @@ const useWithdraw = () => {
 
   const handle = useCallback(
     async (amount: string) => {
-      const txHash = await leave(
+      const txHash = await withdraw(
         getRhinoStakingContract(panda),
+        getRhinoContract(panda).options.address,
         amount,
         account,
       )

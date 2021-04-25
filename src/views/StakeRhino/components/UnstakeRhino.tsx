@@ -6,31 +6,29 @@ import CardContent from '../../../components/CardContent'
 import CardIcon from '../../../components/CardIcon'
 import Label from '../../../components/Label'
 import Value from '../../../components/Value'
-import useReward from '../../../hooks/useReward'
 import { getBalanceNumber } from '../../../utils/formatBalance'
 import useTokenBalance from '../../../hooks/useTokenBalance'
 import { Contract } from 'web3-eth-contract'
 import useModal from '../../../hooks/useModal'
 import WithdrawModal from './WithdrawModal'
-import useLeave from '../../../hooks/useLeave'
-import bamboo from '../../../assets/img/bamboo.png'
+import useWithdrawRhino from '../../../hooks/useWithdrawRhino'
 
 interface HarvestProps {
-	lpContract: Contract
+	lpContract: Contract | undefined
 }
 
 const UnstakeRhino: React.FC<HarvestProps> = ({ lpContract }) => {
-	const RhinoBalance = useTokenBalance(lpContract.options.address)
+	const rhinoBalance = useTokenBalance(lpContract?.options.address)
 	const [pendingTx, setPendingTx] = useState(false)
 
-	const { onLeave } = useLeave()
+	const { onWithdraw } = useWithdrawRhino()
 
 	const tokenName = 'RHINO'
 
 	const [onPresentLeave] = useModal(
 		<WithdrawModal
-			max={RhinoBalance}
-			onConfirm={onLeave}
+			max={rhinoBalance}
+			onConfirm={onWithdraw}
 			tokenName={tokenName}
 		/>,
 	)
@@ -41,14 +39,14 @@ const UnstakeRhino: React.FC<HarvestProps> = ({ lpContract }) => {
 				<StyledCardContentInner>
 					<StyledCardHeader>
 						<CardIcon>
-						🎍
+							<span role="img">🦏</span>
 						</CardIcon>
-						<Value value={getBalanceNumber(RhinoBalance)} />
+						<Value value={getBalanceNumber(rhinoBalance)} />
 						<Label text="RHINO Tokens Available" />
 					</StyledCardHeader>
 					<StyledCardActions>
 						<Button
-							disabled={!RhinoBalance.toNumber() || pendingTx}
+							disabled={!rhinoBalance.toNumber() || pendingTx}
 							text={pendingTx ? 'Converting to PNDA' : 'Convert to PNDA'}
 							onClick={async () => {
 								setPendingTx(true)
@@ -73,11 +71,6 @@ const StyledCardActions = styled.div`
 	justify-content: center;
 	margin-top: ${(props) => props.theme.spacing[6]}px;
 	width: 100%;
-`
-
-const StyledSpacer = styled.div`
-	height: ${(props) => props.theme.spacing[4]}px;
-	width: ${(props) => props.theme.spacing[4]}px;
 `
 
 const StyledCardContentInner = styled.div`

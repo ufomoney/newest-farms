@@ -48,12 +48,14 @@ export const getBambooStakingContract = (pnda: Panda): Contract => {
   return pnda && pnda.contracts && pnda.contracts.bambooStaking
 }
 
-export const getRhinoStakingContract = (pnda: Panda): Contract => {
-  return pnda && pnda.contracts && pnda.contracts.rhinoStaking
+export const getRhinoContract = (pnda: Panda): Contract | undefined => {
+  console.log(pnda && pnda.contracts && pnda.contracts.rhino, 'rhino')
+  return pnda && pnda.contracts && pnda.contracts.rhino
 }
 
-export const getRhinoContract = (pnda: Panda): Contract => {
-  return pnda && pnda.contracts && pnda.contracts.rhino
+export const getRhinoStakingContract = (pnda: Panda): Contract | undefined => {
+  console.log(pnda && pnda.contracts && pnda.contracts.rhinoStaking, 'rhinoStaking')
+  return pnda && pnda.contracts && pnda.contracts.rhinoStaking
 }
 
 export const getFarms = (pnda: Panda): Farm[] => {
@@ -266,7 +268,7 @@ export const getBambooSupply = async (pnda: Panda): Promise<BigNumber> => {
 
 export const getRhinoSupply = async (pnda: Panda): Promise<BigNumber> => {
   const rhinoContract = getRhinoContract(pnda)
-  return new BigNumber(await rhinoContract.methods.totalSupply().call())
+  return new BigNumber(await rhinoContract.methods.totalSupply)
 }
 
 export const getReferrals = async (
@@ -306,11 +308,11 @@ export const redeem = async (
 }
 
 export const enter = async (
-  contract: Contract,
+  contract: Contract | undefined,
   amount: string,
   account: string,
 ): Promise<string> => {
-  return contract.methods
+  return contract?.methods
     .enter(new BigNumber(amount).times(new BigNumber(10).pow(18)).toString())
     .send({ from: account })
     .on('transactionHash', (tx: { transactionHash: string }) => {
@@ -326,6 +328,42 @@ export const leave = async (
 ): Promise<string> => {
   return contract.methods
     .leave(new BigNumber(amount).times(new BigNumber(10).pow(18)).toString())
+    .send({ from: account })
+    .on('transactionHash', (tx: { transactionHash: string }) => {
+      console.log(tx)
+      return tx.transactionHash
+    })
+}
+
+export const deposit = async (
+  contract: Contract,
+  depositTokenAddress: string,
+  amount: string,
+  account: string,
+): Promise<string> => {
+  return contract.methods
+    .deposit(
+      depositTokenAddress,
+      new BigNumber(amount).times(new BigNumber(10).pow(18)).toString(),
+    )
+    .send({ from: account })
+    .on('transactionHash', (tx: { transactionHash: string }) => {
+      console.log(tx)
+      return tx.transactionHash
+    })
+}
+
+export const withdraw = async (
+  contract: Contract,
+  withdrawTokenAddress: string,
+  amount: string,
+  account: string,
+): Promise<string> => {
+  return contract.methods
+    .withdraw(
+      withdrawTokenAddress,
+      new BigNumber(amount).times(new BigNumber(10).pow(18)).toString(),
+    )
     .send({ from: account })
     .on('transactionHash', (tx: { transactionHash: string }) => {
       console.log(tx)
