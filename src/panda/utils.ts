@@ -52,7 +52,7 @@ export const getRhinoStakingContract = (pnda: Panda): Contract => {
   return pnda && pnda.contracts && pnda.contracts.rhinoStaking
 }
 
-export const getRhino = (pnda: Panda): Contract => {
+export const getRhinoContract = (pnda: Panda): Contract => {
   return pnda && pnda.contracts && pnda.contracts.rhino
 }
 
@@ -265,7 +265,7 @@ export const getBambooSupply = async (pnda: Panda): Promise<BigNumber> => {
 }
 
 export const getRhinoSupply = async (pnda: Panda): Promise<BigNumber> => {
-  const rhinoContract = getRhino(pnda)
+  const rhinoContract = getRhinoContract(pnda)
   return new BigNumber(await rhinoContract.methods.totalSupply().call())
 }
 

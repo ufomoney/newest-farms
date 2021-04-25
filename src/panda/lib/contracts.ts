@@ -103,7 +103,6 @@ export class Contracts {
       setProvider(this.pndaPrice, contractAddresses.pndaPrice[networkId])
       setProvider(this.bambooStaking, contractAddresses.bamboo[networkId])
       setProvider(this.rhinoStaking, contractAddresses.rhinoStaking[networkId])
-      setProvider(this.rhino, contractAddresses.rhino[networkId])
 
     }
     if (this.pools) {
