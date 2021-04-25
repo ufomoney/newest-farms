@@ -3,11 +3,7 @@ import { useCallback } from 'react'
 import usePanda from './usePanda'
 import { useWallet } from '@binance-chain/bsc-use-wallet'
 
-import {
-  getRhinoStakingContract,
-  deposit,
-  getRhinoContract,
-} from '../panda/utils'
+import { getRhinoStakingContract, deposit, getPandaAddress } from '../panda/utils'
 
 const useDeposit = () => {
   const { account } = useWallet()
@@ -17,7 +13,7 @@ const useDeposit = () => {
     async (amount: string) => {
       const txHash = await deposit(
         getRhinoStakingContract(panda),
-        getRhinoContract(panda).options.address,
+        getPandaAddress(panda),
         amount,
         account,
       )
