@@ -44,7 +44,7 @@ const UnstakeBamboo: React.FC<HarvestProps> = ({ lpContract }) => {
 							<img src={bmboo} alt="" height="50" />
 						</CardIcon>
 						<Value value={getBalanceNumber(BambooBalance)} />
-						<Label text="Bamboo (BambooBar) Available" />
+						<Label text="BAMBOO Tokens Available" />
 					</StyledCardHeader>
 					<StyledCardActions>
 						<Button

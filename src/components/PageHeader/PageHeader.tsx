@@ -34,10 +34,8 @@ const PageHeader: React.FC<PageHeaderProps> = ({ icon, subtitle, title }) => {
 					<StyledSubtitle>
 						<br />
 						<br />
-						Tip: Using the "Buy" button will take you to exchanges via the Bao
-						affiliate links. 100% of the revenue from these goes back to the Bao
-						treasury which Bao holders own. <br />
-						Using these links grows your bags!
+						💲<b>Pro Tip</b>: The links from the "Buy X" buttons generate
+						revenue for the Panda Treasury which PNDA holders own. <br />
 					</StyledSubtitle>
 				</StyledPageHeader>
 			</Container>

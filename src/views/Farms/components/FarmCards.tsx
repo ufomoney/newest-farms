@@ -86,7 +86,7 @@ const FarmCards: React.FC = () => {
 						))
 					) : (
 						<StyledLoadingWrapper>
-							<Loader text="Cooking the rice ..." />
+							<Loader text="Harvesting the bamboo ..." />
 						</StyledLoadingWrapper>
 					)}
 				</StyledCards>
@@ -102,7 +102,7 @@ const FarmCards: React.FC = () => {
 						))
 					) : (
 						<StyledLoadingWrapper>
-							<Loader text="Cooking the rice ..." />
+							<Loader text="Harvesting the bamboo ..." />
 						</StyledLoadingWrapper>
 					)}
 				</StyledCards>
@@ -118,7 +118,7 @@ const FarmCards: React.FC = () => {
 						))
 					) : (
 						<StyledLoadingWrapper>
-							<Loader text="Cooking the rice ..." />
+							<Loader text="Harvesting the bamboo ..." />
 						</StyledLoadingWrapper>
 					)}
 				</StyledCards>

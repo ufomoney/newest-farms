@@ -98,6 +98,8 @@ export const addressMap = {
   TLM: '0x2222227e22102fe3322098e4cbfe18cfebd57c95',
   UBXT: '0xbbeb90cfb6fafa1f69aa130b7341089abeef5811',
   BUNNY: '0xc9849e6fdb743d08faee3e34dd2d1bc69ea11a51',
+  BAMBOO: '0xEF88e0d265dDC8f5E725a4fDa1871F9FE21B11E2',
+  RHINO: '0xD2ECa3cff5F09Cfc9C425167d12F0a005Fc97c8c',
 }
 
 export const contractAddresses = {
@@ -105,7 +107,10 @@ export const contractAddresses = {
     56: '0x47DcC83a14aD53Ed1f13d3CaE8AA4115f07557C0',
   },
   bamboo: {
-    56: '0x45de240fbe2077dd3e711299538a09854fae9c9b',
+    56: '0xEF88e0d265dDC8f5E725a4fDa1871F9FE21B11E2',
+  },
+  rhino: {
+    56: '0xD2ECa3cff5F09Cfc9C425167d12F0a005Fc97c8c',
   },
   masterChef: {
     56: '0x9942cb4c6180820E6211183ab29831641F58577A',
@@ -115,6 +120,9 @@ export const contractAddresses = {
   },
   wbnbPrice: {
     56: '0x0567F2323251f0Aab15c8dFb1967E4e8A7D42aeE',
+  },
+  bambooMaker: {
+    56: '0xe1a2CD535C4e7d9C2C187e529f9f491cceA41e07',
   },
   pndaPrice: {
     56: '',
@@ -269,9 +277,9 @@ export const supportedPools: SupportedPool[] = [
       'https://pandaswap.xyz/#/swap?outputCurrency=0x0e09fabb73bd3ade0a17ecc321fd13a19e81ce82',
   },
   {
-    pid: 7,
+    pid: 24,
     lpAddresses: {
-      56: '0x835fAAC7fDdcc18FFA5D31B57Fa4F573cB4B3862',
+      56: '0x640E2c0EcCd822F79951b6E63A44786c475E75b4',
     },
     tokenAddresses: {
       56: '0x2170ed0880ac9a755fd29b2688956bd959f933f8',
@@ -541,7 +549,7 @@ export const supportedPools: SupportedPool[] = [
       'https://pandaswap.xyz/#/swap?outputCurrency=0x88f1a5ae2a3bf98aeaf342d26b30a79438c9142e',
   },
   {
-    pid: 24,
+    pid: 7,
     lpAddresses: {
       56: '0x835fAAC7fDdcc18FFA5D31B57Fa4F573cB4B3862',
     },
@@ -991,7 +999,7 @@ export const supportedPools: SupportedPool[] = [
   {
     pid: 52,
     lpAddresses: {
-      56: '0x626E3f0B56B88abFC43c55D4B0A7cb6e9B221CEb',
+      56: '0x6Da474F985640E18FA181cB4a2298D721cE9CCAF',
     },
     tokenAddresses: {
       56: '0x95c78222b3d6e262426483d42cfa53685a67ab9d',

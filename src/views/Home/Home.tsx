@@ -37,7 +37,7 @@ const Home: React.FC = () => {
 			</div>
 			<Spacer size="lg" />
 			<StyledInfo>
-				🏆<b>Pro Tip</b>: PNDA-wBNB has the biggest weight of all pools. Check
+				🏆<b>Pro Tip</b>: PNDA-BNB has the biggest weight of all pools. Check
 				them{' '}
 				<StyledLink href="https://docs.bao.finance/pool-weights" target="blank">
 					here
@@ -46,22 +46,10 @@ const Home: React.FC = () => {
 			</StyledInfo>
 			<Spacer size="md" />
 			<StyledInfo>
-				💲<b>Pro Tip</b>: The affiliate links from the "Buy X" buttons generate
-				revenue for the Bao Treasury which Bao holders own. <br />
-				Even if you already trade at these exchanges consider creating a new
-				account to help grow the protocol.
+				💲<b>Pro Tip</b>: The links from the "Buy X" buttons generate
+				revenue for the Panda Treasury which PNDA holders own. <br />
 			</StyledInfo>
 			<Spacer size="md" />
-			<StyledInfo>
-				❗️<b>Disclaimer</b>: Bao is currently in alpha and has a one-person
-				engineering team. <br />
-				While we are scaling, there may be higher than normal risk of bugs and
-				we may be slower in being able to respond to them.
-				<br />
-				Please partake accordingly.
-				<br />
-				The service is provided as-is.
-			</StyledInfo>
 		</Page>
 	)
 }
