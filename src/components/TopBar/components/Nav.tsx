@@ -25,16 +25,30 @@ const Nav: React.FC = () => {
 			>
 				Menu
 			</StyledLink>
+			<StyledLink
+				exact
+				activeClassName="active"
+				to={{ pathname: '/staking', search: '?ref=' + refer }}
+			>
+				BambooBar
+			</StyledLink>
+			<StyledLink
+				exact
+				activeClassName="active"
+				to={{ pathname: '/rhino', search: '?ref=' + refer }}
+			>
+				Rhino
+			</StyledLink>
 			<StyledAbsoluteLink
 				href="https://snapshot.page/#/baovotes.eth"
 				target="_blank"
 			>
 				Vote
 			</StyledAbsoluteLink>
-			<StyledAbsoluteLink href="https://docs.bao.finance" target="_blank">
+			<StyledAbsoluteLink href="https://docs.bao.finance/franchises/panda" target="_blank">
 				About
 			</StyledAbsoluteLink>
-			<StyledAbsoluteLink href="https://docs.bao.finance" target="_blank">
+			<StyledAbsoluteLink href="https://docs.bao.finance/guides/binance-smart-chain" target="_blank">
 				FAQ
 			</StyledAbsoluteLink>
 		</StyledNav>

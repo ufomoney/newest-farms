@@ -12,6 +12,8 @@ import PandaProvider from './contexts/PandaProvider'
 import theme from './theme'
 import Farms from './views/Farms'
 import Home from './views/Home'
+import Staking from './views/Staking'
+import Rhino from './views/Rhino'
 
 const url = new URL(window.location.toString())
 if (url.searchParams.has('ref')) {
@@ -43,6 +45,12 @@ const App: React.FC = () => {
 					</Route>
 					<Route path="/farms">
 						<Farms />
+					</Route>
+					<Route path="/staking">
+						<Staking />
+					</Route>
+					<Route path="/rhino">
+						<Rhino />
 					</Route>
 				</Switch>
 			</Router>

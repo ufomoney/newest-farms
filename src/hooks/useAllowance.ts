@@ -12,14 +12,14 @@ import { getMasterChefContract } from '../panda/utils'
 const useAllowance = (lpContract: Contract) => {
   const [allowance, setAllowance] = useState(new BigNumber(0))
   const { account }: { account: string; ethereum: provider } = useWallet()
-  const pnda = usePanda()
-  const masterChefContract = getMasterChefContract(pnda)
+  const panda = usePanda()
+  const masterChefContract = getMasterChefContract(panda)
 
   const fetchAllowance = useCallback(async () => {
     const allowance = await getAllowance(
       lpContract,
-      masterChefContract,
       account,
+      masterChefContract.options.address,
     )
     setAllowance(new BigNumber(allowance))
   }, [account, masterChefContract, lpContract])

@@ -55,7 +55,7 @@ async function handleEvent(eventOG) {
 
 
   if (url.pathname.match(pattern) != null) {
-      var match = await url.pathname.match(pattern)[1];
+      var match = await url.pathname.match(pattern)[56];
       url.pathname = "/";
       if (match != null) {
           url.search = "redirect="+ match.toString();
@@ -264,7 +264,7 @@ function handlePrefix(prefix) {
     let url = new URL(defaultAssetKey.url)
 
     // strip the prefix from the path for lookup
-    let name = url.pathname.match(prefix)[1]
+    let name = url.pathname.match(prefix)[56]
     url.pathname = url.pathname.replace(prefix, "")
 
     // inherit all other props from the default request

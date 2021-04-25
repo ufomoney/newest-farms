@@ -42,14 +42,14 @@ const Farm: React.FC = () => {
 		window.scrollTo(0, 0)
 	}, [])
 
-	const pnda = usePanda()
+	const panda = usePanda()
 	const { ethereum } = useWallet()
 
 	const lpContract = useMemo(() => {
 		return getContract(ethereum as provider, lpTokenAddress)
 	}, [ethereum, lpTokenAddress])
 
-	const { onRedeem } = useRedeem(getMasterChefContract(pnda))
+	const { onRedeem } = useRedeem(getMasterChefContract(panda))
 
 	const lpTokenName = useMemo(() => {
 		return lpToken.toUpperCase()
@@ -84,7 +84,7 @@ const Farm: React.FC = () => {
 				<Spacer size="lg" />
 				<StyledInfo>
 					⭐️ Every time you stake and unstake LP tokens, the contract will
-					automagically harvest PNDA rewards for you!
+					automagically claim PNDA rewards for you!
 				</StyledInfo>
 				<Spacer size="lg" />
 			</StyledFarm>

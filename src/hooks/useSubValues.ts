@@ -16,20 +16,20 @@ import useBlock from './useBlock'
 
 const useSubValues = () => {
   const { account }: { account: string } = useWallet()
-  const pnda = usePanda()
-  //const wbnbPriceContract = getWbnbPriceContract(pnda)
-  //const pndaPriceContract = getPandaPriceContract(pnda)
+  const panda = usePanda()
+  //const wbnbPriceContract = getWbnbPriceContract(panda)
+  //const pndaPriceContract = getPandaPriceContract(panda)
   const locks = useLockedEarnings()
   const [usrSubText, setUsrSubText] = useState(new String())
   const [pndaPrices, setPandaPrices] = useState(new BigNumber(0))
   const [wbnbPrices, setWbnbPrices] = useState(new BigNumber(0))
 
   const getInfo = useCallback(async () => {
-    if (pnda) {
-      const wbnbPriceFun = getWbnbPrice(pnda).then((response) => {
+    if (panda) {
+      const wbnbPriceFun = getWbnbPrice(panda).then((response) => {
         setWbnbPrices(response)
 
-        const pndaPriceFun = getPandaPrice(pnda).then((response) => {
+        const pndaPriceFun = getPandaPrice(panda).then((response) => {
           setPandaPrices(response)
           const currentRate = wbnbPrices
             .dividedBy(100000000)
@@ -57,10 +57,10 @@ const useSubValues = () => {
   }, [locks, usrSubText])
 
   useEffect(() => {
-    if (account && pnda) {
+    if (account && panda) {
       getInfo()
     }
-  }, [account, pnda, locks, usrSubText])
+  }, [account, panda, locks, usrSubText])
 
   return usrSubText.toString()
 }

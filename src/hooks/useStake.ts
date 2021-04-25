@@ -7,12 +7,12 @@ import { stake, getMasterChefContract, getRefUrl } from '../panda/utils'
 
 const useStake = (pid: number) => {
   const { account } = useWallet()
-  const pnda = usePanda()
+  const panda = usePanda()
 
   const handleStake = useCallback(
     async (amount: string) => {
       const txHash = await stake(
-        getMasterChefContract(pnda),
+        getMasterChefContract(panda),
         pid,
         amount,
         account,
@@ -20,7 +20,7 @@ const useStake = (pid: number) => {
       )
       console.log(txHash)
     },
-    [account, pid, pnda],
+    [account, pid, panda],
   )
 
   return { onStake: handleStake }

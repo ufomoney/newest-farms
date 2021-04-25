@@ -23,8 +23,8 @@ const AccountModal: React.FC<ModalProps> = ({ onDismiss }) => {
 		reset()
 	}, [onDismiss, reset])
 
-	const pnda = usePanda()
-	const pndaBalance = useTokenBalance(getPandaAddress(pnda))
+	const panda = usePanda()
+	const pndaBalance = useTokenBalance(getPandaAddress(panda))
 
 	return (
 		<Modal>
@@ -46,8 +46,8 @@ const AccountModal: React.FC<ModalProps> = ({ onDismiss }) => {
 
 				<Spacer />
 				<Button
-					href={`https://etherscan.io/address/${account}`}
-					text="View on Etherscan"
+					href={`https://bscscan.com/address/${account}`}
+					text="View on BscScan"
 					variant="secondary"
 				/>
 				<Spacer />

@@ -1,9 +1,10 @@
 import { useContext } from 'react'
 import { Context } from '../contexts/PandaProvider'
+import { Panda } from '../panda'
 
-const usePanda = () => {
-  const { pnda } = useContext(Context)
-  return pnda
+const usePanda = (): Panda => {
+  const { panda } = useContext(Context)
+  return panda
 }
 
 export default usePanda

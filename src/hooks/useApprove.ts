@@ -7,10 +7,12 @@ import { Contract } from 'web3-eth-contract'
 
 import { approve, getMasterChefContract } from '../panda/utils'
 
-const useApprove = (lpContract: Contract) => {
+const useApprove = (
+  lpContract: Contract,
+): { onApprove: () => Promise<string | false> } => {
   const { account }: { account: string; ethereum: provider } = useWallet()
-  const pnda = usePanda()
-  const masterChefContract = getMasterChefContract(pnda)
+  const panda = usePanda()
+  const masterChefContract = getMasterChefContract(panda)
 
   const handleApprove = useCallback(async () => {
     try {

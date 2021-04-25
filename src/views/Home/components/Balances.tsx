@@ -78,40 +78,40 @@ const Balances: React.FC = () => {
 	const [totalSupply, setTotalSupply] = useState<BigNumber>()
 	const [totalReferrals, setTotalReferrals] = useState<string>()
 	const [refLink, setRefLink] = useState<string>()
-	const pnda = usePanda()
-	const pndaBalance = useTokenBalance(getPandaAddress(pnda))
-	const masterChefContract = getMasterChefContract(pnda)
+	const panda = usePanda()
+	const pndaBalance = useTokenBalance(getPandaAddress(panda))
+	const masterChefContract = getMasterChefContract(panda)
 	const { account, ethereum }: { account: any; ethereum: any } = useWallet()
 
 	useEffect(() => {
 		async function fetchTotalSupply() {
-			const supply = await getPandaSupply(pnda)
+			const supply = await getPandaSupply(panda)
 			setTotalSupply(supply)
 		}
-		if (pnda) {
+		if (panda) {
 			fetchTotalSupply()
 		}
-	}, [pnda, setTotalSupply])
+	}, [panda, setTotalSupply])
 
 	useEffect(() => {
 		async function fetchTotalReferrals() {
 			const referrals = await getReferrals(masterChefContract, account)
 			setTotalReferrals(referrals)
 		}
-		if (pnda) {
+		if (panda) {
 			fetchTotalReferrals()
 		}
-	}, [pnda, setTotalReferrals])
+	}, [panda, setTotalReferrals])
 
 	useEffect(() => {
 		async function fetchRefLink() {
-			const usrReflink = 'www.pnda.finance?ref=' + account
+			const usrReflink = 'www.panda.finance?ref=' + account
 			setRefLink(usrReflink)
 		}
-		if (pnda) {
+		if (panda) {
 			fetchRefLink()
 		}
-	}, [pnda, setRefLink])
+	}, [panda, setRefLink])
 
 	return (
 		<Fragment>
@@ -132,7 +132,7 @@ const Balances: React.FC = () => {
 						</StyledBalances>
 					</CardContent>
 					<Footnote>
-						Pending harvest
+						Pending Rewards
 						<FootnoteValue>
 							<PendingRewards /> PNDA
 						</FootnoteValue>
@@ -149,7 +149,7 @@ const Balances: React.FC = () => {
 					</CardContent>
 					<Footnote>
 						New rewards per block
-						<FootnoteValue>250 PNDA</FootnoteValue>
+						<FootnoteValue>15 PNDA</FootnoteValue>
 					</Footnote>
 				</Card>
 			</StyledWrapper>
@@ -177,6 +177,7 @@ const Balances: React.FC = () => {
 					</Footnote>
 				</Card>
 			</StyledWrapper>
+
 		</Fragment>
 	)
 }

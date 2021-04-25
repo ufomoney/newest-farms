@@ -33,7 +33,7 @@ const Stake: React.FC<StakeProps> = ({
 	lpContract,
 	pid,
 	tokenName,
-	poolType,
+	poolType
 }) => {
 	const [requestedApproval, setRequestedApproval] = useState(false)
 
@@ -80,12 +80,12 @@ const Stake: React.FC<StakeProps> = ({
 			<CardContent>
 				<StyledCardContentInner>
 					<StyledCardHeader>
-						<CardIcon>👨🏻‍🍳</CardIcon>
+						<CardIcon>🎍</CardIcon>
 						<Value value={getBalanceNumber(stakedBalance)} />
 						<Label text={`${tokenName} Tokens Staked`} />
 					</StyledCardHeader>
 					<StyledCardActions>
-						{!allowance.toNumber() ? (
+					{!allowance.toNumber() ? (
 							<Button
 								disabled={requestedApproval}
 								onClick={handleApprove}
@@ -100,12 +100,10 @@ const Stake: React.FC<StakeProps> = ({
 								/>
 								<StyledActionSpacer />
 								{poolType !== PoolType.ARCHIVED ? (
-									<IconButton onClick={onPresentDeposit}>
-										<AddIcon />
-									</IconButton>
-								) : (
-									''
-								)}
+								<IconButton onClick={onPresentDeposit}>
+									<AddIcon />
+								</IconButton>
+								) : ''}
 							</>
 						)}
 					</StyledCardActions>

@@ -1,5 +1,6 @@
 import React from 'react'
 import styled, { keyframes } from 'styled-components'
+import bamboo from '../../assets/img/bamboo.png'
 
 import CardIcon from '../CardIcon'
 
@@ -11,7 +12,7 @@ const Loader: React.FC<LoaderProps> = ({ text }) => {
 	return (
 		<StyledLoader>
 			<CardIcon>
-				<StyledPanda>🥟</StyledPanda>
+				<StyledPanda><img src={bamboo} height={50} /></StyledPanda>
 			</CardIcon>
 			{!!text && <StyledText>{text}</StyledText>}
 		</StyledLoader>

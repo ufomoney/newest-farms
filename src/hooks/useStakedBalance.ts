@@ -11,8 +11,8 @@ import { ethers } from 'ethers'
 const useStakedBalance = (pid: number) => {
   const [balance, setBalance] = useState(new BigNumber(0))
   const { account }: { account: string } = useWallet()
-  const pnda = usePanda()
-  const masterChefContract = getMasterChefContract(pnda)
+  const panda = usePanda()
+  const masterChefContract = getMasterChefContract(panda)
   const block = useBlock()
   let userBalance
 
@@ -21,13 +21,13 @@ const useStakedBalance = (pid: number) => {
     const balance = await getStaked(masterChefContract, pid, account)
     userBalance = new BigNumber(balance)
     setBalance(userBalance.decimalPlaces(18))
-  }, [account, pid, pnda])
+  }, [account, pid, panda])
 
   useEffect(() => {
-    if (account && pnda) {
+    if (account && panda) {
       fetchBalance()
     }
-  }, [account, pid, setBalance, block, pnda])
+  }, [account, pid, setBalance, block, panda])
 
   return balance.decimalPlaces(18)
 }

@@ -86,7 +86,7 @@ const FarmCards: React.FC = () => {
 						))
 					) : (
 						<StyledLoadingWrapper>
-							<Loader text="Cooking the rice ..." />
+							<Loader text="Harvesting the bamboo ..." />
 						</StyledLoadingWrapper>
 					)}
 				</StyledCards>
@@ -102,7 +102,7 @@ const FarmCards: React.FC = () => {
 						))
 					) : (
 						<StyledLoadingWrapper>
-							<Loader text="Cooking the rice ..." />
+							<Loader text="Harvesting the bamboo ..." />
 						</StyledLoadingWrapper>
 					)}
 				</StyledCards>
@@ -118,7 +118,7 @@ const FarmCards: React.FC = () => {
 						))
 					) : (
 						<StyledLoadingWrapper>
-							<Loader text="Cooking the rice ..." />
+							<Loader text="Harvesting the bamboo ..." />
 						</StyledLoadingWrapper>
 					)}
 				</StyledCards>
@@ -136,8 +136,8 @@ const FarmCard: React.FC<FarmCardProps> = ({ farm }) => {
 	const [harvestable, setHarvestable] = useState(0)
 
 	const { account } = useWallet()
-	const { lpTokenAddress } = farm
-	const pnda = usePanda()
+	const { pid } = farm
+	const panda = usePanda()
 
 	const renderer = (countdownProps: CountdownRenderProps) => {
 		const { hours, minutes, seconds } = countdownProps
@@ -153,18 +153,14 @@ const FarmCard: React.FC<FarmCardProps> = ({ farm }) => {
 
 	useEffect(() => {
 		async function fetchEarned() {
-			if (pnda) return
-			const earned = await getEarned(
-				getMasterChefContract(pnda),
-				lpTokenAddress,
-				account,
-			)
+			if (panda) return
+			const earned = await getEarned(getMasterChefContract(panda), pid, account)
 			setHarvestable(bnToDec(earned))
 		}
-		if (pnda && account) {
+		if (panda && account) {
 			fetchEarned()
 		}
-	}, [pnda, lpTokenAddress, account, setHarvestable])
+	}, [panda, pid, account, setHarvestable])
 
 	const poolActive = true // startTime * 1000 - Date.now() <= 0
 	const tokenBuy = 'Buy ' + farm.tokenSymbol
