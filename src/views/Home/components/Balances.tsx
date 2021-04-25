@@ -155,7 +155,7 @@ const Balances: React.FC = () => {
 			</StyledWrapper>
 			<Spacer />
 			<Spacer />
-{/*			<StyledWrapper>
+			<StyledWrapper>
 				<Card>
 					<CardContent>
 						<Label
@@ -177,7 +177,7 @@ const Balances: React.FC = () => {
 					</Footnote>
 				</Card>
 			</StyledWrapper>
-*/}
+
 		</Fragment>
 	)
 }

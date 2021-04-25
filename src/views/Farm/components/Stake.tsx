@@ -42,7 +42,6 @@ const Stake: React.FC<StakeProps> = ({
 
 	const tokenBalance = useTokenBalance(lpContract.options.address)
 	const stakedBalance = useStakedBalance(pid)
-	const isApproved = lpContract && allowance && allowance.isGreaterThan(0)
 
 	const { onStake } = useStake(pid)
 	const { onUnstake } = useUnstake(pid)
@@ -86,7 +85,7 @@ const Stake: React.FC<StakeProps> = ({
 						<Label text={`${tokenName} Tokens Staked`} />
 					</StyledCardHeader>
 					<StyledCardActions>
-						{ isApproved ? (
+					{!allowance.toNumber() ? (
 							<Button
 								disabled={requestedApproval}
 								onClick={handleApprove}

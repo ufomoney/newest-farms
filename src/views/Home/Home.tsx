@@ -17,9 +17,9 @@ const Home: React.FC = () => {
 				subtitle="Stake PandaSwap LP tokens to earn PNDA!"
 			/>
 			<StyledInfo>
-				Be sure to read{' '}
-				<StyledLink href="https://docs.bao.finance" target="_blank">
-					docs.bao.finance
+				Be sure to read the{' '}
+				<StyledLink href="https://docs.bao.finance/franchises/panda" target="_blank">
+					docs
 				</StyledLink>{' '}
 				before using the pools so you are familiar with protocol risks and fees!
 			</StyledInfo>
@@ -39,7 +39,7 @@ const Home: React.FC = () => {
 			<StyledInfo>
 				🏆<b>Pro Tip</b>: PNDA-BNB has the biggest weight of all pools. Check
 				them{' '}
-				<StyledLink href="https://docs.bao.finance/pool-weights" target="blank">
+				<StyledLink href="https://docs.bao.finance/franchises/panda/pandaswap-contract-key" target="blank">
 					here
 				</StyledLink>
 				{'.'}
