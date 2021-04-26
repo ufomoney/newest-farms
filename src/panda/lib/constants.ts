@@ -178,7 +178,7 @@ export const supportedPools: SupportedPool[] = [
     },
     tokenDecimals: 18,
     name: 'Panda Party',
-    symbol: 'PNDA-BNB',
+    symbol: 'PNDA-BNB PNDA-V2',
     tokenSymbol: 'PNDA',
     icon: '/pnda.png',
     refUrl:
@@ -194,7 +194,7 @@ export const supportedPools: SupportedPool[] = [
     },
     tokenDecimals: 18,
     name: 'PNDA-ETH',
-    symbol: 'PNDA-ETH',
+    symbol: 'PNDA-ETH PNDA-V2',
     tokenSymbol: 'PNDA',
     icon: '/pnda.png',
     refUrl:
@@ -210,7 +210,7 @@ export const supportedPools: SupportedPool[] = [
     },
     tokenDecimals: 18,
     name: 'PNDA-USDC',
-    symbol: 'PNDA-USDC',
+    symbol: 'PNDA-USDC PNDA-V2',
     tokenSymbol: 'PNDA',
     icon: '/pnda.png',
     refUrl:
@@ -226,7 +226,7 @@ export const supportedPools: SupportedPool[] = [
     },
     tokenDecimals: 18,
     name: 'PNDA-BUSD',
-    symbol: 'PNDA-BUSD',
+    symbol: 'PNDA-BUSD PNDA-V2',
     tokenSymbol: 'PNDA',
     icon: '/pnda.png',
     refUrl:
@@ -242,7 +242,7 @@ export const supportedPools: SupportedPool[] = [
     },
     tokenDecimals: 18,
     name: 'PNDA-DAI',
-    symbol: 'PNDA-DAI',
+    symbol: 'PNDA-DAI PNDA-V2',
     tokenSymbol: 'PNDA',
     icon: '/pnda.png',
     refUrl:
@@ -258,7 +258,7 @@ export const supportedPools: SupportedPool[] = [
     },
     tokenDecimals: 9,
     name: 'Rhino Remoulade',
-    symbol: 'RHINO-BNB',
+    symbol: 'RHINO-BNB PNDA-V2',
     tokenSymbol: 'RHINO',
     icon: '/rhino.png',
     refUrl:
@@ -274,7 +274,7 @@ export const supportedPools: SupportedPool[] = [
     },
     tokenDecimals: 18,
     name: 'Bamboo Shake',
-    symbol: 'BAMBOO-BNB',
+    symbol: 'BAMBOO-BNB PNDA-V2',
     tokenSymbol: 'BAMBOO',
     icon: '/bamboo.png',
     refUrl:
@@ -321,7 +321,7 @@ export const supportedPools: SupportedPool[] = [
     },
     tokenDecimals: 18,
     name: 'ETH-BNB',
-    symbol: 'ETH-BNB',
+    symbol: 'ETH-BNB PNDA-V2',
     tokenSymbol: 'ETH',
     icon: '/eth.png',
     refUrl:
@@ -337,7 +337,7 @@ export const supportedPools: SupportedPool[] = [
     },
     tokenDecimals: 18,
     name: 'Cardano Caviar',
-    symbol: 'ADA-BNB',
+    symbol: 'ADA-BNB PNDA-V2',
     tokenSymbol: 'ADA',
     icon: '/caviar.png',
     refUrl:
@@ -353,7 +353,7 @@ export const supportedPools: SupportedPool[] = [
     },
     tokenDecimals: 18,
     name: 'Polka Poke',
-    symbol: 'DOT-BNB',
+    symbol: 'DOT-BNB PNDA-V2',
     tokenSymbol: 'DOT',
     icon: '/poke.png',
     refUrl:
@@ -369,7 +369,7 @@ export const supportedPools: SupportedPool[] = [
     },
     tokenDecimals: 18,
     name: 'Ripple Rice Bowl',
-    symbol: 'XRP-BNB',
+    symbol: 'XRP-BNB PNDA-V2',
     tokenSymbol: 'XRP',
     icon: '/rice-bowl.png',
     refUrl:
@@ -385,7 +385,7 @@ export const supportedPools: SupportedPool[] = [
     },
     tokenDecimals: 18,
     name: 'Lite(coin) Snacker',
-    symbol: 'LTC-BNB',
+    symbol: 'LTC-BNB PNDA-V2',
     tokenSymbol: 'LTC',
     icon: '/snackers.png',
     refUrl:
@@ -401,7 +401,7 @@ export const supportedPools: SupportedPool[] = [
     },
     tokenDecimals: 18,
     name: 'Link Lunch',
-    symbol: 'LINK-BNB',
+    symbol: 'LINK-BNB PNDA-V2',
     tokenSymbol: 'LINK',
     icon: '/sandwich.png',
     refUrl:
@@ -417,7 +417,7 @@ export const supportedPools: SupportedPool[] = [
     },
     tokenDecimals: 18,
     name: 'BUSD BLT',
-    symbol: 'BUSD-BNB',
+    symbol: 'BUSD-BNB PNDA-V2',
     tokenSymbol: 'BUSD',
     icon: '/blt.png',
     refUrl:
@@ -433,7 +433,7 @@ export const supportedPools: SupportedPool[] = [
     },
     tokenDecimals: 8,
     name: 'Dogenuts',
-    symbol: 'DOGE-BNB',
+    symbol: 'DOGE-BNB PNDA-V2',
     tokenSymbol: 'DOGE',
     icon: '/donut.png',
     refUrl:
@@ -449,7 +449,7 @@ export const supportedPools: SupportedPool[] = [
     },
     tokenDecimals: 18,
     name: 'Uni Unagi',
-    symbol: 'UNI-BNB',
+    symbol: 'UNI-BNB PNDA-V2',
     tokenSymbol: 'UNI',
     icon: '/unagi.png',
     refUrl:
@@ -465,7 +465,7 @@ export const supportedPools: SupportedPool[] = [
     },
     tokenDecimals: 18,
     name: 'EOS Egg Rolls',
-    symbol: 'EOS-BNB',
+    symbol: 'EOS-BNB PNDA-V2',
     tokenSymbol: 'EOS',
     icon: '/egg-rolls.png',
     refUrl:
@@ -481,7 +481,7 @@ export const supportedPools: SupportedPool[] = [
     },
     tokenDecimals: 18,
     name: 'Cosmos Custard',
-    symbol: 'ATOM-BNB',
+    symbol: 'ATOM-BNB PNDA-V2',
     tokenSymbol: 'ATOM',
     icon: '/custard.png',
     refUrl:
@@ -497,7 +497,7 @@ export const supportedPools: SupportedPool[] = [
     },
     tokenDecimals: 18,
     name: 'Tezos Tempura',
-    symbol: 'XTZ-BNB',
+    symbol: 'XTZ-BNB PNDA-V2',
     tokenSymbol: 'XTZ',
     icon: '/tempura.png',
     refUrl:
@@ -513,7 +513,7 @@ export const supportedPools: SupportedPool[] = [
     },
     tokenDecimals: 18,
     name: 'Synthetix Snacks',
-    symbol: 'SNX-BNB',
+    symbol: 'SNX-BNB PNDA-V2',
     tokenSymbol: 'SNX',
     icon: '/snack.png',
     refUrl:
@@ -529,7 +529,7 @@ export const supportedPools: SupportedPool[] = [
     },
     tokenDecimals: 18,
     name: 'Maker Mooncake',
-    symbol: 'MKR-BNB',
+    symbol: 'MKR-BNB PNDA-V2',
     tokenSymbol: 'MKR',
     icon: '/moon-cake.png',
     refUrl:
@@ -545,7 +545,7 @@ export const supportedPools: SupportedPool[] = [
     },
     tokenDecimals: 18,
     name: 'Compound Congee',
-    symbol: 'COMP-BNB',
+    symbol: 'COMP-BNB PNDA-V2',
     tokenSymbol: 'COMP',
     icon: '/congee.png',
     refUrl:
@@ -561,7 +561,7 @@ export const supportedPools: SupportedPool[] = [
     },
     tokenDecimals: 18,
     name: 'Dai Dan Tat',
-    symbol: 'DAI-BNB',
+    symbol: 'DAI-BNB PNDA-V2',
     tokenSymbol: 'DAI',
     icon: '/egg-tart.png',
     refUrl:
@@ -577,7 +577,7 @@ export const supportedPools: SupportedPool[] = [
     },
     tokenDecimals: 18,
     name: 'YFI Youtiao',
-    symbol: 'YFI-BNB',
+    symbol: 'YFI-BNB PNDA-V2',
     tokenSymbol: 'YFI',
     icon: '/churros.png',
     refUrl:
@@ -593,7 +593,7 @@ export const supportedPools: SupportedPool[] = [
     },
     tokenDecimals: 18,
     name: 'Pancakes and Syrup',
-    symbol: 'CAKE-BNB',
+    symbol: 'CAKE-BNB PNDA-V2',
     tokenSymbol: 'CAKE',
     icon: '/maple-syrup.png',
     refUrl:
@@ -609,7 +609,7 @@ export const supportedPools: SupportedPool[] = [
     },
     tokenDecimals: 18,
     name: 'Near Nuggets',
-    symbol: 'NEAR-BNB',
+    symbol: 'NEAR-BNB PNDA-V2',
     tokenSymbol: 'NEAR',
     icon: '/nuggets.png',
     refUrl:
@@ -625,7 +625,7 @@ export const supportedPools: SupportedPool[] = [
     },
     tokenDecimals: 18,
     name: 'Ontology Orange Chicken',
-    symbol: 'ONT-BNB',
+    symbol: 'ONT-BNB PNDA-V2',
     tokenSymbol: 'ONT',
     icon: '/orange-chicken.png',
     refUrl:
@@ -641,7 +641,7 @@ export const supportedPools: SupportedPool[] = [
     },
     tokenDecimals: 18,
     name: 'Brave Braised Pork',
-    symbol: 'BAT-BNB',
+    symbol: 'BAT-BNB PNDA-V2',
     tokenSymbol: 'BAT',
     icon: '/beef.png',
     refUrl:
@@ -657,7 +657,7 @@ export const supportedPools: SupportedPool[] = [
     },
     tokenDecimals: 18,
     name: 'Vai Pie',
-    symbol: 'VAI-BNB',
+    symbol: 'VAI-BNB PNDA-V2',
     tokenSymbol: 'VAI',
     icon: '/pie.png',
     refUrl:
@@ -673,7 +673,7 @@ export const supportedPools: SupportedPool[] = [
     },
     tokenDecimals: 18,
     name: 'Paxos Pad Thai',
-    symbol: 'PAX-BNB',
+    symbol: 'PAX-BNB PNDA-V2',
     tokenSymbol: 'PAX',
     icon: '/pad-thai.png',
     refUrl:
@@ -689,7 +689,7 @@ export const supportedPools: SupportedPool[] = [
     },
     tokenDecimals: 18,
     name: 'Venus Venison',
-    symbol: 'XVS-BNB',
+    symbol: 'XVS-BNB PNDA-V2',
     tokenSymbol: 'XVS',
     icon: '/ham.png',
     refUrl:
@@ -705,7 +705,7 @@ export const supportedPools: SupportedPool[] = [
     },
     tokenDecimals: 18,
     name: 'BTCB Bubble Tea',
-    symbol: 'BTCB-BNB',
+    symbol: 'BTCB-BNB PNDA-V2',
     tokenSymbol: 'BTCB',
     icon: '/bubble-tea.png',
     refUrl:
@@ -721,7 +721,7 @@ export const supportedPools: SupportedPool[] = [
     },
     tokenDecimals: 18,
     name: 'UST Roast Chicken',
-    symbol: 'UST-BUSD',
+    symbol: 'UST-BUSD PNDA-V2',
     tokenSymbol: 'UST',
     icon: '/roastchicken.png',
     refUrl:
@@ -737,7 +737,7 @@ export const supportedPools: SupportedPool[] = [
     },
     tokenDecimals: 18,
     name: 'UST Tofu',
-    symbol: 'UST-BNB',
+    symbol: 'UST-BNB PNDA-V2',
     tokenSymbol: 'UST',
     icon: '/tofu.png',
     refUrl:
@@ -753,7 +753,7 @@ export const supportedPools: SupportedPool[] = [
     },
     tokenDecimals: 18,
     name: 'Band Bird Nest Soup',
-    symbol: 'BAND-BNB',
+    symbol: 'BAND-BNB PNDA-V2',
     tokenSymbol: 'BAND',
     icon: '/bird-nest.png',
     refUrl:
@@ -769,7 +769,7 @@ export const supportedPools: SupportedPool[] = [
     },
     tokenDecimals: 18,
     name: 'SafePal Stew',
-    symbol: 'SFP-BNB',
+    symbol: 'SFP-BNB PNDA-V2',
     tokenSymbol: 'SFP',
     icon: '/stew.png',
     refUrl:
@@ -785,7 +785,7 @@ export const supportedPools: SupportedPool[] = [
     },
     tokenDecimals: 18,
     name: 'Alpha Apple Pie',
-    symbol: 'ALPHA-BNB',
+    symbol: 'ALPHA-BNB PNDA-V2',
     tokenSymbol: 'ALPHA',
     icon: '/pie.png',
     refUrl:
@@ -801,7 +801,7 @@ export const supportedPools: SupportedPool[] = [
     },
     tokenDecimals: 18,
     name: 'SXP Suan La Tang',
-    symbol: 'SXP-BNB',
+    symbol: 'SXP-BNB PNDA-V2',
     tokenSymbol: 'SXP',
     icon: '/hotsour.png',
     refUrl:
@@ -817,7 +817,7 @@ export const supportedPools: SupportedPool[] = [
     },
     tokenDecimals: 8,
     name: 'vBTC Tea',
-    symbol: 'vBTC-BNB',
+    symbol: 'vBTC-BNB PNDA-V2',
     tokenSymbol: 'vBTC',
     icon: '/tea.png',
     refUrl:
@@ -833,7 +833,7 @@ export const supportedPools: SupportedPool[] = [
     },
     tokenDecimals: 18,
     name: 'Ankr Almond Soo Guy',
-    symbol: 'ANKR-BNB',
+    symbol: 'ANKR-BNB PNDA-V2',
     tokenSymbol: 'ANKR',
     icon: '/fried-chicken.png',
     refUrl:
@@ -849,7 +849,7 @@ export const supportedPools: SupportedPool[] = [
     },
     tokenDecimals: 18,
     name: 'Trust Wallet Turtle Soup',
-    symbol: 'TWT-BNB',
+    symbol: 'TWT-BNB PNDA-V2',
     tokenSymbol: 'TWT',
     icon: '/turtle.png',
     refUrl:
@@ -865,7 +865,7 @@ export const supportedPools: SupportedPool[] = [
     },
     tokenDecimals: 18,
     name: 'Linear Lime',
-    symbol: 'LINA-BNB',
+    symbol: 'LINA-BNB PNDA-V2',
     tokenSymbol: 'LINA',
     icon: '/lime.png',
     refUrl:
@@ -881,7 +881,7 @@ export const supportedPools: SupportedPool[] = [
     },
     tokenDecimals: 18,
     name: 'Prometeus Pineapple',
-    symbol: 'PROM-BNB',
+    symbol: 'PROM-BNB PNDA-V2',
     tokenSymbol: 'PROM',
     icon: '/pineapple.png',
     refUrl:
@@ -897,7 +897,7 @@ export const supportedPools: SupportedPool[] = [
     },
     tokenDecimals: 18,
     name: 'Elf Eggplant (Roasted)',
-    symbol: 'ELF-BNB',
+    symbol: 'ELF-BNB PNDA-V2',
     tokenSymbol: 'ELF',
     icon: '/eggplant.png',
     refUrl:
@@ -913,7 +913,7 @@ export const supportedPools: SupportedPool[] = [
     },
     tokenDecimals: 18,
     name: 'Math Mapo Tofu',
-    symbol: 'MATH-BNB',
+    symbol: 'MATH-BNB PNDA-V2',
     tokenSymbol: 'MATH',
     icon: '/mapo-tofu.png',
     refUrl:
@@ -929,7 +929,7 @@ export const supportedPools: SupportedPool[] = [
     },
     tokenDecimals: 18,
     name: 'Auto Avocado',
-    symbol: 'AUTO-BNB',
+    symbol: 'AUTO-BNB PNDA-V2',
     tokenSymbol: 'AUTO',
     icon: '/avocado.png',
     refUrl:
@@ -945,7 +945,7 @@ export const supportedPools: SupportedPool[] = [
     },
     tokenDecimals: 18,
     name: 'Reef Roast Chicken',
-    symbol: 'REEF-BNB',
+    symbol: 'REEF-BNB PNDA-V2',
     tokenSymbol: 'REEF',
     icon: '/roastchicken.png',
     refUrl:
@@ -961,7 +961,7 @@ export const supportedPools: SupportedPool[] = [
     },
     tokenDecimals: 18,
     name: 'Cream Cupcakes',
-    symbol: 'CREAM-BNB',
+    symbol: 'CREAM-BNB PNDA-V2',
     tokenSymbol: 'CREAM',
     icon: '/cupcake.png',
     refUrl:
@@ -977,7 +977,7 @@ export const supportedPools: SupportedPool[] = [
     },
     tokenDecimals: 8,
     name: 'vUSDC Crab Legs',
-    symbol: 'vUSDC-BNB',
+    symbol: 'vUSDC-BNB PNDA-V2',
     tokenSymbol: 'vUSDC',
     icon: '/crab.png',
     refUrl:
@@ -993,7 +993,7 @@ export const supportedPools: SupportedPool[] = [
     },
     tokenDecimals: 18,
     name: 'Spartan Sausage',
-    symbol: 'SPARTA-BNB',
+    symbol: 'SPARTA-BNB PNDA-V2',
     tokenSymbol: 'SPARTA',
     icon: '/sausage.png',
     refUrl:
@@ -1009,7 +1009,7 @@ export const supportedPools: SupportedPool[] = [
     },
     tokenDecimals: 6,
     name: 'CertiK Cocktail',
-    symbol: 'CTK-BNB',
+    symbol: 'CTK-BNB PNDA-V2',
     tokenSymbol: 'CTK',
     icon: '/cocktail.png',
     refUrl:
@@ -1025,7 +1025,7 @@ export const supportedPools: SupportedPool[] = [
     },
     tokenDecimals: 18,
     name: 'Burger and Fries',
-    symbol: 'BURGER-BNB',
+    symbol: 'BURGER-BNB PNDA-V2',
     tokenSymbol: 'BURGER',
     icon: '/fried-potatoes.png',
     refUrl:
@@ -1041,7 +1041,7 @@ export const supportedPools: SupportedPool[] = [
     },
     tokenDecimals: 8,
     name: 'vBUSD Udon',
-    symbol: 'vBUSD-BNB',
+    symbol: 'vBUSD-BNB PNDA-V2',
     tokenSymbol: 'vBUSD',
     icon: '/instant-noodles.png',
     refUrl:
@@ -1057,7 +1057,7 @@ export const supportedPools: SupportedPool[] = [
     },
     tokenDecimals: 18,
     name: 'Very Berry Fondue',
-    symbol: 'BRY-BNB',
+    symbol: 'BRY-BNB PNDA-V2',
     tokenSymbol: 'BRY',
     icon: '/fondue.png',
     refUrl:
@@ -1073,7 +1073,7 @@ export const supportedPools: SupportedPool[] = [
     },
     tokenDecimals: 18,
     name: 'Stax Salad Rolls',
-    symbol: 'STAX-BNB',
+    symbol: 'STAX-BNB PNDA-V2',
     tokenSymbol: 'STAX',
     icon: '/salad-rolls.png',
     refUrl:
@@ -1089,7 +1089,7 @@ export const supportedPools: SupportedPool[] = [
     },
     tokenDecimals: 8,
     name: 'vUSDT Chili',
-    symbol: 'vUSDT-BNB',
+    symbol: 'vUSDT-BNB PNDA-V2',
     tokenSymbol: 'vUSDT',
     icon: '/chili.png',
     refUrl:
@@ -1105,7 +1105,7 @@ export const supportedPools: SupportedPool[] = [
     },
     tokenDecimals: 18,
     name: 'JulD Jifan',
-    symbol: 'JulD-BNB',
+    symbol: 'JulD-BNB PNDA-V2',
     tokenSymbol: 'JulD',
     icon: '/jifan.png',
     refUrl:
@@ -1121,7 +1121,7 @@ export const supportedPools: SupportedPool[] = [
     },
     tokenDecimals: 18,
     name: 'Force Fortune Cookies',
-    symbol: 'FOR-BNB',
+    symbol: 'FOR-BNB PNDA-V2',
     tokenSymbol: 'FOR',
     icon: '/fortune-cookie.png',
     refUrl:
@@ -1137,7 +1137,7 @@ export const supportedPools: SupportedPool[] = [
     },
     tokenDecimals: 18,
     name: 'Any Anchovies',
-    symbol: 'ANY-BNB',
+    symbol: 'ANY-BNB PNDA-V2',
     tokenSymbol: 'ANY',
     icon: '/anchovy.png',
     refUrl:
@@ -1153,7 +1153,7 @@ export const supportedPools: SupportedPool[] = [
     },
     tokenDecimals: 18,
     name: 'Helmet Hot Pot',
-    symbol: 'HELMET-BNB',
+    symbol: 'HELMET-BNB PNDA-V2',
     tokenSymbol: 'HELMET',
     icon: '/hot.png',
     refUrl:
@@ -1169,7 +1169,7 @@ export const supportedPools: SupportedPool[] = [
     },
     tokenDecimals: 18,
     name: 'Beefy Chow Fun',
-    symbol: 'BIFI-BNB',
+    symbol: 'BIFI-BNB PNDA-V2',
     tokenSymbol: 'BIFI',
     icon: '/beef-chow-fun.png',
     refUrl:
@@ -1185,7 +1185,7 @@ export const supportedPools: SupportedPool[] = [
     },
     tokenDecimals: 17,
     name: 'BTCST Bacon',
-    symbol: 'BTCST-BNB',
+    symbol: 'BTCST-BNB PNDA-V2',
     tokenSymbol: 'BTCST',
     icon: '/bacon.png',
     refUrl:
@@ -1201,7 +1201,7 @@ export const supportedPools: SupportedPool[] = [
     },
     tokenDecimals: 18,
     name: 'BSCX Black Sesame Soup',
-    symbol: 'BSCX-BNB',
+    symbol: 'BSCX-BNB PNDA-V2',
     tokenSymbol: 'BSCX',
     icon: '/black-sesame-soup.png',
     refUrl:
@@ -1217,7 +1217,7 @@ export const supportedPools: SupportedPool[] = [
     },
     tokenDecimals: 18,
     name: 'Unifi Fried Chicken',
-    symbol: 'UNFI-BNB',
+    symbol: 'UNFI-BNB PNDA-V2',
     tokenSymbol: 'UNFI',
     icon: '/fried-chicken.png',
     refUrl:
@@ -1233,7 +1233,7 @@ export const supportedPools: SupportedPool[] = [
     },
     tokenDecimals: 18,
     name: 'Bux Brochette',
-    symbol: 'BUX-BNB',
+    symbol: 'BUX-BNB PNDA-V2',
     tokenSymbol: 'BUX',
     icon: '/brochette.png',
     refUrl:
@@ -1249,7 +1249,7 @@ export const supportedPools: SupportedPool[] = [
     },
     tokenDecimals: 18,
     name: 'Midas Matcha Tea',
-    symbol: 'MDS-BNB',
+    symbol: 'MDS-BNB PNDA-V2',
     tokenSymbol: 'MDS',
     icon: '/matcha-tea.png',
     refUrl:
@@ -1265,7 +1265,7 @@ export const supportedPools: SupportedPool[] = [
     },
     tokenDecimals: 6,
     name: 'Hedget Herbal Tea',
-    symbol: 'HGET-BNB',
+    symbol: 'HGET-BNB PNDA-V2',
     tokenSymbol: 'HGET',
     icon: '/herbal-tea.png',
     refUrl:
@@ -1281,7 +1281,7 @@ export const supportedPools: SupportedPool[] = [
     },
     tokenDecimals: 18,
     name: 'Bao Party',
-    symbol: 'BAO-BNB',
+    symbol: 'BAO-BNB PNDA-V2',
     tokenSymbol: 'BAO',
     icon: '/bao.png',
     refUrl:
@@ -1297,7 +1297,7 @@ export const supportedPools: SupportedPool[] = [
     },
     tokenDecimals: 18,
     name: 'Front Frog Legs',
-    symbol: 'FRONT-BNB',
+    symbol: 'FRONT-BNB PNDA-V2',
     tokenSymbol: 'FRONT',
     icon: '/frog-prince.png',
     refUrl:
@@ -1313,7 +1313,7 @@ export const supportedPools: SupportedPool[] = [
     },
     tokenDecimals: 18,
     name: 'Mirror Miantiao',
-    symbol: 'MIR-BNB',
+    symbol: 'MIR-BNB PNDA-V2',
     tokenSymbol: 'MIR',
     icon: '/miantiao.png',
     refUrl:
@@ -1329,7 +1329,7 @@ export const supportedPools: SupportedPool[] = [
     },
     tokenDecimals: 18,
     name: 'Zee Zucchini',
-    symbol: 'ZEE-BNB',
+    symbol: 'ZEE-BNB PNDA-V2',
     tokenSymbol: 'ZEE',
     icon: '/zucchini.png',
     refUrl:
@@ -1345,7 +1345,7 @@ export const supportedPools: SupportedPool[] = [
     },
     tokenDecimals: 18,
     name: 'Matter Mystery Stew',
-    symbol: 'MATTER-BNB',
+    symbol: 'MATTER-BNB PNDA-V2',
     tokenSymbol: 'MATTER',
     icon: '/mysterystew.png',
     refUrl:
@@ -1361,7 +1361,7 @@ export const supportedPools: SupportedPool[] = [
     },
     tokenDecimals: 6,
     name: 'BLink Brownie',
-    symbol: 'BLK-BNB',
+    symbol: 'BLK-BNB PNDA-V2',
     tokenSymbol: 'BLK',
     icon: '/brownie.png',
     refUrl:
@@ -1377,7 +1377,7 @@ export const supportedPools: SupportedPool[] = [
     },
     tokenDecimals: 18,
     name: 'Polkastarter Pot Stickers',
-    symbol: 'POLS-BNB',
+    symbol: 'POLS-BNB PNDA-V2',
     tokenSymbol: 'POLS',
     icon: '/potstickers.png',
     refUrl:
@@ -1393,7 +1393,7 @@ export const supportedPools: SupportedPool[] = [
     },
     tokenDecimals: 4,
     name: 'Alien Worlds Octopus',
-    symbol: 'TLM-BNB',
+    symbol: 'TLM-BNB PNDA-V2',
     tokenSymbol: 'TLM',
     icon: '/octopus.png',
     refUrl:
@@ -1409,7 +1409,7 @@ export const supportedPools: SupportedPool[] = [
     },
     tokenDecimals: 18,
     name: 'UpBots Bento Box',
-    symbol: 'UBXT-BNB',
+    symbol: 'UBXT-BNB PNDA-V2',
     tokenSymbol: 'UBXT',
     icon: '/bento.png',
     refUrl:
@@ -1425,7 +1425,7 @@ export const supportedPools: SupportedPool[] = [
     },
     tokenDecimals: 18,
     name: 'Pancakes and Syrup',
-    symbol: 'CAKE-BNB',
+    symbol: 'CAKE-BNB CAKELP',
     tokenSymbol: 'CAKE',
     poolType: PoolType.CAKE,
     icon: '/maple-syrup.png',
@@ -1442,7 +1442,7 @@ export const supportedPools: SupportedPool[] = [
     },
     tokenDecimals: 18,
     name: 'BUSD BLT',
-    symbol: 'BUSD-BNB',
+    symbol: 'BUSD-BNB CAKELP',
     tokenSymbol: 'BUSD',
     poolType: PoolType.CAKE,
     icon: '/blt.png',
@@ -1459,7 +1459,7 @@ export const supportedPools: SupportedPool[] = [
     },
     tokenDecimals: 18,
     name: 'ETH-BNB',
-    symbol: 'ETH-BNB',
+    symbol: 'ETH-BNB CAKELP',
     tokenSymbol: 'ETH',
     poolType: PoolType.CAKE,
     icon: '/eth.png',
@@ -1476,7 +1476,7 @@ export const supportedPools: SupportedPool[] = [
     },
     tokenDecimals: 18,
     name: 'BTCB Bubble Tea',
-    symbol: 'BTCB-BNB',
+    symbol: 'BTCB-BNB CAKELP',
     tokenSymbol: 'BTCB',
     poolType: PoolType.CAKE,
     icon: '/bubble-tea.png',
@@ -1510,7 +1510,7 @@ export const supportedPools: SupportedPool[] = [
     },
     tokenDecimals: 18,
     name: 'USDT Tofu',
-    symbol: 'USDT-BNB',
+    symbol: 'USDT-BNB CAKELP',
     tokenSymbol: 'USDT',
     poolType: PoolType.CAKE,
     icon: '/tofu.png',
@@ -1527,7 +1527,7 @@ export const supportedPools: SupportedPool[] = [
     },
     tokenDecimals: 18,
     name: 'Bunny Bacon',
-    symbol: 'BUNNY-BNB',
+    symbol: 'BUNNY-BNB CAKELP',
     tokenSymbol: 'BUNNY',
     poolType: PoolType.CAKE,
     icon: '/bacon.png',
@@ -1544,7 +1544,7 @@ export const supportedPools: SupportedPool[] = [
     },
     tokenDecimals: 18,
     name: 'Polka Poke',
-    symbol: 'DOT-BNB',
+    symbol: 'DOT-BNB CAKELP',
     tokenSymbol: 'DOT',
     poolType: PoolType.CAKE,
     icon: '/poke.png',
@@ -1595,7 +1595,7 @@ export const supportedPools: SupportedPool[] = [
     },
     tokenDecimals: 18,
     name: 'Link Lunch',
-    symbol: 'LINK-BNB',
+    symbol: 'LINK-BNB CAKELP',
     tokenSymbol: 'LINK',
     poolType: PoolType.CAKE,
     icon: '/sandwich.png',
@@ -1629,7 +1629,7 @@ export const supportedPools: SupportedPool[] = [
     },
     tokenDecimals: 18,
     name: 'Ripple Rice Bowl',
-    symbol: 'XRP-BNB',
+    symbol: 'XRP-BNB CAKELP',
     tokenSymbol: 'XRP',
     poolType: PoolType.CAKE,
     icon: '/rice-bowl.png',
@@ -1646,7 +1646,7 @@ export const supportedPools: SupportedPool[] = [
     },
     tokenDecimals: 18,
     name: 'Cardano Caviar',
-    symbol: 'ADA-BNB',
+    symbol: 'ADA-BNB CAKELP',
     tokenSymbol: 'ADA',
     poolType: PoolType.CAKE,
     icon: '/caviar.png',
@@ -1663,7 +1663,7 @@ export const supportedPools: SupportedPool[] = [
     },
     tokenDecimals: 18,
     name: 'Uni Unagi',
-    symbol: 'UNI-BNB',
+    symbol: 'UNI-BNB CAKELP',
     tokenSymbol: 'UNI',
     poolType: PoolType.CAKE,
     icon: '/unagi.png',
