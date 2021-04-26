@@ -1,4 +1,4 @@
-![GitHub Super-Linter](https://github.com/baofinance/ui/workflows/Lint%20Code%20Base/badge.svg)
+![Linting Status](https://github.com/baofinance/ui/workflows/Lint%20Code%20Base/badge.svg)
 
 # PandaSwap Farming UI
 This is the [PandaSwap Farming](https://farms.pandaswap.xyz) UI project. 
