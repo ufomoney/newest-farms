@@ -78,9 +78,9 @@ const SwapPanda: React.FC<SwapPandaProps> = ({ withdrawableBalance }) => {
 							<img src={pnda} alt="" height="50" />
 						</CardIcon>
 						<Value value={getBalanceNumber(walletBalance, 18)} />
-						<Label text={`${tokenName} Tokens Depositable`} />
+						<Label text={`${tokenName} in wallet`} />
 						<Value value={getBalanceNumber(withdrawableBalance, 9)} />
-						<Label text={`${tokenName} Tokens Deposited`} />
+						<Label text={`${tokenName} withdrawable`} />
 					</StyledCardHeader>
 					<StyledCardActions>
 						{!allowance.toNumber() ? (
