@@ -141,6 +141,9 @@ export const FarmCard: React.FC<FarmCardProps> = ({ farm }) => {
 	const { pid } = farm
 	const panda = usePanda()
 
+	// disable single-sided pools temporarily
+	const isManualDisableAPY = farm.lpTokenAddress == farm.tokenAddress
+
 	const renderer = (countdownProps: CountdownRenderProps) => {
 		const { hours, minutes, seconds } = countdownProps
 		const paddedSeconds = seconds < 10 ? `0${seconds}` : seconds
@@ -199,7 +202,9 @@ export const FarmCard: React.FC<FarmCardProps> = ({ farm }) => {
 						<StyledInsight>
 							<span>APY</span>
 							<span>
-								{farm.apy
+								{isManualDisableAPY
+									? 'coming soon'
+									: farm.apy
 									? `${farm.apy
 											.times(new BigNumber(100))
 											.toNumber()
