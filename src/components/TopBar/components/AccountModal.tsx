@@ -14,6 +14,8 @@ import ModalContent from '../../ModalContent'
 import ModalTitle from '../../ModalTitle'
 import Spacer from '../../Spacer'
 import Value from '../../Value'
+import pnda from '../../../assets/img/pnda.png'
+
 
 const AccountModal: React.FC<ModalProps> = ({ onDismiss }) => {
 	const { account, reset } = useWallet()
@@ -35,7 +37,7 @@ const AccountModal: React.FC<ModalProps> = ({ onDismiss }) => {
 				<div style={{ display: 'flex' }}>
 					<StyledBalanceWrapper>
 						<CardIcon>
-							<span>🥟</span>
+						<img src={pnda} alt="" height="50" />
 						</CardIcon>
 						<StyledBalance>
 							<Value value={getBalanceNumber(pndaBalance)} />
