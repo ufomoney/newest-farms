@@ -1315,7 +1315,7 @@ export const supportedPools: SupportedPool[] = [
     name: 'Mirror Miantiao',
     symbol: 'MIR-BNB PNDA-V2',
     tokenSymbol: 'MIR',
-    icon: '/miantiao.png',
+    icon: '/Miantiao.png',
     refUrl:
       'https://pandaswap.xyz/#/swap?outputCurrency=0x5b6dcf557e2abe2323c48445e8cc948910d8c2c9',
   },
