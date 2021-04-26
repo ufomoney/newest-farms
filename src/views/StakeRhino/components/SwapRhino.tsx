@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useMemo, useState } from 'react'
 import styled from 'styled-components'
 import Button from '../../../components/Button'
 import Card from '../../../components/Card'
@@ -11,15 +11,14 @@ import useTokenBalance from '../../../hooks/useTokenBalance'
 import { Contract } from 'web3-eth-contract'
 import useModal from '../../../hooks/useModal'
 import WithdrawModal from './WithdrawModal'
-import RhinoWithdrawModal from './RhinoWithdrawModal'
 import useWithdrawRhino from '../../../hooks/useWithdrawRhino'
 import BigNumber from 'bignumber.js'
-import { contractAddresses } from '../../../panda/lib/constants'
 import { getRhinoContract } from '../../../panda/utils'
 import useDeposit from '../../../hooks/useDepositRhino'
 import usePanda from '../../../hooks/usePanda'
 import DepositModal from './DepositModal'
 import rhino from '../../../assets/img/rhino-a.png'
+import useWithdraw from '../../../hooks/useWithdrawRhino'
 
 interface SwapRhinoProps {
 	rhinoStaking: Contract
@@ -31,28 +30,32 @@ const SwapRhino: React.FC<SwapRhinoProps> = ({ rhinoBalance }) => {
 	const [pendingTx, setPendingTx] = useState(false)
 
 	const panda = usePanda()
-	
-	const address = getRhinoContract(panda)?.options.address
+
+	const address = useMemo(() => getRhinoContract(panda)?.options.address, [
+		panda,
+	])
 	const walletBalance = useTokenBalance(address)
 
 	const { onDeposit } = useDeposit(address)
-	const { onWithdraw } = useWithdrawRhino()
+	const { onWithdraw } = useWithdraw(address)
 
 	const tokenName = 'RHINO'
-
-	const [onPresentWithdraw] = useModal(
-		<RhinoWithdrawModal
-			max={rhinoBalance}
-			onConfirm={onWithdraw}
-			tokenName={tokenName}
-		/>,
-	)
+	const tokenDecimals = 9
 
 	const [onPresentDeposit] = useModal(
 		<DepositModal
 			max={walletBalance}
 			onConfirm={onDeposit}
 			tokenName={tokenName}
+		/>,
+	)
+
+	const [onPresentWithdraw] = useModal(
+		<WithdrawModal
+			max={rhinoBalance}
+			onConfirm={onWithdraw}
+			tokenName={tokenName}
+			tokenDecimals={tokenDecimals}
 		/>,
 	)
 
@@ -64,23 +67,23 @@ const SwapRhino: React.FC<SwapRhinoProps> = ({ rhinoBalance }) => {
 						<CardIcon>
 							<img src={rhino} alt="" height="50" />
 						</CardIcon>
-						<Value value={getBalanceNumber(walletBalance, 9)} />
+						<Value value={getBalanceNumber(walletBalance, tokenDecimals)} />
 						<Label text={`${tokenName} Tokens Depositable`} />
-						<Value value={getBalanceNumber(rhinoBalance, 9)} />
+						<Value value={getBalanceNumber(rhinoBalance, tokenDecimals)} />
 						<Label text={`${tokenName} Tokens Deposited`} />
 					</StyledCardHeader>
 					<StyledCardActions>
-							<Button
-								disabled={walletBalance.eq(new BigNumber(0))}
-								text="Deposit RHINO"
-								onClick={onPresentDeposit}
-							/>
-							<StyledActionSpacer />
-							<Button
-								disabled={rhinoBalance.eq(new BigNumber(0))}
-								text="Withdraw RHINO"
-								onClick={onPresentWithdraw}
-							/>
+						<Button
+							disabled={!address || walletBalance.eq(new BigNumber(0))}
+							text="Deposit RHINO"
+							onClick={onPresentDeposit}
+						/>
+						<StyledActionSpacer />
+						<Button
+							disabled={!address || rhinoBalance.eq(new BigNumber(0))}
+							text="Withdraw RHINO"
+							onClick={onPresentWithdraw}
+						/>
 					</StyledCardActions>
 				</StyledCardContentInner>
 			</CardContent>

@@ -3,10 +3,7 @@ import { useCallback } from 'react'
 import usePanda from './usePanda'
 import { useWallet } from '@binance-chain/bsc-use-wallet'
 
-import {
-  getRhinoStakingContract,
-  deposit
-} from '../panda/utils'
+import { getRhinoStakingContract, deposit } from '../panda/utils'
 
 const useDeposit = (tokenAddress: string) => {
   const { account } = useWallet()

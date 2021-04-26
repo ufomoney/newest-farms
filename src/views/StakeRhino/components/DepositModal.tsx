@@ -11,6 +11,7 @@ interface DepositModalProps extends ModalProps {
 	max: BigNumber
 	onConfirm: (amount: string) => void
 	tokenName?: string
+	tokenDecimals?: number
 }
 
 const DepositModal: React.FC<DepositModalProps> = ({
@@ -18,12 +19,13 @@ const DepositModal: React.FC<DepositModalProps> = ({
 	onConfirm,
 	onDismiss,
 	tokenName = 'Panda',
+	tokenDecimals = 18,
 }) => {
 	const [val, setVal] = useState('')
 	const [pendingTx, setPendingTx] = useState(false)
 
 	const fullBalance = useMemo(() => {
-		return getFullDisplayBalance(max)
+		return getFullDisplayBalance(max, tokenDecimals)
 	}, [max])
 
 	const handleChange = useCallback(

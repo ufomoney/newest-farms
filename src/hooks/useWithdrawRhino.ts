@@ -3,28 +3,20 @@ import { useCallback } from 'react'
 import usePanda from './usePanda'
 import { useWallet } from '@binance-chain/bsc-use-wallet'
 
-import {
-  getRhinoStakingContract,
-  withdraw,
-  getRhinoContract,
-} from '../panda/utils'
+import { getRhinoStakingContract, withdraw } from '../panda/utils'
 
-const useWithdraw = () => {
+const useWithdraw = (tokenAddress: string) => {
   const { account } = useWallet()
   const panda = usePanda()
 
-  const handle = useCallback(
-    async (amount: string) => {
-      const txHash = await withdraw(
-        getRhinoStakingContract(panda),
-        getRhinoContract(panda).options.address,
-        amount,
-        account,
-      )
-      console.log(txHash)
-    },
-    [account],
-  )
+  const handle = useCallback(async () => {
+    const txHash = await withdraw(
+      getRhinoStakingContract(panda),
+      tokenAddress,
+      account,
+    )
+    console.log(txHash)
+  }, [account, panda])
 
   return { onWithdraw: handle }
 }

@@ -11,6 +11,7 @@ interface WithdrawModalProps extends ModalProps {
 	max: BigNumber
 	onConfirm: (amount: string) => void
 	tokenName?: string
+	tokenDecimals?: number
 }
 
 const WithdrawModal: React.FC<WithdrawModalProps> = ({
@@ -18,12 +19,13 @@ const WithdrawModal: React.FC<WithdrawModalProps> = ({
 	onConfirm,
 	onDismiss,
 	tokenName = '',
+	tokenDecimals = 18,
 }) => {
 	const [val, setVal] = useState('')
 	const [pendingTx, setPendingTx] = useState(false)
 
 	const fullBalance = useMemo(() => {
-		return getFullDisplayBalance(max)
+		return getFullDisplayBalance(max, tokenDecimals)
 	}, [max])
 
 	const handleChange = useCallback(

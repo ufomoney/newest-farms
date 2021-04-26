@@ -48,11 +48,15 @@ export const getBambooStakingContract = (pnda: Panda): Contract => {
   return pnda && pnda.contracts && pnda.contracts.bambooStaking
 }
 
-export const getRhinoContract = (pnda: Panda | undefined): Contract | undefined => {
+export const getRhinoContract = (
+  pnda: Panda | undefined,
+): Contract | undefined => {
   return pnda?.contracts.rhino
 }
 
-export const getRhinoStakingContract = (pnda: Panda | null | undefined): Contract | undefined => {
+export const getRhinoStakingContract = (
+  pnda: Panda | null | undefined,
+): Contract | undefined => {
   return pnda?.contracts.rhinoStaking
 }
 
@@ -255,7 +259,7 @@ export const getPandaPrice = async (pnda: Panda): Promise<BigNumber> => {
   // return new BigNumber(amount)
 }
 
-export const getPandaSupply = async (pnda: Panda): Promise<BigNumber>  => {
+export const getPandaSupply = async (pnda: Panda): Promise<BigNumber> => {
   return new BigNumber(await pnda.contracts.panda.methods.totalSupply().call())
 }
 
@@ -354,14 +358,10 @@ export const deposit = async (
 export const withdraw = async (
   contract: Contract,
   withdrawTokenAddress: string,
-  amount: string,
   account: string,
 ): Promise<string> => {
   return contract.methods
-    .withdraw(
-      withdrawTokenAddress,
-      new BigNumber(amount).times(new BigNumber(10).pow(18)).toString(),
-    )
+    .withdraw(withdrawTokenAddress)
     .send({ from: account })
     .on('transactionHash', (tx: { transactionHash: string }) => {
       console.log(tx)
@@ -378,7 +378,7 @@ export const getWithdrawableBalance = async (
     const amount = await rhinoStakingContract.methods
       .withdrawableBalance(account, tokenAddress)
       .call()
-      console.log('withdrawableBalance', amount)
+    console.log('withdrawableBalance', amount)
     return new BigNumber(amount)
   } catch {
     return new BigNumber(0)
@@ -394,7 +394,7 @@ export const swapWithFee = async (
     const amount = await rhinoStakingContract.methods
       .swapWithFee(fromTokenAddress, toTokenAddress)
       .call()
-      console.log('withdrawableBalance', amount)
+    console.log('withdrawableBalance', amount)
     return new BigNumber(amount)
   } catch {
     return new BigNumber(0)

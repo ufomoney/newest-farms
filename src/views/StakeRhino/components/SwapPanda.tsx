@@ -12,7 +12,6 @@ import useTokenBalance from '../../../hooks/useTokenBalance'
 import { getBalanceNumber } from '../../../utils/formatBalance'
 import DepositModal from './DepositModal'
 import WithdrawModal from './WithdrawModal'
-import { contractAddresses } from '../../../panda/lib/constants'
 import useWithdraw from '../../../hooks/useWithdrawRhino'
 import useAllowanceRhino from '../../../hooks/useAllowanceRhino'
 import useApproveRhino from '../../../hooks/useApproveRhino'
@@ -37,7 +36,7 @@ const SwapPanda: React.FC<SwapPandaProps> = ({ pndaBalance }) => {
 	const { onApprove } = useApproveRhino()
 
 	const { onDeposit } = useDeposit(address)
-	const { onWithdraw } = useWithdraw()
+	const { onWithdraw } = useWithdraw(address)
 
 	const [onPresentDeposit] = useModal(
 		<DepositModal
@@ -49,7 +48,7 @@ const SwapPanda: React.FC<SwapPandaProps> = ({ pndaBalance }) => {
 
 	const [onPresentWithdraw] = useModal(
 		<WithdrawModal
-			max={walletBalance}
+			max={pndaBalance}
 			onConfirm={onWithdraw}
 			tokenName={tokenName}
 		/>,
