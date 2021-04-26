@@ -128,6 +128,7 @@ const StyledCardHeader = styled.div`
 const StyledCardActions = styled.div`
 	display: flex;
 	justify-content: center;
+	margin-top: ${(props) => props.theme.spacing[5]}px;
 	width: 100%;
 `
 
