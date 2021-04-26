@@ -43,8 +43,8 @@ const FarmCards: React.FC = () => {
 			? stakedValue[pndaIndex].tokenPriceInWbnb
 			: new BigNumber(0)
 
-	const BLOCKS_PER_YEAR = new BigNumber(2336000)
-	const PNDA_BER_BLOCK = new BigNumber(256000)
+	const BLOCKS_PER_YEAR = new BigNumber(10513333)
+	const PNDA_BER_BLOCK = new BigNumber(15000)
 
 	const pools: { [key: string]: FarmWithStakedValue[] } = {
 		[PoolType.PNDA]: [],
