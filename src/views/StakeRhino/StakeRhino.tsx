@@ -7,12 +7,12 @@ import BigNumber from 'bignumber.js'
 import RhinoFarm from './components/RhinoFarm'
 import SwapRhino from './components/SwapRhino'
 import SwapPanda from './components/SwapPanda'
-import { useRhinoSwapWithdrawableBalances } from '../../hooks/useRhinoSwap'
+import { useRhinoSwapWithdrawableBalance } from '../../hooks/useRhinoSwap'
 
 const StakeRhino: React.FC = () => {
 	const panda = usePanda()
 	const [totalSupply, setTotalSupply] = useState<BigNumber>()
-	const { rhino, pnda } = useRhinoSwapWithdrawableBalances(panda)
+	const withdrawableBalance = useRhinoSwapWithdrawableBalance(panda)
 
 	useEffect(() => {
 		window.scrollTo(0, 0)
@@ -37,19 +37,17 @@ const StakeRhino: React.FC = () => {
 					<StyledCardWrapper>
 						<SwapRhino
 							rhinoStaking={rhinoContract}
-							rhinoBalance={rhino}
+							rhinoBalance={withdrawableBalance}
 							totalSupply={totalSupply}
 						/>
 					</StyledCardWrapper>
 					<Spacer />
 					<StyledCardWrapper>
-						<SwapPanda 
-						pndaBalance={pnda} 
-						/>
+						<SwapPanda pndaBalance={withdrawableBalance} />
 					</StyledCardWrapper>
 				</StyledCardsWrapper>
 				<Spacer size="lg" />
-			{/*	<StyledCardsWrapper>
+				{/*	<StyledCardsWrapper>
 					<StyledCardWrapper>
 						<RhinoFarm />
 					</StyledCardWrapper>

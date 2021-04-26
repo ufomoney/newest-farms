@@ -47,6 +47,7 @@ const SwapRhino: React.FC<SwapRhinoProps> = ({ rhinoBalance }) => {
 			max={walletBalance}
 			onConfirm={onDeposit}
 			tokenName={tokenName}
+			tokenDecimals={tokenDecimals}
 		/>,
 	)
 
