@@ -82,6 +82,11 @@ const SwapPanda: React.FC<SwapPandaProps> = ({ withdrawableBalance }) => {
 						<Value value={getBalanceNumber(withdrawableBalance, 9)} />
 						<Label text={`${tokenName} withdrawable`} />
 					</StyledCardHeader>
+					<StyledCardActionHeaders>
+						<span>⬇</span>
+						<StyledActionHeaderSpacer />
+						<span>⬆</span>
+					</StyledCardActionHeaders>
 					<StyledCardActions>
 						{!allowance.toNumber() ? (
 							<Button
@@ -89,19 +94,19 @@ const SwapPanda: React.FC<SwapPandaProps> = ({ withdrawableBalance }) => {
 									requestedApproval || walletBalance.eq(new BigNumber(0))
 								}
 								onClick={handleApprove}
-								text={`⬇Approve ${tokenName}`}
+								text={`Approve ${tokenName}`}
 							/>
 						) : (
 							<Button
 								disabled={!address || walletBalance.eq(new BigNumber(0))}
-								text={`⬇Deposit ${tokenName}`}
+								text={`Deposit ${tokenName}`}
 								onClick={onPresentDeposit}
 							/>
 						)}
 						<StyledActionSpacer />
 						<Button
 							disabled={!address || withdrawableBalance.eq(new BigNumber(0))}
-							text={`⬆Withdraw ${tokenName}`}
+							text={`Withdraw ${tokenName}`}
 							onClick={onPresentWithdraw}
 						/>
 					</StyledCardActions>
@@ -116,10 +121,22 @@ const StyledCardHeader = styled.div`
 	display: flex;
 	flex-direction: column;
 `
+
+const StyledCardActionHeaders = styled.div`
+	display: flex;
+	justify-content: center;
+	margin-top: ${(props) => props.theme.spacing[3]}px;
+	margin-bottom: ${(props) => props.theme.spacing[3]}px;
+	width: 100%;
+`
+
+const StyledActionHeaderSpacer = styled.div`
+	width: ${(props) => props.theme.spacing[7]}px;
+`
+
 const StyledCardActions = styled.div`
 	display: flex;
 	justify-content: center;
-	margin-top: ${(props) => props.theme.spacing[6]}px;
 	width: 100%;
 `
 
