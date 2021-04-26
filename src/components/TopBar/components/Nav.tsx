@@ -23,7 +23,7 @@ const Nav: React.FC = () => {
 				activeClassName="active"
 				to={{ pathname: '/farms', search: '?ref=' + refer }}
 			>
-				Menu
+				Farms
 			</StyledLink>
 			<StyledLink
 				exact
