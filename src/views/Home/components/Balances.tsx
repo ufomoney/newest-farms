@@ -105,7 +105,7 @@ const Balances: React.FC = () => {
 
 	useEffect(() => {
 		async function fetchRefLink() {
-			const usrReflink = 'www.panda.finance?ref=' + account
+			const usrReflink = 'www.pandaswap.xyz?ref=' + account
 			setRefLink(usrReflink)
 		}
 		if (panda) {
