@@ -48,14 +48,16 @@ export const getBambooStakingContract = (pnda: Panda): Contract => {
   return pnda && pnda.contracts && pnda.contracts.bambooStaking
 }
 
-export const getRhinoContract = (pnda: Panda): Contract | undefined => {
-  console.log(pnda && pnda.contracts && pnda.contracts.rhino, 'rhino')
-  return pnda && pnda.contracts && pnda.contracts.rhino
+export const getRhinoContract = (
+  pnda: Panda | undefined,
+): Contract | undefined => {
+  return pnda?.contracts.rhino
 }
 
-export const getRhinoStakingContract = (pnda: Panda): Contract | undefined => {
-  console.log(pnda && pnda.contracts && pnda.contracts.rhinoStaking, 'rhinoStaking')
-  return pnda && pnda.contracts && pnda.contracts.rhinoStaking
+export const getRhinoStakingContract = (
+  pnda: Panda | null | undefined,
+): Contract | undefined => {
+  return pnda?.contracts.rhinoStaking
 }
 
 export const getFarms = (pnda: Panda): Farm[] => {
@@ -257,7 +259,7 @@ export const getPandaPrice = async (pnda: Panda): Promise<BigNumber> => {
   // return new BigNumber(amount)
 }
 
-export const getPandaSupply = async (pnda: Panda): Promise<BigNumber>  => {
+export const getPandaSupply = async (pnda: Panda): Promise<BigNumber> => {
   return new BigNumber(await pnda.contracts.panda.methods.totalSupply().call())
 }
 
@@ -340,12 +342,13 @@ export const deposit = async (
   depositTokenAddress: string,
   amount: string,
   account: string,
+  tokenDecimals = 18,
 ): Promise<string> => {
+  const depositAmount = new BigNumber(amount)
+    .times(new BigNumber(10).pow(tokenDecimals))
+    .toString()
   return contract.methods
-    .deposit(
-      depositTokenAddress,
-      new BigNumber(amount).times(new BigNumber(10).pow(18)).toString(),
-    )
+    .deposit(depositTokenAddress, depositAmount)
     .send({ from: account })
     .on('transactionHash', (tx: { transactionHash: string }) => {
       console.log(tx)
@@ -356,17 +359,45 @@ export const deposit = async (
 export const withdraw = async (
   contract: Contract,
   withdrawTokenAddress: string,
-  amount: string,
   account: string,
 ): Promise<string> => {
   return contract.methods
-    .withdraw(
-      withdrawTokenAddress,
-      new BigNumber(amount).times(new BigNumber(10).pow(18)).toString(),
-    )
+    .withdraw(withdrawTokenAddress)
     .send({ from: account })
     .on('transactionHash', (tx: { transactionHash: string }) => {
       console.log(tx)
       return tx.transactionHash
     })
+}
+
+export const getWithdrawableBalance = async (
+  rhinoStakingContract: Contract,
+  account: string,
+  tokenAddress: string,
+): Promise<BigNumber> => {
+  try {
+    const amount = await rhinoStakingContract.methods
+      .withdrawableBalance(account, tokenAddress)
+      .call()
+    console.log('withdrawableBalance', amount)
+    return new BigNumber(amount)
+  } catch {
+    return new BigNumber(0)
+  }
+}
+
+export const swapWithFee = async (
+  rhinoStakingContract: Contract,
+  fromTokenAddress: string,
+  toTokenAddress: string,
+): Promise<BigNumber> => {
+  try {
+    const amount = await rhinoStakingContract.methods
+      .swapWithFee(fromTokenAddress, toTokenAddress)
+      .call()
+    console.log('withdrawableBalance', amount)
+    return new BigNumber(amount)
+  } catch {
+    return new BigNumber(0)
+  }
 }

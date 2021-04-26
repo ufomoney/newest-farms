@@ -1,31 +1,31 @@
 import BigNumber from 'bignumber.js'
 import React, { useCallback, useMemo, useState } from 'react'
-import Button from '../../../components/Button'
-import Modal, { ModalProps } from '../../../components/Modal'
-import ModalActions from '../../../components/ModalActions'
-import ModalTitle from '../../../components/ModalTitle'
-import TokenInput from '../../../components/TokenInput'
-import { getFullDisplayBalance } from '../../../utils/formatBalance'
+import Button from '../../../../../components/Button'
+import Modal, { ModalProps } from '../../../../../components/Modal'
+import ModalActions from '../../../../../components/ModalActions'
+import ModalTitle from '../../../../../components/ModalTitle'
+import ModalContent from '../../../../../components/ModalContent'
+import TokenInput from '../../../../../components/TokenInput'
+import { getFullDisplayBalance } from '../../../../../utils/formatBalance'
+import styled from 'styled-components'
 
 interface DepositModalProps extends ModalProps {
 	max: BigNumber
 	onConfirm: (amount: string) => void
 	tokenName?: string
-	tokenDecimals?: number
 }
 
 const DepositModal: React.FC<DepositModalProps> = ({
 	max,
 	onConfirm,
 	onDismiss,
-	tokenName = 'Panda',
-	tokenDecimals = 18,
+	tokenName = '',
 }) => {
 	const [val, setVal] = useState('')
 	const [pendingTx, setPendingTx] = useState(false)
 
 	const fullBalance = useMemo(() => {
-		return getFullDisplayBalance(max, tokenDecimals)
+		return getFullDisplayBalance(max)
 	}, [max])
 
 	const handleChange = useCallback(
@@ -62,6 +62,11 @@ const DepositModal: React.FC<DepositModalProps> = ({
 					}}
 				/>
 			</ModalActions>
+			<ModalContent>
+				{
+					"Remember a 0.75% fee will be added to the treasury when depositing but you'll earn the APY to offset it."
+				}
+			</ModalContent>
 		</Modal>
 	)
 }

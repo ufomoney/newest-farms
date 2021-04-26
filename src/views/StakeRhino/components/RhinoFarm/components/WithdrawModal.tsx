@@ -1,31 +1,30 @@
 import BigNumber from 'bignumber.js'
 import React, { useCallback, useMemo, useState } from 'react'
-import Button from '../../../components/Button'
-import Modal, { ModalProps } from '../../../components/Modal'
-import ModalActions from '../../../components/ModalActions'
-import ModalTitle from '../../../components/ModalTitle'
-import TokenInput from '../../../components/TokenInput'
-import { getFullDisplayBalance } from '../../../utils/formatBalance'
+import Button from '../../../../../components/Button'
+import Modal, { ModalProps } from '../../../../../components/Modal'
+import ModalActions from '../../../../../components/ModalActions'
+import ModalTitle from '../../../../../components/ModalTitle'
+import ModalContent from '../../../../../components/ModalContent'
+import TokenInput from '../../../../../components/TokenInput'
+import { getFullDisplayBalance } from '../../../../../utils/formatBalance'
 
-interface DepositModalProps extends ModalProps {
+interface WithdrawModalProps extends ModalProps {
 	max: BigNumber
 	onConfirm: (amount: string) => void
 	tokenName?: string
-	tokenDecimals?: number
 }
 
-const DepositModal: React.FC<DepositModalProps> = ({
-	max,
+const WithdrawModal: React.FC<WithdrawModalProps> = ({
 	onConfirm,
 	onDismiss,
-	tokenName = 'Panda',
-	tokenDecimals = 18,
+	max,
+	tokenName = '',
 }) => {
 	const [val, setVal] = useState('')
 	const [pendingTx, setPendingTx] = useState(false)
 
 	const fullBalance = useMemo(() => {
-		return getFullDisplayBalance(max, tokenDecimals)
+		return getFullDisplayBalance(max)
 	}, [max])
 
 	const handleChange = useCallback(
@@ -41,11 +40,11 @@ const DepositModal: React.FC<DepositModalProps> = ({
 
 	return (
 		<Modal>
-			<ModalTitle text={`Deposit ${tokenName} Tokens`} />
+			<ModalTitle text={`Withdraw ${tokenName}`} />
 			<TokenInput
-				value={val}
 				onSelectMax={handleSelectMax}
 				onChange={handleChange}
+				value={val}
 				max={fullBalance}
 				symbol={tokenName}
 			/>
@@ -62,8 +61,13 @@ const DepositModal: React.FC<DepositModalProps> = ({
 					}}
 				/>
 			</ModalActions>
+			<ModalContent>
+				{
+					'Remember the longer you stay in a pool the lower your fee. Read the docs for details, but most users will want to stay in a pool 5 days or longer.'
+				}
+			</ModalContent>
 		</Modal>
 	)
 }
 
-export default DepositModal
+export default WithdrawModal

@@ -1,47 +1,53 @@
-import React, { useEffect, useMemo, useState } from 'react'
+import React, { useEffect, useMemo } from 'react'
 import styled from 'styled-components'
 import Spacer from '../../components/Spacer'
 import usePanda from '../../hooks/usePanda'
-import UnstakeRhino from './components/UnstakeRhino'
-import StakePanda from './components/StakePanda'
-
-import { getRhinoContract, getRhinoSupply } from '../../panda/utils'
-import BigNumber from 'bignumber.js'
+import RhinoFarm from './components/RhinoFarm'
+import SwapRhino from './components/SwapRhino'
+import SwapPanda from './components/SwapPanda'
+import { useRhinoSwapWithdrawableBalance } from '../../hooks/useRhinoSwap'
+import Button from '../../components/Button'
+import { getRhinoContract } from '../../panda/utils'
 
 const StakeRhino: React.FC = () => {
-	const [totalSupply, setTotalSupply] = useState<BigNumber>()
-
 	const panda = usePanda()
+	const rhino = useMemo(() => getRhinoContract(panda), [panda])
+	const withdrawableBalance = useRhinoSwapWithdrawableBalance(panda)
 
 	useEffect(() => {
 		window.scrollTo(0, 0)
 	}, [])
-
-	useEffect(() => {
-		async function fetchTotalSupply() {
-			const supply = await getRhinoSupply(panda)
-			setTotalSupply(supply)
-		}
-		if (panda) {
-			fetchTotalSupply()
-		}
-	}, [panda, setTotalSupply])
-
-	const lpContract = useMemo(() => getRhinoContract(panda), [panda])
 
 	return (
 		<>
 			<StyledFarm>
 				<StyledCardsWrapper>
 					<StyledCardWrapper>
-						<UnstakeRhino lpContract={lpContract} />
+						<SwapRhino withdrawableBalance={withdrawableBalance} />
 					</StyledCardWrapper>
 					<Spacer />
 					<StyledCardWrapper>
-						<StakePanda />
+						<SwapPanda withdrawableBalance={withdrawableBalance} />
 					</StyledCardWrapper>
 				</StyledCardsWrapper>
+				{rhino && (
+					<div style={{ maxWidth: 400 }}>
+						<Spacer />
+						<Button
+							size={'md'}
+							href={`https://pandaswap.xyz/#/swap/?outputCurrency=${rhino.options.address}`}
+							text="Swap RHINO on PandaSwap"
+							variant="tertiary"
+						/>
+					</div>
+				)}
 				<Spacer size="lg" />
+
+				{/*	<StyledCardsWrapper>
+					<StyledCardWrapper>
+						<RhinoFarm />
+					</StyledCardWrapper>
+			</StyledCardsWrapper> */}
 				<StyledInfo>
 					<p>
 						ℹ️️ This Panda:Rhino 1:1 swap contract has a 2% fee in both
@@ -118,6 +124,9 @@ const StyledInfo = styled.h3`
 	margin: 0;
 	padding: 0;
 	text-align: center;
+	@media (max-width: 900px) {
+		width: 90%;
+	}
 	width: 900px;
 `
 

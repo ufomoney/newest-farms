@@ -2,7 +2,7 @@ import React from 'react'
 import { Route, Switch, useRouteMatch } from 'react-router-dom'
 import { useWallet } from '@binance-chain/bsc-use-wallet'
 
-import pnda from '../../assets/img/pnda.png'
+import rhino from '../../assets/img/rhino-b.png'
 
 import Button from '../../components/Button'
 import Page from '../../components/Page'
@@ -23,7 +23,7 @@ const Rhino: React.FC = () => {
 					<>
 						<Route exact path={path}>
 							<PageHeader
-								icon={pnda}
+								icon={rhino}
 								title="Welcome to the Rhino 1:1 Contract"
 								subtitle="Convert your PNDA into RHINO!"
 							/>
