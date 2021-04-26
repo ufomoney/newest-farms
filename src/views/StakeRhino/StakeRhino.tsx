@@ -109,6 +109,9 @@ const StyledInfo = styled.h3`
 	margin: 0;
 	padding: 0;
 	text-align: center;
+	@media (max-width: 900px) {
+		width: 90%;
+	}
 	width: 900px;
 `
 
