@@ -17,7 +17,7 @@ import useAllowanceRhino from '../../../hooks/useAllowanceRhino'
 import useApproveRhino from '../../../hooks/useApproveRhino'
 import pnda from '../../../assets/img/pnda.png'
 import useDeposit from '../../../hooks/useDepositRhino'
-import { getPandaAddress } from '../../../panda/utils'
+import { getPandaAddress, getPandaContract } from '../../../panda/utils'
 import usePanda from '../../../hooks/usePanda'
 
 interface SwapPandaProps {
@@ -31,9 +31,9 @@ const SwapPanda: React.FC<SwapPandaProps> = ({ withdrawableBalance }) => {
 	const walletBalance = useTokenBalance(address)
 
 	const [requestedApproval, setRequestedApproval] = useState(false)
-
-	const allowance = useAllowanceRhino()
-	const { onApprove } = useApproveRhino()
+	const contract = useMemo(() => getPandaContract(panda), [panda])
+	const allowance = useAllowanceRhino(contract)
+	const { onApprove } = useApproveRhino(contract)
 
 	const { onDeposit } = useDeposit(address)
 	const { onWithdraw } = useWithdraw(address)
@@ -85,25 +85,25 @@ const SwapPanda: React.FC<SwapPandaProps> = ({ withdrawableBalance }) => {
 					<StyledCardActions>
 						{!allowance.toNumber() ? (
 							<Button
-								disabled={requestedApproval}
+								disabled={
+									requestedApproval || walletBalance.eq(new BigNumber(0))
+								}
 								onClick={handleApprove}
-								text={`Approve PNDA`}
+								text={`⬇Approve ${tokenName}`}
 							/>
 						) : (
-							<>
-								<Button
-									disabled={walletBalance.eq(new BigNumber(0))}
-									text="Deposit PNDA"
-									onClick={onPresentDeposit}
-								/>
-								<StyledActionSpacer />
-								<Button
-									disabled={withdrawableBalance.eq(new BigNumber(0))}
-									text="Withdraw PNDA"
-									onClick={onPresentWithdraw}
-								/>
-							</>
+							<Button
+								disabled={!address || walletBalance.eq(new BigNumber(0))}
+								text={`⬇Deposit ${tokenName}`}
+								onClick={onPresentDeposit}
+							/>
 						)}
+						<StyledActionSpacer />
+						<Button
+							disabled={!address || withdrawableBalance.eq(new BigNumber(0))}
+							text={`⬆Withdraw ${tokenName}`}
+							onClick={onPresentWithdraw}
+						/>
 					</StyledCardActions>
 				</StyledCardContentInner>
 			</CardContent>

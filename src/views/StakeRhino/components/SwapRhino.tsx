@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from 'react'
+import React, { useCallback, useMemo, useState } from 'react'
 import styled from 'styled-components'
 import Button from '../../../components/Button'
 import Card from '../../../components/Card'
@@ -18,6 +18,8 @@ import usePanda from '../../../hooks/usePanda'
 import DepositModal from './DepositModal'
 import rhino from '../../../assets/img/rhino-a.png'
 import useWithdraw from '../../../hooks/useWithdrawRhino'
+import useAllowanceRhino from '../../../hooks/useAllowanceRhino'
+import useApproveRhino from '../../../hooks/useApproveRhino'
 
 interface SwapRhinoProps {
 	withdrawableBalance: BigNumber
@@ -30,6 +32,11 @@ const SwapRhino: React.FC<SwapRhinoProps> = ({ withdrawableBalance }) => {
 		panda,
 	])
 	const walletBalance = useTokenBalance(address)
+
+	const [requestedApproval, setRequestedApproval] = useState(false)
+	const contract = useMemo(() => getRhinoContract(panda), [panda])
+	const allowance = useAllowanceRhino(contract)
+	const { onApprove } = useApproveRhino(contract)
 
 	const { onDeposit } = useDeposit(address)
 	const { onWithdraw } = useWithdraw(address)
@@ -55,6 +62,19 @@ const SwapRhino: React.FC<SwapRhinoProps> = ({ withdrawableBalance }) => {
 		/>,
 	)
 
+	const handleApprove = useCallback(async () => {
+		try {
+			setRequestedApproval(true)
+			const txHash = await onApprove()
+			// user rejected tx or didn't go thru
+			if (!txHash) {
+				setRequestedApproval(false)
+			}
+		} catch (e) {
+			console.log(e)
+		}
+	}, [onApprove, setRequestedApproval])
+
 	return (
 		<Card>
 			<CardContent>
@@ -71,15 +91,25 @@ const SwapRhino: React.FC<SwapRhinoProps> = ({ withdrawableBalance }) => {
 						<Label text={`${tokenName} withdrawable `} />
 					</StyledCardHeader>
 					<StyledCardActions>
-						<Button
-							disabled={!address || walletBalance.eq(new BigNumber(0))}
-							text="Deposit RHINO"
-							onClick={onPresentDeposit}
-						/>
+						{!allowance.toNumber() ? (
+							<Button
+								disabled={
+									requestedApproval || walletBalance.eq(new BigNumber(0))
+								}
+								onClick={handleApprove}
+								text={`⬇Approve ${tokenName}`}
+							/>
+						) : (
+							<Button
+								disabled={!address || walletBalance.eq(new BigNumber(0))}
+								text={`⬇Deposit ${tokenName}`}
+								onClick={onPresentDeposit}
+							/>
+						)}
 						<StyledActionSpacer />
 						<Button
 							disabled={!address || withdrawableBalance.eq(new BigNumber(0))}
-							text="Withdraw RHINO"
+							text={`⬆Withdraw ${tokenName}`}
 							onClick={onPresentWithdraw}
 						/>
 					</StyledCardActions>

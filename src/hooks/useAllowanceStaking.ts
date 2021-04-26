@@ -33,7 +33,7 @@ const useAllowanceStaking = () => {
     if (account && stakingContract && lpContract) {
       fetchAllowance()
     }
-    const refreshInterval = setInterval(fetchAllowance, 10000)
+    const refreshInterval = setInterval(fetchAllowance, 5000)
     return () => clearInterval(refreshInterval)
   }, [account, stakingContract, lpContract])
 
