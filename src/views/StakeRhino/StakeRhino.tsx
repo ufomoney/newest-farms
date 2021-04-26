@@ -71,7 +71,7 @@ const StakeRhino: React.FC = () => {
 											</span>
 											<Spacer />
 											<Button
-												href={`https://farms.pandaswap.xyz/farms/RHINO-BNB`}
+												href={`https://farms.pandaswap.xyz/farms/RHINO-BNB%20PNDA-V2`}
 												text="Stake RHINO-BNB"
 												variant="tertiary"
 											/>
