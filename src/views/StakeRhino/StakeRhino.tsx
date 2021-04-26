@@ -2,8 +2,7 @@ import React, { useEffect, useMemo, useState } from 'react'
 import styled from 'styled-components'
 import Spacer from '../../components/Spacer'
 import usePanda from '../../hooks/usePanda'
-import { getRhinoContract, getRhinoSupply } from '../../panda/utils'
-import BigNumber from 'bignumber.js'
+import { getRhinoSupply } from '../../panda/utils'
 import RhinoFarm from './components/RhinoFarm'
 import SwapRhino from './components/SwapRhino'
 import SwapPanda from './components/SwapPanda'
@@ -11,39 +10,22 @@ import { useRhinoSwapWithdrawableBalance } from '../../hooks/useRhinoSwap'
 
 const StakeRhino: React.FC = () => {
 	const panda = usePanda()
-	const [totalSupply, setTotalSupply] = useState<BigNumber>()
 	const withdrawableBalance = useRhinoSwapWithdrawableBalance(panda)
 
 	useEffect(() => {
 		window.scrollTo(0, 0)
 	}, [])
 
-	useEffect(() => {
-		async function fetchTotalSupply() {
-			const supply = await getRhinoSupply(panda)
-			setTotalSupply(supply)
-		}
-		if (panda) {
-			fetchTotalSupply()
-		}
-	}, [panda, setTotalSupply])
-
-	const rhinoContract = useMemo(() => getRhinoContract(panda), [panda])
-
 	return (
 		<>
 			<StyledFarm>
 				<StyledCardsWrapper>
 					<StyledCardWrapper>
-						<SwapRhino
-							rhinoStaking={rhinoContract}
-							rhinoBalance={withdrawableBalance}
-							totalSupply={totalSupply}
-						/>
+						<SwapRhino withdrawableBalance={withdrawableBalance} />
 					</StyledCardWrapper>
 					<Spacer />
 					<StyledCardWrapper>
-						<SwapPanda pndaBalance={withdrawableBalance} />
+						<SwapPanda withdrawableBalance={withdrawableBalance} />
 					</StyledCardWrapper>
 				</StyledCardsWrapper>
 				<Spacer size="lg" />

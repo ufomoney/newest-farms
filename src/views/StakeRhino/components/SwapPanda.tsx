@@ -1,5 +1,5 @@
 import BigNumber from 'bignumber.js'
-import React, { useCallback, useState } from 'react'
+import React, { useCallback, useMemo, useState } from 'react'
 import styled from 'styled-components'
 import Button from '../../../components/Button'
 import Card from '../../../components/Card'
@@ -21,13 +21,13 @@ import { getPandaAddress } from '../../../panda/utils'
 import usePanda from '../../../hooks/usePanda'
 
 interface SwapPandaProps {
-	pndaBalance: BigNumber
+	withdrawableBalance: BigNumber
 }
 
-const SwapPanda: React.FC<SwapPandaProps> = ({ pndaBalance }) => {
+const SwapPanda: React.FC<SwapPandaProps> = ({ withdrawableBalance }) => {
 	const panda = usePanda()
 	const tokenName = 'PNDA'
-	const address = getPandaAddress(panda)
+	const address = useMemo(() => getPandaAddress(panda), [panda])
 	const walletBalance = useTokenBalance(address)
 
 	const [requestedApproval, setRequestedApproval] = useState(false)
@@ -43,14 +43,16 @@ const SwapPanda: React.FC<SwapPandaProps> = ({ pndaBalance }) => {
 			max={walletBalance}
 			onConfirm={onDeposit}
 			tokenName={tokenName}
+			tokenDecimals={18}
 		/>,
 	)
 
 	const [onPresentWithdraw] = useModal(
 		<WithdrawModal
-			max={pndaBalance}
+			max={withdrawableBalance}
 			onConfirm={onWithdraw}
 			tokenName={tokenName}
+			tokenDecimals={9}
 		/>,
 	)
 
@@ -75,9 +77,9 @@ const SwapPanda: React.FC<SwapPandaProps> = ({ pndaBalance }) => {
 						<CardIcon>
 							<img src={pnda} alt="" height="50" />
 						</CardIcon>
-						<Value value={getBalanceNumber(walletBalance)} />
+						<Value value={getBalanceNumber(walletBalance, 18)} />
 						<Label text={`${tokenName} Tokens Depositable`} />
-						<Value value={getBalanceNumber(pndaBalance)} />
+						<Value value={getBalanceNumber(withdrawableBalance, 9)} />
 						<Label text={`${tokenName} Tokens Deposited`} />
 					</StyledCardHeader>
 					<StyledCardActions>
@@ -96,7 +98,7 @@ const SwapPanda: React.FC<SwapPandaProps> = ({ pndaBalance }) => {
 								/>
 								<StyledActionSpacer />
 								<Button
-									disabled={pndaBalance.eq(new BigNumber(0))}
+									disabled={withdrawableBalance.eq(new BigNumber(0))}
 									text="Withdraw PNDA"
 									onClick={onPresentWithdraw}
 								/>

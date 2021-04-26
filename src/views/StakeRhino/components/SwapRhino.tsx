@@ -11,7 +11,6 @@ import useTokenBalance from '../../../hooks/useTokenBalance'
 import { Contract } from 'web3-eth-contract'
 import useModal from '../../../hooks/useModal'
 import WithdrawModal from './WithdrawModal'
-import useWithdrawRhino from '../../../hooks/useWithdrawRhino'
 import BigNumber from 'bignumber.js'
 import { getRhinoContract } from '../../../panda/utils'
 import useDeposit from '../../../hooks/useDepositRhino'
@@ -21,14 +20,10 @@ import rhino from '../../../assets/img/rhino-a.png'
 import useWithdraw from '../../../hooks/useWithdrawRhino'
 
 interface SwapRhinoProps {
-	rhinoStaking: Contract
-	rhinoBalance: BigNumber
-	totalSupply: BigNumber
+	withdrawableBalance: BigNumber
 }
 
-const SwapRhino: React.FC<SwapRhinoProps> = ({ rhinoBalance }) => {
-	const [pendingTx, setPendingTx] = useState(false)
-
+const SwapRhino: React.FC<SwapRhinoProps> = ({ withdrawableBalance }) => {
 	const panda = usePanda()
 
 	const address = useMemo(() => getRhinoContract(panda)?.options.address, [
@@ -53,7 +48,7 @@ const SwapRhino: React.FC<SwapRhinoProps> = ({ rhinoBalance }) => {
 
 	const [onPresentWithdraw] = useModal(
 		<WithdrawModal
-			max={rhinoBalance}
+			max={withdrawableBalance}
 			onConfirm={onWithdraw}
 			tokenName={tokenName}
 			tokenDecimals={tokenDecimals}
@@ -69,9 +64,11 @@ const SwapRhino: React.FC<SwapRhinoProps> = ({ rhinoBalance }) => {
 							<img src={rhino} alt="" height="50" />
 						</CardIcon>
 						<Value value={getBalanceNumber(walletBalance, tokenDecimals)} />
-						<Label text={`${tokenName} Tokens Depositable`} />
-						<Value value={getBalanceNumber(rhinoBalance, tokenDecimals)} />
-						<Label text={`${tokenName} Tokens Deposited`} />
+						<Label text={`${tokenName} in wallet`} />
+						<Value
+							value={getBalanceNumber(withdrawableBalance, tokenDecimals)}
+						/>
+						<Label text={`${tokenName} withdrawable `} />
 					</StyledCardHeader>
 					<StyledCardActions>
 						<Button
@@ -81,7 +78,7 @@ const SwapRhino: React.FC<SwapRhinoProps> = ({ rhinoBalance }) => {
 						/>
 						<StyledActionSpacer />
 						<Button
-							disabled={!address || rhinoBalance.eq(new BigNumber(0))}
+							disabled={!address || withdrawableBalance.eq(new BigNumber(0))}
 							text="Withdraw RHINO"
 							onClick={onPresentWithdraw}
 						/>
