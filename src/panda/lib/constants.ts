@@ -1261,7 +1261,7 @@ export const supportedPools: SupportedPool[] = [
       56: '0x9fe458505bc0236998eCEd9857356B89E78993e3',
     },
     tokenAddresses: {
-      56: '0x794f976c12b2616fa2af3f38a73d3b61fbf68661',
+      56: '0xc7d8d35eba58a0935ff2d5a33df105dd9f071731',
     },
     tokenDecimals: 6,
     name: 'Hedget Herbal Tea',
