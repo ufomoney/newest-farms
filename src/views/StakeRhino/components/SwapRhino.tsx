@@ -90,11 +90,6 @@ const SwapRhino: React.FC<SwapRhinoProps> = ({ withdrawableBalance }) => {
 						/>
 						<Label text={`${tokenName} withdrawable `} />
 					</StyledCardHeader>
-					<StyledCardActionHeaders>
-						<span>⬇</span>
-						<StyledActionHeaderSpacer />
-						<span>⬆</span>
-					</StyledCardActionHeaders>
 					<StyledCardActions>
 						{!allowance.toNumber() ? (
 							<Button
@@ -128,18 +123,6 @@ const StyledCardHeader = styled.div`
 	align-items: center;
 	display: flex;
 	flex-direction: column;
-`
-
-const StyledCardActionHeaders = styled.div`
-	display: flex;
-	justify-content: center;
-	margin-top: ${(props) => props.theme.spacing[3]}px;
-	margin-bottom: ${(props) => props.theme.spacing[3]}px;
-	width: 100%;
-`
-
-const StyledActionHeaderSpacer = styled.div`
-	width: ${(props) => props.theme.spacing[7]}px;
 `
 
 const StyledCardActions = styled.div`
