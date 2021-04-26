@@ -342,12 +342,13 @@ export const deposit = async (
   depositTokenAddress: string,
   amount: string,
   account: string,
+  tokenDecimals = 18,
 ): Promise<string> => {
+  const depositAmount = new BigNumber(amount)
+    .times(new BigNumber(10).pow(tokenDecimals))
+    .toString()
   return contract.methods
-    .deposit(
-      depositTokenAddress,
-      new BigNumber(amount).times(new BigNumber(10).pow(18)).toString(),
-    )
+    .deposit(depositTokenAddress, depositAmount)
     .send({ from: account })
     .on('transactionHash', (tx: { transactionHash: string }) => {
       console.log(tx)

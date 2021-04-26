@@ -31,6 +31,9 @@ const SwapRhino: React.FC<SwapRhinoProps> = ({ withdrawableBalance }) => {
 	const address = useMemo(() => getRhinoContract(panda)?.options.address, [
 		panda,
 	])
+	const tokenName = 'RHINO'
+	const tokenDecimals = 9
+
 	const walletBalance = useTokenBalance(address)
 
 	const [requestedApproval, setRequestedApproval] = useState(false)
@@ -38,11 +41,8 @@ const SwapRhino: React.FC<SwapRhinoProps> = ({ withdrawableBalance }) => {
 	const allowance = useAllowanceRhino(contract)
 	const { onApprove } = useApproveRhino(contract)
 
-	const { onDeposit } = useDeposit(address)
+	const { onDeposit } = useDeposit(address, tokenDecimals)
 	const { onWithdraw } = useWithdraw(address)
-
-	const tokenName = 'RHINO'
-	const tokenDecimals = 9
 
 	const [onPresentDeposit] = useModal(
 		<DepositModal
