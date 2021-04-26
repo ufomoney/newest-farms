@@ -49,6 +49,9 @@ const StakeRhino: React.FC = () => {
 					</StyledCardWrapper>
 			</StyledCardsWrapper> */}
 				<StyledInfo>
+					<p style={{color: 'red', fontWeight: 600}}>
+						❗ Once PNDA/RHINO is deposited into the contract, it MUST be withdrawn before you can deposit again. ❗
+					</p>
 					<p>
 						ℹ️️ This Panda:Rhino 1:1 swap contract has a 2% fee in both
 						directions, with a fee that goes to a liquidity pool.
