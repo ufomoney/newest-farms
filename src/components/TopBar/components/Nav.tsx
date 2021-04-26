@@ -39,6 +39,9 @@ const Nav: React.FC = () => {
 			>
 				Rhino
 			</StyledLink>
+			<StyledAbsoluteLink href="https://pandaswap.xyz" target="_blank">
+				Swap
+			</StyledAbsoluteLink>
 			<StyledAbsoluteLink
 				href="https://snapshot.page/#/baovotes.eth"
 				target="_blank"
