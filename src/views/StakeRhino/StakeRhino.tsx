@@ -2,17 +2,26 @@ import React, { useEffect, useMemo } from 'react'
 import styled from 'styled-components'
 import Spacer from '../../components/Spacer'
 import usePanda from '../../hooks/usePanda'
-import RhinoFarm from './components/RhinoFarm'
 import SwapRhino from './components/SwapRhino'
 import SwapPanda from './components/SwapPanda'
 import { useRhinoSwapWithdrawableBalance } from '../../hooks/useRhinoSwap'
 import Button from '../../components/Button'
 import { getRhinoContract } from '../../panda/utils'
+import Label from '../../components/Label'
+import useTokenBalance from '../../hooks/useTokenBalance'
+import Card from '../../components/Card'
+import CardContent from '../../components/CardContent'
 
 const StakeRhino: React.FC = () => {
 	const panda = usePanda()
 	const rhino = useMemo(() => getRhinoContract(panda), [panda])
 	const withdrawableBalance = useRhinoSwapWithdrawableBalance(panda)
+
+	const address = useMemo(() => getRhinoContract(panda)?.options.address, [
+		panda,
+	])
+
+	const rhinoWalletBalance = useTokenBalance(address)
 
 	useEffect(() => {
 		window.scrollTo(0, 0)
@@ -30,32 +39,51 @@ const StakeRhino: React.FC = () => {
 						<SwapPanda withdrawableBalance={withdrawableBalance} />
 					</StyledCardWrapper>
 				</StyledCardsWrapper>
-				{rhino && (
-					<div style={{ maxWidth: 400 }}>
-						<Spacer />
-						<Button
-							size={'md'}
-							href={`https://pandaswap.xyz/#/swap/?outputCurrency=${rhino.options.address}`}
-							text="Swap RHINO on PandaSwap"
-							variant="tertiary"
-						/>
-					</div>
-				)}
-				<Spacer size="lg" />
-
-				{/*	<StyledCardsWrapper>
+				<Spacer />
+				<StyledCardsWrapper>
 					<StyledCardWrapper>
-						<RhinoFarm />
+						<Card>
+							<CardContent>
+								<StyledCardContentInner>
+									<p style={{ fontSize: 12 }}>
+										ℹ️️ This Panda:Rhino 1:1 swap contract has a 2% fee in both
+										directions, with a fee that goes to a liquidity pool.
+									</p>
+									<p style={{ color: 'red', fontWeight: 600, fontSize: 12 }}>
+										❗ Once PNDA/RHINO is deposited into the contract, it MUST
+										be withdrawn before you can deposit again. ❗
+									</p>
+									{rhino && rhinoWalletBalance.isGreaterThan(0) && (
+										<>
+											<Spacer size="sm" />
+											<span style={{ fontSize: 14 }}>
+												<Label text={'then...'} />
+											</span>
+											<Spacer size="sm" />
+											<Button
+												href={`https://pandaswap.xyz/#/add/${rhino.options.address}/BNB`}
+												text="Pool RHINO-BNB on PandaSwap"
+												variant="tertiary"
+											/>
+											<Spacer />
+											<span style={{ fontSize: 14 }}>
+												<Label text={'then...'} />
+											</span>
+											<Spacer />
+											<Button
+												href={`https://farms.pandaswap.xyz/farms/RHINO-BNB`}
+												text="Stake RHINO-BNB"
+												variant="tertiary"
+											/>
+										</>
+									)}
+								</StyledCardContentInner>
+							</CardContent>
+						</Card>
 					</StyledCardWrapper>
-			</StyledCardsWrapper> */}
+				</StyledCardsWrapper>
+				<Spacer size="lg" />
 				<StyledInfo>
-					<p style={{color: 'red', fontWeight: 600}}>
-						❗ Once PNDA/RHINO is deposited into the contract, it MUST be withdrawn before you can deposit again. ❗
-					</p>
-					<p>
-						ℹ️️ This Panda:Rhino 1:1 swap contract has a 2% fee in both
-						directions, with a fee that goes to a liquidity pool.
-					</p>
 					<p>
 						The Rhino LP pair on Pandaswap will have one of the highest rewards
 						on Panda farms and will receive a portion of Pandaswap fees through
@@ -118,6 +146,14 @@ const StyledCardWrapper = styled.div`
 	@media (max-width: 768px) {
 		width: 80%;
 	}
+`
+
+const StyledCardContentInner = styled.div`
+	align-items: center;
+	display: flex;
+	flex: 1;
+	flex-direction: column;
+	justify-content: space-between;
 `
 
 const StyledInfo = styled.h3`
