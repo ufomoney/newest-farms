@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useMemo } from 'react'
 import styled from 'styled-components'
 import Spacer from '../../components/Spacer'
 import usePanda from '../../hooks/usePanda'
@@ -6,9 +6,12 @@ import RhinoFarm from './components/RhinoFarm'
 import SwapRhino from './components/SwapRhino'
 import SwapPanda from './components/SwapPanda'
 import { useRhinoSwapWithdrawableBalance } from '../../hooks/useRhinoSwap'
+import Button from '../../components/Button'
+import { getRhinoContract } from '../../panda/utils'
 
 const StakeRhino: React.FC = () => {
 	const panda = usePanda()
+	const rhino = useMemo(() => getRhinoContract(panda), [panda])
 	const withdrawableBalance = useRhinoSwapWithdrawableBalance(panda)
 
 	useEffect(() => {
@@ -27,7 +30,19 @@ const StakeRhino: React.FC = () => {
 						<SwapPanda withdrawableBalance={withdrawableBalance} />
 					</StyledCardWrapper>
 				</StyledCardsWrapper>
+				{rhino && (
+					<div style={{ maxWidth: 400 }}>
+						<Spacer />
+						<Button
+							size={'md'}
+							href={`https://pandaswap.xyz/#/swap/?outputCurrency=${rhino.options.address}`}
+							text="Swap RHINO on PandaSwap"
+							variant="tertiary"
+						/>
+					</div>
+				)}
 				<Spacer size="lg" />
+
 				{/*	<StyledCardsWrapper>
 					<StyledCardWrapper>
 						<RhinoFarm />
