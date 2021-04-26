@@ -1493,7 +1493,7 @@ export const supportedPools: SupportedPool[] = [
     },
     tokenDecimals: 18,
     name: 'USDT-BUSD',
-    symbol: 'USDT-BUSD',
+    symbol: 'USDT-BUSD CAKELP',
     tokenSymbol: 'USDT',
     poolType: PoolType.CAKE,
     icon: '/binance.png',
