@@ -82,12 +82,12 @@ const Farm: React.FC = () => {
 					</StyledCardWrapper>
 				</StyledCardsWrapper>
 				<Spacer size="lg" />
-				<StyledInfo>
-			❗️ <span style={{fontWeight: 600, color: 'red'}}>Attention:</span> Please familiarize yourself with the fee structure before using PandaChef. 
-			Deposits are subject to a 0.75% fee. Withdrawal slashing fee of 0.1% - 50 % will be incurred 
-			when exiting a farm, a depending on the length of time your LP was staked. Please <StyledLink href="https://docs.bao.finance/franchises/panda/pandaswap-fees-penalties" target="blank"> read 
-			the docs</StyledLink> to familiarize yourself with fees and penalties.
-</StyledInfo>
+					<StyledInfo>
+						❗️ <span style={{ fontWeight: 600, color: 'red' }}>Attention:</span> Please familiarize yourself with the fee structure before using PandaChef.
+						Deposits are subject to a 0.75% fee. Withdrawal slashing fee of 0.1% - 50 % will be incurred
+						when exiting a farm, depending on the length of time your LP was staked. Please <StyledLink href="https://docs.bao.finance/franchises/panda/pandaswap-fees-penalties" target="blank"> read
+						the docs</StyledLink> to familiarize yourself with fees and penalties.
+					</StyledInfo>
 				<Spacer size="md" />
 				<StyledInfo>
 					⭐️ Every time you stake and unstake LP tokens, the contract will
