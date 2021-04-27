@@ -29,6 +29,13 @@ interface FarmWithStakedValue extends Farm, StakedValue {
 
 const cardsPerRow = 3
 
+const StyledCardWrapper = styled.div`
+	display: flex;
+	margin-top: ${(props) => props.theme.spacing[4]}px;
+	width: calc((900px - ${(props) => props.theme.spacing[4]}px * 2) / 3);
+	position: relative;
+`
+
 const FarmCards: React.FC = () => {
 	const [farms] = useFarms()
 	const stakedValue = useAllStakedValue()
@@ -76,6 +83,20 @@ const FarmCards: React.FC = () => {
 				<Tab>PancakeSwap Farms</Tab>
 				<Tab>Archived Farms</Tab>
 			</TabList>
+
+			<div style={{ justifyContent: 'center', width: '400' }}>
+				<Spacer />
+				<Card>
+					<CardContent>
+						<span>❗️ APYs for single-sided pools are not yet accurate.</span>
+						<span>
+							❗️ APYs are affected by a 7-day average price of PNDA which has
+							not yet stabilized.
+						</span>
+					</CardContent>
+				</Card>
+				<Spacer />
+			</div>
 
 			<TabPanel>
 				<StyledCards>
@@ -141,6 +162,9 @@ export const FarmCard: React.FC<FarmCardProps> = ({ farm }) => {
 	const { pid } = farm
 	const panda = usePanda()
 
+	// disable single-sided pools temporarily
+	const isManualDisableAPY = farm.lpTokenAddress == farm.tokenAddress
+
 	const renderer = (countdownProps: CountdownRenderProps) => {
 		const { hours, minutes, seconds } = countdownProps
 		const paddedSeconds = seconds < 10 ? `0${seconds}` : seconds
@@ -199,7 +223,9 @@ export const FarmCard: React.FC<FarmCardProps> = ({ farm }) => {
 						<StyledInsight>
 							<span>APY</span>
 							<span>
-								{farm.apy
+								{isManualDisableAPY
+									? 'coming soon'
+									: farm.apy
 									? `${farm.apy
 											.times(new BigNumber(100))
 											.toNumber()
@@ -284,13 +310,6 @@ const StyledLoadingWrapper = styled.div`
 	display: flex;
 	flex: 1;
 	justify-content: center;
-`
-
-const StyledCardWrapper = styled.div`
-	display: flex;
-	margin-top: ${(props) => props.theme.spacing[4]}px;
-	width: calc((900px - ${(props) => props.theme.spacing[4]}px * 2) / 3);
-	position: relative;
 `
 
 const StyledTitle = styled.h4`
