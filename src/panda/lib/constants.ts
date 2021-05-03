@@ -1671,7 +1671,7 @@ export const supportedPools: SupportedPool[] = [
       'https://pandaswap.xyz/#/swap?outputCurrency=0xbf5140a22578168fd562dccf235e5d43a02ce9b1',
   },
     {
-    pid: 91,
+    pid: 92,
     lpAddresses: {
       56: '0x92dc12e0eb47b287b4d91976d4eb968f61822531',
     },
@@ -1688,7 +1688,7 @@ export const supportedPools: SupportedPool[] = [
       'https://pandaswap.xyz/#/swap?outputCurrency=0xD2ECa3cff5F09Cfc9C425167d12F0a005Fc97c8c',
   },
       {
-    pid: 92,
+    pid: 93,
     lpAddresses: {
       56: '0xef8af3ae4623e465124742e315fc805a89e7146e',
     },
