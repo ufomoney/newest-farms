@@ -12,6 +12,9 @@ import { contractAddresses } from '../../panda/lib/constants'
 import { getBambooSupply } from '../../panda/utils'
 import BigNumber from 'bignumber.js'
 import { getBalanceNumber } from '../../utils/formatBalance'
+import Card from '../../components/Card'
+import CardContent from '../../components/CardContent'
+
 
 const StakeBamboo: React.FC = () => {
 	const { tokenAddress } = {
@@ -54,22 +57,17 @@ const StakeBamboo: React.FC = () => {
 					</StyledCardWrapper>
 				</StyledCardsWrapper>
 				<Spacer size="lg" />
-				<StyledCardsWrapper>
-					<StyledCardWrapper>
-						<StyledInfo>
-							ℹ️️ You will earn a portion of the swaps fees based on the amount
-							of Bamboo held relative the weight of the staking. Bamboo can be
-							minted by staking Panda. To redeem Panda staked plus swap fees
+				<StyledInfo>
+					ℹ️️ You will earn a portion of the swaps fees based on the amount
+					of Bamboo held relative the weight of the staking. Bamboo can be
+					minted by staking Panda. To redeem Panda staked plus swap fees
 							convert Bamboo back to Panda.{' '}
-							{totalSupply
-								? `There are currently ${getBalanceNumber(
-										totalSupply,
-								  )} Bamboo in existence.`
-								: ''}
-						</StyledInfo>
-					</StyledCardWrapper>
-				</StyledCardsWrapper>
-				<Spacer size="lg" />
+					{totalSupply
+						? `There are currently ${getBalanceNumber(
+							totalSupply,
+						)} Bamboo in existence.`
+						: ''}
+				</StyledInfo>
 			</StyledFarm>
 		</>
 	)
@@ -103,13 +101,25 @@ const StyledCardWrapper = styled.div`
 	}
 `
 
+const StyledCardContentInner = styled.div`
+	align-items: center;
+	display: flex;
+	flex: 1;
+	flex-direction: column;
+	justify-content: space-between;
+`
+
 const StyledInfo = styled.h3`
-	color: ${(props) => props.theme.color.grey[400]};
+	color: ${(props) => props.theme.color.grey[500]};
 	font-size: 16px;
 	font-weight: 400;
 	margin: 0;
 	padding: 0;
 	text-align: center;
+	@media (max-width: 900px) {
+		width: 90%;
+	}
+	width: 900px;
 `
 
 export default StakeBamboo

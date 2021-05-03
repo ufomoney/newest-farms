@@ -87,7 +87,7 @@ export const addressMap = {
   UNFI: '0x728c5bac3c3e370e372fc4671f9ef6916b814d8b',
   BUX: '0x211ffbe424b90e25a15531ca322adf1559779e45',
   MDS: '0x242e46490397acca94ed930f2c4edf16250237fa',
-  HGET: '0x794f976c12b2616fa2af3f38a73d3b61fbf68661',
+  HGET: '0xc7d8d35eba58a0935ff2d5a33df105dd9f071731',
   BAO: '0x47eaf5f54d79d5c2b6537a90a0c58a534ab51c8c',
   FRONT: '0x928e55dab735aa8260af3cedada18b5f70c72f1b',
   MIR: '0x5b6dcf557e2abe2323c48445e8cc948910d8c2c9',
@@ -1269,7 +1269,7 @@ export const supportedPools: SupportedPool[] = [
     tokenSymbol: 'HGET',
     icon: '/herbal-tea.png',
     refUrl:
-      'https://pandaswap.xyz/#/swap?outputCurrency=0x794f976c12b2616fa2af3f38a73d3b61fbf68661',
+      'https://pandaswap.xyz/#/swap?outputCurrency=0xc7d8d35eba58a0935ff2d5a33df105dd9f071731',
   },
   {
     pid: 67,

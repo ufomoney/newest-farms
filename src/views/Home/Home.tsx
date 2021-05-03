@@ -37,7 +37,7 @@ const Home: React.FC = () => {
 			</div>
 			<Spacer size="lg" />
 			<StyledInfo>
-				🏆<b>Pro Tip</b>: PNDA-BNB has the biggest weight of all pools. Check
+				🏆<b>Pro Tip</b>: RHINO-BNB has the biggest weight of all pools. Check
 				them{' '}
 				<StyledLink href="https://docs.bao.finance/franchises/panda/pandaswap-contract-key" target="blank">
 					here
