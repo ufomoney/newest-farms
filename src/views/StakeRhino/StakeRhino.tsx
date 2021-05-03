@@ -8,11 +8,21 @@ import SwapPanda from './components/SwapPanda'
 import { useRhinoSwapWithdrawableBalance } from '../../hooks/useRhinoSwap'
 import Button from '../../components/Button'
 import { getRhinoContract } from '../../panda/utils'
+import Card from '../../components/Card'
+import CardContent from '../../components/CardContent'
+import Label from '../../components/Label'
+import useTokenBalance from '../../hooks/useTokenBalance'
 
 const StakeRhino: React.FC = () => {
 	const panda = usePanda()
 	const rhino = useMemo(() => getRhinoContract(panda), [panda])
 	const withdrawableBalance = useRhinoSwapWithdrawableBalance(panda)
+
+	const address = useMemo(() => getRhinoContract(panda)?.options.address, [
+		panda,
+	])
+
+	const rhinoWalletBalance = useTokenBalance(address)
 
 	useEffect(() => {
 		window.scrollTo(0, 0)
@@ -30,61 +40,67 @@ const StakeRhino: React.FC = () => {
 						<SwapPanda withdrawableBalance={withdrawableBalance} />
 					</StyledCardWrapper>
 				</StyledCardsWrapper>
+				<Spacer size="lg" />
 				{rhino && (
-					<div style={{ maxWidth: 400 }}>
-						<Spacer />
-						<Button
-							size={'md'}
-							href={`https://pandaswap.xyz/#/swap/?outputCurrency=${rhino.options.address}`}
-							text="Swap RHINO on PandaSwap"
-							variant="tertiary"
-						/>
-					</div>
+					<StyledCardsWrapper>
+						<StyledCardWrapper>
+							<Card>
+								<CardContent>
+									<StyledCardContentInner>
+										<Spacer size="sm" />
+										<span style={{ fontSize: 14 }}>
+											<Label text={'Swap RHINO'} />
+										</span>
+										<Spacer size="sm" />
+										<Button
+											size={'md'}
+											href={`https://pandaswap.xyz/#/swap/?outputCurrency=${rhino.options.address}`}
+											text="Swap RHINO on PandaSwap"
+											variant="tertiary"
+										/>
+										<Spacer />
+										{rhino && rhinoWalletBalance.isGreaterThan(0) && (
+											<>
+												<span style={{ fontSize: 14 }}>
+													<Label text={'Add Liquidity'} />
+												</span>
+												<Spacer size="sm" />
+												<Button
+													href={`https://pandaswap.xyz/#/add/${rhino.options.address}/BNB`}
+													text="Pool RHINO-BNB on Pandaswap"
+													variant="tertiary"
+												/>
+												<Spacer />
+												<span style={{ fontSize: 14 }}>
+													<Label text={'Stake LP Tokens'} />
+												</span>
+												<Spacer size="sm" />
+												<Button
+													href={`https://farms.pandaswap.xyz/farms/RHINO-BNB%20PNDA-V2`}
+													text="Stake RHINO-BNB in Farms"
+													variant="tertiary"
+												/>
+											</>)}
+									</StyledCardContentInner>
+								</CardContent>
+							</Card>
+						</StyledCardWrapper>
+					</StyledCardsWrapper>
+
+
 				)}
 				<Spacer size="lg" />
-
-				{/*	<StyledCardsWrapper>
-					<StyledCardWrapper>
-						<RhinoFarm />
-					</StyledCardWrapper>
-			</StyledCardsWrapper> */}
 				<StyledInfo>
-					<p style={{color: 'red', fontWeight: 600}}>
-						❗ Once PNDA/RHINO is deposited into the contract, it MUST be withdrawn before you can deposit again. ❗
-					</p>
 					<p>
 						ℹ️️ This Panda:Rhino 1:1 swap contract has a 2% fee in both
-						directions, with a fee that goes to a liquidity pool.
-					</p>
+						directions, on top of the usual 12% fee assocaited with
+						Rhino transactions. For more information, please <StyledLink href="https://docs.bao.finance/franchises/panda/pandaswap-fees-penalties" target="blank"> read
+						the docs</StyledLink>.
+									</p>
 					<p>
-						The Rhino LP pair on Pandaswap will have one of the highest rewards
-						on Panda farms and will receive a portion of Pandaswap fees through
-						buy-and-burns from the Bamboo maker which buys Rhino. This will make
-						it the highest capture point of the ecosystem in earning various
-						governance token rewards.
-					</p>
-					<p>
-						Rhino trades incur a 12% penalty. Of that 6% is added to the LP as
-						permanent locked liquidity. Another 6% is distributed back to Rhino
-						holders.
-					</p>
-					<p>
-						However, to further this burn effect, 50% of the total supply of
-						Rhino will be burnt at the start to the ‘dead address.’ Since it
-						will be counted as a Rhino holder, each time there is a fee on
-						Pandaswap, or from the Bamboo Maker buying Rhino, or from anyone
-						buying or selling Rhino, then a 3% fee is essentially burnt.
-					</p>
-					<p>
-						We’ll also drop this penalty over time. For the first 6 months,
-						we’ll lower the 12% by 1% for each month until it reaches 6%. After
-						that it will be lowered by 2% each year until finally the fee no
-						longer exists.
-					</p>
-					<p>
-						Since the only way to get Rhino is from the 1:1 swap, every time 1
-						Rhino is burnt that means 1 Panda can no longer be claimed.
-					</p>{' '}
+						❗ Once PNDA/RHINO is deposited into the contract, it MUST
+						be withdrawn before you can deposit again.
+									</p>
 				</StyledInfo>
 				<Spacer size="lg" />
 			</StyledFarm>
@@ -131,6 +147,23 @@ const StyledInfo = styled.h3`
 		width: 90%;
 	}
 	width: 900px;
+`
+
+const StyledLink = styled.a`
+	color: ${(props) => props.theme.color.grey[500]};
+	text-decoration: none;
+	font-weight: 600;
+	&:hover {
+		color: ${(props) => props.theme.color.grey[600]};
+	}
+`
+
+const StyledCardContentInner = styled.div`
+	align-items: center;
+	display: flex;
+	flex: 1;
+	flex-direction: column;
+	justify-content: space-between;
 `
 
 export default StakeRhino
