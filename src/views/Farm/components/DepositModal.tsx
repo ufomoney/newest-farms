@@ -15,6 +15,24 @@ interface DepositModalProps extends ModalProps {
 	tokenName?: string
 }
 
+const StyledDocsWarning = styled.span`
+	background-color: ${(props) => props.theme.color.grey[300]};
+	font-size: 16px;
+	margin: 1rem;
+	padding: 0.5rem;
+	text-align: start;
+	border-left: 3px solid ${(props) => props.theme.color.green};
+	width: 90%;
+`
+
+const StyledExternalLink = styled.a`
+	color: inherit;
+	margin: 2pt;
+	font-weight: 900;
+	text-decoration: underline;
+	display: inline;
+`
+
 const DepositModal: React.FC<DepositModalProps> = ({
 	max,
 	onConfirm,
@@ -42,6 +60,34 @@ const DepositModal: React.FC<DepositModalProps> = ({
 	return (
 		<Modal>
 			<ModalTitle text={`Deposit ${tokenName} Tokens`} />
+			<StyledDocsWarning>
+				Before interacting with any of the contracts, please understand the{' '}
+				<StyledExternalLink
+					target="_blank"
+					href={'https://docs.bao.finance/franchises/panda'}
+				>
+					project
+				</StyledExternalLink>
+				{''}
+				the
+				{''}
+				<StyledExternalLink
+					target="_blank"
+					href={
+						'https://docs.bao.finance/franchises/panda/pandaswap-fees-penalties'
+					}
+				>
+					deposit and withdrawal fee schedule,
+				</StyledExternalLink>{' '}
+				and
+				{''}
+				<StyledExternalLink
+					target="_blank"
+					href={'https://docs.bao.finance/risks-of-bao-reasons-not-to-use-bao'}
+				>
+					risks.
+				</StyledExternalLink>
+			</StyledDocsWarning>
 			<TokenInput
 				value={val}
 				onSelectMax={handleSelectMax}
