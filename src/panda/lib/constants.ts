@@ -1670,4 +1670,38 @@ export const supportedPools: SupportedPool[] = [
     refUrl:
       'https://pandaswap.xyz/#/swap?outputCurrency=0xbf5140a22578168fd562dccf235e5d43a02ce9b1',
   },
+    {
+    pid: 91,
+    lpAddresses: {
+      56: '0x92dc12e0eb47b287b4d91976d4eb968f61822531',
+    },
+    tokenAddresses: {
+      56: '0xD2ECa3cff5F09Cfc9C425167d12F0a005Fc97c8c',
+    },
+    tokenDecimals: 18,
+    name: 'Rhino Rumbles',
+    symbol: 'RHINO-BNB CAKELP',
+    tokenSymbol: 'RHINO',
+    poolType: PoolType.CAKE,
+    icon: '/rhino-b.2270e583.png',
+    refUrl:
+      'https://pandaswap.xyz/#/swap?outputCurrency=0xD2ECa3cff5F09Cfc9C425167d12F0a005Fc97c8c',
+  },
+      {
+    pid: 92,
+    lpAddresses: {
+      56: '0xef8af3ae4623e465124742e315fc805a89e7146e',
+    },
+    tokenAddresses: {
+      56: '0x47DcC83a14aD53Ed1f13d3CaE8AA4115f07557C0',
+    },
+    tokenDecimals: 18,
+    name: 'Panda Puffs',
+    symbol: 'PANDA-BNB CAKELP',
+    tokenSymbol: 'PANDA',
+    poolType: PoolType.CAKE,
+    icon: '/pnda.png',
+    refUrl:
+      'https://pandaswap.xyz/#/swap?outputCurrency=0x47DcC83a14aD53Ed1f13d3CaE8AA4115f07557C0',
+  },
 ]
