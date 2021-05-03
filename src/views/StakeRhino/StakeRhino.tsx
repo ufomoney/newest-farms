@@ -2,7 +2,6 @@ import React, { useEffect, useMemo } from 'react'
 import styled from 'styled-components'
 import Spacer from '../../components/Spacer'
 import usePanda from '../../hooks/usePanda'
-import RhinoFarm from './components/RhinoFarm'
 import SwapRhino from './components/SwapRhino'
 import SwapPanda from './components/SwapPanda'
 import { useRhinoSwapWithdrawableBalance } from '../../hooks/useRhinoSwap'
@@ -134,6 +133,14 @@ const StyledCardWrapper = styled.div`
 	@media (max-width: 768px) {
 		width: 80%;
 	}
+`
+
+const StyledCardContentInner = styled.div`
+	align-items: center;
+	display: flex;
+	flex: 1;
+	flex-direction: column;
+	justify-content: space-between;
 `
 
 const StyledInfo = styled.h3`
