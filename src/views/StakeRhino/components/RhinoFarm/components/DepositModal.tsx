@@ -63,12 +63,34 @@ const DepositModal: React.FC<DepositModalProps> = ({
 				/>
 			</ModalActions>
 			<ModalContent>
-				{
-					"Remember a 0.75% fee will be added to the treasury when depositing but you'll earn the APY to offset it."
-				}
+			<StyledInfo>
+						❗️ Remember a 0.75% fee will be added to the treasury when depositing. 95% 
+						of PNDA rewards will be locked and vested for 5 years. For more information, 
+						please <StyledLink href="https://docs.bao.finance/franchises/panda/pandaswap-fees-penalties" target="blank"> read
+						the docs</StyledLink>
+			</StyledInfo>
 			</ModalContent>
 		</Modal>
 	)
 }
+
+const StyledLink = styled.a`
+	color: ${(props) => props.theme.color.grey[500]};
+	text-decoration: none;
+	font-weight: 600;
+	&:hover {
+		color: ${(props) => props.theme.color.grey[600]};
+	}
+`
+
+const StyledInfo = styled.h3`
+	color: ${(props) => props.theme.color.grey[400]};
+	font-weight: 400;
+	font-size: 12px;
+	margin: 0;
+	padding: 0;
+	text-align: center;
+	max-width: 750px;
+`
 
 export default DepositModal
