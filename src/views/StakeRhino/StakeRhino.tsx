@@ -165,12 +165,4 @@ const StyledLink = styled.a`
 	}
 `
 
-const StyledCardContentInner = styled.div`
-	align-items: center;
-	display: flex;
-	flex: 1;
-	flex-direction: column;
-	justify-content: space-between;
-`
-
 export default StakeRhino
