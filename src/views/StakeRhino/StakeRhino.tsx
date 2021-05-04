@@ -92,7 +92,7 @@ const StakeRhino: React.FC = () => {
 				<StyledInfo>
 					<p>
 						ℹ️️ This Panda:Rhino 1:1 swap contract has a 2% fee in both
-						directions, on top of the usual 12% fee assocaited with
+						directions, on top of the usual 12% fee associated with
 						Rhino transactions. For more information, please <StyledLink href="https://docs.bao.finance/franchises/panda/pandaswap-fees-penalties" target="blank"> read
 						the docs</StyledLink>.
 									</p>
