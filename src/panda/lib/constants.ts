@@ -1683,7 +1683,7 @@ export const supportedPools: SupportedPool[] = [
     symbol: 'RHINO-BNB CAKELP',
     tokenSymbol: 'RHINO',
     poolType: PoolType.CAKE,
-    icon: '/rhino-b.2270e583.png',
+    icon: '/rhino.png',
     refUrl:
       'https://pandaswap.xyz/#/swap?outputCurrency=0xD2ECa3cff5F09Cfc9C425167d12F0a005Fc97c8c',
   },
