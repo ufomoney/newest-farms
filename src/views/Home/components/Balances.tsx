@@ -40,7 +40,7 @@ const PendingRewards: React.FC = () => {
 
 	if (allStakedValue && allStakedValue.length) {
 		const sumWbnb = farms.reduce(
-			(c, { id }, i) => c + (allStakedValue[i].totalWbnbValue.toNumber() || 0),
+			(c, { id }, i) => c + (allStakedValue[i].lockedUsd.toNumber() || 0),
 			0,
 		)
 	}

@@ -16,6 +16,7 @@ import useAllStakedValue, {
 } from '../../../hooks/useAllStakedValue'
 import useFarms from '../../../hooks/useFarms'
 import usePanda from '../../../hooks/usePanda'
+import usePandaPrice from '../../../hooks/usePandaPrice'
 import { getEarned, getMasterChefContract } from '../../../panda/utils'
 import { bnToDec } from '../../../utils'
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs'
@@ -39,19 +40,9 @@ const StyledCardWrapper = styled.div`
 const FarmCards: React.FC = () => {
 	const [farms] = useFarms()
 	const stakedValue = useAllStakedValue()
-
-	const pndaIndex = useMemo(
-		() => farms.findIndex(({ tokenSymbol }) => tokenSymbol === 'PNDA'),
-		[farms],
-	)
-
-	const pndaPrice =
-		pndaIndex >= 0 && stakedValue[pndaIndex]
-			? stakedValue[pndaIndex].tokenPriceInWbnb
-			: new BigNumber(0)
+	const pndaPrice = usePandaPrice()
 
 	const BLOCKS_PER_YEAR = new BigNumber(10513333)
-	const PNDA_BER_BLOCK = new BigNumber(15000)
 
 	const pools: { [key: string]: FarmWithStakedValue[] } = {
 		[PoolType.PNDA]: [],
@@ -64,12 +55,11 @@ const FarmCards: React.FC = () => {
 			...farm,
 			...stakedValue[i],
 			poolType: farm.poolType || PoolType.PNDA,
-			apy: stakedValue[i]
+			apy: stakedValue[i] && pndaPrice
 				? pndaPrice
-						.times(PNDA_BER_BLOCK)
-						.times(BLOCKS_PER_YEAR)
-						.times(stakedValue[i].poolWeight)
-						.div(stakedValue[i].totalWbnbValue)
+					.times(stakedValue[i].reward)
+					.times(BLOCKS_PER_YEAR)
+					.div(stakedValue[i].lockedUsd)
 				: null,
 		}
 
@@ -223,9 +213,7 @@ export const FarmCard: React.FC<FarmCardProps> = ({ farm }) => {
 						<StyledInsight>
 							<span>APY</span>
 							<span>
-								{isManualDisableAPY
-									? 'coming soon'
-									: farm.apy
+								{farm.apy
 									? `${farm.apy
 											.times(new BigNumber(100))
 											.toNumber()
@@ -254,7 +242,7 @@ export const FarmCard: React.FC<FarmCardProps> = ({ farm }) => {
 }
 
 const RainbowLight = keyframes`
-  
+
 	0% {
 		background-position: 0% 50%;
 	}

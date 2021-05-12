@@ -8,18 +8,23 @@ import {
   getMasterChefContract,
   getWbnbContract,
   getFarms,
-  getTotalLPWbnbValue,
+  getTotalLPUSDValue,
 } from '../panda/utils'
 import usePanda from './usePanda'
 import useBlock from './useBlock'
-import { getContract } from '../utils/erc20'
 
-export interface StakedValue {
+/*export interface StakedValue {
   tokenAmount: BigNumber
   wbnbAmount: BigNumber
   totalWbnbValue: BigNumber
   tokenPriceInWbnb: BigNumber
   poolWeight: BigNumber
+}*/
+
+export interface StakedValue {
+  pid: number,
+  lockedUsd: BigNumber,
+  reward: BigNumber,
 }
 
 const useAllStakedValue = (): StakedValue[] => {
@@ -33,14 +38,11 @@ const useAllStakedValue = (): StakedValue[] => {
 
   const fetchAllStakedValue = useCallback(async () => {
     const balances: Array<StakedValue> = await Promise.all(
-      farms.map(({ pid, lpContract, tokenAddress, tokenDecimals }) =>
-        getTotalLPWbnbValue(
-          masterChefContract,
-          wbnbContract,
-          lpContract,
-          getContract(ethereum, tokenAddress),
-          tokenDecimals,
+      farms.map(({ pid }) =>
+        getTotalLPUSDValue(
           pid,
+          masterChefContract,
+          panda
         ),
       ),
     )
