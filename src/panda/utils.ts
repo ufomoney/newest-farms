@@ -1,6 +1,5 @@
 import BigNumber from 'bignumber.js'
 import { ethers } from 'ethers'
-import _ from 'lodash'
 
 import { Panda } from './Panda'
 import { Contract } from 'web3-eth-contract'
@@ -141,7 +140,7 @@ interface PriceOracle {
 }
 
 const getOraclePrice = async (tokenSymbol: string, priceOracles: Array<PriceOracle>) => {
-  const oracle = _.find(priceOracles, { token: tokenSymbol })
+  const oracle = priceOracles.find(oracle => oracle.token === tokenSymbol)
 
   const [tokenPrice, tokenDecimals] = await Promise.all([
     oracle.contract.methods.latestAnswer().call(),
@@ -151,11 +150,17 @@ const getOraclePrice = async (tokenSymbol: string, priceOracles: Array<PriceOrac
   return [tokenPrice, tokenDecimals]
 }
 
+interface PandaPrice {
+  pid: number,
+  lockedUsd: BigNumber,
+  reward: BigNumber,
+}
+
 export const getPandaPriceLink = async (
   pnda: Panda,
   masterChefContract: Contract,
 ) => {
-  const [resultA, resultB, resultC, resultD, resultE] = await Promise.all([
+  const results = await Promise.all([
     getTotalLPUSDValue(0, masterChefContract, pnda, true),
     getTotalLPUSDValue(1, masterChefContract, pnda, true),
     getTotalLPUSDValue(2, masterChefContract, pnda, true),
@@ -163,12 +168,13 @@ export const getPandaPriceLink = async (
     getTotalLPUSDValue(4, masterChefContract, pnda, true),
   ])
 
-  return resultA.lockedUsd
-    .plus(resultB.lockedUsd)
-    .plus(resultC.lockedUsd)
-    .plus(resultD.lockedUsd)
-    .plus(resultE.lockedUsd)
-    .div(5)
+  return results.reduce((total: PandaPrice, num: PandaPrice) => {
+    return {
+      pid: num.pid, // don't care about this value
+      lockedUsd: total.lockedUsd.plus(num.lockedUsd),
+      reward: num.reward, // don't care about this value
+    }
+  }).lockedUsd.div(results.length)
 }
 
 export const getTotalLPUSDValue = async (
@@ -183,12 +189,12 @@ export const getTotalLPUSDValue = async (
 }> => {
   const { web3 } = pnda
   const supportedPools = getFarms(pnda)
-  const pool = _.find(supportedPools, { pid })
+  const pool = supportedPools.find(pool => pool.pid === pid)
   const { lpContract } = pool
   const priceOracles = oracles(web3)
 
   // Special case: Single asset LP
-  if (pool.pid === 5 || pool.pid === 6) {
+  if (pool.tokenAddress === pool.lpTokenAddress) {
     const [token0, stakedLPRaw, reward] = await Promise.all([
       lpContract.methods.symbol().call(),
       lpContract.methods.balanceOf(MASTER_CHEF_ADDRESS).call(),
@@ -234,14 +240,14 @@ export const getTotalLPUSDValue = async (
   ])
 
   // Check which underlying asset inside of the LP Token has a price oracle
-  const oracleToken = _.find(priceOracles, { token: token0Symbol })
+  const oracleToken = priceOracles.find(oracle => oracle.token === token0Symbol)
   const [oracleTokenPrice, oracleTokenDecimals] = oracleToken
       ? await getOraclePrice(token0Symbol, priceOracles)
       : await getOraclePrice(token1Symbol, priceOracles)
 
   const lockedUsd = decimate(new BigNumber(reserves[oracleToken ? 0 : 1]))
     .times(
-      decimate(new BigNumber(oracleTokenPrice), oracleTokenDecimals).toNumber(),
+      decimate(new BigNumber(oracleTokenPrice), oracleTokenDecimals),
     )
     .times(2)
 
