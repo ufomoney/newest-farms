@@ -13,14 +13,6 @@ import {
 import usePanda from './usePanda'
 import useBlock from './useBlock'
 
-/*export interface StakedValue {
-  tokenAmount: BigNumber
-  wbnbAmount: BigNumber
-  totalWbnbValue: BigNumber
-  tokenPriceInWbnb: BigNumber
-  poolWeight: BigNumber
-}*/
-
 export interface StakedValue {
   pid: number,
   lockedUsd: BigNumber,
