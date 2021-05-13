@@ -1,4 +1,4 @@
-const oracleAbi = require('./abi/chainoracle.json');
+const oracleAbi = require('./abi/chainoracle.json')
 
 export default function(web3) {
 	return [
@@ -50,5 +50,5 @@ export default function(web3) {
 				'0xB6064eD41d4f67e353768aA239cA86f4F73665a1',
 			),
 		},
-	];
+	]
 }
