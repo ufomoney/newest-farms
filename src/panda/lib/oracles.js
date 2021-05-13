@@ -1,6 +1,6 @@
 const oracleAbi = require('./abi/chainoracle.json')
 
-export default function(web3) {
+export default function (web3) {
 	return [
 		{
 			token: 'ETH',
