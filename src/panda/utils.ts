@@ -229,14 +229,12 @@ export const getTotalLPUSDValue = async (
     token1Symbol,
     token1Decimals,
     reserves,
-    reward,
   ] = await Promise.all([
     token0Contract.methods.symbol().call(),
     token0Contract.methods.decimals().call(),
     token1Contract.methods.symbol().call(),
     token1Contract.methods.decimals().call(),
     lpContract.methods.getReserves().call(),
-    masterChefContract.methods.getNewRewardPerBlock(pid + 1).call(),
   ])
 
   // Check which underlying asset inside of the LP Token has a price oracle
@@ -245,11 +243,26 @@ export const getTotalLPUSDValue = async (
       ? await getOraclePrice(token0Symbol, priceOracles)
       : await getOraclePrice(token1Symbol, priceOracles)
 
-  const lockedUsd = decimate(new BigNumber(reserves[oracleToken ? 0 : 1]))
+  // Determine value of LP Supply in USD
+  const supplyValue = decimate(new BigNumber(reserves[oracleToken ? 0 : 1]))
     .times(
       decimate(new BigNumber(oracleTokenPrice), oracleTokenDecimals),
     )
     .times(2)
+
+  // Find reward per block, totalSupply (in LP), and totalLocked (in LP)
+  const [
+    reward,
+    totalSupply,
+    totalLocked,
+  ] = await Promise.all([
+    masterChefContract.methods.getNewRewardPerBlock(pool.pid + 1).call(),
+    lpContract.methods.totalSupply().call(),
+    lpContract.methods.balanceOf(MASTER_CHEF_ADDRESS).call(),
+  ])
+
+  const lockedPercentage = new BigNumber(totalLocked).div(new BigNumber(totalSupply))
+  const lockedUsd = supplyValue.times(lockedPercentage)
 
   if (returnNonOraclePrice) {
     const token = oracleToken ? 1 : 0
