@@ -61,32 +61,10 @@ const DepositModal: React.FC<DepositModalProps> = ({
 		<Modal>
 			<ModalTitle text={`Deposit ${tokenName} Tokens`} />
 			<StyledDocsWarning>
-				Before interacting with any of the contracts, please understand the{' '}
-				<StyledExternalLink
-					target="_blank"
-					href={'https://docs.bao.finance/franchises/panda'}
-				>
-					project
-				</StyledExternalLink>
-				{''}
-				the
-				{''}
-				<StyledExternalLink
-					target="_blank"
-					href={
-						'https://docs.bao.finance/franchises/panda/pandaswap-fees-penalties'
-					}
-				>
-					deposit and withdrawal fee schedule,
-				</StyledExternalLink>{' '}
-				and
-				{''}
-				<StyledExternalLink
-					target="_blank"
-					href={'https://docs.bao.finance/risks-of-bao-reasons-not-to-use-bao'}
-				>
-					risks.
-				</StyledExternalLink>
+				❗️ Remember a 0.75% fee will be added to the treasury when depositing. 95%
+				of PNDA rewards will be locked and vested for 5 years. For more information,
+				please <StyledLink href="https://docs.bao.finance/franchises/panda/pandaswap-fees-penalties" target="blank"> read
+				the docs.</StyledLink>			
 			</StyledDocsWarning>
 			<TokenInput
 				value={val}
@@ -108,14 +86,6 @@ const DepositModal: React.FC<DepositModalProps> = ({
 					}}
 				/>
 			</ModalActions>
-			<ModalContent>
-				<StyledInfo>
-					❗️ Remember a 0.75% fee will be added to the treasury when depositing. 95%
-					of PNDA rewards will be locked and vested for 5 years. For more information,
-						please <StyledLink href="https://docs.bao.finance/franchises/panda/pandaswap-fees-penalties" target="blank"> read
-						the docs.</StyledLink>
-				</StyledInfo>
-			</ModalContent>
 		</Modal>
 	)
 }
