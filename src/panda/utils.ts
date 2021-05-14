@@ -1,8 +1,14 @@
 import BigNumber from 'bignumber.js'
 import { ethers } from 'ethers'
+
 import { Panda } from './Panda'
 import { Contract } from 'web3-eth-contract'
 import { Farm } from '../contexts/Farms'
+
+import erc20Abi from './lib/abi/erc20.json'
+import oracles from './lib/oracles'
+import { AbiItem } from 'web3-utils'
+const MASTER_CHEF_ADDRESS = '0x9942cb4c6180820E6211183ab29831641F58577A'
 
 BigNumber.config({
   EXPONENTIAL_AT: 1000,
@@ -122,6 +128,154 @@ export const getLockedEarned = async (
   account: string,
 ): Promise<BigNumber> => {
   return pndaContract.methods.lockOf(account).call()
+}
+
+export const decimate = (bigNumber: BigNumber, decimals = 18) =>
+  bigNumber.div(new BigNumber(10).pow(decimals))
+
+interface PriceOracle {
+  token: string,
+  address: string,
+  contract: Contract,
+}
+
+const getOraclePrice = async (tokenSymbol: string, priceOracles: Array<PriceOracle>) => {
+  const oracle = priceOracles.find(oracle => oracle.token === tokenSymbol)
+
+  const [tokenPrice, tokenDecimals] = await Promise.all([
+    oracle.contract.methods.latestAnswer().call(),
+    oracle.contract.methods.decimals().call(),
+  ])
+
+  return [tokenPrice, tokenDecimals]
+}
+
+interface PandaPrice {
+  pid: number,
+  lockedUsd: BigNumber,
+  reward: BigNumber,
+}
+
+export const getPandaPriceLink = async (
+  pnda: Panda,
+  masterChefContract: Contract,
+) => {
+  const results = await Promise.all([
+    getTotalLPUSDValue(0, masterChefContract, pnda, true),
+    getTotalLPUSDValue(1, masterChefContract, pnda, true),
+    getTotalLPUSDValue(2, masterChefContract, pnda, true),
+    getTotalLPUSDValue(3, masterChefContract, pnda, true),
+    getTotalLPUSDValue(4, masterChefContract, pnda, true),
+  ])
+
+  return results.reduce((total: PandaPrice, num: PandaPrice) => {
+    return {
+      pid: num.pid, // don't care about this value
+      lockedUsd: total.lockedUsd.plus(num.lockedUsd),
+      reward: num.reward, // don't care about this value
+    }
+  }).lockedUsd.div(results.length)
+}
+
+export const getTotalLPUSDValue = async (
+  pid: number,
+  masterChefContract: Contract,
+  pnda: Panda,
+  returnNonOraclePrice: boolean = false,
+): Promise<{
+  pid: number
+  lockedUsd: BigNumber
+  reward: BigNumber
+}> => {
+  const { web3 } = pnda
+  const supportedPools = getFarms(pnda)
+  const pool = supportedPools.find(pool => pool.pid === pid)
+  const { lpContract } = pool
+  const priceOracles = oracles(web3)
+
+  // Special case: Single asset LP
+  if (pool.tokenAddress === pool.lpTokenAddress) {
+    const [token0, stakedLPRaw, reward] = await Promise.all([
+      lpContract.methods.symbol().call(),
+      lpContract.methods.balanceOf(MASTER_CHEF_ADDRESS).call(),
+      masterChefContract.methods.getNewRewardPerBlock(pid + 1).call(),
+    ])
+
+    const stakedLP = decimate(new BigNumber(stakedLPRaw))
+    const [rawTokenPrice, tokenDecimals] = await getOraclePrice(
+      token0,
+      priceOracles,
+    )
+    const tokenPrice = decimate(new BigNumber(rawTokenPrice), tokenDecimals)
+    const lockedUsd = tokenPrice.times(stakedLP)
+
+    return { pid, lockedUsd, reward: decimate(new BigNumber(reward)) }
+  }
+
+  // Get token addresses from LP Contract
+  const [token0, token1] = await Promise.all([
+    lpContract.methods.token0().call(),
+    lpContract.methods.token1().call(),
+  ])
+
+  // Create token contracts
+  const token0Contract = new web3.eth.Contract(erc20Abi as AbiItem[], token0)
+  const token1Contract = new web3.eth.Contract(erc20Abi as AbiItem[], token1)
+
+  // Get token symbols/decimals and LP contract reserves
+  const [
+    token0Symbol,
+    token0Decimals,
+    token1Symbol,
+    token1Decimals,
+    reserves,
+  ] = await Promise.all([
+    token0Contract.methods.symbol().call(),
+    token0Contract.methods.decimals().call(),
+    token1Contract.methods.symbol().call(),
+    token1Contract.methods.decimals().call(),
+    lpContract.methods.getReserves().call(),
+  ])
+
+  // Check which underlying asset inside of the LP Token has a price oracle
+  const oracleToken = priceOracles.find(oracle => oracle.token === token0Symbol)
+  const [oracleTokenPrice, oracleTokenDecimals] = oracleToken
+      ? await getOraclePrice(token0Symbol, priceOracles)
+      : await getOraclePrice(token1Symbol, priceOracles)
+
+  // Determine value of LP Supply in USD
+  const supplyValue = decimate(new BigNumber(reserves[oracleToken ? 0 : 1]))
+    .times(
+      decimate(new BigNumber(oracleTokenPrice), oracleTokenDecimals),
+    )
+    .times(2)
+
+  // Find reward per block, totalSupply (in LP), and totalLocked (in LP)
+  const [
+    reward,
+    totalSupply,
+    totalLocked,
+  ] = await Promise.all([
+    masterChefContract.methods.getNewRewardPerBlock(pool.pid + 1).call(),
+    lpContract.methods.totalSupply().call(),
+    lpContract.methods.balanceOf(MASTER_CHEF_ADDRESS).call(),
+  ])
+
+  const lockedPercentage = new BigNumber(totalLocked).div(new BigNumber(totalSupply))
+  const lockedUsd = supplyValue.times(lockedPercentage)
+
+  if (returnNonOraclePrice) {
+    const token = oracleToken ? 1 : 0
+    const nonOraclePrice = lockedUsd.div(2).div(
+      decimate(
+        new BigNumber(reserves[token]),
+        oracleToken ? token1Decimals : token0Decimals,
+      ),
+    )
+
+    return { pid, lockedUsd: nonOraclePrice, reward: null }
+  } else
+    return { pid, lockedUsd, reward: decimate(new BigNumber(reward)) }
 }
 
 export const getTotalLPWbnbValue = async (
