@@ -1,23 +1,5 @@
 import React from 'react'
 import styled from 'styled-components'
-import Card from '../../../components/Card'
-import CardContent from '../../../components/CardContent'
-import Value from '../../../components/Value'
-import ValueSmall from '../../../components/ValueSmall'
-import useValues from '../../../hooks/useValues'
-import useSubValues from '../../../hooks/useSubValues'
-import { decimate } from '../../../utils/formatBalance'
-import { BigNumber } from 'bignumber.js'
-import Spacer from '../../../components/Spacer'
-import usePanda from '../../../hooks/usePanda'
-import useFees from '../../../hooks/useFees'
-import pandaIcon from '../../../assets/img/pnda.png'
-import useEarnings from '../../../hooks/useEarnings'
-import useFirstDepositBlock from '../../../hooks/useFirstDepositBlock'
-import useLastWithdrawBlock from '../../../hooks/useLastWithdrawBlock'
-import useLastDepositBlock from '../../../hooks/useLastDepositBlock'
-import useBlock from '../../../hooks/useBlock'
-import useBlockDiff from '../../../hooks/useBlockDiff'
 
 const FeeWarning: React.FC = () => {
 	return (

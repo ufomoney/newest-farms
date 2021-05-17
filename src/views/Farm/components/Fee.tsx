@@ -1,24 +1,10 @@
 import React from 'react'
 import styled from 'styled-components'
-import Card from '../../../components/Card'
-import CardContent from '../../../components/CardContent'
-import Value from '../../../components/Value'
-import ValueSmall from '../../../components/ValueSmall'
-import useValues from '../../../hooks/useValues'
-import useSubValues from '../../../hooks/useSubValues'
-import { decimate } from '../../../utils/formatBalance'
-import { BigNumber } from 'bignumber.js'
-import Spacer from '../../../components/Spacer'
-import usePanda from '../../../hooks/usePanda'
 import useFees from '../../../hooks/useFees'
-import pandaIcon from '../../../assets/img/pnda.png'
-import useEarnings from '../../../hooks/useEarnings'
 import useFirstDepositBlock from '../../../hooks/useFirstDepositBlock'
 import useLastWithdrawBlock from '../../../hooks/useLastWithdrawBlock'
 import useLastDepositBlock from '../../../hooks/useLastDepositBlock'
-import useBlock from '../../../hooks/useBlock'
 import useBlockDiff from '../../../hooks/useBlockDiff'
-import ModalContent from '../../../components/ModalContent'
 import QuestionHelper from '../../../components/QuestionHelper'
 
 interface FeeProps {
@@ -40,11 +26,11 @@ const Fee: React.FC<FeeProps> = ({ pid }) => {
 			<Warning><b>❗BE AWARE OF WITHDRAWAL FEES❗</b></Warning>
 			<p><b>Disclaimer</b> - The first deposit activates and each withdraw resets the timer for penalities and fees, this is pool based.</p>
 
-				<p>Current Fee: {(fees * 100).toFixed(2)}%</p>
-				<p>Blocks passed: {(blockDiff)}</p>
-				<p>Last interaction: {(lastInteraction).toString()}
+			<p>Current Fee: {(fees * 100).toFixed(2)}%</p>
+			<p>Blocks passed: {(blockDiff)}</p>
+			<p>Last interaction: {(lastInteraction).toString()}
 				<QuestionHelper text="This date is an estimation, it grows more innaccurate as time passes due to block times being inconsistent. For best results please manually keep track of when you stake and unstake." /></p>
-				<p>Last withdraw block: {(lastWithdrawBlock)}</p>
+			<p>Last withdraw block: {(lastWithdrawBlock)}</p>
 
 			<p>Please <StyledLink href="https://docs.bao.finance/franchises/panda/pandaswap-fees-penalties" target="blank"> read
 				the docs</StyledLink> to familiarize yourself with fees and penalties.</p>
@@ -81,13 +67,13 @@ const StyledInfo = styled.h3`
 	max-width: 750px;
 `
 const Warning = styled.h3`
-color: red;
-font-size: 16px;
-font-weight: 400;
-margin: 0;
-padding: 0;
-text-align: center;
-max-width: 750px;
+	color: red;
+	font-size: 16px;
+	font-weight: 400;
+	margin: 0;
+	padding: 0;
+	text-align: center;
+	max-width: 750px;
 `
 
 export default Fee

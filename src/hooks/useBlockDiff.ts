@@ -10,7 +10,7 @@ import { getMasterChefContract } from '../panda/utils'
 import usePanda from './usePanda'
 import BigNumber from 'bignumber.js'
 
-const useBlockDiff = (pid:number) => {
+const useBlockDiff = (pid: number) => {
   const {
     account,
     ethereum,
@@ -18,17 +18,17 @@ const useBlockDiff = (pid:number) => {
   const block = useBlock()
   const panda = usePanda()
   const masterChefContract = getMasterChefContract(panda)
-  const firstDepositBlock = useFirstDepositBlock (pid)
-  const lastWithdrawBlock = useLastWithdrawBlock (pid)
-  
+  const firstDepositBlock = useFirstDepositBlock(pid)
+  const lastWithdrawBlock = useLastWithdrawBlock(pid)
+
   const blockDiff =
-  block -
-  new BigNumber(
-    firstDepositBlock >
-    lastWithdrawBlock
-      ? firstDepositBlock
-      : lastWithdrawBlock,
-  ).toNumber();
+    block -
+    new BigNumber(
+      firstDepositBlock >
+        lastWithdrawBlock
+        ? firstDepositBlock
+        : lastWithdrawBlock,
+    ).toNumber();
 
   return blockDiff
 }
