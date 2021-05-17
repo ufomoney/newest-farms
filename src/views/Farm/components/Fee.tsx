@@ -19,7 +19,7 @@ import useLastDepositBlock from '../../../hooks/useLastDepositBlock'
 import useBlock from '../../../hooks/useBlock'
 import useBlockDiff from '../../../hooks/useBlockDiff'
 import ModalContent from '../../../components/ModalContent'
-
+import QuestionHelper from '../../../components/QuestionHelper'
 
 interface FeeProps {
 	pid: number
@@ -40,10 +40,11 @@ const Fee: React.FC<FeeProps> = ({ pid }) => {
 			<Warning><b>❗BE AWARE OF WITHDRAWAL FEES❗</b></Warning>
 			<p><b>Disclaimer</b> - The first deposit activates and each withdraw resets the timer for penalities and fees, this is pool based.</p>
 
-				Current Fee: {(fees * 100).toFixed(2)}%<br />
-				Blocks passed: {(blockDiff)}<br />
-				Last interaction: {(lastInteraction).toString()}<br />
-				Last withdraw block: {(lastWithdrawBlock)}<br />
+				<p>Current Fee: {(fees * 100).toFixed(2)}%</p>
+				<p>Blocks passed: {(blockDiff)}</p>
+				<p>Last interaction: {(lastInteraction).toString()}
+				<QuestionHelper text="This date is an estimation, it grows more innaccurate as time passes due to block times being inconsistent. For best results please manually keep track of when you stake and unstake." /></p>
+				<p>Last withdraw block: {(lastWithdrawBlock)}</p>
 
 			<p>Please <StyledLink href="https://docs.bao.finance/franchises/panda/pandaswap-fees-penalties" target="blank"> read
 				the docs</StyledLink> to familiarize yourself with fees and penalties.</p>
