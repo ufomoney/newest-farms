@@ -38,14 +38,14 @@ const Fee: React.FC<FeeProps> = ({ pid }) => {
 	return (
 		<StyledDocsWarning>
 			<Warning><b>❗BE AWARE OF WITHDRAWAL FEES❗</b></Warning>
-				<p><b>Disclaimer</b> - The first deposit activates and each withdraw resets the timer for penalities and fees, this is pool based.</p>
+			<p><b>Disclaimer</b> - The first deposit activates and each withdraw resets the timer for penalities and fees, this is pool based.</p>
 
 				Current Fee: {(fees * 100).toFixed(2)}%<br />
 				Blocks passed: {(blockDiff)}<br />
 				Last interaction: {(lastInteraction).toString()}<br />
 				Last withdraw block: {(lastWithdrawBlock)}<br />
-				
-				<p>Please <StyledLink href="https://docs.bao.finance/franchises/panda/pandaswap-fees-penalties" target="blank"> read
+
+			<p>Please <StyledLink href="https://docs.bao.finance/franchises/panda/pandaswap-fees-penalties" target="blank"> read
 				the docs</StyledLink> to familiarize yourself with fees and penalties.</p>
 		</StyledDocsWarning>
 

@@ -20,15 +20,15 @@ import useBlock from '../../../hooks/useBlock'
 import useBlockDiff from '../../../hooks/useBlockDiff'
 
 const FeeWarning: React.FC = () => {
-    return (
-            <StyledDocsWarning>
-            <p>First Deposit Block:</p>
-            <p>Last Withdraw Block:</p>
-            <p>Current Block:</p>
-            <p>Withdraw Fee:</p>
-            </StyledDocsWarning>
-		)
-	}
+	return (
+		<StyledDocsWarning>
+			<p>First Deposit Block:</p>
+			<p>Last Withdraw Block:</p>
+			<p>Current Block:</p>
+			<p>Withdraw Fee:</p>
+		</StyledDocsWarning>
+	)
+}
 
 export default FeeWarning
 

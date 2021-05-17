@@ -12,7 +12,7 @@ import useLastDepositBlock from './useLastDepositBlock'
 import useLastWithdrawBlock from './useLastWithdrawBlock'
 import useBlockDiff from './useBlockDiff'
 
-const getWithdrawalPenalty = (blocksSince) => {
+const getWithdrawalPenalty = (blocksSince: any) => {
   return blocksSince <= 0
     ? 0.99
     : blocksSince <= 1200

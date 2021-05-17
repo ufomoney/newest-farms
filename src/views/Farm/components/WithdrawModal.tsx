@@ -21,7 +21,7 @@ const WithdrawModal: React.FC<WithdrawModalProps> = ({
 	onDismiss,
 	max,
 	tokenName = '',
-	pid = 0
+	pid = null
 }) => {
 	const [val, setVal] = useState('')
 	const [pendingTx, setPendingTx] = useState(false)

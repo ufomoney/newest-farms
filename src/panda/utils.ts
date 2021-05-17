@@ -284,7 +284,7 @@ export const getLastDepositBlock = async (
       .call()
     return new BigNumber(lastDepositBlock)
   } catch {
-    return new BigNumber(0)
+    return new BigNumber(null)
   }
 }
 

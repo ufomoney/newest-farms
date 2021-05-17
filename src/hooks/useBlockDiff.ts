@@ -10,8 +10,6 @@ import { getMasterChefContract } from '../panda/utils'
 import usePanda from './usePanda'
 import BigNumber from 'bignumber.js'
 
-// import debounce from 'debounce'
-
 const useBlockDiff = (pid:number) => {
   const {
     account,
