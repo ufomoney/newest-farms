@@ -12,13 +12,6 @@ import useReward from '../../../hooks/useReward'
 import useValues from '../../../hooks/useValues'
 import useSubValues from '../../../hooks/useSubValues'
 import { getBalanceNumber } from '../../../utils/formatBalance'
-import {
-	getWbnbPrice,
-	getPandaPrice,
-	getWbnbPriceContract,
-	getPandaPriceContract,
-} from '../../../panda/utils'
-import { BigNumber } from 'bignumber.js'
 import Spacer from '../../../components/Spacer'
 import usePanda from '../../../hooks/usePanda'
 import pandaIcon from '../../../assets/img/pnda.png'
@@ -80,11 +73,6 @@ const StyledCardActions = styled.div`
 	justify-content: center;
 	margin-top: ${(props) => props.theme.spacing[6]}px;
 	width: 100%;
-`
-
-const StyledSpacer = styled.div`
-	height: ${(props) => props.theme.spacing[4]}px;
-	width: ${(props) => props.theme.spacing[4]}px;
 `
 
 const StyledCardContentInner = styled.div`
