@@ -8,7 +8,7 @@ import { Farm } from '../contexts/Farms'
 import erc20Abi from './lib/abi/erc20.json'
 import oracles from './lib/oracles'
 import { AbiItem } from 'web3-utils'
-const MASTER_CHEF_ADDRESS = '0x9942cb4c6180820E6211183ab29831641F58577A'
+const MASTER_CHEF_ADDRESS = '0x2c7cd9468A3F9fEfb13E1BA49E4Fee406f1C13d6'
 
 BigNumber.config({
   EXPONENTIAL_AT: 1000,

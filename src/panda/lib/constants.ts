@@ -27,7 +27,7 @@ export const addressMap = {
   uniswapFactory: '0x9Ad32bf5DaFe152Cbe027398219611DB4E8753B3',
   uniswapFactoryV2: '0x9Ad32bf5DaFe152Cbe027398219611DB4E8753B3',
   BNB: '0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c',
-  PNDA: '0x47DcC83a14aD53Ed1f13d3CaE8AA4115f07557C0',
+  PNDA: '0x3B72Ac46888f72dD6a6B2076Ca96fcc18e75a935',
   BUSD: '0xe9e7cea3dedca5984780bafc599bd69add087d56',
   ETH: '0x2170ed0880ac9a755fd29b2688956bd959f933f8',
   USDC: '0x8ac76a51cc950d9822d68b83fe1ad97b32cd580d',
@@ -104,7 +104,7 @@ export const addressMap = {
 
 export const contractAddresses = {
   panda: {
-    56: '0x47DcC83a14aD53Ed1f13d3CaE8AA4115f07557C0',
+    56: '0x3B72Ac46888f72dD6a6B2076Ca96fcc18e75a935',
   },
   bamboo: {
     56: '0xEF88e0d265dDC8f5E725a4fDa1871F9FE21B11E2',
@@ -116,7 +116,7 @@ export const contractAddresses = {
     56: '0xD2ECa3cff5F09Cfc9C425167d12F0a005Fc97c8c',
   },
   masterChef: {
-    56: '0x9942cb4c6180820E6211183ab29831641F58577A',
+    56: '0x2c7cd9468A3F9fEfb13E1BA49E4Fee406f1C13d6',
   },
   wbnb: {
     56: '0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c',
