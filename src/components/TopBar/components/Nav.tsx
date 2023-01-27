@@ -42,18 +42,6 @@ const Nav: React.FC = () => {
 			<StyledAbsoluteLink href="https://pandaswap.xyz" target="_blank">
 				Swap
 			</StyledAbsoluteLink>
-			<StyledAbsoluteLink
-				href="https://snapshot.page/#/baovotes.eth"
-				target="_blank"
-			>
-				Vote
-			</StyledAbsoluteLink>
-			<StyledAbsoluteLink href="https://docs.bao.finance/franchises/panda" target="_blank">
-				About
-			</StyledAbsoluteLink>
-			<StyledAbsoluteLink href="https://docs.bao.finance/guides/binance-smart-chain" target="_blank">
-				FAQ
-			</StyledAbsoluteLink>
 		</StyledNav>
 	)
 }

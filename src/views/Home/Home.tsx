@@ -35,27 +35,6 @@ const Home: React.FC = () => {
 			>
 				<Button text="🎍 See the Farms" to="/farms" variant="secondary" />
 			</div>
-			<Spacer size="lg" />
-			<StyledInfo>
-				🏆<b>Pro Tip</b>: RHINO-BNB has the biggest weight of all pools. Check
-				them{' '}
-				<StyledLink href="https://docs.bao.finance/franchises/panda/pandaswap-contract-key" target="blank">
-					here
-				</StyledLink>
-				{'.'}
-			</StyledInfo>
-			<Spacer size="md" />
-			<StyledInfo>
-				💲<b>Pro Tip</b>: The links from the "Buy X" buttons generate
-				revenue for the Panda Treasury which PNDA holders own. <br />
-			</StyledInfo>
-			<Spacer size="md" />
-				<StyledInfo>
-					❗️ <span style={{ fontWeight: 600, color: 'red' }}>Attention:</span> Please familiarize yourself with the fee structure before using PandaChef.
-					Deposits are subject to a 0.75% fee. Withdrawal slashing fee of 0.1% - 50 % will be incurred
-					when exiting a farm, depending on the length of time your LP was staked. Please <StyledLink href="https://docs.bao.finance/franchises/panda/pandaswap-fees-penalties" target="blank"> read
-					the docs</StyledLink> to familiarize yourself with fees and penalties.
-				</StyledInfo>
 		</Page>
 	)
 }
