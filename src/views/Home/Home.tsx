@@ -8,8 +8,6 @@ import PageHeader from '../../components/PageHeader'
 import Spacer from '../../components/Spacer'
 import Balances from './components/Balances'
 
-import immunefi from '../../assets/img/immunefi.png'
-
 const Home: React.FC = () => {
 	return (
 		<Page>
@@ -58,12 +56,6 @@ const Home: React.FC = () => {
 					when exiting a farm, depending on the length of time your LP was staked. Please <StyledLink href="https://docs.bao.finance/franchises/panda/pandaswap-fees-penalties" target="blank"> read
 					the docs</StyledLink> to familiarize yourself with fees and penalties.
 				</StyledInfo>
-			<Spacer size="md" />
-			<StyledInfo>
-				<a href="https://www.immunefi.com/bounty/baofinance" target="_blank">
-					<img src={immunefi} height="200px" />
-				</a>
-			</StyledInfo>
 		</Page>
 	)
 }

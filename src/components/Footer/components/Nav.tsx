@@ -4,26 +4,8 @@ import styled from 'styled-components'
 const Nav: React.FC = () => {
 	return (
 		<StyledNav>
-			<StyledLink
-				target="_blank"
-				href="https://bscscan.com/address/0x9942cb4c6180820E6211183ab29831641F58577A"
-			>
-				PandaChef Contract
-			</StyledLink>
-			<StyledLink
-				target="_blank"
-				href="https://www.immunefi.com/bounty/baofinance"
-			>
-				Bug Bounty Program
-			</StyledLink>
-			<StyledLink target="_blank" href="https://discord.gg/BW3P62vJXT">
+			<StyledLink target="_blank" href="https://discord.gg/GEHTF93JFU">
 				Discord
-			</StyledLink>
-			<StyledLink target="_blank" href="https://twitter.com/thebaoman">
-				Twitter
-			</StyledLink>
-			<StyledLink target="_blank" href="https://thebaoman.medium.com/">
-				Medium
 			</StyledLink>
 		</StyledNav>
 	)
