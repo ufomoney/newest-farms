@@ -120,7 +120,7 @@ export const getEarned = async (
   pid: number,
   account: string,
 ): Promise<BigNumber> => {
-  return masterChefContract.methods.pendingReward(pid, account).call()
+  return masterChefContract.methods.pendingUFO(pid, account).call()
 }
 
 export const getLockedEarned = async (
