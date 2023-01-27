@@ -16,14 +16,6 @@ const Home: React.FC = () => {
 				title="PandaChef is Ready"
 				subtitle="Stake PandaSwap LP tokens to earn PNDA!"
 			/>
-			<StyledInfo>
-				Be sure to read the{' '}
-				<StyledLink href="https://docs.bao.finance/franchises/panda" target="_blank">
-					docs
-				</StyledLink>{' '}
-				before using the pools so you are familiar with protocol risks and fees!
-			</StyledInfo>
-			<Spacer size="md" />
 			<Container>
 				<Balances />
 			</Container>
