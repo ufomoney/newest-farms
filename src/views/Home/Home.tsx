@@ -27,7 +27,6 @@ const Home: React.FC = () => {
 			<Container>
 				<Balances />
 			</Container>
-			<Spacer size="lg" />
 			<div
 				style={{
 					margin: '0 auto',
