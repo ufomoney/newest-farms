@@ -345,7 +345,7 @@ export const stake = async (
   ref: string,
 ): Promise<string> => {
   return masterChefContract.methods
-    .deposit(pid, ethers.utils.parseUnits(amount, 18), ref)
+    .deposit(pid, ethers.utils.parseUnits(amount, 18))
     .send({ from: account })
     .on('transactionHash', (tx: { transactionHash: string }) => {
       console.log(tx)
@@ -361,7 +361,7 @@ export const unstake = async (
   ref: string,
 ): Promise<string> => {
   return masterChefContract.methods
-    .withdraw(pid, ethers.utils.parseUnits(amount, 18), ref)
+    .withdraw(pid, ethers.utils.parseUnits(amount, 18))
     .send({ from: account })
     .on('transactionHash', (tx: { transactionHash: string }) => {
       console.log(tx)
