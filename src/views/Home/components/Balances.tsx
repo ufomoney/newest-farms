@@ -123,7 +123,7 @@ const Balances: React.FC = () => {
 								<PandaIcon />
 								<Spacer />
 								<div style={{ flex: 1 }}>
-									<Label text="Your PNDA Balance" />
+									<Label text="Your UFO Balance" />
 									<Value
 										value={account ? getBalanceNumber(pndaBalance) : 'Locked'}
 									/>
@@ -134,7 +134,7 @@ const Balances: React.FC = () => {
 					<Footnote>
 						Pending Rewards
 						<FootnoteValue>
-							<PendingRewards /> PNDA
+							<PendingRewards /> UFO
 						</FootnoteValue>
 					</Footnote>
 				</Card>
@@ -142,14 +142,14 @@ const Balances: React.FC = () => {
 
 				<Card>
 					<CardContent>
-						<Label text="Total PNDA Supply" />
+						<Label text="Total UFO Supply" />
 						<Value
 							value={totalSupply ? getBalanceNumber(totalSupply) : 'Locked'}
 						/>
 					</CardContent>
 					<Footnote>
 						New rewards per block
-						<FootnoteValue>15 PNDA</FootnoteValue>
+						<FootnoteValue>0.0008888 UFO</FootnoteValue>
 					</Footnote>
 				</Card>
 			</StyledWrapper>
