@@ -31,12 +31,6 @@ const PageHeader: React.FC<PageHeaderProps> = ({ icon, subtitle, title }) => {
 					</StyledIcon>
 					<StyledTitle>{title}</StyledTitle>
 					<StyledSubtitle>{subtitle}</StyledSubtitle>
-					<StyledSubtitle>
-						<br />
-						<br />
-						💲<b>Pro Tip</b>: The links from the "Buy X" buttons generate
-						revenue for the Panda Treasury which PNDA holders own. <br />
-					</StyledSubtitle>
 				</StyledPageHeader>
 			</Container>
 		)
