@@ -20,23 +20,6 @@ const Fee: React.FC<FeeProps> = ({ pid }) => {
 	const lastInteraction = new Date(
 		new Date().getTime() - 1000 * (blockDiff * 3)
 	).toLocaleString()
-
-	return (
-		<StyledDocsWarning>
-			<Warning><b>❗BE AWARE OF WITHDRAWAL FEES❗</b></Warning>
-			<p><b>Disclaimer</b> - The first deposit activates and each withdraw resets the timer for penalities and fees, this is pool based.</p>
-
-			<p>Current Fee: {(fees * 100).toFixed(2)}%</p>
-			<p>Blocks passed: {(blockDiff)}</p>
-			<p>Last interaction: {(lastInteraction).toString()}
-				<QuestionHelper text="This date is an estimation, it grows more innaccurate as time passes due to block times being inconsistent. For best results please manually keep track of when you stake and unstake." /></p>
-			<p>Last withdraw block: {(lastWithdrawBlock)}</p>
-
-			<p>Please <StyledLink href="https://docs.bao.finance/franchises/panda/pandaswap-fees-penalties" target="blank"> read
-				the docs</StyledLink> to familiarize yourself with fees and penalties.</p>
-		</StyledDocsWarning>
-
-	)
 }
 
 const StyledLink = styled.a`

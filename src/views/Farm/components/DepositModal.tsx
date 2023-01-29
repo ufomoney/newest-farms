@@ -41,12 +41,6 @@ const DepositModal: React.FC<DepositModalProps> = ({
 	return (
 		<Modal>
 			<ModalTitle text={`Deposit ${tokenName} Tokens`} />
-			<StyledDocsWarning>
-				❗️ Remember a 0.75% fee will be added to the treasury when depositing. 95%
-				of PNDA rewards will be locked and vested for 5 years. For more information,
-				please <StyledLink href="https://docs.bao.finance/franchises/panda/pandaswap-fees-penalties" target="blank"> read
-				the docs.</StyledLink>			
-			</StyledDocsWarning>
 			<TokenInput
 				value={val}
 				onSelectMax={handleSelectMax}
