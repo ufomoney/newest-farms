@@ -8,11 +8,12 @@ import { leave, getBambooStakingContract } from '../panda/utils'
 const useLeave = () => {
   const { account } = useWallet()
   const panda = usePanda()
+  const contract = getBambooStakingContract(panda)
 
   const handle = useCallback(
     async (amount: string) => {
       const txHash = await leave(
-        '0xecb037cc672Fb2b53466Bbce986880149F79245B',
+        contract,
         amount,
         account,
       )
