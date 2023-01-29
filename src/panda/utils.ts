@@ -198,7 +198,7 @@ export const getTotalLPUSDValue = async (
     const [token0, stakedLPRaw, reward] = await Promise.all([
       lpContract.methods.symbol().call(),
       lpContract.methods.balanceOf(MASTER_CHEF_ADDRESS).call(),
-      masterChefContract.methods.getNewRewardPerBlock(pid + 1).call(),
+      masterChefContract.methods.ufoPerBlock().call(),
     ])
 
     const stakedLP = decimate(new BigNumber(stakedLPRaw))
@@ -256,7 +256,7 @@ export const getTotalLPUSDValue = async (
     totalSupply,
     totalLocked,
   ] = await Promise.all([
-    masterChefContract.methods.getNewRewardPerBlock(pool.pid + 1).call(),
+    masterChefContract.methods.ufoPerBlock().call(),
     lpContract.methods.totalSupply().call(),
     lpContract.methods.balanceOf(MASTER_CHEF_ADDRESS).call(),
   ])
