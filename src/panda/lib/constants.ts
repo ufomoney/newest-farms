@@ -98,7 +98,7 @@ export const addressMap = {
   TLM: '0x2222227e22102fe3322098e4cbfe18cfebd57c95',
   UBXT: '0xbbeb90cfb6fafa1f69aa130b7341089abeef5811',
   BUNNY: '0xc9849e6fdb743d08faee3e34dd2d1bc69ea11a51',
-  BAMBOO: '0xEF88e0d265dDC8f5E725a4fDa1871F9FE21B11E2',
+  BAMBOO: '0xecb037cc672Fb2b53466Bbce986880149F79245B',
   RHINO: '0xD2ECa3cff5F09Cfc9C425167d12F0a005Fc97c8c',
 }
 
@@ -107,7 +107,7 @@ export const contractAddresses = {
     56: '0x3B72Ac46888f72dD6a6B2076Ca96fcc18e75a935',
   },
   bamboo: {
-    56: '0xEF88e0d265dDC8f5E725a4fDa1871F9FE21B11E2',
+    56: '0xecb037cc672Fb2b53466Bbce986880149F79245B',
   },
   rhinoStaking: {
     56: '0x745c8E1c0315162C33408454b48E53C9F178eB68',
@@ -125,7 +125,7 @@ export const contractAddresses = {
     56: '0x0567F2323251f0Aab15c8dFb1967E4e8A7D42aeE',
   },
   bambooMaker: {
-    56: '0xe1a2CD535C4e7d9C2C187e529f9f491cceA41e07',
+    56: '0x4375e2c30C440482ac96602b0D66E5E0e668f4e3',
   },
   pndaPrice: {
     56: '',
