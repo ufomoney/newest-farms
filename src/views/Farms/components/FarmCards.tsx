@@ -74,20 +74,6 @@ const FarmCards: React.FC = () => {
 				<Tab>Archived Farms</Tab>
 			</TabList>
 
-			<div style={{ justifyContent: 'center', width: '400' }}>
-				<Spacer />
-				<Card>
-					<CardContent>
-						<span>❗️ APYs for single-sided pools are not yet accurate.</span>
-						<span>
-							❗️ APYs are affected by a 7-day average price of PNDA which has
-							not yet stabilized.
-						</span>
-					</CardContent>
-				</Card>
-				<Spacer />
-			</div>
-
 			<TabPanel>
 				<StyledCards>
 					{pools[PoolType.PNDA].length ? (
