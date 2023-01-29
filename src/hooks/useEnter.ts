@@ -12,7 +12,7 @@ const useEnter = () => {
   const handle = useCallback(
     async (amount: string) => {
       const txHash = await enter(
-        getBambooStakingContract(panda),
+        '0xecb037cc672Fb2b53466Bbce986880149F79245B',
         amount,
         account,
       )
