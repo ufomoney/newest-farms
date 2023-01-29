@@ -11,17 +11,6 @@ interface FeeProps {
 	pid: number
 }
 
-const Fee: React.FC<FeeProps> = ({ pid }) => {
-	const firstDepositBlock = useFirstDepositBlock(pid)
-	const lastWithdrawBlock = useLastWithdrawBlock(pid)
-	const lastDepositBlock = useLastDepositBlock(pid)
-	const fees = useFees(pid)
-	const blockDiff = useBlockDiff(pid)
-	const lastInteraction = new Date(
-		new Date().getTime() - 1000 * (blockDiff * 3)
-	).toLocaleString()
-}
-
 const StyledLink = styled.a`
 	color: ${(props) => props.theme.color.grey[500]};
 	text-decoration: none;

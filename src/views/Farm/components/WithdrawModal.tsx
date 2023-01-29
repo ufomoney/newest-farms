@@ -44,7 +44,6 @@ const WithdrawModal: React.FC<WithdrawModalProps> = ({
 	return (
 		<Modal>
 			<ModalTitle text={`Withdraw ${tokenName}`} />
-			<Fee pid={pid} />
 			<TokenInput
 				onSelectMax={handleSelectMax}
 				onChange={handleChange}
