@@ -180,7 +180,7 @@ export const supportedPools: SupportedPool[] = [
     name: 'Panda Party',
     symbol: 'PNDA-BNB PNDA-V2',
     tokenSymbol: 'PNDA',
-    poolType: PoolType.CAKE,
+    poolType: PoolType.ARCHIVED,
     icon: '/pnda.png',
     refUrl:
       'https://pandaswap.xyz/#/swap?outputCurrency=0x47DcC83a14aD53Ed1f13d3CaE8AA4115f07557C0',
