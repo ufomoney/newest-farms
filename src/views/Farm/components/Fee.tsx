@@ -47,5 +47,3 @@ const Warning = styled.h3`
 	text-align: center;
 	max-width: 750px;
 `
-
-export default Fee
