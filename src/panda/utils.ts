@@ -374,7 +374,7 @@ export const harvest = async (
   account: string,
 ): Promise<string> => {
   return masterChefContract.methods
-    .claimReward(pid)
+    .deposit(pid, 0)
     .send({ from: account })
     .on('transactionHash', (tx: { transactionHash: string }) => {
       console.log(tx)
