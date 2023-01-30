@@ -62,20 +62,20 @@ const StakePanda: React.FC<StakeProps> = ({}) => {
 							<img src={pnda} alt="" height="50" />
 						</CardIcon>
 						<Value value={getBalanceNumber(tokenBalance)} />
-						<Label text={`PNDA Tokens Available`} />
+						<Label text={`UFO Tokens Available`} />
 					</StyledCardHeader>
 					<StyledCardActions>
 						{!allowance.toNumber() ? (
 							<Button
 								disabled={requestedApproval}
 								onClick={handleApprove}
-								text={`Approve PNDA`}
+								text={`Approve UFO`}
 							/>
 						) : (
 							<>
 								<Button
 									disabled={tokenBalance.eq(new BigNumber(0))}
-									text="Convert to BAMBOO"
+									text="Convert to YUFO"
 									onClick={onPresentDeposit}
 								/>
 								<StyledActionSpacer />

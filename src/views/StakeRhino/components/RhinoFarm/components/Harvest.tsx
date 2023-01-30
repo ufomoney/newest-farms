@@ -45,18 +45,13 @@ const Harvest: React.FC<HarvestProps> = ({ pid }) => {
 							<img src={pandaIcon} height={50} />
 						</CardIcon>
 						<Value value={getBalanceNumber(earnings)} />
-						<Label text="PNDA Earned" />
+						<Label text="UFO Earned" />
 					</StyledCardHeader>
 					<Spacer />
-					<StyledCardHeader>
-						<Value value={getBalanceNumber(locks)} />
-						<Label text="Locked PNDA" />
-						<Spacer />
-					</StyledCardHeader>
 					<StyledCardActions>
 						<Button
 							disabled={!earnings.toNumber() || pendingTx}
-							text={pendingTx ? 'Collecting PNDA' : 'Claim'}
+							text={pendingTx ? 'Collecting UFO' : 'Claim'}
 							onClick={async () => {
 								setPendingTx(true)
 								await onReward()

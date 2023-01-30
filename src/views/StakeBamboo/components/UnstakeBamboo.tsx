@@ -44,12 +44,12 @@ const UnstakeBamboo: React.FC<HarvestProps> = ({ lpContract }) => {
 						<img src={bamboo} alt="" height="50" />
 						</CardIcon>
 						<Value value={getBalanceNumber(BambooBalance)} />
-						<Label text="BAMBOO Tokens Available" />
+						<Label text="YUFO Tokens Available" />
 					</StyledCardHeader>
 					<StyledCardActions>
 						<Button
 							disabled={!BambooBalance.toNumber() || pendingTx}
-							text={pendingTx ? 'Converting to PNDA' : 'Convert to PNDA'}
+							text={pendingTx ? 'Converting to UFO' : 'Convert to UFO'}
 							onClick={async () => {
 								setPendingTx(true)
 								await onPresentLeave()
