@@ -219,4 +219,21 @@ export const supportedPools: SupportedPool[] = [
     refUrl:
       'https://pandaswap.xyz/#/swap?outputCurrency=0x47DcC83a14aD53Ed1f13d3CaE8AA4115f07557C0',
   },
+  {
+    pid: 32,
+    lpAddresses: {
+      56: '0x76a797a59ba2c17726896976b7b3747bfd1d220f',
+    },
+    tokenAddresses: {
+      56: '0x76a797a59ba2c17726896976b7b3747bfd1d220f',
+    },
+    tokenDecimals: 18,
+    name: 'TON',
+    symbol: 'TON',
+    tokenSymbol: 'TON',
+    poolType: PoolType.PNDA,
+    icon: '/ton.png',
+    refUrl:
+      'https://pandaswap.xyz/#/swap?outputCurrency=0x47DcC83a14aD53Ed1f13d3CaE8AA4115f07557C0',
+  },
 ]
