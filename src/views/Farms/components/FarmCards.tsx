@@ -69,9 +69,9 @@ const FarmCards: React.FC = () => {
 	return (
 		<Tabs>
 			<TabList>
-				<Tab>PandaSwap Farms</Tab>
-				<Tab>PancakeSwap Farms</Tab>
-				<Tab>Archived Farms</Tab>
+				<Tab>Stakings</Tab>
+				<Tab>LMs</Tab>
+				<Tab>Archived</Tab>
 			</TabList>
 
 			<TabPanel>
@@ -85,7 +85,7 @@ const FarmCards: React.FC = () => {
 						))
 					) : (
 						<StyledLoadingWrapper>
-							<Loader text="Harvesting the bamboo ..." />
+							<Loader text="Loading..." />
 						</StyledLoadingWrapper>
 					)}
 				</StyledCards>
@@ -101,7 +101,7 @@ const FarmCards: React.FC = () => {
 						))
 					) : (
 						<StyledLoadingWrapper>
-							<Loader text="Harvesting the bamboo ..." />
+							<Loader text="Loading..." />
 						</StyledLoadingWrapper>
 					)}
 				</StyledCards>
@@ -117,7 +117,7 @@ const FarmCards: React.FC = () => {
 						))
 					) : (
 						<StyledLoadingWrapper>
-							<Loader text="Harvesting the bamboo ..." />
+							<Loader text="Loading..." />
 						</StyledLoadingWrapper>
 					)}
 				</StyledCards>

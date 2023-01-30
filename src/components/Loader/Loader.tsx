@@ -1,6 +1,6 @@
 import React from 'react'
 import styled, { keyframes } from 'styled-components'
-import bamboo from '../../assets/img/bamboo.png'
+import bamboo from '../../assets/img/pnda.png'
 
 import CardIcon from '../CardIcon'
 

@@ -56,18 +56,6 @@ const StakeBamboo: React.FC = () => {
 						<StakePanda />
 					</StyledCardWrapper>
 				</StyledCardsWrapper>
-				<Spacer size="lg" />
-				<StyledInfo>
-					ℹ️️ You will earn a portion of the swaps fees based on the amount
-					of Bamboo held relative the weight of the staking. Bamboo can be
-					minted by staking Panda. To redeem Panda staked plus swap fees
-							convert Bamboo back to Panda.{' '}
-					{totalSupply
-						? `There are currently ${getBalanceNumber(
-							totalSupply,
-						)} Bamboo in existence.`
-						: ''}
-				</StyledInfo>
 			</StyledFarm>
 		</>
 	)

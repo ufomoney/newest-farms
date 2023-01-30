@@ -198,7 +198,7 @@ export const supportedPools: SupportedPool[] = [
     symbol: 'YUFO',
     tokenSymbol: 'YUFO',
     poolType: PoolType.PNDA,
-    icon: '/pnda.png',
+    icon: '/bamboo.png',
     refUrl:
       'https://pandaswap.xyz/#/swap?outputCurrency=0x47DcC83a14aD53Ed1f13d3CaE8AA4115f07557C0',
   },

@@ -22,11 +22,6 @@ const Staking: React.FC = () => {
 				{account ? (
 					<>
 						<Route exact path={path}>
-							<PageHeader
-								icon={pnda}
-								title="Welcome to the Bamboo Bar"
-								subtitle="Stake PNDA and earn BAMBOO!!"
-							/>
 						</Route>
 						<StakeBamboo />
 					</>

@@ -30,7 +30,7 @@ const Nav: React.FC = () => {
 				activeClassName="active"
 				to={{ pathname: '/staking' }}
 			>
-				Staking
+				UFO Staking
 			</StyledLink>
 		</StyledNav>
 	)
