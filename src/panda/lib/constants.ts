@@ -202,4 +202,21 @@ export const supportedPools: SupportedPool[] = [
     refUrl:
       'https://pandaswap.xyz/#/swap?outputCurrency=0x47DcC83a14aD53Ed1f13d3CaE8AA4115f07557C0',
   },
+  {
+    pid: 1,
+    lpAddresses: {
+      56: '0x4B0F1812e5Df2A09796481Ff14017e6005508003',
+    },
+    tokenAddresses: {
+      56: '0x4B0F1812e5Df2A09796481Ff14017e6005508003',
+    },
+    tokenDecimals: 18,
+    name: 'TWT',
+    symbol: 'TWT',
+    tokenSymbol: 'TWT',
+    poolType: PoolType.PNDA,
+    icon: '/twt.png',
+    refUrl:
+      'https://pandaswap.xyz/#/swap?outputCurrency=0x47DcC83a14aD53Ed1f13d3CaE8AA4115f07557C0',
+  },
 ]
