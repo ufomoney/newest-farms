@@ -3,11 +3,6 @@ import styled from 'styled-components'
 
 const Nav: React.FC = () => {
 	return (
-		<StyledNav>
-			<StyledLink target="_blank" href="https://discord.gg/GEHTF93JFU">
-				Discord
-			</StyledLink>
-		</StyledNav>
 	)
 }
 
