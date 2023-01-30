@@ -3,6 +3,8 @@ import styled from 'styled-components'
 
 const Nav: React.FC = () => {
 	return (
+		<StyledNav>
+		</StyledNav>
 	)
 }
 
