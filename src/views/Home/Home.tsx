@@ -11,11 +11,6 @@ import Balances from './components/Balances'
 const Home: React.FC = () => {
 	return (
 		<Page>
-			<PageHeader
-				icon={pnda}
-				title="PandaChef is Ready"
-				subtitle="Stake PandaSwap LP tokens to earn PNDA!"
-			/>
 			<Container>
 				<Balances />
 			</Container>
@@ -24,7 +19,7 @@ const Home: React.FC = () => {
 					margin: '0 auto',
 				}}
 			>
-				<Button text="🎍 See the Farms" to="/farms" variant="secondary" />
+				<Button text="See the Farms" to="/farms" variant="secondary" />
 			</div>
 		</Page>
 	)

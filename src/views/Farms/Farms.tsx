@@ -25,11 +25,6 @@ const Farms: React.FC = () => {
 				{account ? (
 					<>
 						<Route exact path={path}>
-							<PageHeader
-								icon={pndaBanner}
-								subtitle="Earn PNDA tokens by staking PandaSwap and PancakeSwap LP Tokens. And soon generate synthetic assets!"
-								title="Select Your Fav Dim Sum Entrees!"
-							/>
 							<FarmCards />
 						</Route>
 						<Route path={`${path}/:farmId`}>
