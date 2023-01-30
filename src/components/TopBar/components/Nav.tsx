@@ -14,34 +14,24 @@ const Nav: React.FC = () => {
 			<StyledLink
 				exact
 				activeClassName="active"
-				to={{ pathname: '/', search: '?ref=' + refer }}
+				to={{ pathname: '/' }}
 			>
 				Home
 			</StyledLink>
 			<StyledLink
 				exact
 				activeClassName="active"
-				to={{ pathname: '/farms', search: '?ref=' + refer }}
+				to={{ pathname: '/farms' }}
 			>
 				Farms
 			</StyledLink>
 			<StyledLink
 				exact
 				activeClassName="active"
-				to={{ pathname: '/staking', search: '?ref=' + refer }}
+				to={{ pathname: '/staking' }}
 			>
 				BambooBar
 			</StyledLink>
-			<StyledLink
-				exact
-				activeClassName="active"
-				to={{ pathname: '/rhino', search: '?ref=' + refer }}
-			>
-				Rhino
-			</StyledLink>
-			<StyledAbsoluteLink href="https://pandaswap.xyz" target="_blank">
-				Swap
-			</StyledAbsoluteLink>
 		</StyledNav>
 	)
 }
