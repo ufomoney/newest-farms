@@ -65,7 +65,7 @@ const SwapPanda: React.FC<SwapPandaProps> = ({ withdrawableBalance }) => {
 				setRequestedApproval(false)
 			}
 		} catch (e) {
-			console.log(e)
+			// console.log(e)
 		}
 	}, [onApprove, setRequestedApproval])
 

@@ -134,26 +134,27 @@ export const decimate = (bigNumber: BigNumber, decimals = 18) =>
   bigNumber.div(new BigNumber(10).pow(decimals))
 
 interface PriceOracle {
-  token: string,
-  address: string,
-  contract: Contract,
+  token: string
+  address: string
+  contract: Contract
 }
 
-const getOraclePrice = async (tokenSymbol: string, priceOracles: Array<PriceOracle>) => {
-  const oracle = priceOracles.find(oracle => oracle.token === tokenSymbol)
+const getOraclePrice = async (
+  tokenSymbol: string,
+  priceOracles: Array<PriceOracle>,
+) => {
+  const oracle = priceOracles.find((oracle) => oracle.token === tokenSymbol)
 
-  const [tokenPrice, tokenDecimals] = await Promise.all([
-    oracle.contract.methods.latestAnswer().call(),
-    oracle.contract.methods.decimals().call(),
-  ])
+  const tokenDecimals = await oracle?.contract?.methods?.decimals().call()
+  const tokenPrice = 0.75
 
   return [tokenPrice, tokenDecimals]
 }
 
 interface PandaPrice {
-  pid: number,
-  lockedUsd: BigNumber,
-  reward: BigNumber,
+  pid: number
+  lockedUsd: BigNumber
+  reward: BigNumber
 }
 
 export const getPandaPriceLink = async (
@@ -161,20 +162,22 @@ export const getPandaPriceLink = async (
   masterChefContract: Contract,
 ) => {
   const results = await Promise.all([
-    getTotalLPUSDValue(0, masterChefContract, pnda, true),
+    getTotalLPUSDValue(31, masterChefContract, pnda, true),
     getTotalLPUSDValue(1, masterChefContract, pnda, true),
-    getTotalLPUSDValue(2, masterChefContract, pnda, true),
-    getTotalLPUSDValue(3, masterChefContract, pnda, true),
-    getTotalLPUSDValue(4, masterChefContract, pnda, true),
+    getTotalLPUSDValue(32, masterChefContract, pnda, true),
+    // getTotalLPUSDValue(3, masterChefContract, pnda, true),
+    // getTotalLPUSDValue(4, masterChefContract, pnda, true),
   ])
 
-  return results.reduce((total: PandaPrice, num: PandaPrice) => {
-    return {
-      pid: num.pid, // don't care about this value
-      lockedUsd: total.lockedUsd.plus(num.lockedUsd),
-      reward: num.reward, // don't care about this value
-    }
-  }).lockedUsd.div(results.length)
+  return results
+    .reduce((total: PandaPrice, num: PandaPrice) => {
+      return {
+        pid: num.pid, // don't care about this value
+        lockedUsd: total.lockedUsd.plus(num.lockedUsd),
+        reward: num.reward, // don't care about this value
+      }
+    })
+    .lockedUsd.div(results.length)
 }
 
 export const getTotalLPUSDValue = async (
@@ -189,27 +192,41 @@ export const getTotalLPUSDValue = async (
 }> => {
   const { web3 } = pnda
   const supportedPools = getFarms(pnda)
-  const pool = supportedPools.find(pool => pool.pid === pid)
-  const { lpContract } = pool
+  const pool = supportedPools.find((pool) => pool.pid === pid)
+
+  const lpContract = await pool?.lpContract
+
   const priceOracles = oracles(web3)
 
   // Special case: Single asset LP
-  if (pool.tokenAddress === pool.lpTokenAddress) {
-    const [token0, stakedLPRaw, reward] = await Promise.all([
-      lpContract.methods.symbol().call(),
-      lpContract.methods.balanceOf(MASTER_CHEF_ADDRESS).call(),
-      masterChefContract.methods.ufoPerBlock().call(),
+  if (pool?.tokenAddress === pool?.lpTokenAddress) {
+    const [token0, stakedLPRaw, reward1, reward2] = await Promise.all([
+      lpContract?.methods?.symbol().call(),
+      lpContract?.methods?.balanceOf(MASTER_CHEF_ADDRESS).call(),
+      masterChefContract.methods.poolInfo(pid).call(),
+      masterChefContract.methods.totalAllocPoint().call(),
     ])
+    const reward = (reward1[1] / reward2) * 88880000000 * 10
+    // // console.log(reward);
+    // // console.log('reward1')
+    // // console.log(reward1[1])
+    // // console.log('reward2')
+    // // console.log(reward2)
 
     const stakedLP = decimate(new BigNumber(stakedLPRaw))
     const [rawTokenPrice, tokenDecimals] = await getOraclePrice(
       token0,
       priceOracles,
     )
+
+    // console.log(rawTokenPrice)
+
     const tokenPrice = decimate(new BigNumber(rawTokenPrice), tokenDecimals)
     const lockedUsd = tokenPrice.times(stakedLP)
 
     return { pid, lockedUsd, reward: decimate(new BigNumber(reward)) }
+  } else {
+    // console.log('none')
   }
 
   // Get token addresses from LP Contract
@@ -238,44 +255,46 @@ export const getTotalLPUSDValue = async (
   ])
 
   // Check which underlying asset inside of the LP Token has a price oracle
-  const oracleToken = priceOracles.find(oracle => oracle.token === token0Symbol)
+  const oracleToken = priceOracles.find(
+    (oracle) => oracle.token === token0Symbol,
+  )
   const [oracleTokenPrice, oracleTokenDecimals] = oracleToken
-      ? await getOraclePrice(token0Symbol, priceOracles)
-      : await getOraclePrice(token1Symbol, priceOracles)
+    ? await getOraclePrice(token0Symbol, priceOracles)
+    : await getOraclePrice(token1Symbol, priceOracles)
 
   // Determine value of LP Supply in USD
   const supplyValue = decimate(new BigNumber(reserves[oracleToken ? 0 : 1]))
-    .times(
-      decimate(new BigNumber(oracleTokenPrice), oracleTokenDecimals),
-    )
+    .times(decimate(new BigNumber(oracleTokenPrice), oracleTokenDecimals))
     .times(2)
 
   // Find reward per block, totalSupply (in LP), and totalLocked (in LP)
-  const [
-    reward,
-    totalSupply,
-    totalLocked,
-  ] = await Promise.all([
-    masterChefContract.methods.ufoPerBlock().call(),
+  const [reward1, reward2, totalSupply, totalLocked] = await Promise.all([
+    masterChefContract.methods.poolInfo(pid).call(),
+    masterChefContract.methods.totalAllocPoint().call(),
     lpContract.methods.totalSupply().call(),
     lpContract.methods.balanceOf(MASTER_CHEF_ADDRESS).call(),
   ])
 
-  const lockedPercentage = new BigNumber(totalLocked).div(new BigNumber(totalSupply))
+  const reward = (reward1[1] / reward2) * 88880000000 * 10
+
+  const lockedPercentage = new BigNumber(totalLocked).div(
+    new BigNumber(totalSupply),
+  )
   const lockedUsd = supplyValue.times(lockedPercentage)
 
   if (returnNonOraclePrice) {
     const token = oracleToken ? 1 : 0
-    const nonOraclePrice = lockedUsd.div(2).div(
-      decimate(
-        new BigNumber(reserves[token]),
-        oracleToken ? token1Decimals : token0Decimals,
-      ),
-    )
+    const nonOraclePrice = lockedUsd
+      .div(2)
+      .div(
+        decimate(
+          new BigNumber(reserves[token]),
+          oracleToken ? token1Decimals : token0Decimals,
+        ),
+      )
 
     return { pid, lockedUsd: nonOraclePrice, reward: null }
-  } else
-    return { pid, lockedUsd, reward: decimate(new BigNumber(reward)) }
+  } else return { pid, lockedUsd, reward: decimate(new BigNumber(reward)) }
 }
 
 export const getTotalLPWbnbValue = async (
@@ -348,7 +367,7 @@ export const stake = async (
     .deposit(pid, ethers.utils.parseUnits(amount, 18))
     .send({ from: account })
     .on('transactionHash', (tx: { transactionHash: string }) => {
-      console.log(tx)
+      // console.log(tx)
       return tx.transactionHash
     })
 }
@@ -364,7 +383,7 @@ export const unstake = async (
     .withdraw(pid, ethers.utils.parseUnits(amount, 18))
     .send({ from: account })
     .on('transactionHash', (tx: { transactionHash: string }) => {
-      console.log(tx)
+      // console.log(tx)
       return tx.transactionHash
     })
 }
@@ -377,7 +396,7 @@ export const harvest = async (
     .deposit(pid, 0)
     .send({ from: account })
     .on('transactionHash', (tx: { transactionHash: string }) => {
-      console.log(tx)
+      // console.log(tx)
       return tx.transactionHash
     })
 }
@@ -485,7 +504,7 @@ export function getRefUrl(): string {
   if (urlParams.has('ref')) {
     refer = urlParams.get('ref')
   }
-  console.log(refer)
+  // console.log(refer)
 
   return refer
 }
@@ -500,7 +519,7 @@ export const redeem = async (
       .exit()
       .send({ from: account })
       .on('transactionHash', (tx: { transactionHash: string }) => {
-        console.log(tx)
+        // console.log(tx)
         return tx.transactionHash
       })
   } else {
@@ -517,7 +536,7 @@ export const enter = async (
     .enter(new BigNumber(amount).times(new BigNumber(10).pow(18)).toString())
     .send({ from: account })
     .on('transactionHash', (tx: { transactionHash: string }) => {
-      console.log(tx)
+      // console.log(tx)
       return tx.transactionHash
     })
 }
@@ -531,7 +550,7 @@ export const leave = async (
     .leave(new BigNumber(amount).times(new BigNumber(10).pow(18)).toString())
     .send({ from: account })
     .on('transactionHash', (tx: { transactionHash: string }) => {
-      console.log(tx)
+      // console.log(tx)
       return tx.transactionHash
     })
 }
@@ -550,7 +569,7 @@ export const deposit = async (
     .deposit(depositTokenAddress, depositAmount)
     .send({ from: account })
     .on('transactionHash', (tx: { transactionHash: string }) => {
-      console.log(tx)
+      // console.log(tx)
       return tx.transactionHash
     })
 }
@@ -564,7 +583,7 @@ export const withdraw = async (
     .withdraw(withdrawTokenAddress)
     .send({ from: account })
     .on('transactionHash', (tx: { transactionHash: string }) => {
-      console.log(tx)
+      // console.log(tx)
       return tx.transactionHash
     })
 }
@@ -578,7 +597,7 @@ export const getWithdrawableBalance = async (
     const amount = await rhinoStakingContract.methods
       .withdrawableBalance(account, tokenAddress)
       .call()
-    console.log('withdrawableBalance', amount)
+    // console.log('withdrawableBalance', amount)
     return new BigNumber(amount)
   } catch {
     return new BigNumber(0)
@@ -594,7 +613,7 @@ export const swapWithFee = async (
     const amount = await rhinoStakingContract.methods
       .swapWithFee(fromTokenAddress, toTokenAddress)
       .call()
-    console.log('withdrawableBalance', amount)
+    // console.log('withdrawableBalance', amount)
     return new BigNumber(amount)
   } catch {
     return new BigNumber(0)

@@ -18,7 +18,7 @@ const useDeposit = (tokenAddress: string, tokenDecimals = 18) => {
         account,
         tokenDecimals,
       )
-      console.log(txHash)
+      // console.log(txHash)
     },
     [account, panda],
   )

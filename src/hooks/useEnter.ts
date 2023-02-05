@@ -17,7 +17,7 @@ const useEnter = () => {
         amount,
         account,
       )
-      console.log(txHash)
+      // console.log(txHash)
     },
     [account],
   )

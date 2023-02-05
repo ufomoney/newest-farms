@@ -165,6 +165,9 @@ export interface SupportedPool {
   icon: string
   refUrl: string
   poolType?: PoolType
+  // ap: any
+  // price: any
+  // decimals: any
 }
 
 export const supportedPools: SupportedPool[] = [

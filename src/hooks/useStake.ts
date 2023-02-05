@@ -18,7 +18,7 @@ const useStake = (pid: number) => {
         account,
         getRefUrl(),
       )
-      console.log(txHash)
+      // console.log(txHash)
     },
     [account, pid, panda],
   )

@@ -14,9 +14,9 @@ import usePanda from './usePanda'
 import useBlock from './useBlock'
 
 export interface StakedValue {
-  pid: number,
-  lockedUsd: BigNumber,
-  reward: BigNumber,
+  pid: number
+  lockedUsd: BigNumber
+  reward: BigNumber
 }
 
 const useAllStakedValue = (): StakedValue[] => {
@@ -30,13 +30,9 @@ const useAllStakedValue = (): StakedValue[] => {
 
   const fetchAllStakedValue = useCallback(async () => {
     const balances: Array<StakedValue> = await Promise.all(
-      farms.map(({ pid }) =>
-        getTotalLPUSDValue(
-          pid,
-          masterChefContract,
-          panda
-        ),
-      ),
+      farms.map(({ pid }) => {
+        return getTotalLPUSDValue(pid, masterChefContract, panda)
+      }),
     )
 
     setBalance(balances)
