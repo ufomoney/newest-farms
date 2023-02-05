@@ -143,7 +143,7 @@ export class Contracts {
         txOptions.gas = this.defaultGas
       } else {
         try {
-          console.log('estimating gas')
+          // console.log('estimating gas')
           gasEstimate = await method.estimateGas(txOptions)
         } catch (error) {
           const data = method.encodeABI()

@@ -15,7 +15,7 @@ const useWithdraw = (tokenAddress: string) => {
       tokenAddress,
       account,
     )
-    console.log(txHash)
+    // console.log(txHash)
   }, [account, panda])
 
   return { onWithdraw: handle }

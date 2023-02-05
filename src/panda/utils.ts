@@ -207,11 +207,11 @@ export const getTotalLPUSDValue = async (
       masterChefContract.methods.totalAllocPoint().call(),
     ])
     const reward = (reward1[1] / reward2) * 88880000000 * 10
-    // console.log(reward);
-    // console.log('reward1')
-    // console.log(reward1[1])
-    // console.log('reward2')
-    // console.log(reward2)
+    // // console.log(reward);
+    // // console.log('reward1')
+    // // console.log(reward1[1])
+    // // console.log('reward2')
+    // // console.log(reward2)
 
     const stakedLP = decimate(new BigNumber(stakedLPRaw))
     const [rawTokenPrice, tokenDecimals] = await getOraclePrice(
@@ -219,14 +219,14 @@ export const getTotalLPUSDValue = async (
       priceOracles,
     )
 
-    console.log(rawTokenPrice)
+    // console.log(rawTokenPrice)
 
     const tokenPrice = decimate(new BigNumber(rawTokenPrice), tokenDecimals)
     const lockedUsd = tokenPrice.times(stakedLP)
 
     return { pid, lockedUsd, reward: decimate(new BigNumber(reward)) }
   } else {
-    console.log('none')
+    // console.log('none')
   }
 
   // Get token addresses from LP Contract
@@ -367,7 +367,7 @@ export const stake = async (
     .deposit(pid, ethers.utils.parseUnits(amount, 18))
     .send({ from: account })
     .on('transactionHash', (tx: { transactionHash: string }) => {
-      console.log(tx)
+      // console.log(tx)
       return tx.transactionHash
     })
 }
@@ -383,7 +383,7 @@ export const unstake = async (
     .withdraw(pid, ethers.utils.parseUnits(amount, 18))
     .send({ from: account })
     .on('transactionHash', (tx: { transactionHash: string }) => {
-      console.log(tx)
+      // console.log(tx)
       return tx.transactionHash
     })
 }
@@ -396,7 +396,7 @@ export const harvest = async (
     .deposit(pid, 0)
     .send({ from: account })
     .on('transactionHash', (tx: { transactionHash: string }) => {
-      console.log(tx)
+      // console.log(tx)
       return tx.transactionHash
     })
 }
@@ -504,7 +504,7 @@ export function getRefUrl(): string {
   if (urlParams.has('ref')) {
     refer = urlParams.get('ref')
   }
-  console.log(refer)
+  // console.log(refer)
 
   return refer
 }
@@ -519,7 +519,7 @@ export const redeem = async (
       .exit()
       .send({ from: account })
       .on('transactionHash', (tx: { transactionHash: string }) => {
-        console.log(tx)
+        // console.log(tx)
         return tx.transactionHash
       })
   } else {
@@ -536,7 +536,7 @@ export const enter = async (
     .enter(new BigNumber(amount).times(new BigNumber(10).pow(18)).toString())
     .send({ from: account })
     .on('transactionHash', (tx: { transactionHash: string }) => {
-      console.log(tx)
+      // console.log(tx)
       return tx.transactionHash
     })
 }
@@ -550,7 +550,7 @@ export const leave = async (
     .leave(new BigNumber(amount).times(new BigNumber(10).pow(18)).toString())
     .send({ from: account })
     .on('transactionHash', (tx: { transactionHash: string }) => {
-      console.log(tx)
+      // console.log(tx)
       return tx.transactionHash
     })
 }
@@ -569,7 +569,7 @@ export const deposit = async (
     .deposit(depositTokenAddress, depositAmount)
     .send({ from: account })
     .on('transactionHash', (tx: { transactionHash: string }) => {
-      console.log(tx)
+      // console.log(tx)
       return tx.transactionHash
     })
 }
@@ -583,7 +583,7 @@ export const withdraw = async (
     .withdraw(withdrawTokenAddress)
     .send({ from: account })
     .on('transactionHash', (tx: { transactionHash: string }) => {
-      console.log(tx)
+      // console.log(tx)
       return tx.transactionHash
     })
 }
@@ -597,7 +597,7 @@ export const getWithdrawableBalance = async (
     const amount = await rhinoStakingContract.methods
       .withdrawableBalance(account, tokenAddress)
       .call()
-    console.log('withdrawableBalance', amount)
+    // console.log('withdrawableBalance', amount)
     return new BigNumber(amount)
   } catch {
     return new BigNumber(0)
@@ -613,7 +613,7 @@ export const swapWithFee = async (
     const amount = await rhinoStakingContract.methods
       .swapWithFee(fromTokenAddress, toTokenAddress)
       .call()
-    console.log('withdrawableBalance', amount)
+    // console.log('withdrawableBalance', amount)
     return new BigNumber(amount)
   } catch {
     return new BigNumber(0)

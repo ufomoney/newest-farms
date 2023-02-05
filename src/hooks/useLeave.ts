@@ -17,7 +17,7 @@ const useLeave = () => {
         amount,
         account,
       )
-      console.log(txHash)
+      // console.log(txHash)
     },
     [account],
   )

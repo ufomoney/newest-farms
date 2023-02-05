@@ -38,11 +38,11 @@ const useSubValues = () => {
             locks.dividedBy(1000000000000000000),
           )
           const dailyPrice = userValue.dividedBy(1095).toFormat(2)
-          console.log(dailyPrice + ' dailyPrice')
-          console.log(wbnbPrices + ' wbnbprice')
-          console.log(pndaPrices + ' pndaPrice')
+          // console.log(dailyPrice + ' dailyPrice')
+          // console.log(wbnbPrices + ' wbnbprice')
+          // console.log(pndaPrices + ' pndaPrice')
           const annualPrice = userValue.dividedBy(3).toFormat(2)
-          console.log(annualPrice + ' annual')
+          // console.log(annualPrice + ' annual')
           const wbnbText = userValue.toFormat(2)
           const usrSubText =
             'When this unlocks it will earn you $' +

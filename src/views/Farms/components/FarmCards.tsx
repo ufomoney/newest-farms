@@ -49,9 +49,9 @@ const FarmCards: React.FC = () => {
 		[PoolType.CAKE]: [],
 		[PoolType.ARCHIVED]: [],
 	}
-	console.log('pndaPrice')
-	console.log(pndaPrice)
-	console.log(stakedValue)
+	// console.log('pndaPrice')
+	// console.log(pndaPrice)
+	// console.log(stakedValue)
 
 	farms.forEach((farm, i) => {
 		const farmWithStakedValue = {
@@ -137,7 +137,7 @@ interface FarmCardProps {
 export const FarmCard: React.FC<FarmCardProps> = ({ farm }) => {
 	const [startTime, setStartTime] = useState(0)
 	const [harvestable, setHarvestable] = useState(0)
-	console.log(farm)
+	// console.log(farm)
 
 	const { account } = useWallet()
 	const { pid } = farm

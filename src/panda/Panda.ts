@@ -79,7 +79,7 @@ export class Panda {
       this.wbnbPriceAddress = contractAddresses.wbnbPrice[networkId]
       this.pndaPriceAddress = contractAddresses.pndaPrice[networkId]
     }
-    console.log(`network Id: ${networkId}`, contractAddresses)
+    // console.log(`network Id: ${networkId}`, contractAddresses)
   }
 
   async resetEVM(): Promise<void> {

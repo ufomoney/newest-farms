@@ -8,8 +8,8 @@ const usePandaPrice = (): BigNumber => {
   const [pndaPrice, setPndaPrice] = useState(undefined)
   const panda = usePanda()
   const masterChefContract = getMasterChefContract(panda)
-  // console.log(panda)
-  // console.log(masterChefContract)
+  // // console.log(panda)
+  // // console.log(masterChefContract)
 
   const fetchPndaPrice = useCallback(async () => {
     if (!panda) return

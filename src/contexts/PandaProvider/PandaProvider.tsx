@@ -27,7 +27,7 @@ const PandaProvider: React.FC = ({ children }) => {
 
 	useEffect(() => {
 		if (ethereum) {
-			console.log(chainId)
+			// console.log(chainId)
 			const pndaLib = new Panda(ethereum, chainId, false, {
 				defaultAccount: account,
 				defaultConfirmations: 1,
@@ -38,7 +38,7 @@ const PandaProvider: React.FC = ({ children }) => {
 				accounts: [],
 				ethereumNodeTimeout: 10000,
 			})
-			console.log(pndaLib)
+			// console.log(pndaLib)
 			setPanda(pndaLib)
 		}
 	}, [ethereum, chainId, account])

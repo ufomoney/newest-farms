@@ -49,7 +49,7 @@ const StakePanda: React.FC<StakeProps> = ({}) => {
 				setRequestedApproval(false)
 			}
 		} catch (e) {
-			console.log(e)
+			// console.log(e)
 		}
 	}, [onApprove, setRequestedApproval])
 
