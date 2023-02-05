@@ -1,53 +1,32 @@
-const oracleAbi = require('./abi/chainoracle.json')
+// const oracleAbi = require('./abi/chainoracle.json')
+const abiYUFO = require('./abi/abiYUFO.json')
+const abiTWT = require('./abi/abiTWT.json')
+const abiTON = require('./abi/abiTON.json')
 
 export default function (web3) {
 	return [
 		{
-			token: 'ETH',
-			address: '0x9ef1B8c0E4F7dc8bF5719Ea496883DC6401d5b2e',
+			token: 'YUFO',
+			address: '0xecb037cc672Fb2b53466Bbce986880149F79245B',
 			contract: new web3.eth.Contract(
-				oracleAbi,
-				'0x9ef1B8c0E4F7dc8bF5719Ea496883DC6401d5b2e',
+				abiYUFO,
+				'0xecb037cc672Fb2b53466Bbce986880149F79245B',
 			),
 		},
 		{
-			token: 'WBNB',
-			address: '0x0567F2323251f0Aab15c8dFb1967E4e8A7D42aeE',
+			token: 'TWT',
+			address: '0x4B0F1812e5Df2A09796481Ff14017e6005508003',
 			contract: new web3.eth.Contract(
-				oracleAbi,
-				'0x0567F2323251f0Aab15c8dFb1967E4e8A7D42aeE',
+				abiTWT,
+				'0x4B0F1812e5Df2A09796481Ff14017e6005508003',
 			),
 		},
 		{
-			token: 'DAI',
-			address: '0x132d3C0B1D2cEa0BC552588063bdBb210FDeecfA',
+			token: 'TONCOIN',
+			address: '0x76a797a59ba2c17726896976b7b3747bfd1d220f',
 			contract: new web3.eth.Contract(
-				oracleAbi,
-				'0x132d3C0B1D2cEa0BC552588063bdBb210FDeecfA',
-			),
-		},
-		{
-			token: 'USDC',
-			address: '0x51597f405303C4377E36123cBc172b13269EA163',
-			contract: new web3.eth.Contract(
-				oracleAbi,
-				'0x51597f405303C4377E36123cBc172b13269EA163',
-			),
-		},
-		{
-			token: 'BUSD',
-			address: '0xcBb98864Ef56E9042e7d2efef76141f15731B82f',
-			contract: new web3.eth.Contract(
-				oracleAbi,
-				'0xcBb98864Ef56E9042e7d2efef76141f15731B82f',
-			),
-		},
-		{
-			token: 'Cake',
-			address: '0xB6064eD41d4f67e353768aA239cA86f4F73665a1',
-			contract: new web3.eth.Contract(
-				oracleAbi,
-				'0xB6064eD41d4f67e353768aA239cA86f4F73665a1',
+				abiTON,
+				'0x76a797a59ba2c17726896976b7b3747bfd1d220f',
 			),
 		},
 	]

@@ -1,26 +1,28 @@
 import { useCallback, useMemo, useState } from 'react'
-import BigNumber from "bignumber.js";
+import BigNumber from 'bignumber.js'
 
-import usePanda from "./usePanda";
-import { getMasterChefContract, getPandaPriceLink } from "../panda/utils";
+import usePanda from './usePanda'
+import { getMasterChefContract, getPandaPriceLink } from '../panda/utils'
 
 const usePandaPrice = (): BigNumber => {
-  const [pndaPrice, setPndaPrice] = useState(undefined);
-  const panda = usePanda();
-  const masterChefContract = getMasterChefContract(panda);
+  const [pndaPrice, setPndaPrice] = useState(undefined)
+  const panda = usePanda()
+  const masterChefContract = getMasterChefContract(panda)
+  // console.log(panda)
+  // console.log(masterChefContract)
 
   const fetchPndaPrice = useCallback(async () => {
-    if (!panda) return;
+    if (!panda) return
 
-    const fetchedPrice = await getPandaPriceLink(panda, masterChefContract);
-    setPndaPrice(fetchedPrice);
-  }, [panda]);
+    const fetchedPrice = await getPandaPriceLink(panda, masterChefContract)
+    setPndaPrice(fetchedPrice)
+  }, [panda])
 
   useMemo(() => {
-    fetchPndaPrice();
-  }, [panda]);
+    fetchPndaPrice()
+  }, [panda])
 
-  return pndaPrice;
+  return pndaPrice
 }
 
 export default usePandaPrice
