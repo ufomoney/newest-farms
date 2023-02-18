@@ -93,7 +93,7 @@ export const getFarms = (pnda: Panda): Farm[] => {
           tokenDecimals,
           tokenSymbol,
           tokenContract,
-          earnToken: 'pnda',
+          earnToken: 'ufo',
           earnTokenAddress: pnda.contracts.panda.options.address,
           icon,
           refUrl,

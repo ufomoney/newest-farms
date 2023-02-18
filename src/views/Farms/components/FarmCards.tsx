@@ -174,7 +174,7 @@ export const FarmCard: React.FC<FarmCardProps> = ({ farm }) => {
 	const destination = farm.refUrl
 	return (
 		<StyledCardWrapper>
-			{farm.tokenSymbol === 'PNDA' && <StyledCardAccent />}
+			{farm.tokenSymbol === 'UFO' && <StyledCardAccent />}
 			<Card>
 				<CardContent>
 					<StyledContent>
